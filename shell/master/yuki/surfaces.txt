@@ -1,0 +1,1265 @@
+charset,UTF-8
+
+descript
+{
+  version,1
+}
+
+sakura.tooltips
+{
+  Bust,圧倒的平目
+}
+
+surface0
+{
+  element0,base,yuki/body000.png,0,0
+  element2,overlay,yuki/arm001.png,0,0
+  collision0,45,10,200,68,Head
+  collision1,83,192,137,218,Bust
+}
+
+surface10
+{
+  element0,base,yuki/dummy.png,0,0
+}
+
+surface20
+{
+  element0,base,yuki/fan000.png,0,0
+}
+
+surface21
+{
+  element0,base,yuki/fan001_0.png,0,0
+}
+
+surface22
+{
+  element0,base,yuki/fan001_1.png,0,0
+}
+
+surface23
+{
+  element0,base,yuki/fan002_0.png,0,0
+}
+
+surface24
+{
+  element0,base,yuki/fan002_1.png,0,0
+}
+
+surface25
+{
+  element0,base,yuki/fan003_0.png,0,0
+}
+
+surface26
+{
+  element0,base,yuki/fan003_1.png,0,0
+}
+
+surface301,302,303,304,305,306,307,308,309,310,321,331,341,342,351,352,361,362,371,381,382,383,384,385,391,392,393,394,401,411,412,421,422,431,441,442,443,444,501,502,503,504,505,506,507,508,509,510,521,531,541,542,551,552,561,562,571,581,582,583,584,585,591,592,593,594,601,611,612,621,622,631,641,642,643,644,701,702,703,704,705,706,707,708,709,710,721,731,741,742,751,752,761,762,771,781,782,783,784,785,791,792,793,794,801,811,812,821,822,831,841,842,843,844,901,902,903,904,905,906,907,908,909,910,921,931,941,942,951,952,961,962,971,981,982,983,984,985,991,992,993,994,1001,1011,1012,1021,1022,1031,1041,1042,1043,1044
+{
+  element0,base,yuki/body000.png,0,0
+  collision0,45,10,200,68,Head
+  collision1,83,192,137,218,Bust
+}
+
+surface.append301,501,701,901
+{
+  element1,overlay,yuki/face001.png,0,0
+}
+
+surface.append302,502,702,902
+{
+  element1,overlay,yuki/face002.png,0,0
+}
+
+surface.append303,503,703,903
+{
+  element1,overlay,yuki/face003.png,0,0
+}
+
+surface.append304,504,704,904
+{
+  element1,overlay,yuki/face004.png,0,0
+}
+
+surface.append305,505,705,905
+{
+  element1,overlay,yuki/face005.png,0,0
+}
+
+surface.append306,506,706,906
+{
+  element1,overlay,yuki/face006.png,0,0
+}
+
+surface.append307,507,707,907
+{
+  element1,overlay,yuki/face007.png,0,0
+}
+
+surface.append308,508,708,908
+{
+  element1,overlay,yuki/face008.png,0,0
+}
+
+surface.append309,509,709,909
+{
+  element1,overlay,yuki/face009.png,0,0
+}
+
+surface.append310,510,710,910
+{
+  element1,overlay,yuki/face010.png,0,0
+}
+
+surface.append321,521,721,921
+{
+  element1,overlay,yuki/face021.png,0,0
+}
+
+surface.append331,531,731,931
+{
+  element1,overlay,yuki/face031.png,0,0
+}
+
+surface.append341,541,741,941
+{
+  element1,overlay,yuki/face041.png,0,0
+}
+
+surface.append342,542,742,942
+{
+  element1,overlay,yuki/face042.png,0,0
+}
+
+surface.append351,551,751,951
+{
+  element1,overlay,yuki/face051.png,0,0
+}
+
+surface.append352,552,752,952
+{
+  element1,overlay,yuki/face052.png,0,0
+}
+
+surface.append361,561,761,961
+{
+  element1,overlay,yuki/face061.png,0,0
+}
+
+surface.append362,562,762,962
+{
+  element1,overlay,yuki/face062.png,0,0
+}
+
+surface.append371,571,771,971
+{
+  element1,overlay,yuki/face071.png,0,0
+}
+
+surface.append381,581,781,981
+{
+  element1,overlay,yuki/face081.png,0,0
+}
+
+surface.append382,582,782,982
+{
+  element1,overlay,yuki/face082.png,0,0
+}
+
+surface.append383,583,783,983
+{
+  element1,overlay,yuki/face083.png,0,0
+}
+
+surface.append384,584,784,984
+{
+  element1,overlay,yuki/face084.png,0,0
+}
+
+surface.append385,585,785,985
+{
+  element1,overlay,yuki/face085.png,0,0
+}
+
+surface.append391,591,791,991
+{
+  element1,overlay,yuki/face091.png,0,0
+}
+
+surface.append392,592,792,992
+{
+  element1,overlay,yuki/face092.png,0,0
+}
+
+surface.append393,593,793,993
+{
+  element1,overlay,yuki/face093.png,0,0
+}
+
+surface.append394,594,794,994
+{
+  element1,overlay,yuki/face094.png,0,0
+}
+
+surface.append401,601,801,1001
+{
+  element1,overlay,yuki/face101.png,0,0
+}
+
+surface.append411,611,811,1011
+{
+  element1,overlay,yuki/face111.png,0,0
+}
+
+surface.append412,612,812,1012
+{
+  element1,overlay,yuki/face112.png,0,0
+}
+
+surface.append421,621,821,1021
+{
+  element1,overlay,yuki/face121.png,0,0
+}
+
+surface.append422,622,822,1022
+{
+  element1,overlay,yuki/face122.png,0,0
+}
+
+surface.append431,631,831,1031
+{
+  element1,overlay,yuki/face131.png,0,0
+}
+
+surface.append441,641,841,1041
+{
+  element1,overlay,yuki/face141.png,0,0
+}
+
+surface.append442,642,842,1042
+{
+  element1,overlay,yuki/face142.png,0,0
+}
+
+surface.append443,643,843,1043
+{
+  element1,overlay,yuki/face143.png,0,0
+}
+
+surface.append444,644,844,1044
+{
+  element1,overlay,yuki/face144.png,0,0
+}
+
+surface.append301,302,303,304,305,306,307,308,309,310,321,331,341,342,351,352,361,362,371,381,382,383,384,385,391,392,393,394,401,411,412,421,422,431,441,442,443,444
+{
+  element2,overlay,yuki/arm001.png,0,0
+}
+
+surface.append501,502,503,504,505,506,507,508,509,510,521,531,541,542,551,552,561,562,571,581,582,583,584,585,591,592,593,594,601,611,612,621,622,631,641,642,643,644
+{
+  element2,overlay,yuki/arm002.png,0,0
+}
+
+surface.append701,702,703,704,705,706,707,708,709,710,721,731,741,742,751,752,761,762,771,781,782,783,784,785,791,792,793,794,801,811,812,821,822,831,841,842,843,844
+{
+  element2,overlay,yuki/arm003.png,0,0
+}
+
+surface.append901,902,903,904,905,906,907,908,909,910,921,931,941,942,951,952,961,962,971,981,982,983,984,985,991,992,993,994,1001,1011,1012,1021,1022,1031,1041,1042,1043,1044
+{
+  element2,overlay,yuki/arm004.png,0,0
+}
+
+surface.append501,502,503,504,505,506,507,508,509,510,521,531,541,542,551,552,561,562,571,581,582,583,584,585,591,592,593,594,601,611,612,621,622,631,641,642,643,644
+{
+animation0.interval,never
+animation0.pattern0,overlay,20,0,0,0
+animation0.pattern1,overlay,21,1500,0,0
+animation0.pattern2,overlay,22,200,0,0
+animation0.pattern3,overlay,21,200,0,0
+animation0.pattern4,overlay,22,200,0,0
+animation0.pattern5,overlay,21,200,0,0
+animation0.pattern6,overlay,22,200,0,0
+animation0.pattern7,overlay,21,200,0,0
+animation0.pattern8,overlay,22,200,0,0
+animation0.pattern9,overlay,21,200,0,0
+animation0.pattern10,overlay,22,200,0,0
+animation0.pattern11,overlay,21,200,0,0
+animation0.pattern12,overlay,22,200,0,0
+animation0.pattern13,overlay,21,200,0,0
+animation0.pattern14,overlay,20,200,0,0
+animation0.pattern15,overlay,-1,1500,0,0
+animation2.interval,never
+animation2.pattern0,overlay,20,0,0,0
+animation2.pattern1,overlay,23,1500,0,0
+animation2.pattern2,overlay,24,200,0,0
+animation2.pattern3,overlay,23,200,0,0
+animation2.pattern4,overlay,24,200,0,0
+animation2.pattern5,overlay,23,200,0,0
+animation2.pattern6,overlay,24,200,0,0
+animation2.pattern7,overlay,23,200,0,0
+animation2.pattern8,overlay,24,200,0,0
+animation2.pattern9,overlay,23,200,0,0
+animation2.pattern10,overlay,24,200,0,0
+animation2.pattern11,overlay,23,200,0,0
+animation2.pattern12,overlay,24,200,0,0
+animation2.pattern13,overlay,23,200,0,0
+animation2.pattern14,overlay,20,200,0,0
+animation2.pattern15,overlay,-1,1500,0,0
+animation4.interval,never
+animation4.pattern0,overlay,20,0,0,0
+animation4.pattern1,overlay,25,1500,0,0
+animation4.pattern2,overlay,26,200,0,0
+animation4.pattern3,overlay,25,200,0,0
+animation4.pattern4,overlay,26,200,0,0
+animation4.pattern5,overlay,25,200,0,0
+animation4.pattern6,overlay,26,200,0,0
+animation4.pattern7,overlay,25,200,0,0
+animation4.pattern8,overlay,26,200,0,0
+animation4.pattern9,overlay,25,200,0,0
+animation4.pattern10,overlay,26,200,0,0
+animation4.pattern11,overlay,25,200,0,0
+animation4.pattern12,overlay,26,200,0,0
+animation4.pattern13,overlay,25,200,0,0
+animation4.pattern14,overlay,20,200,0,0
+animation4.pattern15,overlay,-1,1500,0,0
+animation1.interval,never
+animation1.pattern0,overlay,20,0,0,0
+animation1.pattern1,overlay,21,1500,0,0
+animation1.pattern2,overlay,22,200,0,0
+animation1.pattern3,overlay,21,200,0,0
+animation1.pattern4,overlay,22,200,0,0
+animation1.pattern5,overlay,21,200,0,0
+animation1.pattern6,overlay,22,200,0,0
+animation1.pattern7,overlay,21,200,0,0
+animation1.pattern8,overlay,22,200,0,0
+animation1.pattern9,overlay,21,200,0,0
+animation1.pattern10,overlay,22,200,0,0
+animation1.pattern11,overlay,21,200,0,0
+animation1.pattern12,overlay,22,200,0,0
+animation1.pattern13,overlay,21,200,0,0
+animation1.pattern14,overlay,22,200,0,0
+animation1.pattern15,overlay,21,200,0,0
+animation1.pattern16,overlay,22,200,0,0
+animation1.pattern17,overlay,21,200,0,0
+animation1.pattern18,overlay,22,200,0,0
+animation1.pattern19,overlay,21,200,0,0
+animation1.pattern20,overlay,22,200,0,0
+animation1.pattern21,overlay,21,200,0,0
+animation1.pattern22,overlay,22,200,0,0
+animation1.pattern23,overlay,21,200,0,0
+animation1.pattern24,overlay,22,200,0,0
+animation1.pattern25,overlay,21,200,0,0
+animation1.pattern26,overlay,20,200,0,0
+animation1.pattern27,overlay,-1,1500,0,0
+animation3.interval,never
+animation3.pattern0,overlay,20,0,0,0
+animation3.pattern1,overlay,23,1500,0,0
+animation3.pattern2,overlay,24,200,0,0
+animation3.pattern3,overlay,23,200,0,0
+animation3.pattern4,overlay,24,200,0,0
+animation3.pattern5,overlay,23,200,0,0
+animation3.pattern6,overlay,24,200,0,0
+animation3.pattern7,overlay,23,200,0,0
+animation3.pattern8,overlay,24,200,0,0
+animation3.pattern9,overlay,23,200,0,0
+animation3.pattern10,overlay,24,200,0,0
+animation3.pattern11,overlay,23,200,0,0
+animation3.pattern12,overlay,24,200,0,0
+animation3.pattern13,overlay,23,200,0,0
+animation3.pattern14,overlay,24,200,0,0
+animation3.pattern15,overlay,23,200,0,0
+animation3.pattern16,overlay,24,200,0,0
+animation3.pattern17,overlay,23,200,0,0
+animation3.pattern18,overlay,24,200,0,0
+animation3.pattern19,overlay,23,200,0,0
+animation3.pattern20,overlay,24,200,0,0
+animation3.pattern21,overlay,23,200,0,0
+animation3.pattern22,overlay,24,200,0,0
+animation3.pattern23,overlay,23,200,0,0
+animation3.pattern24,overlay,24,200,0,0
+animation3.pattern25,overlay,23,200,0,0
+animation3.pattern26,overlay,20,200,0,0
+animation3.pattern27,overlay,-1,1500,0,0
+animation5.interval,never
+animation5.pattern0,overlay,20,0,0,0
+animation5.pattern1,overlay,25,1500,0,0
+animation5.pattern2,overlay,26,200,0,0
+animation5.pattern3,overlay,25,200,0,0
+animation5.pattern4,overlay,26,200,0,0
+animation5.pattern5,overlay,25,200,0,0
+animation5.pattern6,overlay,26,200,0,0
+animation5.pattern7,overlay,25,200,0,0
+animation5.pattern8,overlay,26,200,0,0
+animation5.pattern9,overlay,25,200,0,0
+animation5.pattern10,overlay,26,200,0,0
+animation5.pattern11,overlay,25,200,0,0
+animation5.pattern12,overlay,26,200,0,0
+animation5.pattern13,overlay,25,200,0,0
+animation5.pattern14,overlay,26,200,0,0
+animation5.pattern15,overlay,25,200,0,0
+animation5.pattern16,overlay,26,200,0,0
+animation5.pattern17,overlay,25,200,0,0
+animation5.pattern18,overlay,26,200,0,0
+animation5.pattern19,overlay,25,200,0,0
+animation5.pattern20,overlay,26,200,0,0
+animation5.pattern21,overlay,25,200,0,0
+animation5.pattern22,overlay,26,200,0,0
+animation5.pattern23,overlay,25,200,0,0
+animation5.pattern24,overlay,26,200,0,0
+animation5.pattern25,overlay,25,200,0,0
+animation5.pattern26,overlay,20,200,0,0
+animation5.pattern27,overlay,-1,1500,0,0
+}
+
+surface2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2221,2231,2241,2242,2251,2252,2261,2262,2271,2281,2282,2283,2284,2285,2291,2292,2293,2294,2301,2311,2312,2321,2322,2331,2341,2342,2343,2344,2401,2402,2403,2404,2405,2406,2407,2408,2409,2410,2421,2431,2441,2442,2451,2452,2461,2462,2471,2481,2482,2483,2484,2485,2491,2492,2493,2494,2501,2511,2512,2521,2522,2531,2541,2542,2543,2544,2601,2602,2603,2604,2605,2606,2607,2608,2609,2610,2621,2631,2641,2642,2651,2652,2661,2662,2671,2681,2682,2683,2684,2685,2691,2692,2693,2694,2701,2711,2712,2721,2722,2731,2741,2742,2743,2744,2801,2802,2803,2804,2805,2806,2807,2808,2809,2810,2821,2831,2841,2842,2851,2852,2861,2862,2871,2881,2882,2883,2884,2885,2891,2892,2893,2894,2901,2911,2912,2921,2922,2931,2941,2942,2943,2944,3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3021,3031,3041,3042,3051,3052,3061,3062,3071,3081,3082,3083,3084,3085,3091,3092,3093,3094,3101,3111,3112,3121,3122,3131,3141,3142,3143,3144
+{
+  element0,base,yuki/body_s000.png,0,0
+  collision0,45,10,200,68,Head
+  collision1,83,192,137,218,Bust
+}
+
+surface.append2201,2401,2601,2801,3001
+{
+  element1,overlay,yuki/face001.png,0,0
+}
+
+surface.append2202,2402,2602,2802,3002
+{
+  element1,overlay,yuki/face002.png,0,0
+}
+
+surface.append2203,2403,2603,2803,3003
+{
+  element1,overlay,yuki/face003.png,0,0
+}
+
+surface.append2204,2404,2604,2804,3004
+{
+  element1,overlay,yuki/face004.png,0,0
+}
+
+surface.append2205,2405,2605,2805,3005
+{
+  element1,overlay,yuki/face005.png,0,0
+}
+
+surface.append2206,2406,2606,2806,3006
+{
+  element1,overlay,yuki/face006.png,0,0
+}
+
+surface.append2207,2407,2607,2807,3007
+{
+  element1,overlay,yuki/face007.png,0,0
+}
+
+surface.append2208,2408,2608,2808,3008
+{
+  element1,overlay,yuki/face008.png,0,0
+}
+
+surface.append2209,2409,2609,2809,3009
+{
+  element1,overlay,yuki/face009.png,0,0
+}
+
+surface.append2210,2410,2610,2810,3010
+{
+  element1,overlay,yuki/face010.png,0,0
+}
+
+surface.append2221,2421,2621,2821,3021
+{
+  element1,overlay,yuki/face021.png,0,0
+}
+
+surface.append2231,2431,2631,2831,3031
+{
+  element1,overlay,yuki/face031.png,0,0
+}
+
+surface.append2241,2441,2641,2841,3041
+{
+  element1,overlay,yuki/face041.png,0,0
+}
+
+surface.append2242,2442,2642,2842,3042
+{
+  element1,overlay,yuki/face042.png,0,0
+}
+
+surface.append2251,2451,2651,2851,3051
+{
+  element1,overlay,yuki/face051.png,0,0
+}
+
+surface.append2252,2452,2652,2852,3052
+{
+  element1,overlay,yuki/face052.png,0,0
+}
+
+surface.append2261,2461,2661,2861,3061
+{
+  element1,overlay,yuki/face061.png,0,0
+}
+
+surface.append2262,2462,2662,2862,3062
+{
+  element1,overlay,yuki/face062.png,0,0
+}
+
+surface.append2271,2471,2671,2871,3071
+{
+  element1,overlay,yuki/face071.png,0,0
+}
+
+surface.append2281,2481,2681,2881,3081
+{
+  element1,overlay,yuki/face081.png,0,0
+}
+
+surface.append2282,2482,2682,2882,3082
+{
+  element1,overlay,yuki/face082.png,0,0
+}
+
+surface.append2283,2483,2683,2883,3083
+{
+  element1,overlay,yuki/face083.png,0,0
+}
+
+surface.append2284,2484,2684,2884,3084
+{
+  element1,overlay,yuki/face084.png,0,0
+}
+
+surface.append2285,2485,2685,2885,3085
+{
+  element1,overlay,yuki/face085.png,0,0
+}
+
+surface.append2291,2491,2691,2891,3091
+{
+  element1,overlay,yuki/face091.png,0,0
+}
+
+surface.append2292,2492,2692,2892,3092
+{
+  element1,overlay,yuki/face092.png,0,0
+}
+
+surface.append2293,2493,2693,2893,3093
+{
+  element1,overlay,yuki/face093.png,0,0
+}
+
+surface.append2294,2494,2694,2894,3094
+{
+  element1,overlay,yuki/face094.png,0,0
+}
+
+surface.append2301,2501,2701,2901,3101
+{
+  element1,overlay,yuki/face101.png,0,0
+}
+
+surface.append2311,2511,2711,2911,3111
+{
+  element1,overlay,yuki/face111.png,0,0
+}
+
+surface.append2312,2512,2712,2912,3112
+{
+  element1,overlay,yuki/face112.png,0,0
+}
+
+surface.append2321,2521,2721,2921,3121
+{
+  element1,overlay,yuki/face121.png,0,0
+}
+
+surface.append2322,2522,2722,2922,3122
+{
+  element1,overlay,yuki/face122.png,0,0
+}
+
+surface.append2331,2531,2731,2931,3131
+{
+  element1,overlay,yuki/face131.png,0,0
+}
+
+surface.append2341,2541,2741,2941,3141
+{
+  element1,overlay,yuki/face141.png,0,0
+}
+
+surface.append2342,2542,2742,2942,3142
+{
+  element1,overlay,yuki/face142.png,0,0
+}
+
+surface.append2343,2543,2743,2943,3143
+{
+  element1,overlay,yuki/face143.png,0,0
+}
+
+surface.append2344,2544,2744,2944,3144
+{
+  element1,overlay,yuki/face144.png,0,0
+}
+
+surface.append2201,2202,2203,2204,2205,2206,2207,2208,2209,2210,2221,2231,2241,2242,2251,2252,2261,2262,2271,2281,2282,2283,2284,2285,2291,2292,2293,2294,2301,2311,2312,2321,2322,2331,2341,2342,2343,2344
+{
+  element2,overlay,yuki/arm_s001.png,0,0
+}
+
+surface.append2401,2402,2403,2404,2405,2406,2407,2408,2409,2410,2421,2431,2441,2442,2451,2452,2461,2462,2471,2481,2482,2483,2484,2485,2491,2492,2493,2494,2501,2511,2512,2521,2522,2531,2541,2542,2543,2544
+{
+  element2,overlay,yuki/arm_s002.png,0,0
+}
+
+surface.append2601,2602,2603,2604,2605,2606,2607,2608,2609,2610,2621,2631,2641,2642,2651,2652,2661,2662,2671,2681,2682,2683,2684,2685,2691,2692,2693,2694,2701,2711,2712,2721,2722,2731,2741,2742,2743,2744
+{
+  element2,overlay,yuki/arm_s003.png,0,0
+}
+
+surface.append2801,2802,2803,2804,2805,2806,2807,2808,2809,2810,2821,2831,2841,2842,2851,2852,2861,2862,2871,2881,2882,2883,2884,2885,2891,2892,2893,2894,2901,2911,2912,2921,2922,2931,2941,2942,2943,2944
+{
+  element2,overlay,yuki/arm_s004.png,0,0
+}
+
+surface.append3001,3002,3003,3004,3005,3006,3007,3008,3009,3010,3021,3031,3041,3042,3051,3052,3061,3062,3071,3081,3082,3083,3084,3085,3091,3092,3093,3094,3101,3111,3112,3121,3122,3131,3141,3142,3143,3144
+{
+  element2,overlay,yuki/arm_s005.png,0,0
+}
+
+surface.append2401,2402,2403,2404,2405,2406,2407,2408,2409,2410,2421,2431,2441,2442,2451,2452,2461,2462,2471,2481,2482,2483,2484,2485,2491,2492,2493,2494,2501,2511,2512,2521,2522,2531,2541,2542,2543,2544
+{
+animation0.interval,never
+animation0.pattern0,overlay,20,0,0,0
+animation0.pattern1,overlay,21,1500,0,0
+animation0.pattern2,overlay,22,200,0,0
+animation0.pattern3,overlay,21,200,0,0
+animation0.pattern4,overlay,22,200,0,0
+animation0.pattern5,overlay,21,200,0,0
+animation0.pattern6,overlay,22,200,0,0
+animation0.pattern7,overlay,21,200,0,0
+animation0.pattern8,overlay,22,200,0,0
+animation0.pattern9,overlay,21,200,0,0
+animation0.pattern10,overlay,22,200,0,0
+animation0.pattern11,overlay,21,200,0,0
+animation0.pattern12,overlay,22,200,0,0
+animation0.pattern13,overlay,21,200,0,0
+animation0.pattern14,overlay,20,200,0,0
+animation0.pattern15,overlay,-1,1500,0,0
+animation2.interval,never
+animation2.pattern0,overlay,20,0,0,0
+animation2.pattern1,overlay,23,1500,0,0
+animation2.pattern2,overlay,24,200,0,0
+animation2.pattern3,overlay,23,200,0,0
+animation2.pattern4,overlay,24,200,0,0
+animation2.pattern5,overlay,23,200,0,0
+animation2.pattern6,overlay,24,200,0,0
+animation2.pattern7,overlay,23,200,0,0
+animation2.pattern8,overlay,24,200,0,0
+animation2.pattern9,overlay,23,200,0,0
+animation2.pattern10,overlay,24,200,0,0
+animation2.pattern11,overlay,23,200,0,0
+animation2.pattern12,overlay,24,200,0,0
+animation2.pattern13,overlay,23,200,0,0
+animation2.pattern14,overlay,20,200,0,0
+animation2.pattern15,overlay,-1,1500,0,0
+animation4.interval,never
+animation4.pattern0,overlay,20,0,0,0
+animation4.pattern1,overlay,25,1500,0,0
+animation4.pattern2,overlay,26,200,0,0
+animation4.pattern3,overlay,25,200,0,0
+animation4.pattern4,overlay,26,200,0,0
+animation4.pattern5,overlay,25,200,0,0
+animation4.pattern6,overlay,26,200,0,0
+animation4.pattern7,overlay,25,200,0,0
+animation4.pattern8,overlay,26,200,0,0
+animation4.pattern9,overlay,25,200,0,0
+animation4.pattern10,overlay,26,200,0,0
+animation4.pattern11,overlay,25,200,0,0
+animation4.pattern12,overlay,26,200,0,0
+animation4.pattern13,overlay,25,200,0,0
+animation4.pattern14,overlay,20,200,0,0
+animation4.pattern15,overlay,-1,1500,0,0
+animation1.interval,never
+animation1.pattern0,overlay,20,0,0,0
+animation1.pattern1,overlay,21,1500,0,0
+animation1.pattern2,overlay,22,200,0,0
+animation1.pattern3,overlay,21,200,0,0
+animation1.pattern4,overlay,22,200,0,0
+animation1.pattern5,overlay,21,200,0,0
+animation1.pattern6,overlay,22,200,0,0
+animation1.pattern7,overlay,21,200,0,0
+animation1.pattern8,overlay,22,200,0,0
+animation1.pattern9,overlay,21,200,0,0
+animation1.pattern10,overlay,22,200,0,0
+animation1.pattern11,overlay,21,200,0,0
+animation1.pattern12,overlay,22,200,0,0
+animation1.pattern13,overlay,21,200,0,0
+animation1.pattern14,overlay,22,200,0,0
+animation1.pattern15,overlay,21,200,0,0
+animation1.pattern16,overlay,22,200,0,0
+animation1.pattern17,overlay,21,200,0,0
+animation1.pattern18,overlay,22,200,0,0
+animation1.pattern19,overlay,21,200,0,0
+animation1.pattern20,overlay,22,200,0,0
+animation1.pattern21,overlay,21,200,0,0
+animation1.pattern22,overlay,22,200,0,0
+animation1.pattern23,overlay,21,200,0,0
+animation1.pattern24,overlay,22,200,0,0
+animation1.pattern25,overlay,21,200,0,0
+animation1.pattern26,overlay,20,200,0,0
+animation1.pattern27,overlay,-1,1500,0,0
+animation3.interval,never
+animation3.pattern0,overlay,20,0,0,0
+animation3.pattern1,overlay,23,1500,0,0
+animation3.pattern2,overlay,24,200,0,0
+animation3.pattern3,overlay,23,200,0,0
+animation3.pattern4,overlay,24,200,0,0
+animation3.pattern5,overlay,23,200,0,0
+animation3.pattern6,overlay,24,200,0,0
+animation3.pattern7,overlay,23,200,0,0
+animation3.pattern8,overlay,24,200,0,0
+animation3.pattern9,overlay,23,200,0,0
+animation3.pattern10,overlay,24,200,0,0
+animation3.pattern11,overlay,23,200,0,0
+animation3.pattern12,overlay,24,200,0,0
+animation3.pattern13,overlay,23,200,0,0
+animation3.pattern14,overlay,24,200,0,0
+animation3.pattern15,overlay,23,200,0,0
+animation3.pattern16,overlay,24,200,0,0
+animation3.pattern17,overlay,23,200,0,0
+animation3.pattern18,overlay,24,200,0,0
+animation3.pattern19,overlay,23,200,0,0
+animation3.pattern20,overlay,24,200,0,0
+animation3.pattern21,overlay,23,200,0,0
+animation3.pattern22,overlay,24,200,0,0
+animation3.pattern23,overlay,23,200,0,0
+animation3.pattern24,overlay,24,200,0,0
+animation3.pattern25,overlay,23,200,0,0
+animation3.pattern26,overlay,20,200,0,0
+animation3.pattern27,overlay,-1,1500,0,0
+animation5.interval,never
+animation5.pattern0,overlay,20,0,0,0
+animation5.pattern1,overlay,25,1500,0,0
+animation5.pattern2,overlay,26,200,0,0
+animation5.pattern3,overlay,25,200,0,0
+animation5.pattern4,overlay,26,200,0,0
+animation5.pattern5,overlay,25,200,0,0
+animation5.pattern6,overlay,26,200,0,0
+animation5.pattern7,overlay,25,200,0,0
+animation5.pattern8,overlay,26,200,0,0
+animation5.pattern9,overlay,25,200,0,0
+animation5.pattern10,overlay,26,200,0,0
+animation5.pattern11,overlay,25,200,0,0
+animation5.pattern12,overlay,26,200,0,0
+animation5.pattern13,overlay,25,200,0,0
+animation5.pattern14,overlay,26,200,0,0
+animation5.pattern15,overlay,25,200,0,0
+animation5.pattern16,overlay,26,200,0,0
+animation5.pattern17,overlay,25,200,0,0
+animation5.pattern18,overlay,26,200,0,0
+animation5.pattern19,overlay,25,200,0,0
+animation5.pattern20,overlay,26,200,0,0
+animation5.pattern21,overlay,25,200,0,0
+animation5.pattern22,overlay,26,200,0,0
+animation5.pattern23,overlay,25,200,0,0
+animation5.pattern24,overlay,26,200,0,0
+animation5.pattern25,overlay,25,200,0,0
+animation5.pattern26,overlay,20,200,0,0
+animation5.pattern27,overlay,-1,1500,0,0
+}
+
+surface4041,4042,4043,4044,4045,4046,4051,4061,4062,4063,4064,4071,4072,4073,4081,4082,4083,4084,4085,4086,4091,4101,4102,4103,4104,4111,4112,4113,4121,4122,4123,4124,4125,4126,4131,4141,4142,4143,4144,4151,4152,4153,4161,4162,4163,4164,4165,4166,4171,4181,4182,4183,4184,4191,4192,4193
+{
+  element0,base,yuki/body_u000.png,0,0
+  collision0,45,10,200,68,Head
+  collision1,83,192,137,218,Bust
+}
+
+surface.append4041,4081,4121,4161
+{
+  element1,overlay,yuki/face_u001.png,0,0
+}
+
+surface.append4042,4082,4122,4162
+{
+  element1,overlay,yuki/face_u002.png,0,0
+}
+
+surface.append4043,4083,4123,4163
+{
+  element1,overlay,yuki/face_u003.png,0,0
+}
+
+surface.append4044,4084,4124,4164
+{
+  element1,overlay,yuki/face_u004.png,0,0
+}
+
+surface.append4045,4085,4125,4165
+{
+  element1,overlay,yuki/face_u005.png,0,0
+}
+
+surface.append4046,4086,4126,4166
+{
+  element1,overlay,yuki/face_u006.png,0,0
+}
+
+surface.append4051,4091,4131,4171
+{
+  element1,overlay,yuki/face_u011.png,0,0
+}
+
+surface.append4061,4101,4141,4181
+{
+  element1,overlay,yuki/face_u021.png,0,0
+}
+
+surface.append4062,4102,4142,4182
+{
+  element1,overlay,yuki/face_u022.png,0,0
+}
+
+surface.append4063,4103,4143,4183
+{
+  element1,overlay,yuki/face_u023.png,0,0
+}
+
+surface.append4064,4104,4144,4184
+{
+  element1,overlay,yuki/face_u024.png,0,0
+}
+
+surface.append4071,4111,4151,4191
+{
+  element1,overlay,yuki/face_u031.png,0,0
+}
+
+surface.append4072,4112,4152,4192
+{
+  element1,overlay,yuki/face_u032.png,0,0
+}
+
+surface.append4073,4113,4153,4193
+{
+  element1,overlay,yuki/face_u033.png,0,0
+}
+
+surface.append4041,4042,4043,4044,4045,4046,4051,4061,4062,4063,4064,4071,4072,4073
+{
+  element2,overlay,yuki/arm001.png,0,0
+}
+
+surface.append4081,4082,4083,4084,4085,4086,4091,4101,4102,4103,4104,4111,4112,4113
+{
+  element2,overlay,yuki/arm002.png,0,0
+}
+
+surface.append4121,4122,4123,4124,4125,4126,4131,4141,4142,4143,4144,4151,4152,4153
+{
+  element2,overlay,yuki/arm003.png,0,0
+}
+
+surface.append4161,4162,4163,4164,4165,4166,4171,4181,4182,4183,4184,4191,4192,4193
+{
+  element2,overlay,yuki/arm004.png,0,0
+}
+
+surface.append4081,4082,4083,4084,4085,4086,4091,4101,4102,4103,4104,4111,4112,4113
+{
+animation0.interval,never
+animation0.pattern0,overlay,20,0,0,0
+animation0.pattern1,overlay,21,1500,0,0
+animation0.pattern2,overlay,22,200,0,0
+animation0.pattern3,overlay,21,200,0,0
+animation0.pattern4,overlay,22,200,0,0
+animation0.pattern5,overlay,21,200,0,0
+animation0.pattern6,overlay,22,200,0,0
+animation0.pattern7,overlay,21,200,0,0
+animation0.pattern8,overlay,22,200,0,0
+animation0.pattern9,overlay,21,200,0,0
+animation0.pattern10,overlay,22,200,0,0
+animation0.pattern11,overlay,21,200,0,0
+animation0.pattern12,overlay,22,200,0,0
+animation0.pattern13,overlay,21,200,0,0
+animation0.pattern14,overlay,20,200,0,0
+animation0.pattern15,overlay,-1,1500,0,0
+animation2.interval,never
+animation2.pattern0,overlay,20,0,0,0
+animation2.pattern1,overlay,23,1500,0,0
+animation2.pattern2,overlay,24,200,0,0
+animation2.pattern3,overlay,23,200,0,0
+animation2.pattern4,overlay,24,200,0,0
+animation2.pattern5,overlay,23,200,0,0
+animation2.pattern6,overlay,24,200,0,0
+animation2.pattern7,overlay,23,200,0,0
+animation2.pattern8,overlay,24,200,0,0
+animation2.pattern9,overlay,23,200,0,0
+animation2.pattern10,overlay,24,200,0,0
+animation2.pattern11,overlay,23,200,0,0
+animation2.pattern12,overlay,24,200,0,0
+animation2.pattern13,overlay,23,200,0,0
+animation2.pattern14,overlay,20,200,0,0
+animation2.pattern15,overlay,-1,1500,0,0
+animation4.interval,never
+animation4.pattern0,overlay,20,0,0,0
+animation4.pattern1,overlay,25,1500,0,0
+animation4.pattern2,overlay,26,200,0,0
+animation4.pattern3,overlay,25,200,0,0
+animation4.pattern4,overlay,26,200,0,0
+animation4.pattern5,overlay,25,200,0,0
+animation4.pattern6,overlay,26,200,0,0
+animation4.pattern7,overlay,25,200,0,0
+animation4.pattern8,overlay,26,200,0,0
+animation4.pattern9,overlay,25,200,0,0
+animation4.pattern10,overlay,26,200,0,0
+animation4.pattern11,overlay,25,200,0,0
+animation4.pattern12,overlay,26,200,0,0
+animation4.pattern13,overlay,25,200,0,0
+animation4.pattern14,overlay,20,200,0,0
+animation4.pattern15,overlay,-1,1500,0,0
+animation1.interval,never
+animation1.pattern0,overlay,20,0,0,0
+animation1.pattern1,overlay,21,1500,0,0
+animation1.pattern2,overlay,22,200,0,0
+animation1.pattern3,overlay,21,200,0,0
+animation1.pattern4,overlay,22,200,0,0
+animation1.pattern5,overlay,21,200,0,0
+animation1.pattern6,overlay,22,200,0,0
+animation1.pattern7,overlay,21,200,0,0
+animation1.pattern8,overlay,22,200,0,0
+animation1.pattern9,overlay,21,200,0,0
+animation1.pattern10,overlay,22,200,0,0
+animation1.pattern11,overlay,21,200,0,0
+animation1.pattern12,overlay,22,200,0,0
+animation1.pattern13,overlay,21,200,0,0
+animation1.pattern14,overlay,22,200,0,0
+animation1.pattern15,overlay,21,200,0,0
+animation1.pattern16,overlay,22,200,0,0
+animation1.pattern17,overlay,21,200,0,0
+animation1.pattern18,overlay,22,200,0,0
+animation1.pattern19,overlay,21,200,0,0
+animation1.pattern20,overlay,22,200,0,0
+animation1.pattern21,overlay,21,200,0,0
+animation1.pattern22,overlay,22,200,0,0
+animation1.pattern23,overlay,21,200,0,0
+animation1.pattern24,overlay,22,200,0,0
+animation1.pattern25,overlay,21,200,0,0
+animation1.pattern26,overlay,20,200,0,0
+animation1.pattern27,overlay,-1,1500,0,0
+animation3.interval,never
+animation3.pattern0,overlay,20,0,0,0
+animation3.pattern1,overlay,23,1500,0,0
+animation3.pattern2,overlay,24,200,0,0
+animation3.pattern3,overlay,23,200,0,0
+animation3.pattern4,overlay,24,200,0,0
+animation3.pattern5,overlay,23,200,0,0
+animation3.pattern6,overlay,24,200,0,0
+animation3.pattern7,overlay,23,200,0,0
+animation3.pattern8,overlay,24,200,0,0
+animation3.pattern9,overlay,23,200,0,0
+animation3.pattern10,overlay,24,200,0,0
+animation3.pattern11,overlay,23,200,0,0
+animation3.pattern12,overlay,24,200,0,0
+animation3.pattern13,overlay,23,200,0,0
+animation3.pattern14,overlay,24,200,0,0
+animation3.pattern15,overlay,23,200,0,0
+animation3.pattern16,overlay,24,200,0,0
+animation3.pattern17,overlay,23,200,0,0
+animation3.pattern18,overlay,24,200,0,0
+animation3.pattern19,overlay,23,200,0,0
+animation3.pattern20,overlay,24,200,0,0
+animation3.pattern21,overlay,23,200,0,0
+animation3.pattern22,overlay,24,200,0,0
+animation3.pattern23,overlay,23,200,0,0
+animation3.pattern24,overlay,24,200,0,0
+animation3.pattern25,overlay,23,200,0,0
+animation3.pattern26,overlay,20,200,0,0
+animation3.pattern27,overlay,-1,1500,0,0
+animation5.interval,never
+animation5.pattern0,overlay,20,0,0,0
+animation5.pattern1,overlay,25,1500,0,0
+animation5.pattern2,overlay,26,200,0,0
+animation5.pattern3,overlay,25,200,0,0
+animation5.pattern4,overlay,26,200,0,0
+animation5.pattern5,overlay,25,200,0,0
+animation5.pattern6,overlay,26,200,0,0
+animation5.pattern7,overlay,25,200,0,0
+animation5.pattern8,overlay,26,200,0,0
+animation5.pattern9,overlay,25,200,0,0
+animation5.pattern10,overlay,26,200,0,0
+animation5.pattern11,overlay,25,200,0,0
+animation5.pattern12,overlay,26,200,0,0
+animation5.pattern13,overlay,25,200,0,0
+animation5.pattern14,overlay,26,200,0,0
+animation5.pattern15,overlay,25,200,0,0
+animation5.pattern16,overlay,26,200,0,0
+animation5.pattern17,overlay,25,200,0,0
+animation5.pattern18,overlay,26,200,0,0
+animation5.pattern19,overlay,25,200,0,0
+animation5.pattern20,overlay,26,200,0,0
+animation5.pattern21,overlay,25,200,0,0
+animation5.pattern22,overlay,26,200,0,0
+animation5.pattern23,overlay,25,200,0,0
+animation5.pattern24,overlay,26,200,0,0
+animation5.pattern25,overlay,25,200,0,0
+animation5.pattern26,overlay,20,200,0,0
+animation5.pattern27,overlay,-1,1500,0,0
+}
+
+surface5041,5042,5043,5044,5045,5046,5051,5061,5062,5063,5064,5071,5072,5073,5081,5082,5083,5084,5085,5086,5091,5101,5102,5103,5104,5111,5112,5113,5121,5122,5123,5124,5125,5126,5131,5141,5142,5143,5144,5151,5152,5153,5161,5162,5163,5164,5165,5166,5171,5181,5182,5183,5184,5191,5192,5193,5201,5202,5203,5204,5205,5206,5211,5221,5222,5223,5224,5231,5232,5233
+{
+  element0,base,yuki/body_su000.png,0,0
+  collision0,45,10,200,68,Head
+  collision1,83,192,137,218,Bust
+}
+
+surface.append5041,5081,5121,5161,5201
+{
+  element1,overlay,yuki/face_u001.png,0,0
+}
+
+surface.append5042,5082,5122,5162,5202
+{
+  element1,overlay,yuki/face_u002.png,0,0
+}
+
+surface.append5043,5083,5123,5163,5203
+{
+  element1,overlay,yuki/face_u003.png,0,0
+}
+
+surface.append5044,5084,5124,5164,5204
+{
+  element1,overlay,yuki/face_u004.png,0,0
+}
+
+surface.append5045,5085,5125,5165,5205
+{
+  element1,overlay,yuki/face_u005.png,0,0
+}
+
+surface.append5046,5086,5126,5166,5206
+{
+  element1,overlay,yuki/face_u006.png,0,0
+}
+
+surface.append5051,5091,5131,5171,5211
+{
+  element1,overlay,yuki/face_u011.png,0,0
+}
+
+surface.append5061,5101,5141,5181,5221
+{
+  element1,overlay,yuki/face_u021.png,0,0
+}
+
+surface.append5062,5102,5142,5182,5222
+{
+  element1,overlay,yuki/face_u022.png,0,0
+}
+
+surface.append5063,5103,5143,5183,5223
+{
+  element1,overlay,yuki/face_u023.png,0,0
+}
+
+surface.append5064,5104,5144,5184,5224
+{
+  element1,overlay,yuki/face_u024.png,0,0
+}
+
+surface.append5071,5111,5151,5191,5231
+{
+  element1,overlay,yuki/face_u031.png,0,0
+}
+
+surface.append5072,5112,5152,5192,5232
+{
+  element1,overlay,yuki/face_u032.png,0,0
+}
+
+surface.append5073,5113,5153,5193,5233
+{
+  element1,overlay,yuki/face_u033.png,0,0
+}
+
+surface.append5041,5042,5043,5044,5045,5046,5051,5061,5062,5063,5064,5071,5072,5073
+{
+  element2,overlay,yuki/arm_s001.png,0,0
+}
+
+surface.append5081,5082,5083,5084,5085,5086,5091,5101,5102,5103,5104,5111,5112,5113
+{
+  element2,overlay,yuki/arm_s002.png,0,0
+}
+
+surface.append5121,5122,5123,5124,5125,5126,5131,5141,5142,5143,5144,5151,5152,5153
+{
+  element2,overlay,yuki/arm_s003.png,0,0
+}
+
+surface.append5161,5162,5163,5164,5165,5166,5171,5181,5182,5183,5184,5191,5192,5193
+{
+  element2,overlay,yuki/arm_s004.png,0,0
+}
+
+surface.append5201,5202,5203,5204,5205,5206,5211,5221,5222,5223,5224,5231,5232,5233
+{
+  element2,overlay,yuki/arm_s005.png,0,0
+}
+
+surface.append5081,5082,5083,5084,5085,5086,5091,5101,5102,5103,5104,5111,5112,5113
+{
+animation0.interval,never
+animation0.pattern0,overlay,20,0,0,0
+animation0.pattern1,overlay,21,1500,0,0
+animation0.pattern2,overlay,22,200,0,0
+animation0.pattern3,overlay,21,200,0,0
+animation0.pattern4,overlay,22,200,0,0
+animation0.pattern5,overlay,21,200,0,0
+animation0.pattern6,overlay,22,200,0,0
+animation0.pattern7,overlay,21,200,0,0
+animation0.pattern8,overlay,22,200,0,0
+animation0.pattern9,overlay,21,200,0,0
+animation0.pattern10,overlay,22,200,0,0
+animation0.pattern11,overlay,21,200,0,0
+animation0.pattern12,overlay,22,200,0,0
+animation0.pattern13,overlay,21,200,0,0
+animation0.pattern14,overlay,20,200,0,0
+animation0.pattern15,overlay,-1,1500,0,0
+animation2.interval,never
+animation2.pattern0,overlay,20,0,0,0
+animation2.pattern1,overlay,23,1500,0,0
+animation2.pattern2,overlay,24,200,0,0
+animation2.pattern3,overlay,23,200,0,0
+animation2.pattern4,overlay,24,200,0,0
+animation2.pattern5,overlay,23,200,0,0
+animation2.pattern6,overlay,24,200,0,0
+animation2.pattern7,overlay,23,200,0,0
+animation2.pattern8,overlay,24,200,0,0
+animation2.pattern9,overlay,23,200,0,0
+animation2.pattern10,overlay,24,200,0,0
+animation2.pattern11,overlay,23,200,0,0
+animation2.pattern12,overlay,24,200,0,0
+animation2.pattern13,overlay,23,200,0,0
+animation2.pattern14,overlay,20,200,0,0
+animation2.pattern15,overlay,-1,1500,0,0
+animation4.interval,never
+animation4.pattern0,overlay,20,0,0,0
+animation4.pattern1,overlay,25,1500,0,0
+animation4.pattern2,overlay,26,200,0,0
+animation4.pattern3,overlay,25,200,0,0
+animation4.pattern4,overlay,26,200,0,0
+animation4.pattern5,overlay,25,200,0,0
+animation4.pattern6,overlay,26,200,0,0
+animation4.pattern7,overlay,25,200,0,0
+animation4.pattern8,overlay,26,200,0,0
+animation4.pattern9,overlay,25,200,0,0
+animation4.pattern10,overlay,26,200,0,0
+animation4.pattern11,overlay,25,200,0,0
+animation4.pattern12,overlay,26,200,0,0
+animation4.pattern13,overlay,25,200,0,0
+animation4.pattern14,overlay,20,200,0,0
+animation4.pattern15,overlay,-1,1500,0,0
+animation1.interval,never
+animation1.pattern0,overlay,20,0,0,0
+animation1.pattern1,overlay,21,1500,0,0
+animation1.pattern2,overlay,22,200,0,0
+animation1.pattern3,overlay,21,200,0,0
+animation1.pattern4,overlay,22,200,0,0
+animation1.pattern5,overlay,21,200,0,0
+animation1.pattern6,overlay,22,200,0,0
+animation1.pattern7,overlay,21,200,0,0
+animation1.pattern8,overlay,22,200,0,0
+animation1.pattern9,overlay,21,200,0,0
+animation1.pattern10,overlay,22,200,0,0
+animation1.pattern11,overlay,21,200,0,0
+animation1.pattern12,overlay,22,200,0,0
+animation1.pattern13,overlay,21,200,0,0
+animation1.pattern14,overlay,22,200,0,0
+animation1.pattern15,overlay,21,200,0,0
+animation1.pattern16,overlay,22,200,0,0
+animation1.pattern17,overlay,21,200,0,0
+animation1.pattern18,overlay,22,200,0,0
+animation1.pattern19,overlay,21,200,0,0
+animation1.pattern20,overlay,22,200,0,0
+animation1.pattern21,overlay,21,200,0,0
+animation1.pattern22,overlay,22,200,0,0
+animation1.pattern23,overlay,21,200,0,0
+animation1.pattern24,overlay,22,200,0,0
+animation1.pattern25,overlay,21,200,0,0
+animation1.pattern26,overlay,20,200,0,0
+animation1.pattern27,overlay,-1,1500,0,0
+animation3.interval,never
+animation3.pattern0,overlay,20,0,0,0
+animation3.pattern1,overlay,23,1500,0,0
+animation3.pattern2,overlay,24,200,0,0
+animation3.pattern3,overlay,23,200,0,0
+animation3.pattern4,overlay,24,200,0,0
+animation3.pattern5,overlay,23,200,0,0
+animation3.pattern6,overlay,24,200,0,0
+animation3.pattern7,overlay,23,200,0,0
+animation3.pattern8,overlay,24,200,0,0
+animation3.pattern9,overlay,23,200,0,0
+animation3.pattern10,overlay,24,200,0,0
+animation3.pattern11,overlay,23,200,0,0
+animation3.pattern12,overlay,24,200,0,0
+animation3.pattern13,overlay,23,200,0,0
+animation3.pattern14,overlay,24,200,0,0
+animation3.pattern15,overlay,23,200,0,0
+animation3.pattern16,overlay,24,200,0,0
+animation3.pattern17,overlay,23,200,0,0
+animation3.pattern18,overlay,24,200,0,0
+animation3.pattern19,overlay,23,200,0,0
+animation3.pattern20,overlay,24,200,0,0
+animation3.pattern21,overlay,23,200,0,0
+animation3.pattern22,overlay,24,200,0,0
+animation3.pattern23,overlay,23,200,0,0
+animation3.pattern24,overlay,24,200,0,0
+animation3.pattern25,overlay,23,200,0,0
+animation3.pattern26,overlay,20,200,0,0
+animation3.pattern27,overlay,-1,1500,0,0
+animation5.interval,never
+animation5.pattern0,overlay,20,0,0,0
+animation5.pattern1,overlay,25,1500,0,0
+animation5.pattern2,overlay,26,200,0,0
+animation5.pattern3,overlay,25,200,0,0
+animation5.pattern4,overlay,26,200,0,0
+animation5.pattern5,overlay,25,200,0,0
+animation5.pattern6,overlay,26,200,0,0
+animation5.pattern7,overlay,25,200,0,0
+animation5.pattern8,overlay,26,200,0,0
+animation5.pattern9,overlay,25,200,0,0
+animation5.pattern10,overlay,26,200,0,0
+animation5.pattern11,overlay,25,200,0,0
+animation5.pattern12,overlay,26,200,0,0
+animation5.pattern13,overlay,25,200,0,0
+animation5.pattern14,overlay,26,200,0,0
+animation5.pattern15,overlay,25,200,0,0
+animation5.pattern16,overlay,26,200,0,0
+animation5.pattern17,overlay,25,200,0,0
+animation5.pattern18,overlay,26,200,0,0
+animation5.pattern19,overlay,25,200,0,0
+animation5.pattern20,overlay,26,200,0,0
+animation5.pattern21,overlay,25,200,0,0
+animation5.pattern22,overlay,26,200,0,0
+animation5.pattern23,overlay,25,200,0,0
+animation5.pattern24,overlay,26,200,0,0
+animation5.pattern25,overlay,25,200,0,0
+animation5.pattern26,overlay,20,200,0,0
+animation5.pattern27,overlay,-1,1500,0,0
+}

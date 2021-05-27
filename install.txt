@@ -1,0 +1,6 @@
+charset,Shift_JIS
+
+type,ghost
+name,”Õã‚Ì‹÷‚Á‚±‚Å
+directory,banjou_no_sumikko_de
+
