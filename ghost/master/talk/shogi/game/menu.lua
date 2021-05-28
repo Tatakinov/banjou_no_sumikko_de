@@ -74,7 +74,7 @@ return {
       str:append(shiori:talk("OnShogiViewMinimal", ref))
       str:append(SS():_q(true):p(0):s("座り_素"):c())
 
-      str:append("メニュー\\n")
+      --str:append("メニュー\\n")
       local preset_str  = IP.toKanji(game_option.preset)
       str:append(SS():_l(20)):append("手合:")
           :append(SS():_l(120))
@@ -143,6 +143,7 @@ return {
         str:append(score.win):append("勝"):append(score.lose):append("敗")
         str:append("\\n")
       end
+      str:append("\\n")
       str:append("\\![*]"):append(SS():q("対局開始", "OnStartShogiEngine"))
       str:append(" ")
       str:append("\\![*]"):append(SS():q("説明", "OnExplainShogiGame"):n())
