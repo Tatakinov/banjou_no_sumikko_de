@@ -629,7 +629,11 @@ return {
       local process   = shiori:saori("process")
       local player    = KifuPlayer.getInstance()
       local _, init, moves  = player:toUSI()
+      local options   = __("GameOption")
       local time  = (player:getTesuu() + 1) * 1000
+      if options.time_limit then
+        time  = 3000
+      end
       local ponder  = __("_Ponder")
       local ponderhit = false
       __("_Ponder", nil)
@@ -669,6 +673,7 @@ return {
           command   = USI.Command.GO,
           btime = time,
           wtime = time,
+          byoyomi = 1000,
         }))
       end
       --local s         = createTimer(shiori, "OnShogiGameEngineBestMove", "OnShogiGameEngineTimeout", true, 100, 100, function(data)

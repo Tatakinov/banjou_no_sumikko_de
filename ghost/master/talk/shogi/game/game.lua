@@ -170,7 +170,7 @@ return {
       shiori:talk("OnShogiEngineGameOver", "win")
       shiori:talk("OnQuitShogiEngine")
       str:append(shiori:talk("OnShogiRenderPlayerTurnEnd"))
-      str:append(SS():p(0):s("座り_素")):append("ありがとうございました。")
+      str:append(SS():p(0):s("座り_素")):append("ありがとうございました。@")
           :append(SS():_w(2000))
           :append(shiori:talk("OnShogiView", ref))
       return str:tostring()

@@ -44,6 +44,7 @@ return {
         player_color  = KifuPlayer.Color.BLACK,
         preset        = IP.HIRATE,
         control_guide = true,
+        time_limit    = true,
       }
       __("GameOption", game_option)
 
@@ -67,6 +68,8 @@ return {
         game_option.preset  = preset[n % #preset + 1]
       elseif ref[0] == "control_guide" then
         game_option.control_guide = not(game_option.control_guide)
+      elseif ref[0] == "time_limit" then
+        game_option.time_limit  = not(game_option.time_limit)
       end
 
       local player  = KifuPlayer.getInstance()
@@ -128,6 +131,17 @@ return {
           :append(SS():q("変更", "OnShogiGameMenu", "control_guide"))
           :append("】")
           :append("\\n")
+      str:append(SS():_l(20)):append("時間設定:")
+          :append(SS():_l(120))
+      if game_option.time_limit then
+        str:append("短め")
+      else
+        str:append("長め")
+      end
+      str:append(SS():_l(200)):append("【")
+          :append(SS():q("変更", "OnShogiGameMenu", "time_limit"))
+          :append("】")
+          :append("\\n")
       if __("Supplement_Engine_Version") == nil then
         str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(15MB/52MB)", "OnInstallShogiEngine"):n())
       elseif __("Supplement_Engine_Version") < "1.0.0" then
@@ -147,7 +161,6 @@ return {
       str:append("\\![*]"):append(SS():q("対局開始", "OnStartShogiEngine"))
       str:append(" ")
       str:append("\\![*]"):append(SS():q("説明", "OnExplainShogiGame"):n())
-      str:append("\\n")
       str:append("\\![*]"):append(SS():q("閉じる", "盤面モード終了"))
       str:append(" ")
       str:append("\\![*]"):append(SS():q("戻る", "メニュー"))
