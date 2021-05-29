@@ -6,6 +6,7 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       __("_Sfen", nil)
+      return shiori:talk("OnShogiViewMinimal")
     end,
   },
   {
