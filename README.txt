@@ -4,7 +4,7 @@
 yí    •ÊzƒS[ƒXƒg
 y§ ì Òzƒ^ƒ^ƒLƒmƒt
 y“®ìŠm”FzWindows 10 and Wine 5.7ˆÈ~ / SSP 2.4.72
-y”z •z Œ³z
+y”z •z Œ³zhttps://tatakinov.github.io/
 y˜A — æztatakinov@gmail.com
             https://twitter.com/tatakinov_ukgk
 
