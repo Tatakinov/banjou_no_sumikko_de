@@ -10,9 +10,9 @@ return {
 \_q
 \n
 \n
-\q[【横歩取り３三角までの急戦】,OnShogiViewFromFile,talk\shogi\opening\yokofu.kif]\n
-\q[【片美濃崩し】,OnShogiViewFromFile,talk\shogi\opening\minokuzushi.kif]\n
-\q[【穴熊崩し】,OnShogiViewFromFile,talk\shogi\opening\anagumakuzushi.kif]\n
+\q[【横歩取り３三角までの急戦】,OnShogiViewFromFile,talk\shogi\study\yokofu.kif]\n
+\q[【片美濃崩し】,OnShogiViewFromFile,talk\shogi\study\minokuzushi.kif]\n
+\q[【穴熊崩し】,OnShogiViewFromFile,talk\shogi\study\anagumakuzushi.kif]\n
 \n
 \q[【戻る】,将棋メニュー] \q[【閉じる】,閉じる]\n\_q
 
