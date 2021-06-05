@@ -22,7 +22,7 @@ return {
   },
   {
     anchor  = true,
-    id      = "__",
+    id      = "___",
     content = function(shiori, ref)
       local str = StringBuffer()
       local player  = KifuPlayer.getInstance()
@@ -133,6 +133,49 @@ return {
 右側へ動かして行って2〜3筋を攻める感じになるよ。
 囲いの弱点は、６九の金が玉の紐しかないことと、
 玉の横を守るのが５八の金なことかな。
+\n
+\_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
+]])
+      return str
+    end,
+  },
+  {
+    anchor  = true,
+    id      = "天守閣美濃",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("9/9/9/9/9/PPP1P4/1K1P5/1BS1G4/LN1G5 b - 1")
+      str:append(shiori:talk("OnShogiViewMinimal", ref))
+      str:append(SS():p(0)):append([[
+\_q【天守閣美濃】\_q\w9\n
+居飛車版美濃囲い。\n
+振り飛車の美濃囲いと違って、王様が８七の地点にいるのが特徴で、
+通常の美濃崩しの手筋が効き辛いメリットがあるよ。\n
+一方で玉頭にはめっぽう弱く、
+相手から△４二角〜△７三桂〜△８五歩みたいな感じで
+８六の地点を狙われると逃げるしかなくなっちゃうよ。
+\n
+\_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
+]])
+      return str
+    end,
+  },
+  {
+    anchor  = true,
+    id      = "端玉銀冠",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("9/9/9/9/9/PPP6/1S7/KBG6/LN7 b - 1")
+      str:append(shiori:talk("OnShogiViewMinimal", ref))
+      str:append(SS():p(0)):append([[
+\_q【端玉銀冠】\_q\w9\n
+天守閣美濃から組み替えて作ることが多い囲い。\n
+角がいるままだけど、堅さは十分。
+玉が一路ずれていることで、相手の角の攻撃を受け辛いのもポイントかな。
+端っこに王様がいる関係でZ(ゼット)になりやすいので、
+うまく活用していきたい所。
 \n
 \_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
 ]])
