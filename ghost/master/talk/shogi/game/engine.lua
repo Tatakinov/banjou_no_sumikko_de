@@ -630,7 +630,7 @@ return {
       local player    = KifuPlayer.getInstance()
       local _, init, moves  = player:toUSI()
       local options   = __("GameOption")
-      local time  = (player:getTesuu() + 1) * 1000
+      local time  = math.floor(math.sqrt((player:getTesuu() + 1) * 10) * 1000)
       if options.time_limit then
         time  = 3000
       end
@@ -673,11 +673,11 @@ return {
           command   = USI.Command.GO,
           btime = time,
           wtime = time,
-          byoyomi = 1000,
+          byoyomi = 2000,
         }))
       end
       --local s         = createTimer(shiori, "OnShogiGameEngineBestMove", "OnShogiGameEngineTimeout", true, 100, 100, function(data)
-      local s         = createTimer(shiori, time + 100, function(data)
+      local s         = createTimer(shiori, time + 3000, function(data)
         if data.command == USI.Command.INFO then
           if type(data.pv) == "table" and #data.pv > 0 then
             --print("PV: " .. data.pv[1])
