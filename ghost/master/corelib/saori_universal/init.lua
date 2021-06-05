@@ -63,6 +63,7 @@ function M:request(...)
   local str = req:tostring()
   str = Conv.conv(str, "cp932", "UTF-8") or str
   local ret = self.native:request(str)
+  ret = Conv.conv(ret, "UTF-8", "cp932") or ret
   local res = Response.parse(ret)
   res:request(req)
   return res
