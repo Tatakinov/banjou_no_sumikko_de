@@ -138,6 +138,12 @@ function M:request(req)
     -- print("nil ID: " .. tostring(id))
   else
     local value, passthrough = self:talk(id, req:headers())
+    -- X-SSTP-PassThru-*への暫定的な対応
+    local tbl = {}
+    if type(value) == "table" then
+      tbl   = value
+      value = value.Value
+    end
     if value then
       --value = string.gsub(value, "\x0d\x0a", "")
       value = string.gsub(value, "\x0d", "")
@@ -147,13 +153,17 @@ function M:request(req)
         value = self:autoReplaceVars(value)
         value = self:autoLink(value)
         value = self:autoReplace(value)
+        --  末尾にえんいーを追加する。
+        --  えんいーが既にあるかを調べるのは面倒いのでとりあえず付けておく。
         value = value .. "\\e"
       end
       res:code(200)
       res:message("OK")
-      --  末尾にえんいーを追加する。
-      --  えんいーが既にあるかを調べるのは面倒いのでとりあえず付けておく。
-      res:header("Value", value)
+      tbl.Value = value
+    end
+    -- X-SSTP-PassThru-*への暫定的な対応
+    for k, v in pairs(tbl) do
+      res:header(k, v)
     end
   end
   res:header("Charset", self._charset)
@@ -359,8 +369,9 @@ function M:saori(id)
       end
     end
     local mt  = {
-      __call  = function(self)
-        return ret:header("Result")
+      __call  = function(self, name)
+        name  = name or "Result"
+        return ret:header(name)
       end,
     }
     return setmetatable(t, mt)

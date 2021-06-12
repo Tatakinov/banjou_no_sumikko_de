@@ -11,6 +11,9 @@ function M.tostring(obj, ...)
       return M.tostring(obj[math.random(#obj)], ...)
     elseif obj.__tostring then
       return tostring(obj)
+    -- X-SSTP-Return-*への暫定的な対応
+    elseif next(obj) then
+      return obj
     end
   elseif obj_type == "function" then
     return M.tostring({obj(...)}, ...) -- 関数が複数の値を返してくる場合に対応
@@ -102,7 +105,13 @@ function M.toArray(tbl)
       t[num]  = v
     end
   end
-  return t
+  local mt  = {
+    __call  = function(self, name)
+      assert(name)
+      return tbl[name]
+    end,
+  }
+  return setmetatable(t, mt)
 end
 
 return M
