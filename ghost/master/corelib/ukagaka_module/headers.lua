@@ -41,11 +41,12 @@ function M.parse(obj)
 end
 
 function M:tostring()
-  local str   = ""
+  local tbl   = {}
   for k, v in pairs(self:headers()) do
-    str = str .. k .. ": " .. v .. CRLF
+    table.insert(tbl, k .. ": " .. v .. CRLF)
   end
-  return str
+  table.sort(tbl)
+  return table.concat(tbl, "")
 end
 
 return M
