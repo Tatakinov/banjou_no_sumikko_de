@@ -13,7 +13,7 @@ return {
 【対抗型(振り飛車)】\n
 美濃囲い 片美濃 銀美濃 木村美濃 高美濃 銀冠 振り飛車穴熊\n
 【相振り飛車】\n
-金無双 美濃囲い 右矢倉 穴熊(相振り)\n
+金無双 美濃囲い(相振り) 右矢倉 穴熊(相振り)\n
 【その他】\n
 居玉 無敵囲い\n
 \n
@@ -176,6 +176,26 @@ return {
 玉が一路ずれていることで、相手の角の攻撃を受け辛いのもポイントかな。
 端っこに王様がいる関係でZ(ゼット)になりやすいので、
 うまく活用していきたい所。
+\n
+\_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
+]])
+      return str
+    end,
+  },
+  {
+    anchor  = true,
+    id      = "金無双",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("9/9/9/9/9/9/4PPPPP/4GGKS1/7NL b - 1")
+      str:append(shiori:talk("OnShogiViewMinimal", ref))
+      str:append(SS():p(0)):append([[
+\_q【金無双】\_q\w9\n
+相振り飛車では一般的な囲い。\n
+三間飛車なら4筋、向かい飛車なら端から攻めてくることが多いかな。
+２八に銀が上がっていると、横から攻められた時に壁になってしまうので
+相手に飛車を渡すのはご法度だよ。\n
 \n
 \_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
 ]])
