@@ -57,4 +57,8 @@ function M.unload()
   return true
 end
 
+function M.debug()
+  return shiori
+end
+
 return M
