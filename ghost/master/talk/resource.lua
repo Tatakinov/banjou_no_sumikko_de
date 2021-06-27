@@ -13,7 +13,7 @@ return {
   {
     passthrough = true,
     id  = "version",
-    content = "1.0.0",
+    content = "1.0.3",
   },
   {
     passthrough = true,
@@ -43,6 +43,7 @@ return {
     passthrough = true,
     id  = "sakura.recommendsites",
     content = Misc.createURLList(
+    {
       {"将棋連盟", "https://www.shogi.or.jp/"},
       {"-", "-", "-"},
       {"将棋倶楽部24", "https://www.shogidojo.net/"},
@@ -65,8 +66,8 @@ return {
       {"将棋講座/ButaneGorilla", "https://www.nicovideo.jp/mylist/50368976"},
       {"盤上のシンデレラ/四駒関係（ＫＫＰＰ）", "https://www.nicovideo.jp/mylist/53808293"},
       {"-", "-", "-"},
-      {"詰将棋の答え", "script:\\![raise,OnAnswerTsumeShogi]", "-"}
-    ),
+      {"詰将棋の答え", "script:\\![raise,OnAnswerTsumeShogi]", "-"},
+    }),
   },
   {
     passthrough = true,
@@ -82,7 +83,7 @@ return {
   },
   {
     passthrough = true,
-    id  = "valishbuttoncaption",
+    id  = "vanishbuttoncaption",
     content = [[部活動を…諦めます！]]
   },
   {
