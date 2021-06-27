@@ -4,24 +4,23 @@ local M   = Class()
 M.__index = M
 
 function M:_init()
-  self.data = {}
-  self.prev_num = 0
+  self._data = {}
 end
 
 function M:add(talk)
   talk.id = talk.id or ""
   --print("id: <" .. talk.id .. ">")
   if talk.id then
-    if self.data[talk.id] == nil then
-      self.data[talk.id]  = {}
+    if self._data[talk.id] == nil then
+      self._data[talk.id]  = {}
     end
-    table.insert(self.data[talk.id], talk)
+    table.insert(self._data[talk.id], talk)
   end
 end
 
 function M:get(id)
   id  = id or ""
-  local list  = self.data[id]
+  local list  = self._data[id]
   if list == nil then
     return nil
   end
@@ -30,7 +29,7 @@ end
 
 function M:rawget(id)
   id  = id or ""
-  return self.data[id]
+  return self._data[id]
 end
 
 return M
