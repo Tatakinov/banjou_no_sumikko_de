@@ -84,9 +84,9 @@ return {
 
       for i = 1, #pos_list do
         local pos = pos_list[i]
-        local filename  = "image/furigoma1.png"
+        local filename  = "image/shogi/furigoma1.png"
         if i > fu_num then
-          filename  = "image/furigoma2.png"
+          filename  = "image/shogi/furigoma2.png"
         end
         local x = math.random(0, 3)
         local y = math.random(0, 3)
