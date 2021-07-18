@@ -261,18 +261,17 @@ return {
       local t = os.date("*t")
       local fmt = "%d年%d月%d日"
       local now = fmt:format(t.year, t.month, t.day)
-      if __("LastCalled") == now then
-        return nil
+      if __("LastCalled") ~= now then
+        __("LastCalled", now)
+        return shiori:talk(string.format("%d月%d日", t.month, t.day))
       end
-      __("LastCalled", now)
-      return shiori:talk(string.format("%d月%d日", t.month, t.day))
+      return nil
     end,
   },
   {
     --将棋型チョコ
     id  = "2月14日",
-    content = [[
-]],
+    content = nil,
   },
   {
     id  = "11月17日",
