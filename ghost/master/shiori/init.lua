@@ -137,7 +137,7 @@ function M:request(req)
     -- TODO comment
     -- print("nil ID: " .. tostring(id))
   else
-    local value, passthrough = self:talk(id, req:headers())
+    local value, passthrough = self:_talk(id, req:headers())
     -- X-SSTP-PassThru-*への暫定的な対応
     local tbl = {}
     if type(value) == "table" then
@@ -260,7 +260,7 @@ function M:autoReplaceVars(str)
   return str
 end
 
-function M:talk(id, ...)
+function M:_talk(id, ...)
   local id  = id or ""
   local tbl
   if select("#", ...) == 1 and type(select(1, ...)) == "table" then
@@ -300,6 +300,10 @@ function M:talk(id, ...)
     return str:tostring(), true
   end
   return value, talk.passthrough
+end
+
+function M:talk(...)
+  return (self:_talk(...))
 end
 
 function M:talkRandom()
