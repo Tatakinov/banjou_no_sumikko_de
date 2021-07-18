@@ -62,4 +62,37 @@ return {
 慣れないうちは、コンピューターに棋譜解析してもらうのがいいと思う。
 ]]
   },
+  {
+    id  = "将棋トーク_C5",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("7nl/5kg2/5p1pp/6p2/8P/9/6P2/7R1/7NL b SPs 1")
+      str:append(shiori:talk("OnShogiViewMinimal"))
+      str:append([[
+\0
+棒銀って銀交換するのはいいけど、その後どうやって攻めればいいか分からない、
+なんてことがあると思うので攻め筋を1つ紹介するよ。\n
+銀交換したら図のように端歩を伸ばして端攻めをするよ。\n
+]])
+      str:append(Utils.M2SS(shiori, {
+        wait  = 1000,
+        "1e1d", "1c1d",
+        "P*1c", "1a1c",
+        "S*1b",
+      }))
+      str:append([[
+\0
+。\n
+この▲１二銀がポイントで、後手は桂取りと▲２三銀成の両方を受けることが出来ないよ。\n
+こうなれば先手優勢、あとは何やかんやして飛車が成れれば大体勝ち。\n
+\n
+また、▲１三歩に△同桂とされるかもしれないけど、
+その場合はどうにかして歩を2枚手に入れて▲１五歩△同歩▲１四歩と
+桂頭を狙う手があるかな。
+そんな感じで端から攻めていくのが棒銀の攻め筋の1つだよ。
+]])
+      return str
+    end,
+  },
 }

@@ -196,6 +196,52 @@ return {
 三間飛車なら4筋、向かい飛車なら端から攻めてくることが多いかな。
 ２八に銀が上がっていると、横から攻められた時に壁になってしまうので
 相手に飛車を渡すのはご法度だよ。\n
+攻めるときは、4筋を継ぎ歩に垂れ歩で攻めたり、
+端から攻めるのが有力とされているよ。\n
+\n
+\_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
+]])
+      return str
+    end,
+  },
+  {
+    anchor  = true,
+    id      = "美濃囲い(相振り)",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("9/9/9/9/9/8P/4PPPP1/4G1SK1/5G1NL b - 1")
+      str:append(shiori:talk("OnShogiViewMinimal", ref))
+      str:append(SS():p(0)):append([[
+\_q【美濃囲い(相振り)】\_q\w9\n
+相振り飛車では金無双と同じくらい指されている囲い。\n
+美濃囲いは横からの攻めには強いから大駒交換には強いものの、
+上部からの攻めにはあまり強くないので
+1筋や3筋を絡めて攻められるのには弱いよ。
+高美濃囲いまで組めると少し安心かも。\n
+\n
+\_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
+]])
+      return str
+    end,
+  },
+  {
+    anchor  = true,
+    id      = "穴熊(相振り)",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("9/9/9/9/9/9/6PPP/6GSL/6GNK b - 1")
+      str:append(shiori:talk("OnShogiViewMinimal", ref))
+      str:append(SS():p(0)):append([[
+\_q【穴熊(相振り)】\_q\w9\n
+相振り飛車でも穴熊したい！という囲い。\n
+大駒交換には滅法強いものの、上部からの攻めには弱いので
+端攻めをされて割と困ってる気がする。
+対抗型と違って相手は自分の玉頭の歩を突いて攻めてくるわけではないので、
+攻めの反動も小さく、こちらが一方的にやられることもしばしば…。\n
+手数を掛けて穴熊を作った割には堅さが生かされにくいので、
+対抗型の穴熊の堅さを考えて指していると危険だよ。\n
 \n
 \_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
 ]])
