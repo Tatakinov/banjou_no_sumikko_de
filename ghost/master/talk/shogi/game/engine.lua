@@ -1,4 +1,5 @@
-local KifuPlayer           = require("kifu_player")
+local KifuPlayer    = require("kifu_player")
+local Judgement     = require("talk.game._judgement")
 local SS            = require("sakura_script")
 local StringBuffer  = require("string_buffer")
 local Process       = require("process")
@@ -30,40 +31,6 @@ local function destroyTimer()
   }))
   return str:tostring()
 end
-
-local Judgement = {
-  plus_mate   = 1,
-  won         = 2,
-  winning     = 3,
-  plus        = 4,
-  plus_equal  = 5,
-  equality    = 6,
-  minus_equal = 7,
-  minus       = 8,
-  losing      = 9,
-  lost        = 10,
-  minus_mate  = 11,
-  equalize    = 100,
-  unclear     = 101,
-  critical    = 102,
-}
-
-local Judge_SID = {
-  [Judgement.plus_mate]   = "勝ち", -- TODO 表情差分の追加
-  [Judgement.won]         = "勝ち",
-  [Judgement.winning]     = "勝勢",
-  [Judgement.plus]        = "優勢",
-  [Judgement.plus_equal]  = "有利",
-  [Judgement.equality]    = "互角",
-  [Judgement.minus_equal] = "不利",
-  [Judgement.minus]       = "劣勢",
-  [Judgement.losing]      = "敗勢",
-  [Judgement.lost]        = "負け",
-  [Judgement.minus_mate]  = "負け", -- TODO 表情差分の追加
-  [Judgement.equalize]    = 0,
-  [Judgement.unclear]     = 0,
-  [Judgement.critical]    = 0,
-}
 
 local function calcJudge(score)
   local judge = Judgement.equality
@@ -694,7 +661,7 @@ return {
             end
             if score then
               judge = calcJudge(score)
-              local sid = "形勢_" .. Judge_SID[judge] -- 正座のsid
+              local sid = "形勢_" .. Judgement.sid(judge) -- 正座のsid
               --print("prev: " .. prev_score .. " score: " .. score .. " sid: " .. sid)
               __("_CurrentScore", score)
               __("_CurrentJudgement", judge)
@@ -737,15 +704,6 @@ return {
       str:append(shiori:talk("OnShogiDisplayMinimal", ref))
       str:append(shiori:talk("OnShogiDisplayHeader", ref))
       return str:tostring()
-    end,
-  },
-  {
-    id  = "OnFan",
-    content = function(shiori, ref)
-      local __  = shiori.var
-      local judge = __("_CurrentJudgement")
-      local sid = Judge_SID[judge] -- 正座のsid
-      return "\\s[" .. "扇子_" .. sid .. "]\\i[" .. (math.random(2) - 1) ..",wait]\\s[" .. "考慮中_" .. sid .. "]"
     end,
   },
   {

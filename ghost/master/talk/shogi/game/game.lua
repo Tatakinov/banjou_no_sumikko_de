@@ -143,6 +143,7 @@ return {
       __("_CurrentScore", 0)
       __("_CurrentJudgement", 6) -- Judgement.equality
       --print("InitColor: " .. player:getTeban())
+      shiori:talk("OnSetFanID")
       str:append(SS():p(0):c())
       str:append("よろしくお願いします。"):append(SS():_w(500))
       str:append(SS():b(-1):c())
