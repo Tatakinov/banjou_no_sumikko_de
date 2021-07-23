@@ -321,6 +321,18 @@ function M:raise(ID, ...)
   return self
 end
 
+function M:raiseother(ghost_name, ID, ...)
+  assert(ghost_name)
+  assert(ID)
+  self.str:append("\\![raiseother,"):append(ghost_name):append(","):append(ID)
+  local size  = select("#", ...)
+  for i = 1, size do
+    self.str:append(","):append(select(i, ...))
+  end
+  self.str:append("]")
+  return self
+end
+
 function M:s(n)
   --assert(tonumber(n))
   self.str:append("\\s["):append(n):append("]")
