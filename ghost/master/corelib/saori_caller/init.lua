@@ -56,11 +56,11 @@ end
 
 function M:loadall()
   for k, v in pairs(self.lib) do
-    print("load(): " .. k)
+    --print("load(): " .. k)
     local ret = v:load()
     if ret ~= true then
       -- TODO error
-      print("-- error(load) --")
+      print("SAORI error(load):", k)
       self:_remove(k)
     else
       -- GET Version
@@ -69,10 +69,10 @@ function M:loadall()
         command = "Version",
       })
       if res:protocol() ~= Protocol.v10 then
-        print("-- error(request) --")
+        print("SAORI error(request):", k)
         self:_remove(k)
       else
-        print("-- ok --")
+        print("SAORI ok:", k)
         --print(res:tostring())
       end
     end
