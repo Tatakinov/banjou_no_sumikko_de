@@ -10,11 +10,11 @@ return {
         balloon = {},
       }
       for ghost in string.gmatch(ref[0], "[^" .. sep .. "]*") do
-        print("ghost hwnd: " .. ghost)
+        --print("ghost hwnd: " .. ghost)
         table.insert(hwnd.ghost, tonumber(ghost))
       end
       for balloon in string.gmatch(ref[1], "[^" .. sep .. "]*") do
-        print("balloon hwnd: " .. balloon)
+        --print("balloon hwnd: " .. balloon)
         table.insert(hwnd.balloon, tonumber(balloon))
       end
       shiori:property("hwnd", hwnd)
