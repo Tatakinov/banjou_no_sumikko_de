@@ -23,7 +23,7 @@ return {
     id  = "OnMahjong_hello",
     content = function(shiori, ref)
       local __  = shiori.var
-      __("_Quiet", true)
+      __("_Quiet", "Mahjong")
       __("_InGame", true)
       return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1],
           "ump=" .. UMP_VERSION, "name=" .. NAME)
@@ -41,6 +41,7 @@ return {
   {
     id  = "OnMahjong_gameend",
     content = function(shiori, ref)
+      local __  = shiori.var
       __("_Quiet", false)
       __("_InGame", false)
       return [[
