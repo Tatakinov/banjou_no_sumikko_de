@@ -14,20 +14,21 @@ return {
     id  = "0Headなで",
     content = function(shiori, ref)
       local __  = shiori.var
-      if __("_Quiet") ~= true then
-        local favorability  = __("好感度") or 0
-        if favorability < 50 then
-          return shiori:talk("頭なで好感度低")
-        elseif favorability < 100 then
-          return shiori:talk("頭なで好感度中")
-        end
+      if __("_Quiet") then
+        return nil
+      end
+      local favorability  = __("好感度") or 0
+      if favorability < 50 then
+        return shiori:talk("頭なで好感度低")
+      elseif favorability < 100 then
+        return shiori:talk("頭なで好感度中")
       end
     end,
   },
   {
     id  = "頭なで好感度低",
     content = function(shiori, ref)
-      return 
+      return
       [[\0\s[><]……っ。]],
       [[\0\s[きょとん]ど、どしたの急に。]]
     end,
@@ -37,7 +38,7 @@ return {
     id  = "0HeadPoke",
     content = function(shiori, ref)
       local __  = shiori.var
-      if __("_Quiet") == true then
+      if __("_Quiet") then
         return nil
       end
       return shiori:talk("頭つつき")

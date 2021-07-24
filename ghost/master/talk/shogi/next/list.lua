@@ -68,7 +68,7 @@ local function generateTalk(num, path, is_answer)
         __("_Quiet", false)
       else
         __("_KeepBoardVisible", true)
-        __("_Quiet", true)
+        __("_Quiet", "Shogi")
       end
       player:load(path)
       player:head()

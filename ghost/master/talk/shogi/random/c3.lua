@@ -34,7 +34,7 @@ return {
       NOP(player + "7i7h")
       str:append(shiori:talk("OnShogiViewMinimal"))
       str:append([[
-\0 
+\0
 \x
 ]])
       NOP(player + "2b8h+")

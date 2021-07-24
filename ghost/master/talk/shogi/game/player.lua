@@ -83,7 +83,7 @@ return {
           :append(shiori:talk("OnShogiGameController", ref))
       --print("Caution: " .. str:tostring())
 
-      local id      = ref[0]
+      --local id      = ref[0]
       local id  = __("_GamePieceFrom")
       id  = tonumber(id) or id
       --print("id(" .. type(id) .. "): " .. id)
@@ -114,8 +114,8 @@ return {
           :append(shiori:talk("OnShogiDisplayHeader", ref))
           :append(shiori:talk("OnShogiGameController", ref))
 
-      local id1     = ref[1]
-      local id2     = ref[2]
+      --local id1     = ref[1]
+      --local id2     = ref[2]
       local id1 = __("_GamePieceFrom")
       local id2 = __("_GamePieceTo")
 
@@ -146,8 +146,8 @@ return {
       local __  = shiori.var
       --local str = StringBuffer(SS():C():_q(true))
       local str = StringBuffer()
-      local id1     = ref[0]
-      local id2     = ref[1]
+      --local id1     = ref[0]
+      --local id2     = ref[1]
       local id1 = __("_GamePieceFrom")
       local id2 = __("_GamePieceTo")
       local promote = ref[2] == "true"

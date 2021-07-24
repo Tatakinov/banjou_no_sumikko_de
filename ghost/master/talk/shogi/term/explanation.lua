@@ -1,3 +1,6 @@
+local KifuPlayer  = require("kifu_player")
+local StringBuffer  = require("string_buffer")
+
 return {
   {
     id  = "将棋用語_解説",

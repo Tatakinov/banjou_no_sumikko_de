@@ -53,7 +53,7 @@ return {
    天   地   創   世\n
 \f[height,default]
 \n
-ドラ 
+ドラ
 \_b["image/mahjong/red.png",inline,--option=use_self_alpha]
 \_b["image/mahjong/red.png",inline,--option=use_self_alpha]
 \_b["image/mahjong/red.png",inline,--option=use_self_alpha]

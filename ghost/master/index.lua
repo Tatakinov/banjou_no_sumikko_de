@@ -7,7 +7,7 @@ setmetatable(_G, {
     end
     rawset(t, k, v)
   end,
-  __index = function(t, k)
+  __index = function(_, k)
     -- sol.から始まるのはまあ大体意図的なものなので無視
     if string.sub(k, 1, 4) ~= "sol." then
       print(debug.traceback("WARNING: attempt to read undeclared variable: " .. tostring(k), 2))

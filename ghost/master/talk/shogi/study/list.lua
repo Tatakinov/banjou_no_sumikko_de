@@ -27,7 +27,7 @@ return {
       local str = StringBuffer()
       local player  = KifuPlayer.getInstance()
       local filename  = shiori:property("path") .. ref[0]
-      __("_Quiet",true)
+      __("_Quiet", "Shogi")
       print("file load: " .. filename)
       player:load(filename)
       str:append(SS():p(0):s("素"))

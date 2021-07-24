@@ -1,3 +1,7 @@
+local KifuPlayer    = require("kifu_player")
+local SS            = require("sakura_script")
+local StringBuffer  = require("string_buffer")
+
 return {
   {
     id  = "将棋用語_囲い",
