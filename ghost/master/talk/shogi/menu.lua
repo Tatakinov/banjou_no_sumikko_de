@@ -19,7 +19,7 @@ return {
 --\![*]\q[講座,将棋講座一覧]\n
   },
   {
-    id  = "盤面モードのメニュー",
+    id  = "盤面モードのメニュー(将棋)",
     content = function(shiori, ref)
       local __  = shiori.var
       local str = StringBuffer([[\0]])

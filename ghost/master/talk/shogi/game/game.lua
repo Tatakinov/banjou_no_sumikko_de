@@ -127,7 +127,7 @@ return {
       local str = StringBuffer(SS():C())
       local player  = KifuPlayer.getInstance()
       local game_option = __("GameOption")
-      __("_Quiet", true)
+      __("_Quiet", "Shogi")
       __("_InGame", true)
       __("_ScoreList", {})
       player:setPosition(game_option.preset)
