@@ -116,6 +116,12 @@ return {
     end,
   },
   {
+    id  = "OnMahjong_open",
+    content = function(shiori, ref)
+      return nil
+    end,
+  },
+  {
     id  = "OnMahjong_tsumo",
     content = function(shiori, ref)
       local __  = shiori.var
