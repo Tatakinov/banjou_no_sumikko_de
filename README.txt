@@ -85,14 +85,18 @@
 以下のライブラリ/ソフトウェアを使用しています。
 それぞれのライセンス詳細はLICENSE.txtを参照してください。
 
-Lua         | https://www.lua.org/
-sol2        | https://github.com/ThePhD/sol2/
-luautf8     | https://github.com/starwing/luautf8/
-luaex       | https://github.com/LuaDist/luaex/
-Luachild    | https://github.com/pocomane/luachild/
-LPeg        | http://www.inf.puc-rio.br/~roberto/lpeg/\
-shogi686    | https://github.com/merom686/shogi686_sdt5/
-sunfish4    | https://github.com/sunfish-shogi/sunfish4/
+Lua           | https://www.lua.org/
+sol2          | https://github.com/ThePhD/sol2/
+luautf8       | https://github.com/starwing/luautf8/
+luaex         | https://github.com/LuaDist/luaex/
+Luachild      | https://github.com/pocomane/luachild/
+LPeg          | http://www.inf.puc-rio.br/~roberto/lpeg/\
+shogi686      | https://github.com/merom686/shogi686_sdt5/
+sunfish4      | https://github.com/sunfish-shogi/sunfish4/
+luacheck      | https://github.com/mpeterv/luacheck/
+argparse      | https://github.com/mpeterv/argparse
+luafilesystem | https://github.com/keplerproject/luafilesystem/
+lanes         | https://github.com/LuaLanes/lanes
 
 
 ## 使用フォント
@@ -169,6 +173,8 @@ sunfish4    | https://github.com/sunfish-shogi/sunfish4/
   将棋盤局面図を作成      / http://sfenreader.appspot.com/ja/create_board.html
   将棋講座(ButaneGorilla) / https://www.nicovideo.jp/mylist/50368976
 
+- デバッグ(luacheck)のコンパイル
+  luastatic               / https://github.com/ers35/luastatic
 
 ## サプリメントについて
 
