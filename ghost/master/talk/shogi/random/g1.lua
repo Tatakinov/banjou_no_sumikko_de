@@ -87,7 +87,6 @@ ${User}も思わず言っちゃうことあるよね！？@ね！？
   {
     id  = "OnShogiWarsGameEnd",
     content = function(shiori, ref)
-      shiori:reserveTalk("OnShogiWarsGameEnd")
       local tbl = {
 [[
 \0
