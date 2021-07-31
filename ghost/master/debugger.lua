@@ -95,6 +95,11 @@ local function dump(tbl)
   end
 end
 
+local function lint(tbl)
+  local path  = tbl[1] or "talk"
+  os.execute("luacheck.exe " .. path)
+end
+
 -- main
 
 module.load(path)
@@ -127,12 +132,15 @@ while true do
     call EventID [Argument0 Argument1 ...]
     dump var
     dump talk [id]
+    lint [file | dir]
     exit]])
   end
   if command == "call" then
     call(tbl)
   elseif command == "dump" then
     dump(tbl)
+  elseif command == "lint" then
+    lint(tbl)
   end
 end
 
