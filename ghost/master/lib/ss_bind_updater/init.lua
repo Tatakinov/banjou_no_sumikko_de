@@ -38,7 +38,7 @@ function M:set(category, parts, visible)
   if parts then
     -- 現在表示しているパーツでなければ
     -- 今表示しているパーツは非表示にする。
-    if visible then
+    if visible == 1 then
       for k, v in pairs(self._data[category]) do
         if v then
           self._data[category][k] = 0
