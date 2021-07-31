@@ -1,0 +1,107 @@
+--[[
+
+S => Server
+N => Client(Notify)
+C => Client(Get)
+U => User
+
+S: init
+
+C: hello
+  0: This
+  1: OnBackgammon_HelloCheck
+
+S: gamestart
+S: show
+N: reaction->gamestart
+
+S: periodstart
+S: show
+N: reaction->periodstart
+
+S: first_dice_roll
+S: show
+N: reaction->diceroll
+
+LOOP:
+
+  S: diceroll
+  S: show
+  C: reaction->diceroll
+
+  U: player_move
+  S: move_player
+    0: [*Move*, swap]
+  S: show
+
+  U: player_move
+  S: move_player
+    0: [*Move*, undo]
+  S: show
+
+  U: player_move
+  S: move_player
+    0: [confirm, undo]
+  S: show
+
+  *Wait*
+
+  S: diceroll
+  S: show
+  C: reaction->diceroll
+
+  *Wait*
+
+  S: move?
+  C: move
+    0: This
+    1: OnBackgammon_Dice
+    2: minDice
+    3: maxDice
+  S: move
+  S: move1
+  S: show
+
+  *Wait*
+
+  S: move2
+  S: show
+
+  *Wait*
+
+S: periodend
+N: reaction->periodend
+
+S: gameend
+N: reaction->gameend
+
+--]]
+
+
+BackgammonRecorder
+  :init
+  :move
+  :unmove
+  :initColor
+  :confirm
+  :getPosition
+
+  *MoveFormat
+    -table moves = [Move | NoMove]
+    *Move = {
+      dice      = int
+      from      = int
+      to        = int
+      caapture  = [true | false]
+    }
+    *NoMove = {
+      dice      = int
+    }
+
+
+OnBackgammonPlayer
+  0:  state => {1, 2, 3, 4, confirm}
+  1:  move1
+  2:  move2
+  3:  [move3]
+  4:  [move4]

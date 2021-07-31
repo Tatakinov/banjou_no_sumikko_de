@@ -6,6 +6,7 @@ name,盤上の隅っこで
 sakura.name,小宮由希
 kero.name,なし
 char2.name,盤面
+char3.name,BGボード
 
 craftman,tatakinov
 craftmanw,タタキノフ
