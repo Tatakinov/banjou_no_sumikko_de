@@ -297,7 +297,11 @@ function M:_talk(id, ...)
       str:append([[\_?]]):append(s):append([[\_?\n]])
     end
     str:append([[\_q]])
-    return str:tostring(), true
+    return {
+      Value = str:tostring(),
+      ErrorLevel  = "warning",
+      ErrorDescription  = string.gsub(err, "\n", " | "),
+    }, true
   end
   return value, talk.passthrough
 end
@@ -368,7 +372,7 @@ function M:saori(id)
     local t = {}
     for k, v in pairs(ret:headers()) do
       if string.match(k, "^Value%d+$") then
-        local num = tonumber(string.sub(k, 10))
+        local num = tonumber(string.sub(k, 6))
         t[num]  = v
       end
     end
