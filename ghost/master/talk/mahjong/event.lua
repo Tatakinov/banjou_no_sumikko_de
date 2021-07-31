@@ -1,7 +1,8 @@
 -- jong-rinrinのコードを参考にしています。
 
-local SS          = require("sakura_script")
+local AI          = require("talk.mahjong._ai")
 local Judgement   = require("talk.game._judgement")
+local SS          = require("sakura_script")
 
 local VERSION     = "UKAJONG/0.2"
 local RESPONSE_ID = "OnMahjongResponse"
@@ -10,6 +11,8 @@ local UMP_VERSION = "?"
 local ACTION      = {
   sutehai = "sutehai",
   yes     = "yes",
+  no      = "no",
+  ron     = "ron",
 }
 
 return {
@@ -23,8 +26,6 @@ return {
     id  = "OnMahjong_hello",
     content = function(shiori, ref)
       local __  = shiori.var
-      __("_Quiet", "Mahjong")
-      __("_InGame", true)
       return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1],
           "ump=" .. UMP_VERSION, "name=" .. NAME)
     end,
@@ -32,6 +33,9 @@ return {
   {
     id  = "OnMahjong_gamestart",
     content = function(shiori, ref)
+      local __  = shiori.var
+      __("_Quiet", "Mahjong")
+      __("_InGame", true)
       shiori:talk("OnSetFanID")
       return [[
 \0\s[座り_素]よろしくお願いします。
@@ -112,6 +116,8 @@ return {
   {
     id  = "OnMahjong_dora",
     content = function(shiori, ref)
+      local __  = shiori.var
+      __("_Mahjong_DoraIndicator", ref[2])
       return nil
     end,
   },
@@ -156,14 +162,21 @@ return {
     id  = "OnMahjong_sutehai?",
     content = function(shiori, ref)
       local __  = shiori.var
-      local dahai
       local tehai = __("_Mahjong_Tehai")
       table.sort(tehai, function(a, b)
         return string.reverse(a) < string.reverse(b)
       end)
       print("Tehai:", table.concat(tehai, ""))
-      -- TODO stub
-      --return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.sutehai, dahai)
+      local sutehai = AI.getBestSutehai(shiori, table.concat(tehai, ""), nil, nil, nil, __("_Mahjong_DoraIndicator"))
+      print("sutehai", sutehai)
+      --[[
+      -- failed requested actionとか言われてダメだった。
+      if sutehai then
+        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.sutehai, sutehai)
+      else
+        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
+      end
+      --]]
       return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
     end,
   },
@@ -171,7 +184,18 @@ return {
     id  = "OnMahjong_naku?",
     content = function(shiori, ref)
       -- TODO stub
-      return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
+      local has_ron = false
+      for i = 2, #ref do
+        if ref[i] == "ron" then
+          has_ron = true
+          break
+        end
+      end
+      if has_ron then
+        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.ron)
+      else
+        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.no)
+      end
     end,
   },
   {

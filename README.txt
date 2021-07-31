@@ -97,6 +97,7 @@ luacheck      | https://github.com/mpeterv/luacheck/
 argparse      | https://github.com/mpeterv/argparse
 luafilesystem | https://github.com/keplerproject/luafilesystem/
 lanes         | https://github.com/LuaLanes/lanes
+MahjongUtil   | https://github.com/nikolat/MahjongUtil
 
 
 ## 使用フォント
