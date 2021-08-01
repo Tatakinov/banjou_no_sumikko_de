@@ -112,7 +112,11 @@ local talk  = {
         str:append(SS():raise("OnBackgammonPlayer"))
       else
         __("_BGPlayer"):initColor(2)
-        str:append(SS():raise("OnBackgammonAI"))
+        str:append(SS():timerraise({
+          time  = 1000,
+          loop  = false,
+          ID  = "OnBackgammonAI"
+        }))
       end
       return shiori:talk("OnBackgammonRender") .. str:tostring()
     end,

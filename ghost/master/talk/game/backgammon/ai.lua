@@ -1,15 +1,21 @@
 local SS            = require("sakura_script")
 
+local function remainPiece(p)
+  local sum = 0
+  for i, v in ipairs(p) do
+    if p[i] > 0 then
+      sum = sum + v
+    end
+  end
+  return sum
+end
+
 local function pipCount(p)
   local sum = 0
   for i, v in ipairs(p) do
     sum = sum + i * v
   end
   return sum
-end
-
-local function diffPipCount(p, q)
-  return pipCount(p) - pipCount(q)
 end
 
 local function evalPoint(p)
@@ -27,22 +33,30 @@ local function evalPoint(p)
   return sum
 end
 
-local function evaluate(p, q)
+local function evalBlock(p)
   local sum = 0
   for _, v in ipairs(p) do
     if v == 1 then
-      sum = sum - 50
+      sum = sum - 10
     elseif v == 2 then
-      sum = sum + 50
+      sum = sum + 10
     elseif v == 3 then
-      sum = sum + 30
+      sum = sum + 5
     elseif v == 4 then
       sum = sum + 0
     elseif v >= 5 then
-      sum = sum - 30
+      sum = sum - 5
     end
   end
-  return sum + diffPipCount(p, q) + evalPoint(p)
+  return sum
+end
+
+local function evaluate(p, q)
+  local sum = evalBlock(p)          - evalBlock(q)
+  sum = sum + evalPoint(p)          - evalPoint(q)
+  sum = sum - pipCount(p)           + pipCount(q) -- pipカウントは相手が多ければ○
+  sum = sum - remainPiece(p)        + remainPiece(q) -- 残りの駒数も相手が多い方が良い
+  return sum
 end
 
 local function getBestMove(player, moves, dice, p)
@@ -220,9 +234,7 @@ return {
                     {v1, v2}
                   }
                 elseif evaluate(p[2], p[1]) == eval_value then
-                  table.insert(t, {
-                    {v1, v2}
-                  })
+                  table.insert(t, {v1, v2})
                 end
                 player:unmove()
               end
@@ -233,9 +245,7 @@ return {
                   {v1, "dance"}
                 }
               elseif evaluate(p[2], p[1]) == eval_value then
-                table.insert(t, {
-                  {v1, "dance"}
-                })
+                table.insert(t, {v1, "dance"})
               end
             end
             player:unmove()
