@@ -10,6 +10,22 @@ local function remainPiece(p)
   return sum
 end
 
+local function evalContinuous(p)
+  local continuous  = false
+  local sum = 0
+  for i = 1, #p do
+    if p[i] <= 1 then
+      continuous  = false
+    else
+      if continuous then
+        sum = sum + 10
+      end
+      continuous  = true
+    end
+  end
+  return sum
+end
+
 local function pipCount(p)
   local sum = 0
   for i, v in ipairs(p) do
@@ -35,9 +51,9 @@ end
 
 local function evalBlock(p)
   local sum = 0
-  for _, v in ipairs(p) do
+  for i, v in ipairs(p) do
     if v == 1 then
-      sum = sum - 10
+      sum = sum - 8 + math.floor(i / 3)
     elseif v == 2 then
       sum = sum + 10
     elseif v == 3 then
@@ -45,7 +61,7 @@ local function evalBlock(p)
     elseif v == 4 then
       sum = sum + 0
     elseif v >= 5 then
-      sum = sum - 5
+      sum = sum - 7 * (v - 4)
     end
   end
   return sum
@@ -54,8 +70,9 @@ end
 local function evaluate(p, q)
   local sum = evalBlock(p)          - evalBlock(q)
   sum = sum + evalPoint(p)          - evalPoint(q)
+  sum = sum + evalContinuous(p)     - evalContinuous(p)
   sum = sum - pipCount(p)           + pipCount(q) -- pipカウントは相手が多ければ○
-  sum = sum - remainPiece(p)        + remainPiece(q) -- 残りの駒数も相手が多い方が良い
+  sum = sum - remainPiece(p) * 15   + remainPiece(q) * 15 -- 残りの駒数も相手が多い方が良い
   return sum
 end
 
