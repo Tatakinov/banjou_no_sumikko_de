@@ -1,5 +1,21 @@
 local SS            = require("sakura_script")
 
+local function isPassed(p, q)
+  local index = 0
+  for i = 1, #p do
+    if p[i] > 0 then
+      index = i
+    end
+  end
+  local is_passed = true
+  for i = #q - index + 1, 25 do
+    if q[i] > 0 then
+      is_passed = false
+    end
+  end
+  return is_passed
+end
+
 local function remainPiece(p)
   local sum = 0
   for i, v in ipairs(p) do
@@ -34,7 +50,7 @@ local function pipCount(p)
   return sum
 end
 
-local function evalPoint(p)
+local function evalPoint(p, q)
   local point = {
     20, 20, 20, 20, 20, 19,
     18, 17, 16, 15, 14, 13,
@@ -42,6 +58,15 @@ local function evalPoint(p)
      6,  5,  4,  3,  2,  1,
      0,
   }
+  if isPassed(p, q) then
+    point = {
+    200, 200, 200, 200, 200, 200,
+    180, 170, 160, 150, 140, 130,
+    120, 110, 100,  90,  80,  70,
+     60,  50,  40,  30,  20,  10,
+      0,
+    }
+  end
   local sum = 0
   for i, v in ipairs(p) do
     sum = sum + point[i] * v
@@ -68,11 +93,19 @@ local function evalBlock(p)
 end
 
 local function evaluate(p, q)
-  local sum = evalBlock(p)          - evalBlock(q)
-  sum = sum + evalPoint(p)          - evalPoint(q)
-  sum = sum + evalContinuous(p)     - evalContinuous(p)
-  sum = sum - pipCount(p)           + pipCount(q) -- pipカウントは相手が多ければ○
-  sum = sum - remainPiece(p) * 15   + remainPiece(q) * 15 -- 残りの駒数も相手が多い方が良い
+  local sum = evalBlock(p)            - evalBlock(q)
+  sum = sum + evalPoint(p, q)         - evalPoint(q, p)
+  sum = sum + evalContinuous(p)       - evalContinuous(p)
+  -- pipカウントは相手が多ければ○
+  sum = sum - pipCount(p)             + pipCount(q)
+  if isPassed(p, q) then
+    -- 残りの駒数も相手が多い方が良い
+    -- evalPointに対抗するため乗数は大きめ
+    sum = sum - remainPiece(p) * 1000 + remainPiece(q) * 1000
+  else
+    -- 残りの駒数も相手が多い方が良い
+    sum = sum - remainPiece(p) * 15   + remainPiece(q) * 15
+  end
   return sum
 end
 
@@ -267,7 +300,7 @@ return {
             end
             player:unmove()
           end
-          local move  = t[math.random(#t)]
+          local moves = t[math.random(#t)]
           move1 = move[1]
           move2 = move[2]
         end
