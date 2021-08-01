@@ -269,7 +269,7 @@ local talk  = {
         __("_BG_Dice1", dice2)
         __("_BG_Dice2", dice1)
         return SS():raise("OnBackgammonPlayer")
-      else
+      elseif state > #dice then
         local player  = __("_BGPlayer"):confirm()
         __("_BG_Dice1", nil)
         __("_BG_Dice2", nil)
