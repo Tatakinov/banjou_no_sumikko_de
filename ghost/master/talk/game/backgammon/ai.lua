@@ -300,7 +300,7 @@ return {
             end
             player:unmove()
           end
-          local moves = t[math.random(#t)]
+          local move = t[math.random(#t)]
           move1 = move[1]
           move2 = move[2]
         end
