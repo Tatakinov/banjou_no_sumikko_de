@@ -37,13 +37,15 @@ local talk  = {
       local winner  = tonumber(ref[0])
       __("_Quiet", false)
       __("_InGame", false)
+      -- 終局後の右クリック対策
+      __("_BG_PlayerState", 1)
       if winner == 1 then
         return [[
-\0\s[ヮ]${User}の勝ちだよ。\p[3]\s[-1]
+\0\s[ヮ]${User}の勝ちだよ。
 ]]
       elseif winner == 2 then
         return [[
-\0\s[ドヤッ]わたしの勝ちだね！\p[3]\s[-1]
+\0\s[ドヤッ]わたしの勝ちだね！
 ]]
       end
     end,
