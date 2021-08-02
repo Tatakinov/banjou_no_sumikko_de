@@ -314,7 +314,7 @@ return {
       if __("_KeepBoardVisible") then
         return SS():p(0):s("素")
       else
-        return SS():p(0):s("素"):p(2):s(-1)
+        return SS():p(0):s("素"):p(2):s(-1):p(3):s(-1)
       end
     end,
   },
