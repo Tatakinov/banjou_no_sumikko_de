@@ -1,3 +1,20 @@
+local Socket  = require("socket")
+local client  = Socket.connect("localhost", 49801)
+if client then
+  print_orig  = print
+  print = function(...)
+    print_orig(...)
+    local size  = select("#", ...)
+    if size > 0 then
+      local str = tostring(select(1, ...))
+      for i = 2, size do
+        str = str .. "\t" .. tostring(select(i, ...))
+      end
+      client:send(str .. "\n")
+    end
+  end
+end
+
 -- うっかりグローバル変数を宣言したりするので確認用。
 setmetatable(_G, {
   __newindex  = function(t, k, v)
