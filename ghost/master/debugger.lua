@@ -14,7 +14,7 @@ package.cpath = path .. "?." .. ext .. ";" ..
                 path .. "lib/?." .. ext .. ";" ..
                 path .. "lib/?/init." .. ext
 
-print([[* Kagari/Kotori Debugger v1.0.0
+print([[* Kagari/Kotori Debugger v1.2.0
 * type "help" for more information
 
 ]])
@@ -26,6 +26,14 @@ local ShioriModule  = require("ukagaka_module.shiori")
 local Request       = ShioriModule.Request
 local Response      = ShioriModule.Response
 local Protocol      = ShioriModule.Protocol
+
+local function _load()
+  module.load(path)
+end
+
+local function _unload()
+  module.unload()
+end
 
 local function call(tbl)
   assert(tbl[1])
@@ -102,8 +110,6 @@ end
 
 -- main
 
-module.load(path)
-
 while true do
   io.write("> ")
   local line  = io.read("l")
@@ -129,13 +135,21 @@ while true do
   local command = table.remove(tbl, 1)
   if command == "help" then
     print([[Usage:
+    load
+      Load SHIORI
+    unload
+      Unload SHIORI
     call EventID [Argument0 Argument1 ...]
     dump var
     dump talk [id]
     lint [file | dir]
     exit]])
   end
-  if command == "call" then
+  if command == "load" then
+    _load()
+  elseif command == "unload" then
+    _unload()
+  elseif command == "call" then
     call(tbl)
   elseif command == "dump" then
     dump(tbl)
