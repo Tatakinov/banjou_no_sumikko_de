@@ -98,6 +98,7 @@ argparse      | https://github.com/mpeterv/argparse
 luafilesystem | https://github.com/keplerproject/luafilesystem/
 lanes         | https://github.com/LuaLanes/lanes
 MahjongUtil   | https://github.com/nikolat/MahjongUtil
+luasocket     | https://github.com/diegonehab/luasocket
 
 
 ## 使用フォント
