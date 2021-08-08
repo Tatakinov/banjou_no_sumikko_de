@@ -150,7 +150,7 @@ return {
       else
         local count = __("_RandomTalkCount") or 0
         count = count + 1
-        if count >= 60 then
+        if count >= (__("TalkInterval") or 180) then
           __("_RandomTalkCount", 0)
           return shiori:talkRandom()
         end

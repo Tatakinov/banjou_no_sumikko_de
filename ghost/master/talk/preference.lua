@@ -37,6 +37,23 @@ return {
         __("Strength", strength)
       end
 
+      local interval  = __("TalkInterval") or 60
+      if ref[0] == "喋る間隔" then
+        local interval_array  = {
+          60, 120, 180,
+        }
+        local index
+        for i, v in ipairs(interval_array) do
+          if interval == v then
+            index = i
+          end
+        end
+        assert(index)
+        index = index % #interval_array + 1
+        interval  = interval_array[index]
+        __("TalkInterval", interval)
+      end
+
       str:append([[
 \0
 \_q
@@ -55,6 +72,10 @@ return {
 
       str:append([=[\![*]あなたの棋力\_l[120,]]=])
       str:append(SS():q(strength, "OnPreference", "棋力"))
+      str:append(SS():n())
+
+      str:append([=[\![*]喋る間隔\_l[120,]]=])
+      str:append(SS():q(interval .. "秒", "OnPreference", "喋る間隔"))
       str:append(SS():n())
 
       str:append([[
