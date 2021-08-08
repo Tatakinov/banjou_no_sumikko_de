@@ -4,15 +4,30 @@ local AI          = require("talk.mahjong._ai")
 local Judgement   = require("talk.game._judgement")
 local SS          = require("sakura_script")
 
+local TIMEOUT     = 0.950
+
 local VERSION     = "UKAJONG/0.2"
 local RESPONSE_ID = "OnMahjongResponse"
 local NAME        = "小宮由希"
 local UMP_VERSION = "?"
 local ACTION      = {
   sutehai = "sutehai",
+  riichi  = "richi",
   yes     = "yes",
   no      = "no",
   ron     = "ron",
+  tsumo   = "tsumo",
+}
+
+local JIFU  = {
+  ["東"]  = "4z",
+  ["南"]  = "1z",
+  ["西"]  = "2z",
+  ["北"]  = "3z",
+  ["1z"]  = "2z",
+  ["2z"]  = "3z",
+  ["3z"]  = "4z",
+  ["4z"]  = "1z",
 }
 
 return {
@@ -36,6 +51,7 @@ return {
       local __  = shiori.var
       __("_Quiet", "Mahjong")
       __("_InGame", true)
+      __("_Mahjong_Jifu", JIFU[ref[2]])
       shiori:talk("OnSetFanID")
       return [[
 \0\s[座り_素]よろしくお願いします。
@@ -58,6 +74,11 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       __("_Mahjong_Kawa", {})
+      __("_Mahjong_Bafu", ref[2])
+      local jifu  = __("_Mahjong_Jifu")
+      __("_Mahjong_Jifu", JIFU[jifu])
+      __("_Mahjong_Kawa", {})
+      __("_Mahjong_Riichi", false)
       __("_CurrentJudgement", Judgement.equality)
       return [[
 \0\s[考慮中_互角]
@@ -79,15 +100,15 @@ return {
       end
       local score = __("_Mahjong_Score") or 0
       if ref[3] == "=" then
-        __("_Mahjong_Score", tonumber(ref[3]))
-      elseif ref == "+" then
-        local diff  = tonumber(ref[3])
+        __("_Mahjong_Score", tonumber(ref[4]))
+      elseif ref[3] == "+" then
+        local diff  = tonumber(ref[4])
         __("_Mahjong_Score", score + diff)
         return [[
 \0\s[形勢_勝勢]
 ]]
-      elseif ref == "-" then
-        local diff  = tonumber(ref[3])
+      elseif ref[3] == "-" then
+        local diff  = tonumber(ref[4])
         __("_Mahjong_Score", score - diff)
         if diff >= 8000 then
           return [[
@@ -142,12 +163,15 @@ return {
     id  = "OnMahjong_sutehai",
     content = function(shiori, ref)
       local __  = shiori.var
+      local kawa  = __("_Mahjong_Kawa")
+      if kawa[ref[2]] == nil then
+        kawa[ref[2]]  = {}
+      end
+      table.insert(kawa[ref[2]], ref[3])
       if ref[2] ~= NAME then
         return nil
       end
       local tehai = __("_Mahjong_Tehai")
-      local kawa  = __("_Mahjong_Kawa")
-      table.insert(kawa, ref[3])
       -- 手牌から捨てる
       for i, v in ipairs(tehai) do
         if v == ref[3] then
@@ -167,17 +191,41 @@ return {
         return string.reverse(a) < string.reverse(b)
       end)
       print("Tehai:", table.concat(tehai, ""))
-      local sutehai = AI.getBestSutehai(shiori, table.concat(tehai, ""), nil, nil, nil, __("_Mahjong_DoraIndicator"))
+      local start   = os.clock()
+      local sutehai, riichi, tsumo = AI.getBestSutehai(shiori:saori("mahjong"), table.concat(tehai, ""), __("_Mahjong_Kawa"), __("_Mahjong_Bafu"), __("_Mahjong_Jifu"), __("_Mahjong_DoraIndicator"))
+      local finish  = os.clock()
+      -- CPU時間での計算だがシングルスレッドなのでほぼ実時間…？
+      if TIMEOUT < finish - start then
+        -- サーバー側がタイムアウトと認識してレスポンスを無視するが、
+        -- うっかり次の巡目の時に送ってしまったらまずいので
+        -- 送るのを抑制する。
+        print("Timeout")
+        return nil
+      end
+      if tsumo then
+        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.tsumo)
+      end
+      if __("_Mahjong_Riichi") then
+        sutehai = __("_Mahjong_Tsumo")
+      end
       print("sutehai", sutehai)
-      --[[
-      -- failed requested actionとか言われてダメだった。
-      if sutehai then
+      ---[[
+      if riichi then
+        print("riichi!")
+        --テンパイ(多分)の時にリーチ宣言すると
+        --サーバーのcanRichiがfalseらしい。
+        --自摸る時の処理のバグでサーバーとこちら側で手牌が違うのか、
+        --実はテンパイじゃないのか謎。
+        --原因究明中。
+        --return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.riichi, sutehai)
+        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
+      elseif sutehai then
         return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.sutehai, sutehai)
       else
         return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
       end
       --]]
-      return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
+      --return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
     end,
   },
   {
@@ -207,7 +255,13 @@ return {
   {
     id  = "OnMahjong_say",
     content = function(shiori, ref)
+      local __  = shiori.var
       if ref[2] == NAME then
+        if ref[3] == "richi" then
+          -- サーバー側のAIでリーチした場合ここで捉えるしかない？
+          print("riichi!")
+          __("_Mahjong_Riichi", true)
+        end
         local str = {
           chi     = [[チー]],
           pon     = [[ポン]],
