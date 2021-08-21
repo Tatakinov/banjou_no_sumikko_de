@@ -318,5 +318,14 @@ return {
       end
     end,
   },
+  {
+    id  = "OnLanguageChange",
+    content = function(shiori, ref)
+      local __  = shiori.var
+      print("lang", ref[0])
+      print("lang", ref[1])
+      __("_Language", ref[0])
+    end,
+  },
 }
 
