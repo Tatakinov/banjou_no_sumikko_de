@@ -33,14 +33,12 @@ function M:_init()
 
   self._data   = Talk()
 
-  self._property   = {}
-
   self._chain = {}
 end
 
 function M:load(path)
-  self:property("path", path)
   self.var:load(path)
+  self.var("_path", path)
 
   local __  = self.var
   __("_DictError", {})
@@ -172,14 +170,6 @@ function M:request(req)
   return res
 end
 
-function M:property(key, ...)
-  local ret = self._property[key]
-  if select("#", ...) > 0 then
-    self._property[key] = select(1, ...)
-  end
-  return ret
-end
-
 function M:autoLink(x, id)
   local ret = x
   local _invalid  = 0
@@ -271,14 +261,21 @@ function M:_talk(id, ...)
   else
     tbl = Misc.toArray(Misc.toArgs(...))
   end
+  local language  = self.var("_Language") or ""
   --print("shiori:talk:     " .. tostring(id))
   --print("shiori:talk.tbl: " .. type(tbl))
   local talk = self._chain[id]
   if talk == nil or coroutine.status(talk.content) == "dead" then
     talk  = self._data:get(id) or {}
-    if type(talk.content) == "function" then
+    local content = talk["content_" .. language] or talk.content
+    if type(content) == "function" then
       talk  = {
-        content = coroutine.create(talk.content),
+        content = coroutine.create(content),
+        passthrough = talk.passthrough,
+      }
+    else
+      talk  = {
+        content = content,
         passthrough = talk.passthrough,
       }
     end
