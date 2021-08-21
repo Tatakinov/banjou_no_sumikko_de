@@ -209,23 +209,14 @@ return {
         sutehai = __("_Mahjong_Tsumo")
       end
       print("sutehai", sutehai)
-      ---[[
       if riichi then
         print("riichi!")
-        --テンパイ(多分)の時にリーチ宣言すると
-        --サーバーのcanRichiがfalseらしい。
-        --自摸る時の処理のバグでサーバーとこちら側で手牌が違うのか、
-        --実はテンパイじゃないのか謎。
-        --原因究明中。
-        --return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.riichi, sutehai)
-        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
+        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.riichi, sutehai)
       elseif sutehai then
         return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.sutehai, sutehai)
       else
         return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
       end
-      --]]
-      --return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
     end,
   },
   {
