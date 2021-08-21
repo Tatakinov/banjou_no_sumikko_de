@@ -136,14 +136,19 @@ local function getNecessaryHaiMap(saori, hai)
 end
 
 -- TODO 高速化
-local function getNecessaryHaiMapMin(saori, hai, kawa)
+local function getNecessaryHaiMapMin(saori, hai, kawa, current_shanten)
   local shanten_table = {}
   local map = {}
   local array_hai = strToArray(hai)
+  --[[
   local ret = saori("shanten_normal", table.concat(array_hai))
   local current_shanten = tonumber(ret())
+  --]]
   local current_hai_list  = Clone(hai_list)
   local start = os.clock()
+  for _, v in ipairs(array_hai) do
+    current_hai_list[v] = current_hai_list[v] - 1
+  end
   for _, v in pairs(kawa) do
     for _, v in ipairs(v) do
       current_hai_list[v] = current_hai_list[v] - 1
@@ -155,6 +160,7 @@ local function getNecessaryHaiMapMin(saori, hai, kawa)
     -- 既に算出済みの捨て牌はスルー
     local shanten = shanten_table[table.concat(hai)]
     if shanten == nil then
+      local isolated_tiles_base = getIsolatedTiles(hai)
       local ret = saori("shanten_normal", table.concat(hai))
       shanten = tonumber(ret())
       shanten_table[table.concat(hai)]  = shanten
@@ -172,19 +178,20 @@ local function getNecessaryHaiMapMin(saori, hai, kawa)
               table.insert(hai, k)
               sortHai(hai)
               local isolated_tiles  = getIsolatedTiles(hai)
-              -- 孤立牌足して向聴数進むことは無いものとする
-              if #isolated_tiles == 0 then
-                local current_shanten = shanten_table[table.concat(hai)]
+              -- 孤立牌を足して向聴数が進むことは無いものとする
+              if #isolated_tiles <= #isolated_tiles_base then
+                local hai_str = table.concat(hai)
+                local current_shanten = shanten_table[hai_str]
                 if current_shanten == nil then
-                  local ret = saori("shanten_normal", table.concat(hai))
+                  local ret = saori("shanten_normal", hai_str)
                   -- 計算に時間が掛かりすぎていたらタイムアウトする
                   if os.clock() - start > TIMEOUT then
                     return nil
                   end
                   current_shanten = tonumber(ret()) or 14
-                  shanten_table[table.concat(hai)]  = current_shanten
+                  shanten_table[hai_str]  = current_shanten
                 else
-                  print("hit!")
+                  --print("hit!")
                 end
                 if current_shanten < shanten then
                   table.insert(list, k)
@@ -195,7 +202,7 @@ local function getNecessaryHaiMapMin(saori, hai, kawa)
         end
       end
     else
-      print("hit!")
+      --print("hit!")
     end
   end
   return map
@@ -257,14 +264,14 @@ function M.getBestSutehai(saori, hai, kawa, round, seat, dora_indicator)
   end
   print("Shanten", min_shanten)
   -- 有効牌？の抽出
-  local necessary_hai_map = getNecessaryHaiMapMin(saori, hai, kawa)
+  local necessary_hai_map = getNecessaryHaiMapMin(saori, hai, kawa, min_shanten)
   -- タイムアウトしていた場合はnilを返す
   if necessary_hai_map == nil then
     return nil
   end
   print("-- necessary --")
   for k, v in pairs(necessary_hai_map) do
-    print(k, "Shanten", v.shanten)
+    --print(k, "Shanten", v.shanten)
     print(k, "=>", table.concat(v.list, ", "))
   end
 
