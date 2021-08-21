@@ -367,7 +367,7 @@ return {
     id  = "OnCopyKifuToClipboard",
     content = function(shiori, tbl)
       local player        = KifuPlayer.getInstance()
-      local hwnd  = shiori:property("hwnd")
+      local hwnd  = __("_hwnd")
       if Clipboard.set(hwnd.ghost[1], player:toKIF("Shift_JIS")) then
         return [[\0クリップボードに棋譜をコピーしたよ。]]
       else

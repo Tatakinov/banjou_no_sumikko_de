@@ -4,6 +4,7 @@ return {
   {
     id = "hwnd",
     content = function(shiori, ref)
+      local __  = shiori.var
       local sep = string.char(0x01)
       local hwnd  = {
         ghost = {},
@@ -17,18 +18,20 @@ return {
         --print("balloon hwnd: " .. balloon)
         table.insert(hwnd.balloon, tonumber(balloon))
       end
-      shiori:property("hwnd", hwnd)
+      __("_hwnd", hwnd)
     end,
   },
   {
     id  = "uniqueid",
     content = function(shiori, ref)
-      shiori:property("uniqueid", ref[0])
+      local __  = shiori.var
+      __("_uniqueid", ref[0])
     end,
   },
   {
     id  = "otherghostname",
     content = function(shiori, ref)
+      local __  = shiori.var
       local otherghostname  = {}
       local cnt = 0
       for _, _ in pairs(ref) do
@@ -47,12 +50,13 @@ return {
           break
         end
       end
-      shiori:property("otherghostname", otherghostname)
+      __("_otherghostname", otherghostname)
     end,
   },
   {
     id  = "installedghostname",
     content = function(shiori, ref)
+      local __  = shiori.var
       local installedghostname  = {}
       local cnt = 0
       for _, _ in pairs(ref) do
@@ -65,7 +69,7 @@ return {
           break
         end
       end
-      shiori:property("installedghostname", installedghostname)
+      __("_installedghostname", installedghostname)
     end,
   },
 }

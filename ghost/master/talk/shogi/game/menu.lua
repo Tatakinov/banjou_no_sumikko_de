@@ -183,8 +183,8 @@ return {
     id  = "OnInitializeShogiEngine",
     content = function(shiori, ref)
       local __            = shiori.var
-      local shogi686_path = shiori:property("path") .. "engine\\shogi686\\shogi686.exe"
-      local sunfish4_path = shiori:property("path") .. "engine\\sunfish4\\sunfish_usi.exe"
+      local shogi686_path = __("_path") .. "engine\\shogi686\\shogi686.exe"
+      local sunfish4_path = __("_path") .. "engine\\sunfish4\\sunfish_usi.exe"
       local engine_list = {
         ["ほどほど"]={
           ["option"]={
@@ -310,7 +310,7 @@ return {
         },
       }
       __("成績", score_list)
-      local filename  = shiori:property("path") .. [[engine\version]]
+      local filename  = __("_path") .. [[engine\version]]
       --print("filename: " .. filename)
       local fh  = io.open(filename, "r")
       if fh then

@@ -271,6 +271,7 @@ return {
   {
     id  = "OnShogiEngineAdd",
     content = function(shiori, ref)
+      local __  = shiori.var
       local str = StringBuffer()
       if ref[0] == "open" then
         local path  = ref[2]
@@ -286,7 +287,7 @@ return {
           title   = "エンジン選択",
           filter  = "実行ファイル|*.exe|全てのファイル|*.*",
           id      = "OnShogiEngineAdd",
-          dir     = shiori:property("path") .. "engine",
+          dir     = __("_path") .. "engine",
         }))
       end
       return str:tostring()
@@ -315,7 +316,7 @@ return {
       local escaped = string.gsub(path, "\\", "\\\\")
       local engine  = {command = path, option = {}}
       local process = shiori:saori("process")
-      process("uniqueid", shiori:property("uniqueid"))
+      process("uniqueid", __("_uniqueid"))
       local ret = process("spawn", path, nil, true, "OnShogiEngineChildProcess")
       __("_EnginePID", ret())
 
@@ -515,7 +516,7 @@ return {
         return str:tostring()
       end
       local process = shiori:saori("process")
-      process("uniqueid", shiori:property("uniqueid"))
+      process("uniqueid", __("_uniqueid"))
       local ret = process("spawn", engine.command, nil, true, "OnShogiEngineChildProcess")
       __("_EnginePID", ret())
 

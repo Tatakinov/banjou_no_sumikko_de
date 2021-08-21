@@ -26,7 +26,7 @@ return {
       local __  = shiori.var
       local str = StringBuffer()
       local player  = KifuPlayer.getInstance()
-      local filename  = shiori:property("path") .. ref[0]
+      local filename  = __("_path") .. ref[0]
       __("_Quiet", "Shogi")
       print("file load: " .. filename)
       player:load(filename)

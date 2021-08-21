@@ -217,13 +217,6 @@ function(shiori, ref)
 end
 
 
-#### shiori:property(key)
-
-hwndとか起動中のゴースト一覧などを保持
-値を配列に入れているがluaの配列は「1」から始まるので
-ベースウェアとは値がずれるので注意。
-
-
 #### shiori.var(key)
 
 SHIORI内で呼び出せる変数を保持する関数。
