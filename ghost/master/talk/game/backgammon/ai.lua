@@ -29,16 +29,16 @@ local function remainPiece(p)
 end
 
 local function evalContinuous(p)
-  local continuous  = false
+  local continuous  = 0
   local sum = 0
   for i = 1, #p do
     if p[i] <= 1 then
-      continuous  = false
+      continuous  = 0
     else
+      continuous  = continuous + 1
       if continuous then
-        sum = sum + 10
+        sum = sum + 5 + continuous
       end
-      continuous  = true
     end
   end
   return sum
@@ -62,11 +62,11 @@ local function evalPoint(p, q)
   }
   if isPassed(p, q) then
     point = {
-    200, 200, 200, 200, 200, 200,
-    180, 170, 160, 150, 140, 130,
-    120, 110, 100,  90,  80,  70,
-     60,  50,  40,  30,  20,  10,
-      0,
+      200, 200, 200, 200, 200, 200,
+      180, 170, 160, 150, 140, 130,
+      120, 110, 100,  90,  80,  70,
+       60,  50,  40,  30,  20,  10,
+        0,
     }
   end
   local sum = 0
@@ -94,10 +94,31 @@ local function evalBlock(p)
   return sum
 end
 
+local function evalBlot(p, q)
+  local eval_table  = {
+    11, 12, 13, 14, 15, 17,
+     6,  6,  5,  3,  2,  1,
+  }
+  local sum = 0
+  for i = 1, 24 do
+    if p[i] == 1 then
+      for j = 1, 12 do
+        local enemy = q[25 - i + j] or 0
+        if enemy > 0 then
+          -- pip数がそこまで増えない場所では気にしなくてもいいように。
+          sum = sum - math.floor(eval_table[j] / i)
+        end
+      end
+    end
+  end
+  return sum
+end
+
 local function evaluate(p, q)
   local sum = evalBlock(p)            - evalBlock(q)
   sum = sum + evalPoint(p, q)         - evalPoint(q, p)
   sum = sum + evalContinuous(p)       - evalContinuous(p)
+  sum = sum + evalBlot(p, q)          - evalBlot(q, p)
   -- pipカウントは相手が多ければ○
   sum = sum - pipCount(p)             + pipCount(q)
   if isPassed(p, q) then
@@ -107,6 +128,14 @@ local function evaluate(p, q)
   else
     -- 残りの駒数も相手が多い方が良い
     sum = sum - remainPiece(p) * 15   + remainPiece(q) * 15
+  end
+  -- passするべきかの判断用
+  if isPassed(p, q) then
+    if pipCount(p) <= pipCount(q) then
+      sum = sum + 100
+    else
+      sum = sum - 100
+    end
   end
   return sum
 end
