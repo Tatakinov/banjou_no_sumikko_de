@@ -4,7 +4,7 @@ local AI          = require("talk.mahjong._ai")
 local Judgement   = require("talk.game._judgement")
 local SS          = require("sakura_script")
 
-local TIMEOUT     = 0.950
+local TIMEOUT     = 1.950
 
 local VERSION     = "UKAJONG/0.2"
 local RESPONSE_ID = "OnMahjongResponse"
@@ -207,6 +207,7 @@ return {
       end
       if __("_Mahjong_Riichi") then
         sutehai = __("_Mahjong_Tsumo")
+        riichi  = false
       end
       print("sutehai", sutehai)
       if riichi then
