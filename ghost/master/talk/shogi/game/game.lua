@@ -240,8 +240,8 @@ return {
         return num
       end
 
-      local getComment  = function(array, num)
-        return array[num % #array + 1]
+      local getComment  = function(array, prng)
+        return array[prng(#array)]
       end
 
       local prng  = Rand(genHash(tostring(player:getMoveFormat(0))))
@@ -262,12 +262,12 @@ return {
       local str = StringBuffer(SS():p(0))
       for i, v in ipairs(judgement) do
         if i > 1 then
-          str:append(getComment(append_comment, prng()))
+          str:append(getComment(append_comment, prng))
         end
         if v.sign == 1 then
-          str:append(getComment(minus_comment, prng()):format(v.n) .. "\\n")
+          str:append(getComment(minus_comment, prng):format(v.n) .. "\\n")
         else
-          str:append(getComment(plus_comment, prng()):format(v.n) .. "\\n")
+          str:append(getComment(plus_comment, prng):format(v.n) .. "\\n")
         end
       end
 
@@ -286,14 +286,14 @@ return {
 
       local possesion  = dist2[1] - dist2[3]
       if possesion > 0 then
-        str:append(getComment(possesion_plus_comment, prng()) .. "\\n")
+        str:append(getComment(possesion_plus_comment, prng) .. "\\n")
       elseif possesion < 0 then
-        str:append(getComment(possesion_minus_comment, prng()) .. "\\n")
+        str:append(getComment(possesion_minus_comment, prng) .. "\\n")
       else
         if #judgement > 0 then
-          str:append(getComment(possesion_both_comment, prng()) .. "\\n")
+          str:append(getComment(possesion_both_comment, prng) .. "\\n")
         else
-          str:append(getComment(possesion_equal_comment, prng()) .. "\\n")
+          str:append(getComment(possesion_equal_comment, prng) .. "\\n")
         end
       end
       local natural_plus_validity_comment = {
@@ -318,21 +318,21 @@ return {
       if validity > 0 then
         -- わざわざコメントするまでもなさそうなのでコメントアウト。
         if last_judge > 0 then
-          --str:append(getComment(natural_plus_validity_comment, prng()) .. "\\n")
+          --str:append(getComment(natural_plus_validity_comment, prng) .. "\\n")
         else
-          --str:append(getComment(natural_minus_validity_comment, prng()) .. "\\n")
+          --str:append(getComment(natural_minus_validity_comment, prng) .. "\\n")
         end
       elseif validity < 0 then
         if last_judge > 0 then
-          str:append(getComment(unnatural_plus_validity_comment, prng()) .. "\\n")
+          str:append(getComment(unnatural_plus_validity_comment, prng) .. "\\n")
         else
-          str:append(getComment(unnatural_minus_validity_comment, prng()) .. "\\n")
+          str:append(getComment(unnatural_minus_validity_comment, prng) .. "\\n")
         end
       else
         if #judgement == 0 then
-          str:append(getComment(madamada_validity_comment, prng()) .. "\\n")
+          str:append(getComment(madamada_validity_comment, prng) .. "\\n")
         elseif last_judge == 0 then
-          str:append(getComment(nankai_hawks_validity_comment, prng()) .. "\\n")
+          str:append(getComment(nankai_hawks_validity_comment, prng) .. "\\n")
         else
           -- TODO
         end
@@ -342,7 +342,7 @@ return {
         "形勢が二転三転する将棋だったね。",
       }
       if turn_count > 3 then
-        str:append(getComment(turn_comment, prng()) .. "\\n")
+        str:append(getComment(turn_comment, prng) .. "\\n")
       end
 
       if #point_move > 0 then
