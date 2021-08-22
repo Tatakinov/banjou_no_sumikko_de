@@ -12,7 +12,7 @@ local Clone = require("clone")
 
 local M = {}
 
-local TIMEOUT = 1
+local TIMEOUT = 2
 
 local hai_list  = {}
 for i = 1, 9 do
