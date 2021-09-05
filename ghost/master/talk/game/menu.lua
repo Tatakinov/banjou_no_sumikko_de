@@ -30,6 +30,24 @@ return {
 \_l[0,0]
 今うちの部室で出来るのはこれだけだけど…@。\n
 ]],
+    content_English = [[
+\p[3]\s[-1]
+\p[2]\s[-1]
+\0\s[きょとん]
+\_q
+\n
+\n
+\![*]\q[Backgammon,バックギャモンで遊ぶ]\n
+\n
+\n
+\n
+\n
+\n
+\![*]\q[Return,メニュー] \![*]\q[Close,閉じる]
+\_q
+\_l[0,0]
+This is the only game we can play in our club room now.\n
+]],
   },
   {
     id  = "麻雀で遊ぶ",

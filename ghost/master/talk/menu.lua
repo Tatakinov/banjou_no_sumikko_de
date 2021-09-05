@@ -20,6 +20,25 @@ return {
 \_l[0,0]
 何かな？\n
 ]],
+    content_English = [[
+\p[3]\s[-1]
+\p[2]\s[-1]
+\p[0]\s[素]
+\_q
+\n
+\n
+\![*]\q[Play shogi,OnShogiGameMenu]\n
+\![*]\q[将棋のこと色々教えて,将棋メニュー]\n
+\![*]\q[Play other games,他のゲームしたい]\n
+\n
+\![*]\q[Preference,OnPreference]\n
+\n
+\![*]\q[Close,閉じる]
+\_q
+
+\_l[0,0]
+What?\n
+]],
 --\![*]\q[他ゴーストの棋風を聞きたい,OnSelectShogiStyleOfGhost]\n
   },
 }

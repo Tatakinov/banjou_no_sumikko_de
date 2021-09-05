@@ -54,6 +54,18 @@ return {
         __("TalkInterval", interval)
       end
 
+      str:append(shiori:talk("OnPreferenceText"))
+
+      return str
+    end,
+  },
+  {
+    id  = "OnPreferenceText",
+    content = function(shiori, ref)
+      local __  = shiori.var
+      local strength  = __("Strength")
+      local interval  = __("TalkInterval") or 60
+      local str       = StringBuffer()
       str:append([[
 \0
 \_q
@@ -84,6 +96,56 @@ return {
 \_q
 \_l[0,0]
 設定の変更が行えるよ。
+]])
+      print("Test", tostring(str))
+      return str
+    end,
+    content_English = function(shiori, ref)
+      local __  = shiori.var
+      local strength  = __("Strength")
+      local strength_str  = {
+        ["無"]      = "None",
+        ["入門"]    = "15 Kyu",
+        ["初級"]    = "10 Kyu",
+        ["中級"]    = " 5 Kyu",
+        ["上級"]    = " 2 Kyu",
+        ["有段"]    = " 2 Dan",
+        ["高段"]    = " 5 Dan",
+        ["観る将"]  = "spectator",
+        ["不明"]    = "unknown",
+      }
+      local interval  = __("TalkInterval") or 60
+      local str = StringBuffer()
+      str:append([[
+\0
+\_q
+\n
+\n
+\n
+]])
+      local mode_str  = {"Fast(unstable)", "Slow(stable)"}
+      str:append([=[\![*]Render mode\_l[160,]]=])
+      str:append(SS():q(mode_str[__("描画モード")], "OnPreference", "描画モード"))
+      str:append(SS():n())
+
+      str:append([=[\![*]]=])
+      str:append(SS():q("Clear render info(b)", "OnPreference", "描画情報のクリア"))
+      str:append(SS():n())
+
+      str:append([=[\![*]Your shogi strength\_l[160,]]=])
+      str:append(SS():q(strength_str[strength], "OnPreference", "棋力"))
+      str:append(SS():n())
+
+      str:append([=[\![*]Talk interval\_l[160,]]=])
+      str:append(SS():q(interval .. "sec", "OnPreference", "喋る間隔"))
+      str:append(SS():n())
+
+      str:append([[
+\n
+\![*]\q[Return,メニュー] \![*]\q[Close,閉じる]
+\_q
+\_l[0,0]
+You can change preferences.
 ]])
       return str
     end,
