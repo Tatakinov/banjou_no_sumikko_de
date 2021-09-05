@@ -14,22 +14,23 @@ local M = {}
 
 local TIMEOUT = 2
 
-local hai_list  = {}
+local hai_list        = {}
+local remain_hai_list = {}
 for i = 1, 9 do
-  --table.insert(hai_list, i .. "m")
-  hai_list[i .. "m"]  = 4
+  table.insert(hai_list, i .. "m")
+  remain_hai_list[i .. "m"]  = 4
 end
 for i = 1, 9 do
-  --table.insert(hai_list, i .. "p")
-  hai_list[i .. "p"]  = 4
+  table.insert(hai_list, i .. "p")
+  remain_hai_list[i .. "p"]  = 4
 end
 for i = 1, 9 do
-  --table.insert(hai_list, i .. "s")
-  hai_list[i .. "s"]  = 4
+  table.insert(hai_list, i .. "s")
+  remain_hai_list[i .. "s"]  = 4
 end
 for i = 1, 7 do
-  --table.insert(hai_list, i .. "z")
-  hai_list[i .. "z"]  = 4
+  table.insert(hai_list, i .. "z")
+  remain_hai_list[i .. "z"]  = 4
 end
 
 local function split(str, delim)
@@ -119,14 +120,14 @@ local function getNecessaryHaiMap(saori, hai)
         shanten = shanten,
         list    = list,
       }
-      for i = 1, #hai_list do
-        if hai_list[i] ~= sutehai then
+      for i = 1, #remain_hai_list do
+        if remain_hai_list[i] ~= sutehai then
           local hai = Clone(hai)
-          table.insert(hai, hai_list[i])
+          table.insert(hai, remain_hai_list[i])
           sortHai(hai)
           local ret = saori("shanten_normal", table.concat(hai))
           if (tonumber(ret() or 14)) < shanten then
-            table.insert(list, hai_list[i])
+            table.insert(list, remain_hai_list[i])
           end
         end
       end
@@ -136,24 +137,34 @@ local function getNecessaryHaiMap(saori, hai)
 end
 
 -- TODO 高速化
-local function getNecessaryHaiMapMin(saori, hai, kawa, current_shanten)
+local function getNecessaryHaiMapMin(saori, hai, kawa, furo, current_shanten)
   local shanten_table = {}
   local map = {}
   local array_hai = strToArray(hai)
-  --[[
-  local ret = saori("shanten_normal", table.concat(array_hai))
-  local current_shanten = tonumber(ret())
-  --]]
-  local current_hai_list  = Clone(hai_list)
+  local current_hai_list  = Clone(remain_hai_list)
   local start = os.clock()
+  -- 手牌、捨て牌、他家が副露した牌は有効牌候補から削る
   for _, v in ipairs(array_hai) do
     current_hai_list[v] = current_hai_list[v] - 1
   end
   for _, v in pairs(kawa) do
-    for _, v in ipairs(v) do
-      current_hai_list[v] = current_hai_list[v] - 1
+    if type(v) == "table" then
+      for _, v in ipairs(v) do
+        current_hai_list[v] = current_hai_list[v] - 1
+      end
     end
   end
+  --[[
+  -- どの牌が露出したのか今の実装分では分かってないのでコメントアウト
+  for _, v in pairs(furo) do
+    for _, v in ipairs(v) do
+      local hai = strToArray(v)
+      for _, v in ipairs(hai) do
+        current_hai_list[v] = current_hai_list[v] - 1
+      end
+    end
+  end
+  --]]
   for i = 1, #array_hai do
     local hai = Clone(array_hai)
     local sutehai = table.remove(hai, i)
@@ -225,13 +236,143 @@ local function getUnnecessaryHaiList(saori, hai)
   return unnecessary_hai_list
 end
 
-function M.getBestSutehai(saori, hai, kawa, round, seat, dora_indicator)
+local function getFoldSutehai(hai, safe, kawa, jumme)
+  local hai = strToArray(hai)
+  local tmp = {}
+  for _, v in ipairs(hai) do
+    tmp[v]  = true
+  end
+  local hai = {}
+  for k, _ in pairs(tmp) do
+    table.insert(hai, k)
+  end
+  local list  = setmetatable({}, {__index = function() return 0 end})
+  --print("jumme", jumme)
+  --print("#kawa", #kawa)
+  local size  = 0
+  for _, v in pairs(safe) do
+    size  = size  + 1
+    for _, v in ipairs(v) do
+      list[v] = list[v] + 1
+    end
+  end
+  --[[
+  for i = size, 2 do
+    for _, v in ipairs(hai_list) do
+      list[v] = list[v] + 1
+    end
+  end
+  --]]
+  --[=[
+  for i = jumme, #kawa do
+    --print("kawa[i]", kawa[i])
+    list[kawa[i]] = 3
+  end
+  --]=]
+  if #jumme == 1 then
+    for i = jumme[1], #kawa do
+      --print("kawa[i]", kawa[i])
+      if list[kawa[i]] < 1 then
+        list[kawa[i]] = 1
+      end
+    end
+  elseif #jumme == 2 then
+    for i = jumme[1], jumme[2] - 1 do
+      --print("kawa[i]", kawa[i])
+      if list[kawa[i]] < 1 then
+        list[kawa[i]] = 1
+      end
+    end
+    for i = jumme[2], #kawa do
+      --print("kawa[i]", kawa[i])
+      if list[kawa[i]] < 2 then
+        list[kawa[i]] = 2
+      end
+    end
+  elseif #jumme == 3 then
+    for i = jumme[1], jumme[2] - 1 do
+      --print("kawa[i]", kawa[i])
+      if list[kawa[i]] < 1 then
+        list[kawa[i]] = 1
+      end
+    end
+    for i = jumme[2], jumme[3] - 1 do
+      --print("kawa[i]", kawa[i])
+      if list[kawa[i]] < 2 then
+        list[kawa[i]] = 2
+      end
+    end
+    for i = jumme[3], #kawa do
+      --print("kawa[i]", kawa[i])
+      if list[kawa[i]] < 3 then
+        list[kawa[i]] = 3
+      end
+    end
+  end
+  local safe_hai_list = {}
+  for tile, safe_value in pairs(list) do
+    for _, v in ipairs(hai) do
+      if tile == v then
+        table.insert(safe_hai_list, {
+          tile  = tile,
+          safe  = safe_value,
+        })
+      end
+    end
+  end
+  local safe_value  = 0
+  local best_safe_hai_list  = {}
+  for _, v in ipairs(safe_hai_list) do
+    if safe_value < v.safe then
+      safe_value  = v.safe
+      best_safe_hai_list  = {
+        v.tile,
+      }
+    elseif safe_value == v.safe then
+      table.insert(best_safe_hai_list, v.tile)
+    end
+  end
+  --
+  print("-- best fold hai --")
+  print("safe_value", safe_value)
+  for i, v in ipairs(best_safe_hai_list) do
+    print(i, v)
+  end
+  if #best_safe_hai_list > 0 then
+    return best_safe_hai_list[math.random(#best_safe_hai_list)]
+  end
+end
+
+function M.getBestSutehai(saori, hai, kawa, round, seat, dora_indicator, furo, safe, riichi_others)
   local dora  = {}
   --[[
   for _, v in ipairs(strToArray(dora_indicator)) do
     table.insert(dora, indicator2dora(v))
   end
   --]]
+
+  local list  = saori("shanten_normal", hai)
+  local min_shanten = tonumber(list())
+  -- 自摸ってたらすぐに返す。
+  if min_shanten == -1 then
+    return nil, nil, true
+  -- 一向聴未満で他家がリーチをしてたら降りる
+  elseif min_shanten > 1 then
+    local jumme = {}
+    for _, v in pairs(riichi_others) do
+      table.insert(jumme, v)
+    end
+    table.sort(jumme)
+    if #jumme > 0 then
+      print("Ori?")
+      local sutehai = getFoldSutehai(hai, safe, kawa, jumme)
+      if sutehai then
+        print("Ori")
+        return sutehai
+      end
+    end
+  end
+  print("Shanten", min_shanten)
 
   -- 孤立牌は優先的に切る
   local isolated_tiles = getIsolatedTiles(strToArray(hai))
@@ -250,21 +391,14 @@ function M.getBestSutehai(saori, hai, kawa, round, seat, dora_indicator)
     -- 国士無双みたいな孤立牌がある手が成立しなくなるが
     -- このAIでは一般手しか狙わないので問題ない。
     if #isolated_honours > 0 then
-      return isolated_honours[math.random(#isolated_honours)]
+      return isolated_honours[math.random(#isolated_honours)], min_shanten == 0
     else
-      return isolated_tiles[math.random(#isolated_tiles)]
+      return isolated_tiles[math.random(#isolated_tiles)], min_shanten == 0
     end
   end
 
-  local list  = saori("shanten_normal", hai)
-  local min_shanten = tonumber(list())
-  -- 自摸ってたらすぐに返す。
-  if min_shanten == -1 then
-    return nil, nil, true
-  end
-  print("Shanten", min_shanten)
   -- 有効牌？の抽出
-  local necessary_hai_map = getNecessaryHaiMapMin(saori, hai, kawa, min_shanten)
+  local necessary_hai_map = getNecessaryHaiMapMin(saori, hai, kawa, furo, min_shanten)
   -- タイムアウトしていた場合はnilを返す
   if necessary_hai_map == nil then
     return nil
