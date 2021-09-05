@@ -294,11 +294,10 @@ function M:_talk(id, ...)
       str:append([[\_?]]):append(s):append([[\_?\n]])
     end
     str:append([[\_q]])
-    return {
-      Value = str:tostring(),
-      ErrorLevel  = "warning",
-      ErrorDescription  = string.gsub(err, "\n", " | "),
-    }, true
+    str.Value = str:tostring()
+    str.ErrorLevel  = "warning"
+    str.ErrorDescription  = string.gsub(err, "\n", " | ")
+    return str, true
   end
   return value, talk.passthrough
 end
