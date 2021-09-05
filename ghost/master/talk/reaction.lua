@@ -120,4 +120,54 @@ return {
 ]]
     end,
   },
+  {
+    id  = "0LegPoke",
+    content = function(shiori, ref)
+      local __  = shiori.var
+      local shibire = __("_SeizaShibire") or 0
+      -- しびれは1分くらい
+      if os.time() - shibire < 60 then
+        return [[
+\0
+\s[照れびっくり]ひゃんっ！@
+\s[-1]\_w[1000]
+\s[照れ]……バ、バカ！
+]]
+      end
+      return [[
+\0
+\s[きょとん]
+え、な、何…@？
+]]
+    end,
+  },
+  {
+    id  = "0Legなで",
+    content = function(shiori, ref)
+      local __  = shiori.var
+      local shibire = __("_SeizaShibire") or 0
+      -- しびれは1分くらい
+      if os.time() - shibire < 60 then
+        return [[
+\0
+\s[照れ><]……っ！@……っ！！！@
+\s[-1]\_w[2000]
+\s[照れ]もう知らないからねっ！@バカ！@\-
+]]
+      end
+      return [[
+\0
+\s[呆れ]……${User}って、足フェチ？@\n
+\s[ほっ]まぁ、${User}が触りたいなら触って良いけどね…@。
+]],
+[[
+\0
+\s[きょとん]マッサージしてくれるの？
+]],
+[[
+\0
+\s[きょとん]手つきがちょっとやらしい…？@よ？
+]]
+    end,
+  },
 }

@@ -142,6 +142,7 @@ return {
       __("_CurrentMoves", moves)
       __("_CurrentScore", 0)
       __("_CurrentJudgement", 6) -- Judgement.equality
+      __("_SeizaCount", os.time())
       --print("InitColor: " .. player:getTeban())
       shiori:talk("OnSetFanID")
       str:append(SS():p(0):c())

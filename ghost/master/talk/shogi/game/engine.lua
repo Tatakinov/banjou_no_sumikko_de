@@ -499,7 +499,6 @@ return {
       local process = shiori:saori("process")
       process("despawn", __("_EnginePID"))
       __("_InGame", false)
-      __("_PostGame", true)
     end,
   },
   {
@@ -787,6 +786,12 @@ return {
     id  = "OnShogiEngineGameOver",
     content = function(shiori, ref)
       local __        = shiori.var
+      __("_PostGame", true)
+      local seiza_count = __("_SeizaCount")
+      -- 十分以上対局してたら足が痺れる/負けたら痺れる
+      if os.time() - seiza_count >= 10 * 60 or ref[0] == "lose" then
+        __("_SeizaShibire", os.time())
+      end
       local process   = shiori:saori("process")
       process("send", __("_EnginePID"), USI.tostring({
         command   = USI.Command.GAMEOVER,

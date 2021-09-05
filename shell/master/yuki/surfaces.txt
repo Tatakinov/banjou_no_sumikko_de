@@ -16,6 +16,7 @@ surface0
   element2,overlay,yuki/arm001.png,0,0
   collision0,45,10,200,68,Head
   collision1,83,192,137,218,Bust
+  collision2,77,335,150,386,Leg
 }
 
 surface10
@@ -63,6 +64,7 @@ surface301,302,303,304,305,306,307,308,309,310,321,331,341,342,351,352,361,362,3
   element0,base,yuki/body000.png,0,0
   collision0,45,10,200,68,Head
   collision1,83,192,137,218,Bust
+  collision2,77,335,150,386,Leg
 }
 
 surface.append301,501,701,901
