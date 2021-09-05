@@ -74,10 +74,12 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       __("_Mahjong_Kawa", {})
+      __("_Mahjong_Furo", {})
+      __("_Mahjong_Riichi_Others", {})
+      __("_Mahjong_Safe", {})
       __("_Mahjong_Bafu", ref[2])
       local jifu  = __("_Mahjong_Jifu")
       __("_Mahjong_Jifu", JIFU[jifu])
-      __("_Mahjong_Kawa", {})
       __("_Mahjong_Riichi", false)
       __("_CurrentJudgement", Judgement.equality)
       return [[
@@ -145,6 +147,15 @@ return {
   {
     id  = "OnMahjong_open",
     content = function(shiori, ref)
+      local __  = shiori.var
+      if ref[2] == NAME then
+      else
+        local furo  = __("_Mahjong_Furo")
+        if furo[ref[2]] == nil then
+          furo[ref[2]]  = {}
+        end
+        table.insert(furo[ref[2]], ref[3])
+      end
       return nil
     end,
   },
@@ -156,6 +167,7 @@ return {
       table.insert(tehai, ref[4])
       print("tsumo", ref[4])
       __("_Mahjong_Tsumo", ref[4])
+      __("_Mahjong_Remain", tonumber(ref[3]))
       return nil
     end,
   },
@@ -164,6 +176,7 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       local kawa  = __("_Mahjong_Kawa")
+      table.insert(kawa, ref[3])
       if kawa[ref[2]] == nil then
         kawa[ref[2]]  = {}
       end
@@ -192,7 +205,17 @@ return {
       end)
       print("Tehai:", table.concat(tehai, ""))
       local start   = os.clock()
-      local sutehai, riichi, tsumo = AI.getBestSutehai(shiori:saori("mahjong"), table.concat(tehai, ""), __("_Mahjong_Kawa"), __("_Mahjong_Bafu"), __("_Mahjong_Jifu"), __("_Mahjong_DoraIndicator"))
+      local sutehai, riichi, tsumo = AI.getBestSutehai(
+          shiori:saori("mahjong"),
+          table.concat(tehai, ""),
+          __("_Mahjong_Kawa"),
+          __("_Mahjong_Bafu"),
+          __("_Mahjong_Jifu"),
+          __("_Mahjong_DoraIndicator"),
+          __("_Mahjong_Furo"),
+          __("_Mahjong_Safe"),
+          __("_Mahjong_Riichi_Others")
+      )
       local finish  = os.clock()
       -- CPU時間での計算だがシングルスレッドなのでほぼ実時間…？
       if TIMEOUT < finish - start then
@@ -249,7 +272,7 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       if ref[2] == NAME then
-        if ref[3] == "richi" then
+        if ref[3] == ACTION.riichi then
           -- サーバー側のAIでリーチした場合ここで捉えるしかない？
           print("riichi!")
           __("_Mahjong_Riichi", true)
@@ -266,7 +289,24 @@ return {
         }
         return [[\0]] .. str[ref[3]]
       else
-        -- TODO stub
+        if ref[3] == ACTION.riichi then
+          local riichi    = __("_Mahjong_Riichi_Others")
+          local kawa      = __("_Mahjong_Kawa")
+          -- リーチの情報は捨て牌の情報よりも先に送られてくるので
+          -- +1 しないといけない
+          riichi[ref[2]]  = #kawa + 1
+          local tmp ={}
+          for _, v in ipairs(kawa[ref[2]]) do
+            tmp[v]  = 1
+          end
+          local t = __("_Mahjong_Safe")
+          if t[ref[2]] == nil then
+            t[ref[2]] = {}
+          end
+          for k, _ in pairs(tmp) do
+            table.insert(t[ref[2]], k)
+          end
+        end
         return nil
       end
     end,
