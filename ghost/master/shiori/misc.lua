@@ -22,7 +22,7 @@ function M.tostring(obj, ...)
     if table.remove(t, 1) then
       return M.tostring(t, ...)
     else
-      return nil, t[1] or debug.traceback(obj, t[1])
+      return nil, debug.traceback(obj)
     end
   end
   return nil
