@@ -18,7 +18,7 @@ print([[* Kagari/Kotori Logger v1.0.0
 ]])
 
 local Socket  = require("socket")
-local server  = assert(Socket.bind("localhost", 49801))
+local server  = assert(Socket.bind("localhost", 39801))
 local ip, port  = server:getsockname()
 
 print("* Listen to", ip, port, "\n")

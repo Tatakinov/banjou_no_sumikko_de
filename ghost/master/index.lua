@@ -1,5 +1,5 @@
 local Socket  = require("socket")
-local client  = Socket.connect("localhost", 49801)
+local client  = Socket.connect("localhost", 39801)
 if client then
   print_orig  = print
   print = function(...)
