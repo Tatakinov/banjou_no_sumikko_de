@@ -38,6 +38,8 @@ return {
           str:append(SS():q("棋譜を保存", "OnSaveKifu"):n():n())
         elseif __("_次の一手問題ID") then
           str:append("\\![*]"):append(SS():q("次の一手の答えを見る", "将棋_次の一手_答え"):n():n())
+        elseif __("_実戦詰将棋問題ID") then
+          str:append("\\![*]"):append(SS():q("実戦詰将棋の答えを見る", "将棋_実戦詰将棋_答え"):n():n())
         end
       end
       str:append("\\![*]"):append(SS():q("閉じる", "閉じる"):n())
