@@ -57,7 +57,12 @@ return {
   {
     id  = "a_Key",
     content = function(shiori, ref)
-      return shiori:talk("将棋_次の一手_答え")
+      local __  = shiori.var
+      if __("_次の一手問題ID") then
+        return shiori:talk("将棋_次の一手_答え")
+      elseif __("_実戦詰将棋問題ID") then
+        return shiori:talk("将棋_実戦詰将棋_答え")
+      end
     end,
   },
 }
