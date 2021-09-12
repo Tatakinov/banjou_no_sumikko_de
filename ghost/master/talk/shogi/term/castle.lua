@@ -26,22 +26,6 @@ return {
   },
   {
     anchor  = true,
-    id      = "___",
-    content = function(shiori, ref)
-      local str = StringBuffer()
-      local player  = KifuPlayer.getInstance()
-      player:setPosition("")
-      str:append(shiori:talk("OnShogiViewMinimal", ref))
-      str:append(SS():p(0)):append([[
-\_q【】\_q\w9\n
-\n
-\_q\![*]\q[戻る,将棋用語_囲い] \![*]\q[閉じる,閉じる]\n\_q
-]])
-      return str
-    end,
-  },
-  {
-    anchor  = true,
     id      = "矢倉囲い",
     content = function(shiori, ref)
       local str = StringBuffer()

@@ -6,6 +6,8 @@ return {
     id  = "将棋用語_手筋",
     content = [[
 \0
+\s[素]
+\_q
 底歩 合わせの歩 垂れ歩 継ぎ歩\n
 田楽刺し 歩の裏から香を打て\n
 ふんどしの桂 跳ね違いの桂 パンツを脱ぐ\n
@@ -13,7 +15,7 @@ return {
 王手○○取り\n
 両王手\n
 \n
-\_q\![*]\q[戻る,将棋用語] \![*]\q[閉じる,閉じる]\n\_q
+\![*]\q[戻る,将棋用語] \![*]\q[閉じる,閉じる]\n\_q
 ]],
   },
   {
@@ -126,6 +128,49 @@ return {
 相手の歩の利きに持ち駒の歩を打つこと。\n
 攻め駒を前進させたり、飛車で横歩を取ったり、
 十字飛車を狙ったりするときに使われることが多いよ。
+\n
+\![*]\q[戻る,将棋用語_手筋] \![*]\q[閉じる,閉じる]\n
+]])
+    return str
+    end,
+  },
+  {
+    anchor  = true,
+    id  = "垂れ歩",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("ln1g1ksnl/1r1s2gb1/p1ppppp2/8p/9/9/PPPPPPP1P/1BG2S1R1/LNS1KG1NL b P2p 1")
+      player:appendMove("P*2d")
+      str:append(shiori:talk("OnShogiViewMinimal"))
+      str:append([[
+\0
+\_q【垂れ歩】\_q\w9\n
+次に歩を成りますよ、という手のことだよ。\n
+と金を作るのに2手かかるので、攻めとしては少し遅め。
+攻めが遅くても大丈夫な局面で使おう。\n
+\n
+\![*]\q[戻る,将棋用語_手筋] \![*]\q[閉じる,閉じる]\n
+]])
+    return str
+    end,
+  },
+  {
+    anchor  = true,
+    id  = "王手○○取り",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("6k2/1r4g2/5pspp/6p2/9/9/9/9/9 b B 1")
+      player:appendMove("B*6d")
+      str:append(shiori:talk("OnShogiViewMinimal"))
+      str:append([[
+\0
+\_q【王手○○取り】\_q\w9\n
+題の通り相手の玉ともう一つ別の駒を同時に狙っている状態のこと。\n
+決まると非常に痛い。
+大抵の場合はこの手をうっかりしているんだけど、
+強い人同士の戦いになると、あえて王手○○取りを掛けさせて勝つ！@なんてことも。
 \n
 \![*]\q[戻る,将棋用語_手筋] \![*]\q[閉じる,閉じる]\n
 ]])
