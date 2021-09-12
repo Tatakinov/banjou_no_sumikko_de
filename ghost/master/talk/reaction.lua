@@ -1,6 +1,6 @@
 local StringBuffer  = require("string_buffer")
 
--- TODO 好感度の実装
+-- TODO 親密度の実装
 return {
   -- 「ねぇねぇ」と肩をたたく感じ。
   {
@@ -17,16 +17,16 @@ return {
       if __("_Quiet") then
         return nil
       end
-      local favorability  = __("好感度") or 0
-      if favorability < 50 then
-        return shiori:talk("頭なで好感度低")
-      elseif favorability < 100 then
-        return shiori:talk("頭なで好感度中")
+      local intimacy  = __("親密度") or 0
+      if intimacy < 50 then
+        return shiori:talk("頭なで親密度低")
+      elseif intimacy < 100 then
+        return shiori:talk("頭なで親密度中")
       end
     end,
   },
   {
-    id  = "頭なで好感度低",
+    id  = "頭なで親密度低",
     content = function(shiori, ref)
       return
       [[\0\s[><]……っ。]],
@@ -60,17 +60,17 @@ return {
       if __("_InGame") then
         return shiori:talk("胸もみ対局中")
       end
-      local favorability  = __("好感度") or 0
-      if favorability < 50 then
-        return shiori:talk("胸もみ好感度低")
-      elseif favorability < 100 then
-        return shiori:talk("胸もみ好感度中")
+      local intimacy  = __("親密度") or 0
+      if intimacy < 50 then
+        return shiori:talk("胸もみ親密度低")
+      elseif intimacy < 100 then
+        return shiori:talk("胸もみ親密度中")
       end
       return nil
     end,
   },
   {
-    id  = "胸もみ好感度低",
+    id  = "胸もみ親密度低",
     content = function(shiori, ref)
       local __  = shiori.var
       __("_LightningMomer", os.time())
@@ -80,7 +80,7 @@ return {
     end,
   },
   {
-    id  = "胸もみ好感度低",
+    id  = "胸もみ親密度低",
     content = function(shiori, ref)
       local __  = shiori.var
       local time = __("_LightningMomer") or 0
@@ -103,15 +103,15 @@ return {
       if __("_InGame") then
         return shiori:talk("胸なで対局中")
       end
-      local favorability  = __("好感度") or 0
-      if favorability < 50 then
-        return shiori:talk("胸なで好感度低")
+      local intimacy  = __("親密度") or 0
+      if intimacy < 50 then
+        return shiori:talk("胸なで親密度低")
       end
       return nil
     end,
   },
   {
-    id  = "胸なで好感度低",
+    id  = "胸なで親密度低",
     content = function(shiori, ref)
       local __  = shiori.var
       __("_LightningMomer", os.time())
