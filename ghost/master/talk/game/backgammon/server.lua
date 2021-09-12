@@ -293,6 +293,7 @@ local talk  = {
         print("CLICK", "DANCE")
         player:move("dance", dice[state])
         __("_BG_PlayerState", state + 1)
+        return SS():raise("OnBackgammonPlayer")
       end
       if state > #dice then
         local player  = __("_BGPlayer"):confirm()
