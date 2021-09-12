@@ -3,6 +3,7 @@
 local AI          = require("talk.mahjong._ai")
 local Judgement   = require("talk.game._judgement")
 local SS          = require("sakura_script")
+local Utils       = require("talk.mahjong._utils")
 
 local TIMEOUT     = 1.950
 
@@ -15,6 +16,9 @@ local ACTION      = {
   riichi  = "richi",
   yes     = "yes",
   no      = "no",
+  chi     = "chi",
+  pon     = "pon",
+  kan     = "kan",
   ron     = "ron",
   tsumo   = "tsumo",
 }
@@ -30,6 +34,38 @@ local JIFU  = {
   ["4z"]  = "1z",
 }
 
+local function isSSTP(header)
+  local is_sstp = false
+  if header == nil then
+    return false
+  end
+  for w in string.gmatch(header, "[^,]*") do
+    if w == "sstp" then
+      is_sstp = true
+      break
+    end
+  end
+  return is_sstp
+end
+
+local function wrapResponse(ref, ...)
+  if isSSTP(ref("SenderType")) then
+    local response  = {
+      ["X-SSTP-PassThru-ID"]  = RESPONSE_ID,
+      ["X-SSTP-PassThru-Reference0"]  = VERSION,
+      ["X-SSTP-PassThru-Reference1"]  = ref[1],
+    }
+    local arg = {...}
+    for i = 1, #arg do
+      response["X-SSTP-PassThru-Reference" .. (i + 1)]  = arg[i]
+    end
+    return response
+  else
+    return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1],
+      table.concat({...}, ",")):tostring()
+  end
+end
+
 return {
   {
     id  = "OnMahjong",
@@ -41,8 +77,7 @@ return {
     id  = "OnMahjong_hello",
     content = function(shiori, ref)
       local __  = shiori.var
-      return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1],
-          "ump=" .. UMP_VERSION, "name=" .. NAME)
+      return wrapResponse(ref, "ump=" .. UMP_VERSION, "name=" .. NAME)
     end,
   },
   {
@@ -154,7 +189,19 @@ return {
         if furo[ref[2]] == nil then
           furo[ref[2]]  = {}
         end
-        table.insert(furo[ref[2]], ref[3])
+        print("Furo", ref[3])
+        print("Sutehai", __("_Mahjong_Sutehai"))
+        local tiles = Utils.strToArray(ref[3])
+        for i, v in ipairs(tiles) do
+          if v == __("_Mahjong_Sutehai") then
+            table.remove(tiles, i)
+            break
+          end
+        end
+        for i, v in ipairs(tiles) do
+          print("Furo" .. i, v)
+          table.insert(furo[ref[2]], v)
+        end
       end
       return nil
     end,
@@ -175,6 +222,7 @@ return {
     id  = "OnMahjong_sutehai",
     content = function(shiori, ref)
       local __  = shiori.var
+      __("_Mahjong_Sutehai", ref[3])
       local kawa  = __("_Mahjong_Kawa")
       table.insert(kawa, ref[3])
       if kawa[ref[2]] == nil then
@@ -226,7 +274,7 @@ return {
         return nil
       end
       if tsumo then
-        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.tsumo)
+        return wrapResponse(ref, ACTION.tsumo)
       end
       if __("_Mahjong_Riichi") then
         sutehai = __("_Mahjong_Tsumo")
@@ -235,11 +283,11 @@ return {
       print("sutehai", sutehai)
       if riichi then
         print("riichi!")
-        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.riichi, sutehai)
+        return wrapResponse(ref, ACTION.riichi, sutehai)
       elseif sutehai then
-        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.sutehai, sutehai)
+        return wrapResponse(ref, ACTION.sutehai, sutehai)
       else
-        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1])
+        return wrapResponse(ref)
       end
     end,
   },
@@ -255,16 +303,16 @@ return {
         end
       end
       if has_ron then
-        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.ron)
+        return wrapResponse(ref, ACTION.ron)
       else
-        return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.no)
+        return wrapResponse(ref, ACTION.no)
       end
     end,
   },
   {
     id  = "OnMahjong_tenpai?",
     content = function(shiori, ref)
-      return SS():raiseother(ref("Sender"), RESPONSE_ID, VERSION, ref[1], ACTION.yes)
+      return wrapResponse(ref, ACTION.yes)
     end,
   },
   {
@@ -296,7 +344,7 @@ return {
           -- +1 しないといけない
           riichi[ref[2]]  = #kawa + 1
           local tmp ={}
-          for _, v in ipairs(kawa[ref[2]]) do
+          for _, v in ipairs(kawa[ref[2]] or {}) do
             tmp[v]  = 1
           end
           local t = __("_Mahjong_Safe")

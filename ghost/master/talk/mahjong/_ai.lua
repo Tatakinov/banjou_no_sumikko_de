@@ -9,6 +9,7 @@
 --  清一色みたいに同じ種類の牌が多いとタイムアウトすることも…
 
 local Clone = require("clone")
+local Utils = require("talk.mahjong._utils")
 
 local M = {}
 
@@ -37,14 +38,6 @@ local function split(str, delim)
   local t = {}
   for s in string.gmatch(str, "[^" .. delim .. "]*") do
     table.insert(t, s)
-  end
-  return t
-end
-
-local function strToArray(tiles)
-  local t = {}
-  for tile in string.gmatch(tiles, "%w%w") do
-    table.insert(t, tile)
   end
   return t
 end
@@ -108,7 +101,7 @@ end
 -- TODO 高速化
 local function getNecessaryHaiMap(saori, hai)
   local map = {}
-  local array_hai = strToArray(hai)
+  local array_hai = Utils.strToArray(hai)
   for i = 1, #array_hai do
     local hai = Clone(array_hai)
     local sutehai = table.remove(hai, i)
@@ -140,7 +133,7 @@ end
 local function getNecessaryHaiMapMin(saori, hai, kawa, furo, current_shanten)
   local shanten_table = {}
   local map = {}
-  local array_hai = strToArray(hai)
+  local array_hai = Utils.strToArray(hai)
   local current_hai_list  = Clone(remain_hai_list)
   local start = os.clock()
   -- 手牌、捨て牌、他家が副露した牌は有効牌候補から削る
@@ -154,17 +147,14 @@ local function getNecessaryHaiMapMin(saori, hai, kawa, furo, current_shanten)
       end
     end
   end
-  --[[
-  -- どの牌が露出したのか今の実装分では分かってないのでコメントアウト
+
+  -- 副露している牌を除く
   for _, v in pairs(furo) do
     for _, v in ipairs(v) do
-      local hai = strToArray(v)
-      for _, v in ipairs(hai) do
-        current_hai_list[v] = current_hai_list[v] - 1
-      end
+      current_hai_list[v] = current_hai_list[v] - 1
     end
   end
-  --]]
+
   for i = 1, #array_hai do
     local hai = Clone(array_hai)
     local sutehai = table.remove(hai, i)
@@ -222,7 +212,7 @@ end
 local function getUnnecessaryHaiList(saori, hai)
   local ret = saori("shanten_normal", hai)
   local min_shanten = ret()
-  local array_hai = strToArray(hai)
+  local array_hai = Utils.strToArray(hai)
   local unnecessary_hai_list  = {}
   for i = 1, #array_hai do
     local hai = Clone(array_hai)
@@ -237,7 +227,7 @@ local function getUnnecessaryHaiList(saori, hai)
 end
 
 local function getFoldSutehai(hai, safe, kawa, jumme)
-  local hai = strToArray(hai)
+  local hai = Utils.strToArray(hai)
   local tmp = {}
   for _, v in ipairs(hai) do
     tmp[v]  = true
@@ -346,7 +336,7 @@ end
 function M.getBestSutehai(saori, hai, kawa, round, seat, dora_indicator, furo, safe, riichi_others)
   local dora  = {}
   --[[
-  for _, v in ipairs(strToArray(dora_indicator)) do
+  for _, v in ipairs(Utils.strToArray(dora_indicator)) do
     table.insert(dora, indicator2dora(v))
   end
   --]]
@@ -375,7 +365,7 @@ function M.getBestSutehai(saori, hai, kawa, round, seat, dora_indicator, furo, s
   print("Shanten", min_shanten)
 
   -- 孤立牌は優先的に切る
-  local isolated_tiles = getIsolatedTiles(strToArray(hai))
+  local isolated_tiles = getIsolatedTiles(Utils.strToArray(hai))
   print("-- isolated --")
   for i, v in ipairs(isolated_tiles) do
     print(i, v)
