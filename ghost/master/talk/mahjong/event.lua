@@ -56,8 +56,8 @@ local function wrapResponse(ref, ...)
       ["X-SSTP-PassThru-Reference1"]  = ref[1],
     }
     local arg = {...}
-    for i = 1, #arg do
-      response["X-SSTP-PassThru-Reference" .. (i + 1)]  = arg[i]
+    for i, v in ipairs(arg) do
+      response["X-SSTP-PassThru-Reference" .. (i + 1)]  = v
     end
     return response
   else
@@ -99,9 +99,29 @@ return {
       local __  = shiori.var
       __("_Quiet", false)
       __("_InGame", false)
-      return [[
+      local t = {}
+      for i = 2, 5 do
+        local name, score = string.match(ref[i], "([^\x01]*)\x01([^\x01]*)")
+        print("name", name, "score", score)
+        score = tonumber(score)
+        table.insert(t, {name = name, score = score})
+      end
+      table.sort(t, function(a, b) return a.score > b.score end)
+      if t[1].name == NAME then
+        return [[
+\0\s[座り_ドヤッ]どやぁ…。
+]], [[
+\0\s[座り_ドヤッ]ふふん。
+]]
+      elseif t[4].name == NAME then
+        return [[
+\0\s[座り_もー]も”っか”い”！！
+]]
+      else
+        return [[
 \0\s[座り_素]対局ありがとうございました。
 ]]
+      end
     end,
   },
   {
@@ -141,19 +161,37 @@ return {
       elseif ref[3] == "+" then
         local diff  = tonumber(ref[4])
         __("_Mahjong_Score", score + diff)
-        return [[
-\0\s[形勢_勝勢]
+        if diff >= 8000 then
+          return [[
+\0\s[形勢_勝勢]いぇす！
+]], [[
+\0\s[形勢_勝勢]日頃の行いの結果かな！
 ]]
+        else
+          return [[
+\0\s[形勢_優勢]順調順調♪
+]], [[
+\0\s[形勢_優勢]よしよし。
+]]
+        end
       elseif ref[3] == "-" then
         local diff  = tonumber(ref[4])
         __("_Mahjong_Score", score - diff)
         if diff >= 8000 then
           return [[
-\0\s[形勢_負け]
+\0\s[形勢_負け]がーん…。
+]], [[
+\0\s[形勢_負け]貴重な点棒がー…。
+]], [[
+\0\s[形勢_負け]いやぁぁ…。
 ]]
         else
           return [[
-\0\s[形勢_敗勢]
+\0\s[形勢_敗勢]あぅ…。
+]], [[
+\0\s[形勢_敗勢]ぎゃふん。
+]], [[
+\0\s[形勢_敗勢]ひえー！
 ]]
         end
       end
@@ -280,6 +318,10 @@ return {
         sutehai = __("_Mahjong_Tsumo")
         riichi  = false
       end
+      if __("_Mahjong_Remain") <= 4 then
+        __("_Mahjong_Riichi", true)
+        riichi  = false
+      end
       print("sutehai", sutehai)
       if riichi then
         print("riichi!")
@@ -312,7 +354,12 @@ return {
   {
     id  = "OnMahjong_tenpai?",
     content = function(shiori, ref)
-      return wrapResponse(ref, ACTION.yes)
+      local __  = shiori.var
+      if __("_Mahjong_Riichi") then
+        return wrapResponse(ref, ACTION.yes)
+      else
+        return wrapResponse(ref, ACTION.no)
+      end
     end,
   },
   {
