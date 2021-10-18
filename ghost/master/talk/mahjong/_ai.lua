@@ -130,7 +130,7 @@ local function getNecessaryHaiMap(saori, hai)
 end
 
 -- TODO 高速化
-local function getNecessaryHaiMapMin(saori, hai, kawa, furo, current_shanten)
+local function getNecessaryHaiMapMin(saori, hai, kawa, furo, dora_indicator, current_shanten)
   local shanten_table = {}
   local map = {}
   local array_hai = Utils.strToArray(hai)
@@ -138,6 +138,9 @@ local function getNecessaryHaiMapMin(saori, hai, kawa, furo, current_shanten)
   local start = os.clock()
   -- 手牌、捨て牌、他家が副露した牌は有効牌候補から削る
   for _, v in ipairs(array_hai) do
+    current_hai_list[v] = current_hai_list[v] - 1
+  end
+  for _, v in ipairs(dora_indicator) do
     current_hai_list[v] = current_hai_list[v] - 1
   end
   for _, v in pairs(kawa) do
@@ -388,7 +391,7 @@ function M.getBestSutehai(saori, hai, kawa, round, seat, dora_indicator, furo, s
   end
 
   -- 有効牌？の抽出
-  local necessary_hai_map = getNecessaryHaiMapMin(saori, hai, kawa, furo, min_shanten)
+  local necessary_hai_map = getNecessaryHaiMapMin(saori, hai, kawa, furo, dora_indicator, min_shanten)
   -- タイムアウトしていた場合はnilを返す
   if necessary_hai_map == nil then
     return nil

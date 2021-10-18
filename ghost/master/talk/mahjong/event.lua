@@ -132,6 +132,7 @@ return {
       __("_Mahjong_Furo", {})
       __("_Mahjong_Riichi_Others", {})
       __("_Mahjong_Safe", {})
+      __("_Mahjong_DoraIndicator", {})
       __("_Mahjong_Bafu", ref[2])
       local jifu  = __("_Mahjong_Jifu")
       __("_Mahjong_Jifu", JIFU[jifu])
@@ -213,7 +214,8 @@ return {
     id  = "OnMahjong_dora",
     content = function(shiori, ref)
       local __  = shiori.var
-      __("_Mahjong_DoraIndicator", ref[2])
+      local t = __("_Mahjong_DoraIndicator")
+      table.insert(t, ref[2])
       return nil
     end,
   },
