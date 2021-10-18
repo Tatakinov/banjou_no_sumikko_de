@@ -248,16 +248,16 @@ return {
       local prng  = Rand(genHash(tostring(player:getMoveFormat(0))))
 
       local plus_comment = {
-        "%d手目辺りで形勢が良くなった気がする。",
-        "%d手目辺りで指しやすくなった！@……かな？",
+        "\\s[座り_ヮ]%d手目辺りで形勢が良くなった気がする。",
+        "\\s[座り_ヮ]%d手目辺りで指しやすくなったかも。@",
       }
       local minus_comment = {
         "%d手目辺りで形勢が悪くなってる気がする。",
-        "%d手目辺りは既にちょっとずつ押されてきてるかなー。",
+        "%d手目辺りは既にちょっとずつ押されてきてるかも…。",
       }
       local append_comment  = {
-        "その後の、",
-        "そこから進んで、",
+        "\\s[座り_素]その後、",
+        "\\s[座り_素]そこから進んで、",
       }
 
       local str = StringBuffer(SS():p(0))
@@ -273,16 +273,16 @@ return {
       end
 
       local possesion_plus_comment = {
-        "わたしが主導権を握る展開だったかな。",
+        "\\s[座り_ヮ]わたしが主導権を握る展開だったかな。",
       }
       local possesion_minus_comment = {
-        "${User}が主導権を握ってたかな。",
+        "\\s[座り_素]${User}が主導権を握ってたかな。",
       }
       local possesion_both_comment  = {
-        "お互い形勢の良い局面がある対局だったかな。",
+        "\\s[座り_きょとん]お互い形勢の良い局面がある対局だったかな。",
       }
       local possesion_equal_comment = {
-        "最後まで互角の良い勝負が出来てたかな。",
+        "\\s[座り_素]最後まで互角の良い勝負が出来てたかな。",
       }
 
       local possesion  = dist2[1] - dist2[3]
@@ -298,22 +298,22 @@ return {
         end
       end
       local natural_plus_validity_comment = {
-        "わたしがうまく勝ちきれたと思う。",
+        "\\s[座り_ドヤッ]わたしがうまく勝ちきれたと思う。",
       }
       local natural_minus_validity_comment  = {
-        "${User}に最後までうまく指されちゃったね。",
+        "\\s[座り_素]${User}に最後までうまく指されちゃったね。",
       }
       local unnatural_plus_validity_comment = {
-        "えっと…途中までは${User}が良かった気がする。",
+        "\\s[座り_きょとん]えっと…途中までは${User}が良かった気がする。",
       }
       local unnatural_minus_validity_comment  = {
-        "途中まで良かったはずなんだけどなぁ。うーん…。",
+        "\\s[座り_きょとん]途中まで良かったはずなんだけどなぁ。\\s[座り_ふむ]うーん…。",
       }
       local madamada_validity_comment = {
-        "まだまだこれからって局面だった気がするけど…。",
+        "\\s[座り_きょとん]まだまだこれからって局面だった気がするけど…。",
       }
       local nankai_hawks_validity_comment = {
-        "最後は難しい局面になっちゃったね…。",
+        "\\s[座り_素]最後は難しい局面になっちゃったね…。",
       }
       local validity = possesion * last_judge
       if validity > 0 then
@@ -347,7 +347,7 @@ return {
       end
 
       if #point_move > 0 then
-        str:append([[対局で気になった手は……\n]])
+        str:append([[\s[座り_きょとん]対局で気になった手は……\n]])
         for _, v in ipairs(point_move) do
           if v.sign == 1 then
             str:append(v.n .. [[手目で${User}に疑問手？\n]])
@@ -359,7 +359,7 @@ return {
             str:append(v.n .. [[手目でわたしが詰み逃し…てる？\n]])
           end
         end
-        str:append([[かな。わたしもあんまり強くないから参考程度でね。]])
+        str:append([[かな。\s[座り_素]わたしもあんまり強くないから参考程度でね。]])
       end
       return str
     end,
