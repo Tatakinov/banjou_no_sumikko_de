@@ -1,6 +1,22 @@
-local lc  = require("luachild")
+local StringBuffer  = require("string_buffer")
 
 local M = {}
+
+local function hasResponse(obj)
+  if obj.Value
+    or obj.ValueNotify
+    or obj.ErrorLevel
+    or obj.ErrorDescription
+  then
+    return true
+  end
+  for k, _ in pairs(obj) do
+    if string.match(k, "^X-SSTP-PassThru-") then
+      return true
+    end
+  end
+  return false
+end
 
 function M.tostring(obj, ...)
   local obj_type  = type(obj)
@@ -9,11 +25,15 @@ function M.tostring(obj, ...)
   elseif obj_type == "table" then
     if #obj > 0 then
       return M.tostring(obj[math.random(#obj)], ...)
+    elseif hasResponse(obj) then
+      local str = StringBuffer()
+      for k, v in pairs(obj) do
+        str[k]  = v
+      end
+      str:append(obj.Value)
+      return str
     elseif obj.__tostring then
       return tostring(obj)
-    -- X-SSTP-Return-*への暫定的な対応
-    elseif next(obj) then
-      return obj
     end
   elseif obj_type == "function" then
     return M.tostring({obj(...)}, ...) -- 関数が複数の値を返してくる場合に対応

@@ -120,6 +120,21 @@ function M:unload()
   self._saori:unloadall()
 end
 
+local function extractHeaders(obj)
+  local t = {
+    Value             = obj.Value,
+    ValueNotify       = obj.ValueNotify,
+    ErrorLevel        = obj.ErrorLevel,
+    ErrorDescription  = obj.ErrorDescription,
+  }
+  for k, v in pairs(obj) do
+    if string.match(k, "^X-SSTP-PassThru-") then
+      t[k]  = v
+    end
+  end
+  return t
+end
+
 function M:request(req)
   local res = Response(204, 'No Content', Protocol.v30, {
     Charset = self._charset,
@@ -159,8 +174,11 @@ function M:request(req)
       res:message("OK")
       tbl.Value = value
     end
+    --[[
     -- X-SSTP-PassThru-*への暫定的な対応
-    for k, v in pairs(tbl) do
+    --]]
+    local headers = extractHeaders(tbl)
+    for k, v in pairs(headers) do
       res:header(k, v)
     end
   end
