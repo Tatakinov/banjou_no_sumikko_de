@@ -95,8 +95,8 @@ local talk  = {
         w_dice  = genRand(__("_Random"), 6)
         b_dice  = genRand(__("_Random"), 6)
       until w_dice ~= b_dice
-      print("w", w_dice)
-      print("b", b_dice)
+      --print("w", w_dice)
+      --print("b", b_dice)
       __("_BG_Dice1", {
         color = "W",
         value = w_dice,
@@ -147,8 +147,8 @@ local talk  = {
           return SS():raise("OnBackgammonPeriodEnd", i)
         end
       end
-      print("1", dice1)
-      print("2", dice2)
+      --print("1", dice1)
+      --print("2", dice2)
       __("_BG_Dice1", {
         color = color_str[player:getColor()],
         value = dice1,
@@ -219,10 +219,19 @@ local talk  = {
       local __      = shiori.var
       local player  = __("_BGPlayer")
       if dice1 and point1 then
-        player:move(point1, dice1)
+        player:move({from = point1, to = point1 - dice1}, dice1)
         return SS():raise("OnBackgammonRender", false, false)
                   :timerraise({
                     time  = 1000,
+                    loop  = false,
+                    ID    = "OnBackgammonAIResult",
+                    ref[2], ref[3], ref[4], ref[5], ref[6], ref[7],
+                  })
+      elseif dice1 then
+        player:move({dance = dice1}, dice1)
+        return SS():raise("OnBackgammonRender", false, false)
+                  :timerraise({
+                    time  = 100,
                     loop  = false,
                     ID    = "OnBackgammonAIResult",
                     ref[2], ref[3], ref[4], ref[5], ref[6], ref[7],
@@ -291,7 +300,7 @@ local talk  = {
       local movable = __("_BG_Movable")
       if #movable == 0 and state <= #dice then
         print("CLICK", "DANCE")
-        player:move("dance", dice[state])
+        player:move({dance = dice[state]}, dice[state])
         __("_BG_PlayerState", state + 1)
         return SS():raise("OnBackgammonPlayer")
       end
@@ -316,7 +325,7 @@ for i = 1, 25 do
       local dice    = __("_BG_Dice")
       local player  = __("_BGPlayer")
       local from    = i
-      player:move(from, dice[state])
+      player:move({from = from, to = from - dice[state]}, dice[state])
       __("_BG_PlayerState", state + 1)
       --print("CLICK", i)
       return SS():raise("OnBackgammonPlayer")

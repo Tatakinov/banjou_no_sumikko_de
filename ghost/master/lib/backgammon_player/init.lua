@@ -64,49 +64,49 @@ function M:getPosition()
   return self._position
 end
 
-function M:move(from, dice)
-  local c   = self._current_color
-  local r   = self:reverse(c)
-  local p   = self._position
+function M:move(move, dice)
+  local c     = self._current_color
+  local r     = self:reverse(c)
+  local p     = self._position
   -- dance
-  if from == "dance" then
+  if move.dance then
     table.insert(self._data.moves, {
       color   = c,
-      dice    = dice,
+      dice    = move.dance,
     })
     return
   end
-  local to  = from - dice
-  if to <= 0 then
-    p[c][from]  = p[c][from] - 1
+  local dice  = dice or move.from - move.to
+  if move.to <= 0 then
+    p[c][move.from]  = p[c][move.from] - 1
     table.insert(self._data.moves, {
       color   = c,
       dice    = dice,
-      from    = from,
+      from    = move.from,
       to      = 0,
       capture = false,
     })
   else
-    assert(p[c][from] > 0)
-    assert(p[r][25 - to] < 2)
-    p[c][from]  = p[c][from] - 1
-    p[c][to]    = p[c][to] + 1
-    if p[r][25 - to] == 1 then
-      p[r][25 - to] = 0
+    assert(p[c][move.from] > 0)
+    assert(p[r][25 - move.to] < 2)
+    p[c][move.from]  = p[c][move.from] - 1
+    p[c][move.to]    = p[c][move.to] + 1
+    if p[r][25 - move.to] == 1 then
+      p[r][25 - move.to] = 0
       p[r][25] = p[r][25] + 1
       table.insert(self._data.moves, {
         color   = c,
         dice    = dice,
-        from    = from,
-        to      = to,
+        from    = move.from,
+        to      = move.to,
         capture = true,
       })
     else
       table.insert(self._data.moves, {
         color   = c,
         dice    = dice,
-        from    = from,
-        to      = to,
+        from    = move.from,
+        to      = move.to,
         capture = false,
       })
     end
@@ -123,6 +123,7 @@ function M:unmove()
   --print("from", move.from, "to", move.to)
   if move.from then
     if move.to == 0 then
+      p[c][move.to]    = p[c][move.to] - 1
       p[c][move.from]  = p[c][move.from] + 1
     else
       p[c][move.to]    = p[c][move.to] - 1
@@ -139,6 +140,10 @@ function M:confirm()
   self._current_color = self:reverse(self._current_color)
 end
 
+function M:unconfirm()
+  self._current_color = self:reverse(self._current_color)
+end
+
 function M:reverse(color)
   return 3 - color
 end
@@ -152,14 +157,14 @@ function M:generateMoves(k, l, m, n)
     if p[c][25 - k] and
       p[self:reverse(c)][24 - 25 + k + 1] <= 1 then
       if l then
-        self:move(25, k)
+        self:move({from = 25, to = 25 - k}, k)
         local t = self:generateMoves(l, m, n)
         self:unmove()
         if #t > 0 then
-          table.insert(moves, 25)
+          table.insert(moves, {from = 25, to = 25 - k})
         end
       else
-        table.insert(moves, 25)
+        table.insert(moves, {from = 25, to = 25 - k})
       end
     end
     return moves
@@ -169,14 +174,14 @@ function M:generateMoves(k, l, m, n)
       if p[c][i - k] and
         p[self:reverse(c)][24 - i + k + 1] <= 1 then
         if l then
-          self:move(i, k)
+          self:move({from = i, to = i - k}, k)
           local t = self:generateMoves(l, m, n)
           self:unmove()
           if #t > 0 then
-            table.insert(moves, i)
+            table.insert(moves, {from = i, to = i - k})
           end
         else
-          table.insert(moves, i)
+          table.insert(moves, {from = i, to = i - k})
         end
       end
     end
@@ -190,7 +195,8 @@ function M:generateMoves(k, l, m, n)
   end
   if can_goal then
     if p[c][k] > 0 then
-      table.insert(moves, k)
+      -- k - kは0だけど他のと表記を揃えた
+      table.insert(moves, {from = k, to = k - k})
     end
     local is_over = true
     for i = 6, k, -1 do
@@ -202,7 +208,7 @@ function M:generateMoves(k, l, m, n)
     if #moves == 0 and is_over then
       for i = k - 1, 1, -1 do
         if p[c][i] > 0 then
-          table.insert(moves, i)
+          table.insert(moves, {from = i, to = i - k})
           break
         end
       end

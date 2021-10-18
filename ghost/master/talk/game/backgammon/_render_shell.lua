@@ -56,9 +56,9 @@ function M.renderSwap()
   return str
 end
 
-function M.renderMovable(index)
+function M.renderMovable(move)
   local str = StringBuffer()
-  updater:set("POINT" .. index .. "_DUMMY", "DUMMY", 1)
+  updater:set("POINT" .. move.from .. "_DUMMY", "DUMMY", 1)
   return str
 end
 
