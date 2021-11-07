@@ -10,7 +10,7 @@ return {
 \_q
 \n
 \n
-\q[【横歩取り３三角までの急戦】,OnShogiViewFromFile,talk\shogi\study\yokofu.kif]\n
+\q[【横歩取り急戦】,OnShogiViewFromFile,talk\shogi\study\yokofu.kif]\n
 \q[【片美濃崩し】,OnShogiViewFromFile,talk\shogi\study\minokuzushi.kif]\n
 \q[【穴熊崩し】,OnShogiViewFromFile,talk\shogi\study\anagumakuzushi.kif]\n
 \q[【序盤の戦型判断】,OnShogiViewFromFile,talk\shogi\study\opening.kif]\n
