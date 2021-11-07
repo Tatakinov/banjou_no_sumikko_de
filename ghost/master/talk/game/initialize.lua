@@ -288,7 +288,6 @@ return {
         __("Supplement_Engine_Version", fh:read("*l"))
         fh:close()
       end
-      return shiori:talk("OnShogiGameMenu")
     end,
   },
 }

@@ -46,18 +46,4 @@ return {
       return str
     end,
   },
-  {
-    id      = "盤面モード終了",
-    content = function(shiori, ref)
-      local __  = shiori.var
-      --[[
-      local process = shiori:saori("process")
-      process("despawn", __("_EnginePID"))
-      --]]
-      __("_Quiet", false)
-      __("_PostGame", false)
-      __("_BoardReverse", false)
-      return SS():p(2):s(-1):p(0):s("素"):tostring()
-    end,
-  },
 }
