@@ -162,15 +162,15 @@ ghost/master/talk/game/chess/player.luae03f9bad6f7dca70073c58ef36e6e03dsize=56
 ghost/master/talk/game/chess/view/render.lua4cf711d339331bc3a9477e06838ff753size=19316date=2021-11-07T22:27:26
 ghost/master/talk/game/chess/view/view.lua6c69c6b9ccea982be048869729276112size=6179date=2021-11-07T22:27:26
 ghost/master/talk/game/fan.luaeec708cb53852484a726fd8414ba2bc1size=604date=2021-09-05T22:05:43
-ghost/master/talk/game/initialize.lua7a9dec10056066423ffeb28ff096d1aasize=8614date=2021-11-07T22:27:26
-ghost/master/talk/game/menu.lua2c31449d14ab2492fb308e0cfbed4d59size=1726date=2021-11-07T22:27:26
+ghost/master/talk/game/initialize.lua1e7ba8e9dad821655f1741008bf6b79fsize=8570date=2021-11-07T22:50:20
+ghost/master/talk/game/menu.lua58672e51c6cb989ca9687e1845266c6fsize=2112date=2021-11-07T22:50:20
 ghost/master/talk/initialize.lua8346c3a5bec855cd55226d3341e4cc0csize=177date=2021-09-05T22:05:43
 ghost/master/talk/key.lua6285c0075b4932d4949d1a1434aa89basize=1485date=2021-09-12T21:57:39
 ghost/master/talk/mahjong/_ai.lua87de3f57cc0c1b9a47d1707ac76488e2size=14525date=2021-10-18T22:56:53
 ghost/master/talk/mahjong/_utils.lua12d66431860a8c940e348e1b1afee508size=161date=2021-09-12T21:57:39
 ghost/master/talk/mahjong/event.lua7a048a33c2c358c1e0e67ef3b3fee640size=10838date=2021-10-18T22:56:53
 ghost/master/talk/mahjong/menu.lua024a321b94dbe0d090aa0365ffda376bsize=90date=2021-09-05T22:05:43
-ghost/master/talk/menu.lua49c924487afcf811ee80836349ef6f52size=775date=2021-09-05T22:05:43
+ghost/master/talk/menu.lua16905daa15dc86e83a1c1d1908b68bbfsize=787date=2021-11-07T22:50:20
 ghost/master/talk/misc.lua9a7e1d22413a8fd364c78a6f2d5b1877size=466date=2021-09-05T22:05:43
 ghost/master/talk/notify.luac7d45b3208d0a7d77152e2902c03dacasize=1947date=2021-09-05T22:05:43
 ghost/master/talk/preference.luadd29eaf3f91172111a7adbf5199f0baasize=4189date=2021-09-05T22:05:43
@@ -184,7 +184,7 @@ ghost/master/talk/shogi/game/engine.luae3052ca2c7383de3577b7c33a173f475size=26
 ghost/master/talk/shogi/game/game.luad51dc2dd8330858efe6217842f8d1407size=14073date=2021-10-18T22:56:53
 ghost/master/talk/shogi/game/menu.luaa7106d0ad7eb0c99af13a9394b4fe80esize=7600date=2021-11-07T22:27:26
 ghost/master/talk/shogi/game/player.luac74559450d86726e170f578f28cd0409size=5600date=2021-09-05T22:05:43
-ghost/master/talk/shogi/menu.luaeb180d0ed1f7fffe773a25d9b42dd557size=2200date=2021-09-12T21:57:39
+ghost/master/talk/shogi/menu.lua2f6ab740f9c2b900b19ee507c7187cdbsize=1825date=2021-11-07T22:50:20
 ghost/master/talk/shogi/net/site.lua709e3fbd7522cdf06d5e11a99a9601basize=14404date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/list.luab7ab0e57f6818cc17f680a9de8b52b99size=3064date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/next001.kif3df429a15fe3e9c8e4c4a67c70064bd5size=880date=2021-09-05T22:05:43
