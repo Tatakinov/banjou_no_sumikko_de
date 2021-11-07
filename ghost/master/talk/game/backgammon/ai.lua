@@ -108,7 +108,7 @@ local function evalBlot(p, q)
         local enemy = q[25 - i + j] or 0
         if enemy > 0 then
           -- pip数がそこまで増えない場所では気にしなくてもいいように。
-          sum = sum - math.floor(eval_table[j] / i)
+          sum = sum - math.floor(eval_table[j] / math.sqrt(10 + i))
         end
       end
     end
@@ -122,7 +122,7 @@ local function evaluate(p, q)
   sum = sum + evalContinuous(p)       - evalContinuous(p)
   sum = sum + evalBlot(p, q)          - evalBlot(q, p)
   -- pipカウントは相手が多ければ○
-  sum = sum - pipCount(p)             + pipCount(q)
+  sum = sum - 5 * pipCount(p)             + 5 * pipCount(q)
   if isPassed(p, q) then
     -- 残りの駒数も相手が多い方が良い
     -- evalPointに対抗するため乗数は大きめ
@@ -556,6 +556,12 @@ return {
   {
     id  = "OnBackgammonAIThinkNative",
     content = function(shiori, ref)
+      local __  = shiori.var
+      local player  = __("_BGPlayer")
+      local p = player:getPosition()
+      local dice    = __("_BG_Dice")
+      local dice1   = dice[1]
+      local dice2   = dice[2]
       local process = Process({
         command = __("_path") .. "talk\\game\\backgammon\\bgai.exe"
       })
@@ -584,7 +590,7 @@ return {
         end
         return SS():raise("OnBackgammonAIResult", dice1, from1, dice2, from2, dice3, from3, dice4, from4)
       else
-      local from1, to1, from2, to2  = string.match(str, "(%d*)/(%d*),(%d*)/(%d*)")
+        local from1, to1, from2, to2  = string.match(str, "(%d*)/(%d*),(%d*)/(%d*)")
         --print(from1, to1, from2, to2)
         local dice1 = tonumber(from1) - tonumber(to1)
         local dice2 = tonumber(from2) - tonumber(to2)

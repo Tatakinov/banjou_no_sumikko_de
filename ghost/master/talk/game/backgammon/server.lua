@@ -256,8 +256,8 @@ local talk  = {
       local player  = __("_BGPlayer")
       local state   = __("_BG_PlayerState")
       if player:getColor() == 1 and state > 1 then
-        player:unmove()
         __("_BG_PlayerState", state - 1)
+        player:unmove()
         return SS():raise("OnBackgammonPlayer")
       end
     end,
