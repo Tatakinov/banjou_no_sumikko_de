@@ -143,9 +143,9 @@ return {
           :append("】")
           :append("\\n")
       if __("Supplement_Engine_Version") == nil then
-        str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(15MB/52MB)", "OnInstallShogiEngine"):n())
-      elseif __("Supplement_Engine_Version") < "1.0.0" then
-        str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(15MB/52MB)", "OnInstallShogiEngine"):n())
+        str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(36MB/94MB)", "OnInstallShogiEngine"):n())
+      elseif __("Supplement_Engine_Version") < "1.1.0" then
+        str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallShogiEngine"):n())
       elseif selected then
         local score_list  = __("成績")
         local score = score_list[selected]
@@ -177,147 +177,6 @@ return {
       return [[
 \![execute,install,url,https://raw.githubusercontent.com/Tatakinov/banjou_no_sumikko_de_supplement/master/supplement.nar,nar]
 ]]
-    end,
-  },
-  {
-    id  = "OnInitializeShogiEngine",
-    content = function(shiori, ref)
-      local __            = shiori.var
-      local shogi686_path = __("_path") .. "engine\\shogi686\\shogi686.exe"
-      local sunfish4_path = __("_path") .. "engine\\sunfish4\\sunfish_usi.exe"
-      local engine_list = {
-        ["ほどほど"]={
-          ["option"]={
-            ["TimeMargin"]={
-              ["default"]=100,
-              ["max"]=3000,
-              ["name"]="TimeMargin",
-              ["min"]=0,
-              ["command"]="option",
-              ["type"]="spin",
-            },
-            ["Eval"]={
-              ["default"]="Default",
-              ["name"]="Eval",
-              ["var"]={
-                [1]="Default",
-                [2]="Random(NoSearch)",
-              },
-              ["command"]="option",
-              ["type"]="combo",
-            },
-            ["Mate"]={
-              ["default"]="Default",
-              ["name"]="Mate",
-              ["var"]={
-                [1]="Default",
-                [2]="Learn",
-                [3]="Average",
-              },
-              ["command"]="option",
-              ["type"]="combo",
-            },
-            ["Ordering"]={
-              ["default"]="Default",
-              ["name"]="Ordering",
-              ["var"]={
-                [1]="Default",
-                [2]="Random",
-              },
-              ["command"]="option",
-              ["type"]="combo",
-            },
-            ["SaveTime"]={
-              ["name"]="SaveTime",
-              ["default"]=true,
-              ["command"]="option",
-              ["type"]="check",
-            },
-            ["RandomMove"]={
-              ["command"]="option",
-              ["type"]="check",
-              ["value"]=false,
-              ["name"]="RandomMove",
-              ["default"]=false,
-            },
-          },
-          ["author"]="merom686",
-          ["command"]=shogi686_path,
-          ["name"]="ほどほど",
-        },
-        ["つよい"]={
-          ["author"]="Kubo Ryosuke",
-          ["command"]=sunfish4_path,
-          ["option"]={
-            ["UseBook"]={
-              ["type"]="check",
-              ["command"]="option",
-              ["default"]=true,
-              ["name"]="UseBook",
-            },
-            ["Snappy"]={
-              ["type"]="check",
-              ["command"]="option",
-              ["default"]=true,
-              ["name"]="Snappy",
-            },
-            ["MultiPV"]={
-              ["default"]=1,
-              ["name"]="MultiPV",
-              ["max"]=10,
-              ["command"]="option",
-              ["min"]=1,
-              ["type"]="spin",
-            },
-            ["MarginMs"]={
-              ["default"]=500,
-              ["name"]="MarginMs",
-              ["max"]=2000,
-              ["command"]="option",
-              ["min"]=0,
-              ["type"]="spin",
-            },
-            ["Threads"]={
-              ["default"]=1,
-              ["name"]="Threads",
-              ["max"]=32,
-              ["command"]="option",
-              ["min"]=1,
-              ["type"]="spin",
-            },
-            ["MaxDepth"]={
-              ["default"]=64,
-              ["name"]="MaxDepth",
-              ["max"]=64,
-              ["command"]="option",
-              ["min"]=1,
-              ["type"]="spin",
-            },
-          },
-          ["name"]="つよい",
-        },
-      }
-      __("EngineList", engine_list)
-      __("SelectedEngine", "ほどほど")
-      local score_list  = {
-        ["ほどほど"]  = {
-          win   = 0,
-          lose  = 0,
-        },
-        ["つよい"]  = {
-          win   = 0,
-          lose  = 0,
-        },
-      }
-      __("成績", score_list)
-      local filename  = __("_path") .. [[engine\version]]
-      --print("filename: " .. filename)
-      local fh  = io.open(filename, "r")
-      if fh then
-        __("Supplement_Engine_Version", fh:read("*l"))
-        fh:close()
-      end
-      return shiori:talk("OnShogiGameMenu")
     end,
   },
   {

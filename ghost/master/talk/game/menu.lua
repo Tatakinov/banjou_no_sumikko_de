@@ -7,6 +7,10 @@ return {
         return shiori:talk("盤面モードのメニュー(将棋)")
       elseif __("_Quiet") == "Mahjong" then
         return shiori:talk("盤面モードのメニュー(麻雀)")
+      elseif __("_Quiet") == "Backgammon" then
+        return shiori:talk("盤面モードのメニュー(BG)")
+      elseif __("_Quiet") == "Chess" then
+        return shiori:talk("盤面モードのメニュー(Chess)")
       end
     end,
   },
@@ -20,8 +24,8 @@ return {
 \n
 \n
 \![*]\q[バックギャモン,バックギャモンで遊ぶ]\n
+\![*]\q[チェス,チェスで遊ぶ]\n
 \![*]\q[麻雀,麻雀で遊ぶ]\n
-\n
 \n
 \n
 \n
@@ -38,7 +42,7 @@ return {
 \n
 \n
 \![*]\q[Backgammon,バックギャモンで遊ぶ]\n
-\n
+\![*]\q[Chess,チェスで遊ぶ]\n
 \n
 \n
 \n
@@ -59,9 +63,17 @@ This is the only game we can play in our club room now.\n
   {
     id  = "バックギャモンで遊ぶ",
     content = [[
-\0
+\0\s[素]
 それじゃ用意するね。
 \![raise,対局メニュー(BG)]
+]],
+  },
+  {
+    id  = "チェスで遊ぶ",
+    content = [[
+\0\s[素]
+それじゃ用意するね。
+\![raise,OnChessGameMenu]
 ]],
   },
 }

@@ -249,7 +249,7 @@ return {
     id      = "OnInstallComplete",
     content = function(shiori, ref)
       if ref[0] == "supplement" and ref[1] == "「盤上の隅っこで」用思考エンジン" then
-        return shiori:talk("OnInitializeShogiEngine")
+        return shiori:talk("OnInitializeGameEngine")
       end
       return [[\0]] .. ref[1] .. [[
 のインストールが完了したよ。
