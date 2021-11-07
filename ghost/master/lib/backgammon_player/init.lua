@@ -208,7 +208,8 @@ function M:generateMoves(k, l, m, n)
     if #moves == 0 and is_over then
       for i = k - 1, 1, -1 do
         if p[c][i] > 0 then
-          table.insert(moves, {from = i, to = i - k})
+          --table.insert(moves, {from = i, to = i - k})
+          table.insert(moves, {from = i, to = i - i})
           break
         end
       end
