@@ -99,6 +99,7 @@ luafilesystem | https://github.com/keplerproject/luafilesystem/
 lanes         | https://github.com/LuaLanes/lanes
 MahjongUtil   | https://github.com/nikolat/MahjongUtil
 luasocket     | https://github.com/diegonehab/luasocket
+Arasan        | https://www.arasanchess.org/
 
 
 ## 使用フォント
