@@ -726,8 +726,8 @@ return {
           score.win = score.win + 1
           shiori:talk("OnShogiEngineGameOver", "lose")
           shiori:talk("OnQuitShogiEngine")
-          str:append(SS():p(0):s(5073)):append("負けました…")
-              :append(SS():_w(2000):s(2205))
+          str:append(SS():p(0):s("形勢_敗勢")):append("負けました…")
+              :append(SS():_w(2000):s("座り_素"))
               :append(shiori:talk("OnShogiView", ref))
         end
       else

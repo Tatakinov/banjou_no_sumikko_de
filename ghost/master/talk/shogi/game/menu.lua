@@ -144,7 +144,7 @@ return {
           :append("\\n")
       if __("Supplement_Engine_Version") == nil then
         str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(36MB/94MB)", "OnInstallShogiEngine"):n())
-      elseif __("Supplement_Engine_Version") < "1.1.0" then
+      elseif __("Supplement_Engine_Version") < "1.2.0" then
         str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallShogiEngine"):n())
       elseif selected then
         local score_list  = __("成績")
