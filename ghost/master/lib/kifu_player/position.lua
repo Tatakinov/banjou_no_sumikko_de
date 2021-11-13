@@ -347,9 +347,10 @@ function M:pinned(color)
           local list =
               Relative.getRelativeList(Color.reverse(piece.color), Misc.unpromote(piece.kind))
           for _, v in pairs(list) do
-            for _, v in ipairs(v) do
-              local x = x + v.x
-              local y = y + v.y
+            local upper_bound = v.running and 8 or 1
+            for i = 1, upper_bound do
+              local x = x + v.x * i
+              local y = y + v.y * i
               if x < 1 or x > 9 or y < 1 or y > 9 then
                 break
               end
