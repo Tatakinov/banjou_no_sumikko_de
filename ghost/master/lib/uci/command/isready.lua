@@ -4,8 +4,8 @@ local M = {}
 
 function M.parse(list)
   local data  = {}
-  assert(list[1] == "")
-  data.command = Command
+  assert(list[1] == "isready")
+  data.command = Command.ISREADY
   return data
 end
 
