@@ -144,9 +144,10 @@ return {
           :append(SS():q("変更", "OnChessGameMenu", "time_limit"))
           :append("】")
           :append("\\n")
+      local score = {win = 0, lose = 0}
       if selected then
         local score_list  = __("成績")
-        local score = score_list[selected]
+        score = score_list[selected]
         if score == nil then
           score_list[selected]  = {win = 0, lose = 0}
           score = score_list[selected]
