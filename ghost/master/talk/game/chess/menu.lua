@@ -146,7 +146,7 @@ return {
           :append("\\n")
       local score = {win = 0, lose = 0}
       if selected then
-        local score_list  = __("成績")
+        local score_list  = __("成績(Chess)")
         score = score_list[selected]
         if score == nil then
           score_list[selected]  = {win = 0, lose = 0}
@@ -158,7 +158,7 @@ return {
       elseif __("Supplement_Engine_Version") < "1.2.0" then
         str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallChessEngine"):n())
       elseif selected then
-        str:append(SS():_l(20)):append("成績"):append(SS():_l(120))
+        str:append(SS():_l(20)):append("成績(Chess)"):append(SS():_l(120))
         str:append(score.win):append("勝"):append(score.lose):append("敗")
         str:append("\\n")
       end
@@ -314,7 +314,7 @@ return {
           lose  = 0,
         },
       }
-      __("成績", score_list)
+      __("成績(Chess)", score_list)
       local filename  = __("_path") .. [[engine\version]]
       --print("filename: " .. filename)
       local fh  = io.open(filename, "r")

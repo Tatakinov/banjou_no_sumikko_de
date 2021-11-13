@@ -167,7 +167,7 @@ return {
         score = 9999,
       })
       --]]
-      local score = __("成績")[__("SelectedChessEngine")]
+      local score = __("成績(Chess)")[__("SelectedChessEngine")]
       score.lose  = score.lose + 1
       shiori:talk("OnChessEngineGameOver", "win")
       shiori:talk("OnQuitChessEngine")

@@ -728,7 +728,7 @@ return {
               tesuu = player:getTesuu(),
               score = -9999,
             })
-            local score = __("成績")[__("SelectedChessEngine")]
+            local score = __("成績(Chess)")[__("SelectedChessEngine")]
             score.win = score.win + 1
             shiori:talk("OnChessEngineGameOver", "lose")
             shiori:talk("OnQuitChessEngine")
@@ -745,7 +745,7 @@ return {
         end
       -- 非合法手を指した場合は強制的にユーザーの勝ちにする
       elseif player:isCheck(color) then
-        local score = __("成績")[__("SelectedChessEngine")]
+        local score = __("成績(Chess)")[__("SelectedChessEngine")]
         score.win = score.win + 1
         shiori:talk("OnChessEngineGameOver", "lose")
         shiori:talk("OnQuitChessEngine")
