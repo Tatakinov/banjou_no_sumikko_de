@@ -157,12 +157,12 @@ ghost/master/talk/game/backgammon/server.luac57c2ab6e1dedd3494174c585614c220si
 ghost/master/talk/game/backgammon/todof223c5dd9b13e3a6f2c91f04da2e2e2esize=1241date=2021-09-05T22:05:43
 ghost/master/talk/game/chess/engine.lua8aa838e1cb146135d6d73052f9ec070fsize=27730date=2021-11-13T22:03:58
 ghost/master/talk/game/chess/game.lua538f7c3851894671e8045f30815723c0size=14515date=2021-11-13T22:03:58
-ghost/master/talk/game/chess/menu.luafe76c75d18e0df3f5a110abe00bc7a17size=12150date=2021-11-13T22:03:58
+ghost/master/talk/game/chess/menu.lua434a2839debfad90d928febf6dcde84asize=12149date=2021-11-13T22:16:08
 ghost/master/talk/game/chess/player.luae3e324c78afb356631d58e35dfdfb864size=5742date=2021-11-13T21:38:05
 ghost/master/talk/game/chess/view/render.luad5ad3f81681b6730b156bff69bd2e600size=19062date=2021-11-13T21:38:05
 ghost/master/talk/game/chess/view/view.lua6c69c6b9ccea982be048869729276112size=6179date=2021-11-07T22:27:26
 ghost/master/talk/game/fan.luaeec708cb53852484a726fd8414ba2bc1size=604date=2021-09-05T22:05:43
-ghost/master/talk/game/initialize.luabdfcd714d4af418ae196798a8a6c2e5bsize=9289date=2021-11-13T21:51:01
+ghost/master/talk/game/initialize.lua05138f08959ccc60fe2c823e0aad3a81size=9210date=2021-11-13T22:16:08
 ghost/master/talk/game/menu.lua9bcb7c27949622e5380294c229a70c6asize=2150date=2021-11-13T21:38:05
 ghost/master/talk/initialize.lua8346c3a5bec855cd55226d3341e4cc0csize=177date=2021-09-05T22:05:43
 ghost/master/talk/key.lua6285c0075b4932d4949d1a1434aa89basize=1485date=2021-09-12T21:57:39
