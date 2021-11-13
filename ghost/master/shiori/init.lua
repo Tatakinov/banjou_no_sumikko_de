@@ -128,7 +128,7 @@ local function extractHeaders(obj)
     ErrorDescription  = obj.ErrorDescription,
   }
   for k, v in pairs(obj) do
-    if string.match(k, "^X-SSTP-PassThru-") then
+    if string.match(k, "^X%-SSTP%-PassThru%-") then
       t[k]  = v
     end
   end

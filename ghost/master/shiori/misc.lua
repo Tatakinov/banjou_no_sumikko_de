@@ -11,7 +11,7 @@ local function hasResponse(obj)
     return true
   end
   for k, _ in pairs(obj) do
-    if string.match(k, "^X-SSTP-PassThru-") then
+    if string.match(k, "^X%-SSTP%-PassThru%-") then
       return true
     end
   end
