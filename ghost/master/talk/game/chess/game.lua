@@ -158,7 +158,7 @@ return {
       local __        = shiori.var
       local str       = StringBuffer()
       local player    = ChessPlayer.getInstance()
-      player:appendMove("resign")
+      --player:appendMove("resign")
       --[[
       -- ユーザーの操作で投了する場合は
       -- 詰みとは限らないのでScoreは追加しない。
@@ -179,11 +179,24 @@ return {
     end,
   },
   {
+    id  = "OnChessGameStalemate",
+    content = function(shiori, ref)
+      local str       = StringBuffer()
+      local player    = ChessPlayer.getInstance()
+      shiori:talk("OnChessEngineGameOver", "draw")
+      shiori:talk("OnQuitChessEngine")
+      str:append(SS():p(0):s("座り_素")):append("ステイルメイトだよ。")
+          :append(SS():_w(2000))
+          :append(shiori:talk("OnChessView", ref))
+      return str:tostring()
+    end,
+  },
+  {
     id  = "OnChessGameSennichite",
     content = function(shiori, ref)
       local str       = StringBuffer()
       local player    = ChessPlayer.getInstance()
-      player:appendMove("千日手")
+      --player:appendMove("千日手")
       shiori:talk("OnChessEngineGameOver", "draw")
       shiori:talk("OnQuitChessEngine")
       str:append(SS():p(0):s("座り_素")):append("千日手だよ。")

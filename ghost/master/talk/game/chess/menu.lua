@@ -144,17 +144,19 @@ return {
           :append(SS():q("変更", "OnChessGameMenu", "time_limit"))
           :append("】")
           :append("\\n")
-      if __("Supplement_Engine_Version") == nil then
-        str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(36MB/94MB)", "OnInstallChessEngine"):n())
-      elseif __("Supplement_Engine_Version") < "1.1.0" then
-        str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallChessEngine"):n())
-      elseif selected then
+      if selected then
         local score_list  = __("成績")
         local score = score_list[selected]
         if score == nil then
           score_list[selected]  = {win = 0, lose = 0}
           score = score_list[selected]
         end
+      end
+      if __("Supplement_Engine_Version") == nil then
+        str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(36MB/94MB)", "OnInstallChessEngine"):n())
+      elseif __("Supplement_Engine_Version") < "1.2.0" then
+        str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallChessEngine"):n())
+      elseif selected then
         str:append(SS():_l(20)):append("成績"):append(SS():_l(120))
         str:append(score.win):append("勝"):append(score.lose):append("敗")
         str:append("\\n")

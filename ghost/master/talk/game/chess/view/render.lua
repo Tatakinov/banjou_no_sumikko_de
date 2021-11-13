@@ -238,15 +238,19 @@ local M = {
       updater:set("CHESS_BOARD_GREY", nil, 0)
       updater:set("PROMOTE_WINDOW_CHESS", nil, 0)
       for _, v in ipairs({"N", "B", "R", "Q"}) do
-        updater:set("PROMOTE_WINDOW_WHITE_" .. v, nil, 0)
-        updater:set("PROMOTE_WINDOW_BLACK_" .. v, nil, 0)
-        updater:set("PROMOTE_WINDOW_DUMMY_WHITE_" .. v, nil, 0)
-        updater:set("PROMOTE_WINDOW_DUMMY_BLACK_" .. v, nil, 0)
+        updater:set("PROMOTE_WINDOW_" .. v, nil, 0)
+        updater:set("PROMOTE_WINDOW_DUMMY_" .. v, nil, 0)
       end
       for x = 1, 8 do
         for y = 1, 8 do
           local tag = getSquareCategory(x, y, reverse)
           updater:set("DUMMY_" .. tag, nil, 0)
+        end
+      end
+      for _, color in ipairs(Color.LIST) do
+        for _, kind in ipairs({"N", "B", "R", "Q"}) do
+          updater:set("DUMMY_WHITE_" .. kind, nil, 0)
+          updater:set("DUMMY_BLACK_" .. kind, nil, 0)
         end
       end
       -- 持ち駒
@@ -522,21 +526,18 @@ local M = {
       local y = tonumber(string.sub(id2, 2, 2))
       local tag = getSquareCategory(x, y, reverse)
       local dummy_color = getDummyColor(move.color, reverse)
-      --[[
-      str:append(
-        SS():bind("PROMOTE_WINDOW_" .. tag, "WINDOW", 1)
-            :bind(dummy_color .. "_PROMOTE_" .. tag, "DUMMY", 1)
-            :bind("PROMOTE_" .. tag, getHandCategory(move.color, ChessPlayer.Misc.promote(move.piece), reverse), 1)
-            :bind(dummy_color .. "_UNPROMOTE_" .. tag, "DUMMY", 1)
-            :bind("UNPROMOTE_" .. tag, getHandCategory(move.color, ChessPlayer.Misc.unpromote(move.piece), reverse), 1)
-      )
-      --]]
+      local color = move.color
+      if reverse then
+        color = Color.reverse(color)
+      end
+
+      updater:set("CHESS_BOARD_GREY", "GREY", 1)
+      updater:set("PROMOTE_WINDOW_CHESS", "PROMOTE", 1)
       for _, v in ipairs({"N", "B", "R", "Q"}) do
         -- FIXME reverse考慮
-        updater:set("PROMOTE_WINDOW_" .. color_str[move.color] .. "_" .. v, nil, 0)
-        updater:set("PROMOTE_WINDOW_" .. dummy_color .. "_" .. v, nil, 0)
+        updater:set("PROMOTE_WINDOW_" .. v, color_str[color] .. "_" .. v, 1)
+        updater:set("PROMOTE_WINDOW_DUMMY_" .. v, color_str[color], 1)
       end
-      print(str:tostring())
       return str:tostring()
     end,
   },
@@ -639,28 +640,26 @@ for _, color in ipairs(Color.LIST) do
 end
 --]]
 
-for x = 1, 8 do
-  for y = 1, 8 do
-    for _, color in ipairs(Color.LIST) do
-      local tag = getSquareCategory(x, y, false)
-      local dummy_color = getDummyColor(color, false)
-      local t = {
-        id  = "4" .. dummy_color .. "_PROMOTE_" .. tag .. "Left",
-        content = function(shiori, ref)
-          print("Click: PROMOTE_" .. tag)
-          return SS():raise("OnChessGamePlayerTurnEnd", nil, nil, true):tostring()
-        end,
-      }
-      table.insert(M, t)
-      local t = {
-        id  = "4" .. dummy_color .. "_UNPROMOTE_" .. tag .. "Left",
-        content = function(shiori, ref)
-          print("Click: UNPROMOTE_" .. tag)
-          return SS():raise("OnChessGamePlayerTurnEnd", nil, nil, false):tostring()
-        end,
-      }
-      table.insert(M, t)
-    end
+for _, color in ipairs(Color.LIST) do
+  for _, kind in ipairs({"N", "B", "R", "Q"}) do
+    local dummy_color = getDummyColor(color, false)
+    local t = {
+      id  = "4" .. dummy_color .. "_" ..  kind .. "Left",
+      content = function(shiori, ref)
+        print("Click: PROMOTE_" .. kind)
+        return SS():raise("OnChessGamePlayerTurnEnd", nil, nil, kind):tostring()
+      end,
+    }
+    table.insert(M, t)
+    local dummy_color = getDummyColor(color, true)
+    local t = {
+      id  = "4" .. dummy_color .. "_" ..  kind .. "Left",
+      content = function(shiori, ref)
+        print("Click: PROMOTE_" .. kind)
+        return SS():raise("OnChessGamePlayerTurnEnd", nil, nil, kind):tostring()
+      end,
+    }
+    table.insert(M, t)
   end
 end
 

@@ -687,8 +687,8 @@ return {
             --print("info received")
           end
         elseif data.command == UCI.Command.BESTMOVE then
-          print("bestmove: " .. data.bestmove)
-          print("ponder:   " .. tostring(data.ponder))
+          print("bestmove:", data.bestmove)
+          print("ponder:", tostring(data.ponder))
           local score = __("_CurrentScore")
           local judge = __("_CurrentJudgement")
           __("_PrevScore", score)
@@ -716,25 +716,42 @@ return {
       local str       = StringBuffer()
       local move      = assert(__("_BestMove"))
       local player    = ChessPlayer.getInstance()
-      print("BestMove", move)
+      local color     = player:getTeban()
+      local check     = player:isCheck()
       player:appendMove(move)
-      print("BestMove", move)
       local move_format = player:getMoveFormat()
       local special = move_format.special
       if special then
-        if special == "TORYO" then
-          table.insert(__("_ScoreList"), {
-            tesuu = player:getTesuu(),
-            score = -9999,
-          })
-          local score = __("成績")[__("SelectedChessEngine")]
-          score.win = score.win + 1
-          shiori:talk("OnChessEngineGameOver", "lose")
-          shiori:talk("OnQuitChessEngine")
-          str:append(SS():p(0):s(5073)):append("負けました…")
-              :append(SS():_w(2000):s(2205))
-              :append(shiori:talk("OnChessView", ref))
+        if special == "nullmove" then
+          if check then
+            table.insert(__("_ScoreList"), {
+              tesuu = player:getTesuu(),
+              score = -9999,
+            })
+            local score = __("成績")[__("SelectedChessEngine")]
+            score.win = score.win + 1
+            shiori:talk("OnChessEngineGameOver", "lose")
+            shiori:talk("OnQuitChessEngine")
+            str:append(SS():p(0):s("形勢_敗勢")):append("負けました…")
+                :append(SS():_w(2000):s("座り_素"))
+                :append(shiori:talk("OnChessView", ref))
+          else
+            table.insert(__("_ScoreList"), {
+              tesuu = player:getTesuu(),
+              score = 0,
+            })
+            str:append(shiori:talk("OnChessGameStalemate", ref))
+          end
         end
+      -- 非合法手を指した場合は強制的にユーザーの勝ちにする
+      elseif player:isCheck(color) then
+        local score = __("成績")[__("SelectedChessEngine")]
+        score.win = score.win + 1
+        shiori:talk("OnChessEngineGameOver", "lose")
+        shiori:talk("OnQuitChessEngine")
+        str:append(SS():p(0):s("形勢_敗勢")):append("負けました…")
+            :append(SS():_w(2000):s("座り_素"))
+            :append(shiori:talk("OnChessView", ref))
       else
         local score = __("_CurrentScore")
         if __("_ScoreList") == nil then
@@ -748,14 +765,11 @@ return {
           str:append(SS():raise("OnChessGameSennichite"))
         else
           if __("_Ponder") and false then
-            print("Ponder")
             shiori:talk("OnChessGameEnginePonder")
-            print("Ponder")
           end
           str:append(SS():raise("OnChessGameTurnBegin"))
         end
       end
-      print("FEN:", player:toSfen())
       return str:tostring()
     end,
   },

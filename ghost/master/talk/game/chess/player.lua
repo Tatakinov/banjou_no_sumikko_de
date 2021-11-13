@@ -20,6 +20,12 @@ return {
       local player  = ChessPlayer.getInstance()
       local moves   = player:generateMoves()
 
+      -- stalemate
+      if #moves == 0 and not(player:isCheck()) then
+        str:append(shiori:talk("OnChessGameStalemate", ref))
+        return str
+      end
+
       local player_moves  = {}
       __("_PlayerMoves", player_moves)
 
@@ -125,17 +131,17 @@ return {
 
       local move  = assert(__("_PlayerMoves")[id1][id2])
 
-      local promote, force
+      local promote
       if move.from then
-        promote, force  = ChessPlayer.Misc.canPromote(move.color, move.from.y, move.to.y, move.piece)
+        promote = ChessPlayer.Misc.canPromote(move.color, move.from.y, move.to.y, move.piece)
       end
 
-      if promote == true and force == false then
+      if promote then
         str:append(shiori:talk("OnChessRenderSelectPromotePre"))
         str:append(shiori:talk("OnChessRenderSelectPromote", id1, id2))
         str:append(shiori:talk("OnChessRenderSelectPromotePost"))
       else
-        str:append(SS():raise("OnChessGamePlayerTurnEnd", id1, id2, promote))
+        str:append(SS():raise("OnChessGamePlayerTurnEnd", id1, id2))
       end
 
       return str:tostring()
@@ -151,7 +157,8 @@ return {
       --local id2     = ref[1]
       local id1 = __("_GamePieceFrom")
       local id2 = __("_GamePieceTo")
-      local promote = ref[2] == "true"
+      local promote = ref[2]
+      print("PROMOTE", promote)
       local player  = ChessPlayer.getInstance()
 
       id1 = assert(tonumber(id1) or id1)
