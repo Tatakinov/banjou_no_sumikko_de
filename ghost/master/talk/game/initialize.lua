@@ -159,7 +159,7 @@ return {
         },
       }
       __("ChessEngineList", list)
-      local name  = __("SelectedChessEngine") or "そこそこ"
+      local name  = __("SelectedChessEngine") or "ほどほど"
       __("SelectedChessEngine", name)
       local score_list  = {
         ["ほどほど"]  = {
@@ -171,7 +171,7 @@ return {
           lose  = 0,
         },
       }
-      local tmp = __("成績(Chess)")
+      local tmp = __("成績(Chess)") or {}
       for k, v in pairs(tmp) do
         score_list[k] = v
       end
@@ -302,7 +302,7 @@ return {
           lose  = 0,
         },
       }
-      local tmp = __("成績")
+      local tmp = __("成績") or {}
       for k, v in pairs(tmp) do
         score_list[k] = v
       end
