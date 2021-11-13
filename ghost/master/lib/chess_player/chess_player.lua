@@ -1,9 +1,7 @@
-local utf8      = require("lua-utf8")
 local Class     = require("class")
 local StringBuffer  = require("string_buffer")
 local Clone     = require("clone")
 local Color     = require("chess_player.color")
-local Conv      = require("conv")
 local InitialPreset = require("chess_player.initial_preset")
 local Misc      = require("chess_player.misc")
 local NL        = require("chess_player.nl")
@@ -45,7 +43,7 @@ function M:_init()
     [Color.WHITE] = 1000,
     [Color.BLACK] = 1000,
   }
-  self.enpassant  = nil
+  self.enpassant  = {}
 end
 
 --- 局面を指定する
@@ -75,8 +73,6 @@ function M:load(file_name)
   if fh then
     local data  = fh:read("a")
     fh:close()
-    local utf8_data = Conv.conv(data, "UTF-8", "cp932")
-    data = utf8_data or data
     return self:parse(data)
   end
   return false
@@ -298,6 +294,18 @@ function M:normalize(move_format)
           move.castling = true
         end
       end
+      -- en passant
+      local enpassant = false
+      if move.piece == Misc.P and move.from then
+        local piece = self:getPiece(move.to.x, move.from.y)
+        if piece.color == Color.reverse(move.color)
+            and piece.kind == Misc.P
+            and move.to.x == self.enpassant.x
+            and move.to.y == self.enpassant.y
+            then
+          move.enpassant = true
+        end
+      end
     end -- if move.from and move.relative
   end -- if move
   return move_format
@@ -399,17 +407,6 @@ function M:getSashite(num)
       str:append("成")
     elseif move.promote == false then
       str:append("不成")
-    end
-    if move.same then
-      local length  = utf8.len(str:tostring())
-      if length > 1 then
-        str:prepend(Color.tostring(move.color) .. "同")
-      elseif length == 1 then
-        str:prepend(Color.tostring(move.color) .. "同　")
-      end
-    else
-      str:prepend(Color.tostring(move.color) ..
-            Misc.n2z(move.to.x) .. Misc.n2k(move.to.y))
     end
     return str:tostring()
   else
@@ -608,22 +605,31 @@ function M:forward()
         move.to.x,    move.to.y,
         move.piece,   move.color,
         move.capture, move.promote,
-        move.castling
+        move.castling, move.enpassant
       )
       -- castling
       if move.piece == Misc.K then
-        if self:getTesuu() > self.castling[move.color] then
+        if self:getTesuu() < self.castling[move.color] then
           self.castling[move.color] = self:getTesuu()
         end
       end
-      -- enpassant
-      if move.piece == Misc.P and math.abs(move.from.y - move.to.y) == 2 then
-        self.enpassant  = {
-          x = move.from.x,
-          y = move.from.y,
-        }
+      -- en passant?
+      if move.piece == Misc.P then
+        if move.from.y - move.to.y == 2 then
+          self.enpassant  = {
+            x = move.from.x,
+            y = move.from.y - 1,
+          }
+        elseif move.from.y - move.to.y == -2 then
+          self.enpassant  = {
+            x = move.from.x,
+            y = move.from.y + 1,
+          }
+        else
+          self.enpassant  = {}
+        end
       else
-        self.enpassant  = nil
+        self.enpassant  = {}
       end
     else
       self.position:hit(
@@ -697,7 +703,7 @@ function M:backward()
         move.to.x,    move.to.y,
         move.piece,   move.color,
         move.capture, move.promote,
-        move.castling
+        move.castling, move.enpassant
       )
       if move.piece == Misc.K or move.piece == Misc.R then
         if self:getTesuu() < self.castling[move.color] then
@@ -714,13 +720,22 @@ function M:backward()
   -- en passant
   move_format = self:getMoveFormat()
   move  = move_format.move
-  if move and move.piece == Misc.P and math.abs(move.from.y - move.to.y) == 2 then
-    self.enpassant  = {
-      x = move.from.x,
-      y = move.from.y,
-    }
+  if move and move.piece == Misc.P then
+    if move.from.y - move.to.y == 2 then
+      self.enpassant  = {
+        x = move.from.x,
+        y = move.from.y - 1,
+      }
+    elseif move.from.y - move.to.y == -2 then
+      self.enpassant  = {
+        x = move.from.x,
+        y = move.from.y + 1,
+      }
+    else
+      self.enpassant  = {}
+    end
   else
-    self.enpassant  = nil
+    self.enpassant  = {}
   end
 end
 
@@ -807,6 +822,7 @@ function M:generateMoves()
   for _, v in ipairs({move_moves, hit_moves, king_moves}) do
     for _, v in ipairs(v) do
       -- 連続王手の千日手になる手を除外する
+      --print(v.piece, v.from.x, v.from.y, "->", v.to.x, v.to.y)
       clone:appendMove(v)
       if clone:isPerpetualCheck() == false then
         table.insert(moves, v)
@@ -832,7 +848,7 @@ function M:isRepetition(check)
     else
       self._sfen_map[id] = 1
     end
-    if self._sfen_map[id] == 4 then
+    if self._sfen_map[id] == 3 then
       repetition_id = id
       break
     end
@@ -854,10 +870,15 @@ function M:isRepetition(check)
     if has_checked then
       return true
     else
-      return false
+      return true
     end
   end
   return false
+end
+
+function M:isCheck(color)
+  local color = color or self:getTeban()
+  return self.position:isCheck(color)
 end
 
 -- 現局面が千日手か
@@ -912,14 +933,6 @@ function M:toUCI()
   return str:tostring(), init, moves
 end
 
-function M:toKIF(charset)
-  local kif = Parser.KIF.toKIF(self, charset)
-  if charset == "Shift_JIS" then
-    return Conv.conv(kif, "cp932", "UTF-8")
-  end
-  return kif
-end
-
 function M:toSfen(reverse)
   local reverse = reverse or false
   local str = StringBuffer()
@@ -949,6 +962,8 @@ function M:toSfen(reverse)
         end
         if color == Color.WHITE then
           p = string.upper(p)
+        else
+          p = string.lower(p)
         end
         position:append(p)
       else

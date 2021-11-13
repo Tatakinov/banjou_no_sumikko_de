@@ -104,9 +104,8 @@ end
 --- TODO comment
 function M.parseMove(str)
   local move  = {}
-  local special = Misc.special2csa(str)
-  if special then
-    return special
+  if str == "0000" then
+    return "nullmove"
   end
   for i = 1, #str do
     local c = string.sub(str, i, i)
@@ -177,18 +176,23 @@ function M.toUCImove(move_format)
   local move  = move_format.move
   if move then
     if move.from then
-      str:append(Misc.n2fen(move.from.x))
-          :append(tostring(move.from.y))
-          :append(Misc.n2fen(move.to.x))
-          :append(tostring(move.to.y))
-      if move.promote then
-        str:append(move.promote)
+      if move.from.x == 0 and move.from.y == 0 and
+          move.to.x == 0 and move.to.y == 0 then
+        str:append("0000")
+      else
+        str:append(Misc.n2fen(move.from.x))
+            :append(tostring(move.from.y))
+            :append(Misc.n2fen(move.to.x))
+            :append(tostring(move.to.y))
+        if move.promote then
+          str:append(string.lower(move.promote))
+        end
       end
     else
       str:append(string.upper(Misc.csa2sfen(move.piece)))
           :append("*")
-          :append(tostring(move.to.x))
-          :append(Misc.n2sfen(move.to.y))
+          :append(Misc.n2fen(move.to.x))
+          :append(tostring(move.to.y))
     end
   end
   return str:tostring()

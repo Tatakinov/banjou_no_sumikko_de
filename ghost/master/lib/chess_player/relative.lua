@@ -1,4 +1,4 @@
-local Color = require("kifu_player.color")
+local Color = require("chess_player.color")
 
 local M = {}
 
@@ -88,6 +88,13 @@ local relative_list = {
     sub   = M.C,
   },
   -- 下 (from: ５六 -> to: ５五)
+  B1  = {
+    x = 0, y = 1,
+    weak  = true,
+    main  = M.U,
+    sub   = M.C,
+  },
+  -- 下 (from: ５六 -> to: ５五)
   B2  = {
     x = 0, y = 2,
     weak  = true,
@@ -162,9 +169,9 @@ local function createRelative(color, relative, running)
   assert(color and relative)
 
   if color == Color.WHITE then
-    color = 1
-  else
     color = -1
+  else
+    color = 1
   end
 
   local base = relative_list[relative]
@@ -174,6 +181,7 @@ local function createRelative(color, relative, running)
     y       = base.y * color,
     main    = base.main,
     sub     = base.sub,
+    weak    = base.weak,
     running = running,
   }
   return ret
@@ -193,7 +201,7 @@ for _, color in ipairs({Color.BLACK, Color.WHITE}) do
     },
     P = {
       BL  = createRelative(color, "BL"),
-      B   = createRelative(color, "B"),
+      B1  = createRelative(color, "B1"),
       B2  = createRelative(color, "B2"),
       BR  = createRelative(color, "BR"),
     },

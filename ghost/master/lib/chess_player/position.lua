@@ -112,7 +112,7 @@ end
 -- @tparam color color
 -- @tparam[opt=nil] string capture
 -- @tparam[opt=nil] boolean promote
-function M:move(from_x, from_y,  to_x, to_y, piece, color, capture, promote, castling)
+function M:move(from_x, from_y,  to_x, to_y, piece, color, capture, promote, castling, enpassant)
   assert(tonumber(from_x))
   assert(tonumber(from_y))
   assert(tonumber(to_x))
@@ -148,6 +148,10 @@ function M:move(from_x, from_y,  to_x, to_y, piece, color, capture, promote, cas
       end
     end
   end
+  if enpassant then
+    self.board[to_x][from_y].kind   = nil
+    self.board[to_x][from_y].color  = nil
+  end
 end
 
 --- 駒を一手戻す
@@ -159,7 +163,7 @@ end
 -- @tparam color color
 -- @tparam[opt=nil] string capture
 -- @tparam[opt=nil] boolean promote
-function M:unmove(from_x, from_y, to_x, to_y, piece, color, capture, promote, castling)
+function M:unmove(from_x, from_y, to_x, to_y, piece, color, capture, promote, castling, enpassant)
   self.board[from_x][from_y].color  = color
   if promote then
     self.board[from_x][from_y].kind   = Misc.P
@@ -191,6 +195,10 @@ function M:unmove(from_x, from_y, to_x, to_y, piece, color, capture, promote, ca
         self:move(6, 8, 8, 8, Misc.R, color, nil, nil, nil)
       end
     end
+  end
+  if enpassant then
+    self.board[to_x][from_y].kind   = Misc.P
+    self.board[to_x][from_y].color  = Color.reverse(color)
   end
 end
 
@@ -365,11 +373,12 @@ function M:pinned(color)
         local kind  = assert(piece.kind)
         if kind == Misc.B or kind == Misc.R or kind == Misc.Q then
           local list =
-              Relative.getRelativeList(Color.reverse(piece.color), piece.kind)
+              Relative.getRelativeList(Color.reverse(piece.color), kind)
           for _, v in pairs(list) do
-            for _, v in ipairs(v) do
-              local x = x + v.x
-              local y = y + v.y
+            local upper_bound = v.running and 8 or 1
+            for i = 1, upper_bound do
+              local x = x + v.x * i
+              local y = y + v.y * i
               if x < 1 or x > 8 or y < 1 or y > 8 then
                 break
               end
@@ -380,7 +389,7 @@ function M:pinned(color)
                   break
                 end
               end -- to.color
-            end -- for i, v
+            end -- for upper_bound
           end -- for _, v
         end -- if kind
       end -- if color
@@ -412,7 +421,8 @@ function M:moveGenerateKing(color, castling_available)
             valid = not(self:isCheck(color))
             self:unmove(x, y, to.x, to.y, kind, color, capture, nil)
             -- castling
-            if castling_available and x == 5 then
+            if castling_available and x == 5 and not(self:isCheck(color)) then
+              local invalid = true
               if x - to.x == 2 then
                 if not(self:getPiece(4, y).kind)
                     and not(self:getPiece(3, y).kind)
@@ -422,9 +432,12 @@ function M:moveGenerateKing(color, castling_available)
                     and ((color == Color.WHITE and y == 1)
                       or (color == Color.BLACK and y == 8))
                     then
-                  castling  = true
-                else
-                  valid = false
+                  self:move(x, y, x - 1, to.y, kind, color, capture, nil)
+                  invalid = self:isCheck(color)
+                  self:unmove(x, y, x - 1, to.y, kind, color, capture, nil)
+                  if not(invalid) then
+                    castling  = true
+                  end
                 end
               elseif x - to.x == -2 then
                 if not(self:getPiece(6, y).kind)
@@ -434,11 +447,19 @@ function M:moveGenerateKing(color, castling_available)
                     and ((color == Color.WHITE and y == 1)
                       or (color == Color.BLACK and y == 8))
                     then
-                  castling  = true
-                else
-                  valid = false
+                  self:move(x, y, x + 1, to.y, kind, color, capture, nil)
+                  invalid = self:isCheck(color)
+                  self:unmove(x, y, x + 1, to.y, kind, color, capture, nil)
+                  if not(invalid) then
+                    castling  = true
+                  end
                 end
+              else
+                invalid = false
               end
+              valid = valid and not(invalid)
+            elseif math.abs(x - to.x) == 2 then
+              valid = false
             end
             if valid then
               table.insert(moves, {
@@ -540,12 +561,17 @@ function M:moveGenerateMove(color, enpassant)
                   then
                 valid = false
               end
+              local y = math.floor((from.y + to.y) / 2)
+              local piece = self:getPiece(from.x, y)
+              if piece.color then
+                valid = false
+              end
             end
           end
           if valid then
             local promote = Misc.canPromote(color, from.y, to.y, kind)
             if promote then
-              for _, v in {"N", "B", "R", "Q"} do
+              for _, v in ipairs({"N", "B", "R", "Q"}) do
                 table.insert(moves, {
                   color = color,
                   from  = {
@@ -627,12 +653,17 @@ function M:moveGenerateMove(color, enpassant)
                       then
                     valid = false
                   end
+                  local y = math.floor((y + to.y) / 2)
+                  local piece = self:getPiece(x, y)
+                  if piece.color then
+                    valid = false
+                  end
                 end
               end
               if valid then
                 local promote = Misc.canPromote(color, y, to.y, kind)
                 if promote then
-                  for _, v in {"N", "B", "R", "Q"} do
+                  for _, v in ipairs({"N", "B", "R", "Q"}) do
                     table.insert(moves, {
                       color = color,
                       from  = {
