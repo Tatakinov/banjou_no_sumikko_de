@@ -4,7 +4,7 @@ return {
     id  = "OnInitializeGameEngine",
     content = function(shiori, ref)
       local __  = shiori.var
-      local list  = __("ChessEngineList") or {
+      local list  = {
         ["つよい"]={
           ["option"]={
             ["Randomize book moves"]={
@@ -159,8 +159,7 @@ return {
         },
       }
       __("ChessEngineList", list)
-      local name  = __("SelectedChessEngine") or "ほどほど"
-      __("SelectedChessEngine", name)
+      __("SelectedChessEngine", "ほどほど")
       local score_list  = {
         ["ほどほど"]  = {
           win   = 0,
