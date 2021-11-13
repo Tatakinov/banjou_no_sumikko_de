@@ -5,7 +5,7 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       local list  = __("ChessEngineList") or {
-        ["Arasan 23.0.1"]={
+        ["つよい"]={
           ["option"]={
             ["Randomize book moves"]={
               ["command"]="option",
@@ -147,13 +147,35 @@ return {
             },
           },
           ["command"]=__("_path") .. "engine\\arasan\\arasanx-32.exe",
-          ["name"]="Arasan 23.0.1",
+          ["name"]="つよい",
           ["author"]="Jon Dart",
+        },
+        ["ほどほど"]={
+          ["option"]={
+          },
+          ["name"]="ほどほど",
+          ["author"]="Tatakinov",
+          ["command"]=__("_path") .. "engine\\chiya\\chiya.exe",
         },
       }
       __("ChessEngineList", list)
-      local name  = __("SelectedChessEngine") or "Arasan 23.0.1"
+      local name  = __("SelectedChessEngine") or "そこそこ"
       __("SelectedChessEngine", name)
+      local score_list  = {
+        ["ほどほど"]  = {
+          win   = 0,
+          lose  = 0,
+        },
+        ["つよい"]  = {
+          win   = 0,
+          lose  = 0,
+        },
+      }
+      local tmp = __("成績(Chess)")
+      for k, v in pairs(tmp) do
+        score_list[k] = v
+      end
+      __("成績(Chess)", score_list)
 
       local shogi686_path = __("_path") .. "engine\\shogi686\\shogi686.exe"
       local sunfish4_path = __("_path") .. "engine\\sunfish4\\sunfish_usi.exe"
@@ -280,6 +302,10 @@ return {
           lose  = 0,
         },
       }
+      local tmp = __("成績")
+      for k, v in pairs(tmp) do
+        score_list[k] = v
+      end
       __("成績", score_list)
       local filename  = __("_path") .. [[engine\version]]
       --print("filename: " .. filename)
@@ -288,6 +314,7 @@ return {
         __("Supplement_Engine_Version", fh:read("*l"))
         fh:close()
       end
+      return [[\0\s[素]インストールが終わったよ。]]
     end,
   },
 }
