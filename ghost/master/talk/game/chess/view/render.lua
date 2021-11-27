@@ -136,37 +136,37 @@ local M = {
     end,
   },
   {
-    id  = "2headLeft",
+    id  = "4headLeft",
     content = function(shiori, ref)
       return SS():raise("OnChessViewControl", "move", "head", "OnChessView")
     end,
   },
   {
-    id  = "2backward10Left",
+    id  = "4backward10Left",
     content = function(shiori, ref)
       return SS():raise("OnChessViewControl", "move", "backward10", "OnChessView")
     end,
   },
   {
-    id  = "2backwardLeft",
+    id  = "4backwardLeft",
     content = function(shiori, ref)
       return SS():raise("OnChessViewControl", "move", "backward", "OnChessView")
     end,
   },
   {
-    id  = "2forwardLeft",
+    id  = "4forwardLeft",
     content = function(shiori, ref)
       return SS():raise("OnChessViewControl", "move", "forward", "OnChessView")
     end,
   },
   {
-    id  = "2forward10Left",
+    id  = "4forward10Left",
     content = function(shiori, ref)
       return SS():raise("OnChessViewControl", "move", "forward10", "OnChessView")
     end,
   },
   {
-    id  = "2tailLeft",
+    id  = "4tailLeft",
     content = function(shiori, ref)
       return SS():raise("OnChessViewControl", "move", "tail", "OnChessView")
     end,
