@@ -52,8 +52,8 @@ local Piece =
 local OneCharPiece  = lpeg.P("杏") + lpeg.P("圭") + lpeg.P("全")
 
 local HandNone  = lpeg.P("なし")
-local HandNum = lpeg.P("　") + KanjiNumber
-local Hand  = lpeg.Ct(lpeg.Ct(lpeg.Cg(Piece, "kind") * lpeg.Cg(HandNum, "num")) ^ 0) + HandNone
+local HandNum = KanjiNumber
+local Hand  = lpeg.Ct(lpeg.Ct(lpeg.Cg(Piece, "kind") * (lpeg.Cg(HandNum ^ 0, "num")) * lpeg.P("　")) ^ 0) + HandNone
 
 local Teban = lpeg.Ct(lpeg.Cg(lpeg.P("後手番"), "teban"))
 
