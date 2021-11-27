@@ -84,7 +84,7 @@ local function generateTalk(num, path, is_answer)
         str:append([[
 \0
 \n
-\_q\![*]\q[問題選択に戻る,将棋_次の一手] \![*]\q[閉じる,閉じる]\n\_q
+\_q\![*]\q[問題選択に戻る,OnShogiNextMove] \![*]\q[閉じる,閉じる]\n\_q
 ]])
       elseif not(shiori:isReservedTalk(id .. "_答え")) then
         --shiori:reserveTalk(id .. "_答え")
