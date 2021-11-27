@@ -1,15 +1,16 @@
-local Class       = require("class")
-local Trie        = require("trie")
-local Misc        = require("shiori.misc")
-local Module    = require("ukagaka_module.shiori")
-local Path  = require("path")
-local Protocol  = Module.Protocol
-local Request   = Module.Request
-local Response  = Module.Response
-local SaoriCaller = require("saori_caller")
+local Class         = require("class")
+local Trie          = require("trie")
+local Misc          = require("shiori.misc")
+local Module        = require("ukagaka_module.shiori")
+local Path          = require("path")
+local Protocol      = Module.Protocol
+local Request       = Module.Request
+local Response      = Module.Response
+local SaoriCaller   = require("saori_caller")
 local StringBuffer  = require("string_buffer")
-local Talk        = require("shiori.talk")
-local Variable    = require("shiori.variable")
+local Talk          = require("shiori.talk")
+local I18N          = require("shiori.i18n")
+local Variable      = require("shiori.variable")
 
 local M = Class()
 M.__index = M
@@ -30,6 +31,7 @@ function M:_init()
   self._reserve = {}
 
   self.var  = Variable()
+  self.i18n = I18N()
 
   self._data   = Talk()
 
@@ -75,9 +77,13 @@ function M:load(path)
       for _, v in ipairs(t) do
         --print("talk: " .. _)
         --print("id:   " .. tostring(v.id))
-        self._data:add(v)
-        if v.anchor then
-          self._trie:add(v.id)
+        if v.i18n then
+          self.i18n:add(v)
+        else
+          self._data:add(v)
+          if v.anchor then
+            self._trie:add(v.id)
+          end
         end
       end
     end
@@ -398,6 +404,10 @@ function M:saori(id)
     }
     return setmetatable(t, mt)
   end
+end
+
+function M:setLanguage(language)
+  self.i18n:set(language)
 end
 
 return M

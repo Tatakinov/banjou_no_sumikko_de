@@ -325,6 +325,7 @@ return {
       print("lang", ref[0])
       print("lang", ref[1])
       __("_Language", ref[0])
+      shiori:setLanguage(ref[0])
     end,
   },
 }
