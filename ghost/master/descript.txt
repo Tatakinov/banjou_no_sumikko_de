@@ -1,15 +1,16 @@
-charset,Shift_JIS
+charset,UTF-8
+readme.charset,UTF-8
 
 type,ghost
-name,”Õã‚Ì‹÷‚Á‚±‚Å
+name,ç›¤ä¸Šã®éš…ã£ã“ã§
 
-sakura.name,¬‹{—RŠó
-kero.name,‚È‚µ
-char2.name,”Õ–Ê
-char3.name,BGƒ{[ƒh
+sakura.name,å°å®®ç”±å¸Œ
+kero.name,ãªã—
+char2.name,ç›¤é¢
+char3.name,BGãƒœãƒ¼ãƒ‰
 
 craftman,tatakinov
-craftmanw,ƒ^ƒ^ƒLƒmƒt
+craftmanw,ã‚¿ã‚¿ã‚­ãƒãƒ•
 
 craftmanurl,https://tatakinov.github.io/
 homeurl,https://raw.githubusercontent.com/Tatakinov/banjou_no_sumikko_de/master/
