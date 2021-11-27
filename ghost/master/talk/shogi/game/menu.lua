@@ -44,6 +44,7 @@ return {
         player_color  = KifuPlayer.Color.BLACK,
         preset        = IP.HIRATE,
         control_guide = true,
+        yomiage       = true,
         time_limit    = true,
       }
       __("GameOption", game_option)
@@ -68,6 +69,8 @@ return {
         game_option.preset  = preset[n % #preset + 1]
       elseif ref[0] == "control_guide" then
         game_option.control_guide = not(game_option.control_guide)
+      elseif ref[0] == "yomiage" then
+        game_option.yomiage = not(game_option.yomiage)
       elseif ref[0] == "time_limit" then
         game_option.time_limit  = not(game_option.time_limit)
       end
@@ -131,6 +134,17 @@ return {
           :append(SS():q("変更", "OnShogiGameMenu", "control_guide"))
           :append("】")
           :append("\\n")
+      str:append(SS():_l(20)):append("読み上げ:")
+          :append(SS():_l(120))
+      if game_option.yomiage then
+        str:append("あり")
+      else
+        str:append("なし")
+      end
+      str:append(SS():_l(200)):append("【")
+          :append(SS():q("変更", "OnShogiGameMenu", "yomiage"))
+          :append("】")
+          :append("\\n")
       str:append(SS():_l(20)):append("時間設定:")
           :append(SS():_l(120))
       if game_option.time_limit then
@@ -157,7 +171,6 @@ return {
         str:append(score.win):append("勝"):append(score.lose):append("敗")
         str:append("\\n")
       end
-      str:append("\\n")
       str:append("\\![*]"):append(SS():q("対局開始", "OnStartShogiEngine"))
       str:append(" ")
       str:append("\\![*]"):append(SS():q("説明", "OnExplainShogiGame"):n())

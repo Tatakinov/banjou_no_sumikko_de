@@ -6,6 +6,7 @@ local Color = KifuPlayer.Color
 local CSA   = KifuPlayer.CSA
 local IP    = KifuPlayer.InitialPreset
 local Misc  = require("shiori.misc")
+local Process = require("process")
 local Rand  = require("rand")
 
 --[[
@@ -200,8 +201,54 @@ return {
       local str           = StringBuffer()
       local player        = KifuPlayer.getInstance()
       local player_color  = __("_PlayerColor")
+      local game_option   = __("GameOption")
       __("_GameState", "begin")
       print("sfen: " .. player:toSfen())
+      local move_format   = player:getMoveFormat()
+      local move          = move_format.move
+      if game_option.yomiage and move then
+        local t = {}
+        if move.color == Color.BLACK then
+          table.insert(t, "black.wav")
+        elseif move.color == Color.WHITE then
+          table.insert(t, "white.wav")
+        end
+        if move.same then
+          table.insert(t, "dou.wav")
+        elseif move.to then
+          local to  = move.to
+          table.insert(t, "n" .. to.x .. ".wav")
+          table.insert(t, "k" .. to.y .. ".wav")
+        end
+        if move.piece then
+          table.insert(t, string.lower(move.piece) .. ".wav")
+        end
+        if move.relative then
+          local main  = string.match(move.relative, "LCR")
+          if main then
+            table.insert(t, string.lower(main) .. ".wav")
+          end
+          local sub = string.match(move.relative, "UMD")
+          if sub then
+            table.insert(t, string.lower(sub) .. ".wav")
+          end
+          if move.relative == "H" then
+            table.insert(t, "h.wav")
+          end
+        end
+        if move.promote then
+          table.insert(t, "p.wav")
+        elseif move.promote == false then
+          table.insert(t, "np.wav")
+        end
+        --print("S", table.concat(t, ","))
+        local process = Process({
+          command = "sound/playsound.exe",
+          chdir   = true,
+        })
+        __("_Sound", process)
+        process:spawn(table.unpack(t))
+      end
       --if player:getTeban() == Color.BLACK or true then
       if player:getTeban() == player_color then
         -- user
