@@ -55,8 +55,6 @@ local HandNone  = lpeg.P("なし")
 local HandNum = KanjiNumber
 local Hand  = lpeg.Ct(lpeg.Ct(lpeg.Cg(Piece, "kind") * (lpeg.Cg(HandNum ^ 0, "num")) * lpeg.P("　")) ^ 0) + HandNone
 
-local Teban = lpeg.Ct(lpeg.Cg(lpeg.P("後手番"), "teban"))
-
 local InitialBegin  = lpeg.P("  ９ ８ ７ ６ ５ ４ ３ ２ １") * NL
 local InitialSep    = lpeg.P("+---------------------------+") * NL
 local InitialDummyPiece = lpeg.P("・")
@@ -91,14 +89,28 @@ local Move  = lpeg.Ct((Space ^ 0) * Tesuu * (Space ^ 0) * (Sashite + Special) * 
 local HeaderSep   = lpeg.P("：")
 local HeaderName  = lpeg.Cg((Char - NL - HeaderSep) ^ 0, "name")
 local HeaderValue = lpeg.Cg((Char - NL) ^ 0, "value")
+local Teban       = lpeg.Ct(lpeg.Cg(lpeg.P("先手番") + lpeg.P("後手番") + lpeg.P("下手番") + lpeg.P("上手番"), "teban"))
 
-local Header  = lpeg.Ct(lpeg.Cg(lpeg.Ct(HeaderName * HeaderSep * HeaderValue * NL), "header"))
+local Header  = lpeg.Ct(lpeg.Cg(lpeg.Ct(HeaderName * HeaderSep * HeaderValue * NL + Teban * NL), "header"))
 
 local Comment = lpeg.S("#") * (Char - NL) ^ 0 * NL
 local KifuComment = lpeg.Ct(lpeg.S("*") * lpeg.Cg((Char - NL) ^ 0, "comment") * NL)
 
-local Grammar = lpeg.Ct((Header + InitialPosition + Teban + Comment + MoveBegin + Move + KifuComment + NL) ^ 0)
-local GrammarMove = lpeg.Ct(Sashite + Special)
+local Grammar = lpeg.Ct((Header + InitialPosition + Teban + Comment + MoveBegin + Move + KifuComment + NL) ^ 0) * -1
+local GrammarMove = lpeg.Ct(Sashite + Special) * -1
+
+local function dump(t, indent)
+  indent  = indent or ""
+  for k, v in pairs(t) do
+    if type(v) == "table" then
+      print(indent, k, "= {")
+      dump(v, indent .. "\t")
+      print(indent, "}")
+    else
+      print(indent, k, v)
+    end
+  end
+end
 
 function M.parse(player, str)
   local sfen_position
@@ -141,7 +153,7 @@ function M.parse(player, str)
         end
       end
       local teban = t[i].teban
-      if teban then
+      if teban == "後手番" or teban == "上手番" then
         sfen_teban = "w"
       end
       local initial = t[i].initial
@@ -218,7 +230,7 @@ function M.parse(player, str)
       end
     end
   else
-    print("syntax error")
+    print("syntax error:", line, col)
   end
 end
 
