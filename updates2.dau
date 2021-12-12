@@ -67,7 +67,7 @@ ghost/master/lib/kifu_player/parser/csa.lua10d8c744e62ed805a0cd4e40375ed04fsiz
 ghost/master/lib/kifu_player/parser/init.luab404003a7f859ba96d481353981ca798size=1051date=2021-09-05T22:05:43
 ghost/master/lib/kifu_player/parser/jkf.lua10d8c744e62ed805a0cd4e40375ed04fsize=86date=2021-09-05T22:05:43
 ghost/master/lib/kifu_player/parser/ki2.lua10d8c744e62ed805a0cd4e40375ed04fsize=86date=2021-09-05T22:05:43
-ghost/master/lib/kifu_player/parser/kif.lua3f8e763a7d0cfdacc48b3ca8607a7383size=15255date=2021-11-27T22:26:57
+ghost/master/lib/kifu_player/parser/kif.luad4fcb99f45738e74817a664589c86abcsize=15652date=2021-12-12T22:32:09
 ghost/master/lib/kifu_player/parser/usi.lua292f45d7ba016dd25e356d3363bd1402size=5054date=2021-09-05T22:05:43
 ghost/master/lib/kifu_player/position.lua10706f2fa618139193673df34c80e5f1size=22462date=2021-11-13T21:38:05
 ghost/master/lib/kifu_player/relative.lua157e2976e70f52929d39b119e2cf9f59size=4803date=2021-09-05T22:05:43
@@ -266,7 +266,7 @@ ghost/master/talk/shogi/term/explanation.lua94e0ab9087f4e2456ffe8cf3bd31011esi
 ghost/master/talk/shogi/term/menu.luaddef0a58176360087c4876764f849e51size=709date=2021-09-12T21:57:39
 ghost/master/talk/shogi/term/rule.lua41c587f48a7336345afa74783cbf1b9esize=4563date=2021-09-05T22:05:43
 ghost/master/talk/shogi/term/slang.luab703b8f4535ff147bef697ba99a75107size=2858date=2021-09-05T22:05:43
-ghost/master/talk/shogi/term/strategy.lua66dd06bc4cd679d350df65cf3778b3e0size=19382date=2021-09-05T22:05:43
+ghost/master/talk/shogi/term/strategy.luae6ec1be6ad84b535cf254d8e662de82esize=19376date=2021-12-12T22:32:09
 ghost/master/talk/shogi/term/tactics.luaacb65e3ff2091095fa73ad7e48ebee26size=6582date=2021-09-12T21:57:39
 ghost/master/talk/shogi/term/tsume.luaaf1c1da72def41083080b65631a16ed6size=416date=2021-09-05T22:05:43
 ghost/master/talk/shogi/view/render.luaf37aa479e0a49d9acc1ef547813cddb8size=19973date=2021-09-05T22:05:43
