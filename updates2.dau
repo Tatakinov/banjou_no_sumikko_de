@@ -203,7 +203,7 @@ ghost/master/talk/game/backgammon/render.luae145021c7402acf95d93d8bfbc8b68fesi
 ghost/master/talk/game/backgammon/server.luac57c2ab6e1dedd3494174c585614c220size=9889date=2021-11-07T22:27:26
 ghost/master/talk/game/backgammon/todof223c5dd9b13e3a6f2c91f04da2e2e2esize=1241date=2021-09-05T22:05:43
 ghost/master/talk/game/chess/engine.lua8aa838e1cb146135d6d73052f9ec070fsize=27730date=2021-11-13T22:03:58
-ghost/master/talk/game/chess/game.lua1b2649489b067e9011650120efeaa91asize=12417date=2022-01-24T22:32:24
+ghost/master/talk/game/chess/game.lua296809f720f33474e3ad2b66af938706size=11166date=2022-01-24T23:31:00
 ghost/master/talk/game/chess/menu.lua434a2839debfad90d928febf6dcde84asize=12149date=2021-11-13T22:16:08
 ghost/master/talk/game/chess/player.luae3e324c78afb356631d58e35dfdfb864size=5742date=2021-11-13T21:38:05
 ghost/master/talk/game/chess/view/render.lua4d6be2cfc8b1ef081468be52ae62cefasize=19067date=2022-01-24T22:32:24
