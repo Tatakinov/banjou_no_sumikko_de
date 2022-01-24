@@ -1,4 +1,5 @@
 local Clipboard = require("clipboard")
+local Conv  = require("conv")
 local KifuPlayer = require("kifu_player")
 local SS  = require("sakura_script")
 local StringBuffer  = require("string_buffer")
@@ -414,8 +415,9 @@ return {
   {
     id  = "OnCopyKifuToClipboard",
     content = function(shiori, tbl)
-      local player        = KifuPlayer.getInstance()
-      local hwnd  = __("_hwnd")
+      local __      = shiori.var
+      local hwnd    = __("_hwnd")
+      local player  = KifuPlayer.getInstance()
       if Clipboard.set(hwnd.ghost[1], player:toKIF("Shift_JIS")) then
         return [[\0クリップボードに棋譜をコピーしたよ。]]
       else
@@ -429,7 +431,12 @@ return {
       local str = StringBuffer()
       if ref[0] == "save" then
         -- TODO save
-        local fh  = io.open(ref[2], "wb")
+        local filename  = ref[2]
+        local tmp = Conv.conv(filename, "cp932", "UTF-8")
+        if tmp then
+          filename  = tmp
+        end
+        local fh  = io.open(filename, "wb")
         if fh == nil then
           return [[\0保存に失敗したよ。]]
         end
@@ -445,6 +452,7 @@ return {
           filter  = "棋譜ファイル|*.kif|全てのファイル|*.*",
           id      = "OnSaveKifu",
           dir     = "__system_desktop__",
+          ext     = "kif",
         }))
       end
       return str
