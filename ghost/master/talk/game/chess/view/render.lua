@@ -485,7 +485,7 @@ local M = {
       for k, move in pairs(list) do
         local tag = getSquareCategory(move.to.x, move.to.y, reverse)
         --str:append(SS():bind("DUMMY_" .. tag, "DUMMY", 1))
-        if __("GameOption").control_guide then
+        if __("ChessGameOption").control_guide then
           updater:set("HIGHLIGHT_" .. tag, "HIGHLIGHT3", 1)
         end
         updater:set("DUMMY_" .. tag, "DUMMY", 1)
