@@ -89,7 +89,7 @@ local Move  = lpeg.Ct((Space ^ 0) * Tesuu * (Space ^ 0) * (Sashite + Special) * 
 local HeaderSep   = lpeg.P("：")
 local HeaderName  = lpeg.Cg((Char - NL - HeaderSep) ^ 0, "name")
 local HeaderValue = lpeg.Cg((Char - NL) ^ 0, "value")
-local Teban       = lpeg.Ct(lpeg.Cg(lpeg.P("先手番") + lpeg.P("後手番") + lpeg.P("下手番") + lpeg.P("上手番"), "teban"))
+local Teban       = lpeg.Cg(lpeg.P("先手番") + lpeg.P("後手番") + lpeg.P("下手番") + lpeg.P("上手番"), "teban")
 
 local Header  = lpeg.Ct(lpeg.Cg(lpeg.Ct(HeaderName * HeaderSep * HeaderValue * NL + Teban * NL), "header"))
 
@@ -151,10 +151,10 @@ function M.parse(player, str)
           end
           sfen_whitehand  = str:tostring()
         end
-      end
-      local teban = t[i].teban
-      if teban == "後手番" or teban == "上手番" then
-        sfen_teban = "w"
+        local teban = header.teban
+        if teban == "後手番" or teban == "上手番" then
+          sfen_teban = "w"
+        end
       end
       local initial = t[i].initial
       if initial then
