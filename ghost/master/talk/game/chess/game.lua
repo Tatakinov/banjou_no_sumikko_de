@@ -309,44 +309,4 @@ return {
       return str
     end,
   },
-  {
-    id  = "OnCopyKifuToClipboard",
-    content = function(shiori, tbl)
-      local __      = shiori.var
-      local hwnd    = __("_hwnd")
-      local player  = ChessPlayer.getInstance()
-      if Clipboard.set(hwnd.ghost[1], player:toKIF("Shift_JIS")) then
-        return [[\0クリップボードに棋譜をコピーしたよ。]]
-      else
-        return [[\0クリップボードへのコピーに失敗したよ。]]
-      end
-    end,
-  },
-  {
-    id  = "OnSaveKifu",
-    content = function(shiori, ref)
-      local str = StringBuffer()
-      if ref[0] == "save" then
-        -- TODO save
-        local fh  = io.open(ref[2], "wb")
-        if fh == nil then
-          return [[\0保存に失敗したよ。]]
-        end
-        local player        = ChessPlayer.getInstance()
-        fh:write(player:toKIF("Shift_JIS"))
-        fh:close()
-        return [[\0保存したよ。]]
-      elseif ref[0] == "cancel" then
-        return nil
-      else
-        str:append(SS():dialog("save", {
-          title   = "棋譜ファイルの保存",
-          filter  = "棋譜ファイル|*.kif|全てのファイル|*.*",
-          id      = "OnSaveKifu",
-          dir     = "__system_desktop__",
-        }))
-      end
-      return str
-    end,
-  },
 }
