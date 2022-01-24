@@ -27,7 +27,7 @@ ghost/master/corelib/ukagaka_module/saori/init.luadcef31f860c138ea93c0982a021e6
 ghost/master/corelib/ukagaka_module/saori/protocol.lua9a922eba7df27fd8ac3ba9d84ae8e8fdsize=75date=2021-09-05T22:05:43
 ghost/master/corelib/ukagaka_module/shiori/init.luafd2117671eb142c1cab176d82549e9d0size=180date=2021-09-05T22:05:43
 ghost/master/corelib/ukagaka_module/shiori/protocol.lua0b75174e913e48096624745b2009a284size=102date=2021-09-05T22:05:43
-ghost/master/debugger.bat82adf3ae8d0fa149bed26b09709ae728size=67date=2021-09-05T22:05:43
+ghost/master/debugger.bat21146b06e83faf0df9a25a30c9f77d72size=74date=2022-01-24T22:32:24
 ghost/master/debugger.luaea864c6651d9574932c415c9750c6e3dsize=3834date=2021-09-05T22:05:43
 ghost/master/descript.txt81a6fc3f69097fe551572a538f247670size=395date=2021-11-27T22:26:57
 ghost/master/image/mahjong/2s.png69d12c87e30523abf728fe467bc9af13size=2882date=2021-09-05T22:05:43
@@ -122,7 +122,7 @@ ghost/master/lib/usi/command/usi.lua176445853d1cdf540983a4171169d9c2size=265d
 ghost/master/lib/usi/command/usinewgame.lua43849746785b092f3c8bf671ca0cc722size=293date=2021-09-05T22:05:43
 ghost/master/lib/usi/command/usiok.lua53e066e7e8af3cb5f24e37dc426bddfdsize=185date=2021-09-05T22:05:43
 ghost/master/lib/usi/init.lua6aa39fea5d8d97eaac20f50556debdadsize=1177date=2021-09-05T22:05:43
-ghost/master/logger.bat1a396f41b28aec2a8a85ca60fe4856f0size=65date=2021-09-05T22:05:43
+ghost/master/logger.bat497f643f0da4dbcba59fea08d5433076size=72date=2022-01-24T22:32:24
 ghost/master/logger.lua40a93b52064a831ac167fba9e2f3b7ebsize=1412date=2021-09-05T22:05:43
 ghost/master/lua.exe0ce1b089a6c20e0cfc406a260fb8b2fdsize=15360date=2021-09-05T22:05:43
 ghost/master/lua54.dlleb41f10d5ace19452da48cb66c503f00size=218112date=2021-09-05T22:05:43
@@ -203,10 +203,10 @@ ghost/master/talk/game/backgammon/render.luae145021c7402acf95d93d8bfbc8b68fesi
 ghost/master/talk/game/backgammon/server.luac57c2ab6e1dedd3494174c585614c220size=9889date=2021-11-07T22:27:26
 ghost/master/talk/game/backgammon/todof223c5dd9b13e3a6f2c91f04da2e2e2esize=1241date=2021-09-05T22:05:43
 ghost/master/talk/game/chess/engine.lua8aa838e1cb146135d6d73052f9ec070fsize=27730date=2021-11-13T22:03:58
-ghost/master/talk/game/chess/game.lua538f7c3851894671e8045f30815723c0size=14515date=2021-11-13T22:03:58
+ghost/master/talk/game/chess/game.lua1b2649489b067e9011650120efeaa91asize=12417date=2022-01-24T22:32:24
 ghost/master/talk/game/chess/menu.lua434a2839debfad90d928febf6dcde84asize=12149date=2021-11-13T22:16:08
 ghost/master/talk/game/chess/player.luae3e324c78afb356631d58e35dfdfb864size=5742date=2021-11-13T21:38:05
-ghost/master/talk/game/chess/view/render.lua019302126dc3781aaae78fecc7d3d170size=19062date=2021-11-27T22:26:57
+ghost/master/talk/game/chess/view/render.lua4d6be2cfc8b1ef081468be52ae62cefasize=19067date=2022-01-24T22:32:24
 ghost/master/talk/game/chess/view/view.lua6c69c6b9ccea982be048869729276112size=6179date=2021-11-07T22:27:26
 ghost/master/talk/game/fan.luaeec708cb53852484a726fd8414ba2bc1size=604date=2021-09-05T22:05:43
 ghost/master/talk/game/initialize.lua05138f08959ccc60fe2c823e0aad3a81size=9210date=2021-11-13T22:16:08
@@ -229,7 +229,7 @@ ghost/master/talk/shogi/_misc.luafe97ab0432bf6a2e12bf9af573909614size=1252dat
 ghost/master/talk/shogi/_utils.luaa18a66cc44f1a608ec7426971920a441size=742date=2021-09-05T22:05:43
 ghost/master/talk/shogi/chat/menu.luaef8c17aa2685ccbbbedcd9ba6fccdda2size=2874date=2021-09-12T21:57:39
 ghost/master/talk/shogi/game/engine.lua526564cad2dbc0110c048cc53d3bc29csize=26643date=2021-11-13T21:38:05
-ghost/master/talk/shogi/game/game.lua8fff7c83ea8ac7ca87d8d57a3a779e12size=15649date=2021-11-27T22:26:57
+ghost/master/talk/shogi/game/game.lua410e33ef7cbcaec73d6bade3e394b528size=15886date=2022-01-24T22:39:53
 ghost/master/talk/shogi/game/menu.luaa7521b6c4575d75b5188456258a02de1size=8059date=2021-11-27T22:26:57
 ghost/master/talk/shogi/game/player.luac74559450d86726e170f578f28cd0409size=5600date=2021-09-05T22:05:43
 ghost/master/talk/shogi/menu.luab2c63204804de2ea269e69f35797c11fsize=1807date=2021-11-13T21:38:05
@@ -241,6 +241,7 @@ ghost/master/talk/shogi/next/next003.kif5720a93ebbb268b265d7bf45fc6832besize=9
 ghost/master/talk/shogi/next/next004.kifb1e9bbb73f684125b2c1aae8bc7d45bdsize=926date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/next005.kifc636c21ebe8506e3b405293f88264435size=987date=2021-11-27T22:26:57
 ghost/master/talk/shogi/next/next006.kif068828cf49bd1e162d56fcdf496ca0d8size=970date=2021-11-27T22:26:57
+ghost/master/talk/shogi/next/next007.kif1ec79d4fef7982fae0d3664e1c80da98size=840date=2022-01-24T22:32:24
 ghost/master/talk/shogi/random/c1.lua6e781f2e26d81d7c23498309a4aae6a0size=141date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c2.lua248713da8a46f77a7a52ac22c2b31cbdsize=2344date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c3.luafd19b3cc894dd41c6505a113fd77f650size=1376date=2021-09-05T22:05:43
