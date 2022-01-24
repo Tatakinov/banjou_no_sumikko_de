@@ -67,7 +67,7 @@ ghost/master/lib/kifu_player/parser/csa.lua10d8c744e62ed805a0cd4e40375ed04fsiz
 ghost/master/lib/kifu_player/parser/init.luab404003a7f859ba96d481353981ca798size=1051date=2021-09-05T22:05:43
 ghost/master/lib/kifu_player/parser/jkf.lua10d8c744e62ed805a0cd4e40375ed04fsize=86date=2021-09-05T22:05:43
 ghost/master/lib/kifu_player/parser/ki2.lua10d8c744e62ed805a0cd4e40375ed04fsize=86date=2021-09-05T22:05:43
-ghost/master/lib/kifu_player/parser/kif.luad4fcb99f45738e74817a664589c86abcsize=15652date=2021-12-12T22:32:09
+ghost/master/lib/kifu_player/parser/kif.luad566fe9393261764f4f06232f6f71958size=15653date=2022-01-24T23:04:35
 ghost/master/lib/kifu_player/parser/usi.lua292f45d7ba016dd25e356d3363bd1402size=5054date=2021-09-05T22:05:43
 ghost/master/lib/kifu_player/position.lua10706f2fa618139193673df34c80e5f1size=22462date=2021-11-13T21:38:05
 ghost/master/lib/kifu_player/relative.lua157e2976e70f52929d39b119e2cf9f59size=4803date=2021-09-05T22:05:43
