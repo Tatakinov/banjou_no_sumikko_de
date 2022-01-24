@@ -35,85 +35,17 @@ return {
       if game_option.preset ~= IP.HIRATE then
         __("_PlayerColor", Color.WHITE)
         str:append(SS():raise("OnChessGameStart"))
-      elseif game_option.player_color == "furigoma" then
-        str:append(shiori:talk("OnChessViewMinimal"))
-        str:append("\\p[0]それじゃあ振り駒するね…………\\n")
-            :append(SS():raise("OnChessGameFurigoma"))
+      elseif game_option.player_color == "random" then
+        if math.random(1, 2) == 2 then
+          __("_PlayerColor", Color.WHITE)
+        else
+          __("_PlayerColor", Color.BLACK)
+        end
+        str:append(SS():raise("OnChessGameStart"))
       else
         __("_PlayerColor", game_option.player_color)
         str:append(SS():raise("OnChessGameStart"))
       end
-      return str:tostring()
-    end,
-  },
-  {
-    id  = "OnChessGameFurigoma",
-    content = function(shiori, ref)
-      local __  = shiori.var
-      local str = StringBuffer(SS():C())
-      --local str = StringBuffer(SS():p(0))
-      local player  = ChessPlayer.getInstance()
-      local fu_num  = math.random(1, 5)
-      local color = Color.BLACK
-
-      str:append(SS():p(0))
-
-      if fu_num < 3 then
-        color = Color.WHITE
-      end
-      __("_PlayerColor", color)
-
-      local pos_list = {}
-      while #pos_list < 5 do
-        local pos = {
-          x = math.random(40, 130),
-          y = math.random(40, 100),
-        }
-        local valid = true
-        for i = 1, #pos_list do
-          if (pos.x-pos_list[i].x)^2 + (pos.y-pos_list[i].y)^2 <= 28^2 then
-            valid = false
-          end
-        end
-        if valid then
-          table.insert(pos_list, pos)
-        end
-      end
-
-      for i = 1, #pos_list do
-        local pos = pos_list[i]
-        local filename  = "image/shogi/furigoma1.png"
-        if i > fu_num then
-          filename  = "image/shogi/furigoma2.png"
-        end
-        local x = math.random(0, 3)
-        local y = math.random(0, 3)
-        str:append(SS():_b({
-          filename, pos.x, pos.y,
-          clipping = (x * 28) .. " " .. (y * 28) .. " " .. ((x + 1) * 28) .. " " .. ((y + 1) * 28),
-          --clipping = "0 0 28 28",
-          use_self_alpha  = true,
-        }))
-      end
-      --print(str:tostring())
-
-      if color == Color.BLACK then
-        str:append(SS():_w(math.random(1400, 1500)))
-            :append("歩が"):append(fu_num):append("枚だから")
-            :append("ユーザーが先手だよ。")
-            :append(SS():_w(math.random(1400, 1500)))
-      elseif color == Color.WHITE then
-        str:append(SS():_w(math.random(1400, 1500)))
-            :append("と金が"):append(5 - fu_num):append("枚だから")
-            :append("私が先手だね。")
-            :append(SS():_w(math.random(1400, 1500)))
-      end
-
-      player:setPosition()
-      str:append(shiori:talk("OnChessViewMinimal"))
-
-      str:append(SS():raise("OnChessGameStart"))
-
       return str:tostring()
     end,
   },
@@ -380,8 +312,9 @@ return {
   {
     id  = "OnCopyKifuToClipboard",
     content = function(shiori, tbl)
-      local player        = ChessPlayer.getInstance()
-      local hwnd  = __("_hwnd")
+      local __      = shiori.var
+      local hwnd    = __("_hwnd")
+      local player  = ChessPlayer.getInstance()
       if Clipboard.set(hwnd.ghost[1], player:toKIF("Shift_JIS")) then
         return [[\0クリップボードに棋譜をコピーしたよ。]]
       else
