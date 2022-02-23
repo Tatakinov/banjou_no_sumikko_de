@@ -1,4 +1,4 @@
-LICENSE.txta7e3a75bb17189c65bcccf1df40ec1c2size=25815date=2021-11-27T22:26:57
+LICENSE.txtfa0f34b9208f184560f8b53a4c920c45size=26891date=2022-02-23T22:28:34
 README.txt439c95dd8d5e02c7f4e70073925ea4b3size=8383date=2021-11-27T22:26:57
 ghost/master/README.txt078541acd60c63e61e24a2cab42e5a63size=1477date=2021-10-18T22:56:53
 ghost/master/corelib/README.txt01cc80585103ee9be4e325e6994f0a81size=1831date=2021-09-05T22:05:43
@@ -128,12 +128,15 @@ ghost/master/lua.exe0ce1b089a6c20e0cfc406a260fb8b2fdsize=15360date=2021-09-05
 ghost/master/lua54.dlleb41f10d5ace19452da48cb66c503f00size=218112date=2021-09-05T22:05:43
 ghost/master/luacheck.exe7a332e12b2a7c1087f2ff80e4aa5839bsize=697344date=2021-09-05T22:05:43
 ghost/master/replace.conf139c41ee4ba8ec1a0c41831b21c96791size=104date=2021-09-05T22:05:43
-ghost/master/saori.conf6469147c451f08d79258bba8e00272f4size=82date=2021-09-05T22:05:43
+ghost/master/saori.conf4ee62f34fc200a5d384cf9548369e001size=112date=2022-02-23T22:28:34
 ghost/master/saori/MahjongUtil/MahjongUtil.dll7a4450fa0973c75cc21b99af730e3484size=225280date=2021-09-05T22:05:40
 ghost/master/saori/MahjongUtil/MahjongUtilCustom.dll132dff873268e74339cdc399f1fe8cfbsize=396800date=2021-09-05T22:05:43
 ghost/master/saori/MahjongUtil/license.txte6495a244245de2720db05a580c7fb8dsize=3087date=2021-09-05T22:05:43
 ghost/master/saori/MahjongUtil/readme.txtf4d130f77eb3bc00fce46a5bbae18f96size=8524date=2021-09-19T22:00:37
 ghost/master/saori/MahjongUtil/readme2.txtf881c338c0fd9f9aea5900f5eaec09c3size=356date=2021-09-05T22:05:43
+ghost/master/saori/cocoa/LICENSE.txt4700430abbecbcb9a5fc65871574456dsize=1075date=2022-02-23T22:30:36
+ghost/master/saori/cocoa/README.txt8efe17fde28ff9f59eec4c337ec47d8dsize=1340date=2022-02-23T22:30:36
+ghost/master/saori/cocoa/cocoa.dll328d379e7ffe1943da5a3a235f9d1d71size=281600date=2022-02-23T22:30:36
 ghost/master/saori/process/LICENSE.txt7dff43154c8d4d72fb87a00083c35132size=1066date=2021-09-05T22:05:43
 ghost/master/saori/process/README.txte30a19b0e90da7f1909ae23ef5ea4f11size=2726date=2021-09-05T22:05:43
 ghost/master/saori/process/process.dll74864e93c0be4554be239c41cdb88f11size=320512date=2021-10-18T22:56:54
@@ -210,7 +213,11 @@ ghost/master/talk/game/chess/view/render.lua4d6be2cfc8b1ef081468be52ae62cefasi
 ghost/master/talk/game/chess/view/view.lua6c69c6b9ccea982be048869729276112size=6179date=2021-11-07T22:27:26
 ghost/master/talk/game/fan.luaeec708cb53852484a726fd8414ba2bc1size=604date=2021-09-05T22:05:43
 ghost/master/talk/game/initialize.lua05138f08959ccc60fe2c823e0aad3a81size=9210date=2021-11-13T22:16:08
-ghost/master/talk/game/menu.lua9bcb7c27949622e5380294c229a70c6asize=2150date=2021-11-13T21:38:05
+ghost/master/talk/game/menu.luacb5f27bee764e3a1fee04984bd1be4c3size=2443date=2022-02-23T22:28:34
+ghost/master/talk/game/othello/_render.luaa4602e236ebed0926e0e29e55741e6d5size=1028date=2022-02-23T22:28:34
+ghost/master/talk/game/othello/game.luadd72ce944460805890cb7852b770cd60size=5012date=2022-02-23T22:28:34
+ghost/master/talk/game/othello/menu.lua6a47037c38c6d0d98be4c17ac7b17314size=2936date=2022-02-23T22:28:34
+ghost/master/talk/game/othello/view.lua97bc9f62caa156bdd66ff43587e31690size=1551date=2022-02-23T22:28:34
 ghost/master/talk/initialize.lua8346c3a5bec855cd55226d3341e4cc0csize=177date=2021-09-05T22:05:43
 ghost/master/talk/key.lua6285c0075b4932d4949d1a1434aa89basize=1485date=2021-09-12T21:57:39
 ghost/master/talk/locale.luab01973dbc7048066143fb528dffe0e04size=4630date=2021-11-27T22:26:57
@@ -232,7 +239,7 @@ ghost/master/talk/shogi/game/engine.lua526564cad2dbc0110c048cc53d3bc29csize=26
 ghost/master/talk/shogi/game/game.lua410e33ef7cbcaec73d6bade3e394b528size=15886date=2022-01-24T22:39:53
 ghost/master/talk/shogi/game/menu.luaa7521b6c4575d75b5188456258a02de1size=8059date=2021-11-27T22:26:57
 ghost/master/talk/shogi/game/player.luac74559450d86726e170f578f28cd0409size=5600date=2021-09-05T22:05:43
-ghost/master/talk/shogi/menu.luab2c63204804de2ea269e69f35797c11fsize=1807date=2022-02-13T22:55:32
+ghost/master/talk/shogi/menu.luaf200b89957711ab72e618b0d0c23e89fsize=1800date=2022-02-23T22:28:34
 ghost/master/talk/shogi/net/site.lua709e3fbd7522cdf06d5e11a99a9601basize=14404date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/list.lua0d7acb5c57323b326e1dc86cebc8c6ebsize=3085date=2022-02-13T22:54:51
 ghost/master/talk/shogi/next/next001.kif3df429a15fe3e9c8e4c4a67c70064bd5size=880date=2021-09-05T22:05:43
@@ -364,7 +371,7 @@ shell/master/chess/white_knight.png6153edc91281821b74e670ef8bbd4174size=695da
 shell/master/chess/white_pawn.pngbdf434136b1e1c139c6fb54a1c03e547size=657date=2021-11-07T22:41:15
 shell/master/chess/white_queen.png49b24f21dcbadc0cabdc4b2a427e0537size=684date=2021-11-07T22:41:15
 shell/master/chess/white_rook.pngd6725c7346e489265cfee02dc6a4934bsize=672date=2021-11-07T22:41:15
-shell/master/descript.txt589f045b485d34e84d6a9c25644f87e5size=322822date=2021-11-13T21:38:06
+shell/master/descript.txt5ffc72b2a56236e88f91bebb4ac1d4efsize=331517date=2022-02-23T22:28:34
 shell/master/menu/LICENSE.MPlusBitmap.txt0f1a9e2ddd0af30b896ac66f33414b14size=503date=2021-09-05T22:05:43
 shell/master/menu/LICENSE.mikachan.txt38cb580026d9a41075973d91ab4f6dcasize=518date=2021-09-05T22:05:43
 shell/master/menu/background001.png4e180b4a16b57abd47e042a8294ca253size=5067date=2021-09-05T22:05:43
@@ -372,6 +379,10 @@ shell/master/menu/background002.pngbbdef73d1b34a77f56d1853bdd67cc17size=4885d
 shell/master/menu/foreground001.png08ceeeb7cdb2907a09dd1efe837db83bsize=5422date=2021-09-05T22:05:43
 shell/master/menu/foreground002.pnga8e3f86ed1badda406fd5fdb118d028dsize=5266date=2021-09-05T22:05:43
 shell/master/menu/sidebar.png62b85253a86c66724695ec118a1d492csize=3976date=2021-09-05T22:05:43
+shell/master/othello/black_piece.png80fe3e9535374a7ad5cbab3392d913a3size=688date=2022-02-23T22:29:29
+shell/master/othello/board.png8fc66c4671ce8fd2f4f4fbb90e32a723size=15295date=2022-02-23T22:29:29
+shell/master/othello/dummy.png512922dbed3d475cbc0715081848e9b2size=577date=2022-02-23T22:29:29
+shell/master/othello/white_piece.png27745c1b4fa873d67f7df730e76a4131size=699date=2022-02-23T22:29:29
 shell/master/shogi/LICENSE.MPlusBitmap.txt0f1a9e2ddd0af30b896ac66f33414b14size=503date=2021-09-05T22:05:43
 shell/master/shogi/black_fu.png4531100bb46aeb07ef174732e4842e63size=360date=2021-09-05T22:05:43
 shell/master/shogi/black_gi.png09f1887ca1d3774ffaef10e446ec64b0size=372date=2021-09-05T22:05:43
@@ -509,7 +520,7 @@ shell/master/shogi/white_piece_stand_gray.png74e8d22fdc8149f0f82e92687785c481s
 shell/master/shogi/white_ry.png455abbca282b728e66cfb9cbcc321d11size=369date=2021-09-05T22:05:43
 shell/master/shogi/white_to.png511eb3f4d747f071ec82460aa7d383c1size=363date=2021-09-05T22:05:43
 shell/master/shogi/white_um.pngd7ed9a0c60a85c418b1c5ee9dd6f97dcsize=369date=2021-09-05T22:05:43
-shell/master/surfaces.txt8523f4fc3a26add108e721c5a54b2b80size=686810date=2021-11-07T22:27:27
+shell/master/surfaces.txtf1f614e18fedcd4e94105744737c9da0size=706922date=2022-02-23T22:28:34
 shell/master/yuki/alias.txt8b606c8324930037060e4f00677daa63size=1188date=2021-10-18T22:56:54
 shell/master/yuki/arm001.pnged8bdeafc7286356e5e3adfe7a88cf13size=17271date=2021-09-05T22:05:43
 shell/master/yuki/arm002.png155f8d409a77c4bcf12d56ce720c588bsize=18450date=2021-09-05T22:05:43
