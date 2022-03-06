@@ -45,7 +45,8 @@ return {
         local white = tonumber(ret[1])
         local str = StringBuffer()
         str:append("\\0\\s[座り_素]" .. black .. "対" .. white .. "で")
-        local score = __("成績(Othello)")["つよい"]
+        local option  = __("OthelloGameOption")
+        local score = __("成績(Othello)")[option.cpu_level]
         if black > white then
           if __("_PlayerColor") == 1 then
             score.win = score.win + 1
@@ -127,8 +128,10 @@ return {
   {
     id  = "OnOthelloGameCpuTurnBegin",
     content = function(shiori, ref)
+      local __      = shiori.var
+      local option  = __("OthelloGameOption")
       local othello = shiori:saori("othello")
-      local move  = othello("move", 9)
+      local move  = othello("move", option.cpu_level)
       print("move", move[0], "score", move[1])
       local x, y  = string.match(move[0], "(%d+),(%d+)")
       return SS():raise("OnOthelloGameCpuTurnEnd", x, y)
@@ -152,11 +155,12 @@ return {
     id  = "OnOthelloGameResign",
     content = function(shiori, ref)
       local __  = shiori.var
+      local option  = __("OthelloGameOption")
       __("_InGame", false)
       local str = StringBuffer()
       str:append(shiori:talk("OnOthelloView"))
       str:append("\\0\\s[座り_素]ありがとうございました。")
-      local score = __("成績(Othello)")["つよい"]
+      local score = __("成績(Othello)")[option.cpu_level]
       score.lose  = score.lose + 1
       return str
     end,

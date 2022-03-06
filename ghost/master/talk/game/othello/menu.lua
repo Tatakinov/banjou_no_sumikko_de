@@ -26,7 +26,11 @@ return {
       local str         = StringBuffer()
       local game_option = __("OthelloGameOption") or {
         player_color  = 1,
+        cpu_level     = 9,
       }
+      -- 互換性
+      game_option.cpu_level = game_option.cpu_level or 9
+
       __("OthelloGameOption", game_option)
 
       if ref[0] == "teban" then
@@ -36,6 +40,13 @@ return {
           game_option.player_color  = "random"
         elseif game_option.player_color == "random" then
           game_option.player_color  = 1
+        end
+      end
+
+      if ref[0] == "cpu_level" then
+        local level = tonumber(ref[1])
+        if level >= 1 then
+          game_option.cpu_level = level
         end
       end
 
@@ -60,14 +71,21 @@ return {
           :append("】")
           :append("\\n")
 
+      str:append(SS():_l(20)):append("CPUレベル:")
+          :append(SS():_l(120))
+          :append(game_option.cpu_level)
+          :append(SS():_l(200)):append("【")
+          :append(SS():q("変更", "OnOthelloChangeOption", "cpu_level", game_option.cpu_level))
+          :append("】")
+          :append("\\n")
+
       local score_list  = __("成績(Othello)") or {}
       __("成績(Othello)", score_list)
-      local score = score_list["つよい"]
+      local score = score_list[game_option.cpu_level]
       if score == nil then
-        score_list["つよい"]  = {win = 0, lose = 0}
-        score = score_list["つよい"]
+        score_list[game_option.cpu_level]  = {win = 0, lose = 0}
+        score = score_list[game_option.cpu_level]
       end
-      str:append("\\n")
       str:append("\\n")
       str:append("\\n")
       str:append("\\n")
@@ -78,13 +96,31 @@ return {
       str:append("\\n")
       str:append("\\![*]"):append(SS():q("対局開始", "OnOthelloGameStart"))
       str:append("\\n")
-      str:append("\\![*]"):append(SS():q("閉じる", "盤面モード終了"))
-      str:append(" ")
       str:append("\\![*]"):append(SS():q("戻る", "メニュー"))
+      str:append(" ")
+      str:append("\\![*]"):append(SS():q("閉じる", "盤面モード終了"))
 
       str:append(SS():_q(false))
 
       return str:tostring()
+    end,
+  },
+  {
+    id  = "OnOthelloChangeOption",
+    content = function(shiori, ref)
+      local __        = shiori.var
+      local str       = StringBuffer()
+      local name      = ref[0]
+      local value     = ref[1]
+      assert(name and value)
+      str:append(SS():C():inputbox("OnOthelloChangedOption", 0, value))
+      return str:tostring()
+    end,
+  },
+  {
+    id  = "OnOthelloChangedOption",
+    content = function(shiori, ref)
+      return SS():raise("OnOthelloGameMenu", "cpu_level", ref[0])
     end,
   },
 }
