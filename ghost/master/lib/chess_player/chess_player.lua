@@ -290,8 +290,12 @@ function M:normalize(move_format)
       end
       -- move.castling
       if move.castling == nil and move.from then
-        if move.piece == Misc.K and math.abs(move.from.x - move.to.x) == 2 then
-          move.castling = true
+        if move.piece == Misc.K then
+          if move.from.x - move.to.x == 2 then
+            move.castling = "K"
+          elseif move.from.x - move.to.x == -2 then
+            move.castling = "Q"
+          end
         end
       end
       -- en passant
