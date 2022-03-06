@@ -174,9 +174,9 @@ return {
       str:append("\\![*]"):append(SS():q("対局開始", "OnStartShogiEngine"))
       str:append(" ")
       str:append("\\![*]"):append(SS():q("説明", "OnExplainShogiGame"):n())
-      str:append("\\![*]"):append(SS():q("閉じる", "盤面モード終了"))
-      str:append(" ")
       str:append("\\![*]"):append(SS():q("戻る", "メニュー"))
+      str:append(" ")
+      str:append("\\![*]"):append(SS():q("閉じる", "盤面モード終了"))
 
       str:append(SS():_q(false))
 

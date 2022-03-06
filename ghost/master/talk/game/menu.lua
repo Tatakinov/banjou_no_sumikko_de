@@ -29,6 +29,8 @@ return {
         return shiori:talk("盤面モードのメニュー(Chess)")
       elseif __("_Quiet") == "Othello" then
         return shiori:talk("盤面モードのメニュー(Othello)")
+      elseif __("_Quiet") == "Quoridor" then
+        return shiori:talk("盤面モードのメニュー(Quoridor)")
       end
     end,
   },
@@ -44,8 +46,8 @@ return {
 \![*]\q[バックギャモン,バックギャモンで遊ぶ]\n
 \![*]\q[チェス,チェスで遊ぶ]\n
 \![*]\q[オセロ,オセロで遊ぶ]\n
+\![*]\q[コリドール,コリドールで遊ぶ]\n
 \![*]\q[麻雀,麻雀で遊ぶ]\n
-\n
 \n
 \![*]\q[戻る,メニュー] \![*]\q[閉じる,閉じる]
 \_q
@@ -100,6 +102,14 @@ This is the only game we can play in our club room now.\n
 \0\s[素]
 それじゃ用意するね。
 \![raise,OnOthelloGameMenu]
+]],
+  },
+  {
+    id  = "コリドールで遊ぶ",
+    content = [[
+\0\s[素]
+それじゃ用意するね。
+\![raise,OnQuoridorGameMenu]
 ]],
   },
 }
