@@ -17,10 +17,11 @@ saori.call("init")
 saori.call("board")
 
 ### 戻り値
-Result: "color00,color10,color20,...,colorxy,...,color99"
+Result: "color00,color10,color20,...,colorxy,...,color77"
 -- example: Resutlt:0,0,1,1,1,2,0,0,0,...
 
 カンマ区切りの各座標の石の種類
+ただし0<=x<=7,0<=y<=7の範囲で、左上を(0,0)とする。
 0はなし、1は黒の石、2は白の石
 
 
@@ -31,7 +32,6 @@ saori.call("put", x, y)
 なし
 
 ただし0<=x<=7,0<=y<=7の範囲で、左上を(0,0)とする。
-
 
 ## 手番を取得する
 saori.call("teban")
@@ -81,5 +81,6 @@ Value0: "x,y"
 Value1: "score"
 
 depthは探索深さ(≒つよさ)
+10を超えると思考に時間がかかるようになってくるので1-9辺りで使うのが良い
 x, yは指し手の座標
 scoreは評価値
