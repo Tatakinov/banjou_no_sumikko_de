@@ -12,7 +12,7 @@ return {
       __("_Quiet", false)
       __("_PostGame", false)
       __("_BoardReverse", false)
-      return SS():p(2):s(-1):p(3):s(-1):p(4):s(-1):p(5):s(-1):p(0):s("素")
+      return SS():p(2):s(-1):p(3):s(-1):p(4):s(-1):p(5):s(-1):p(6):s(-1):p(0):s("素")
     end,
   },
   {
