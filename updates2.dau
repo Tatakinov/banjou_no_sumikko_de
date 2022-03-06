@@ -215,7 +215,7 @@ ghost/master/talk/game/chess/view/render.lua4d6be2cfc8b1ef081468be52ae62cefasi
 ghost/master/talk/game/chess/view/view.lua6c69c6b9ccea982be048869729276112size=6179date=2021-11-07T22:27:26
 ghost/master/talk/game/fan.luaeec708cb53852484a726fd8414ba2bc1size=604date=2021-09-05T22:05:43
 ghost/master/talk/game/initialize.lua05138f08959ccc60fe2c823e0aad3a81size=9210date=2021-11-13T22:16:08
-ghost/master/talk/game/menu.lua666e0c09f3f8d92a608fd79a0b834486size=2746date=2022-03-06T21:21:19
+ghost/master/talk/game/menu.lua333c789a721ffe58c5aa3adbd0f4b468size=2757date=2022-03-06T21:43:33
 ghost/master/talk/game/othello/_render.luaa4602e236ebed0926e0e29e55741e6d5size=1028date=2022-02-23T22:28:34
 ghost/master/talk/game/othello/game.lua2afc210aa69cd66cf13faa85f55316casize=5210date=2022-03-06T21:21:19
 ghost/master/talk/game/othello/menu.lua82a015fcedbd97e349937abba797abc8size=4042date=2022-03-06T21:21:19
