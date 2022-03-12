@@ -12,7 +12,7 @@ return {
       __("_Quiet", false)
       __("_PostGame", false)
       __("_BoardReverse", false)
-      return SS():p(2):s(-1):p(3):s(-1):p(4):s(-1):p(5):s(-1):p(6):s(-1):p(0):s("素")
+      return SS():p(2):s(-1):p(3):s(-1):p(4):s(-1):p(5):s(-1):p(6):s(-1):p(7):s(-1):p(8):s(-1):p(0):s("素")
     end,
   },
   {
@@ -31,22 +31,30 @@ return {
         return shiori:talk("盤面モードのメニュー(Othello)")
       elseif __("_Quiet") == "Quoridor" then
         return shiori:talk("盤面モードのメニュー(Quoridor)")
+      elseif __("_Quiet") == "Gomoku" then
+        return shiori:talk("盤面モードのメニュー(Gomoku)")
+      elseif __("_Quiet") == "Connect6" then
+        return shiori:talk("盤面モードのメニュー(Connect6)")
       end
     end,
   },
   {
     id  = "他のゲームしたい",
     content = [[
-\p[3]\s[-1]
 \p[2]\s[-1]
+\p[3]\s[-1]
+\p[4]\s[-1]
+\p[5]\s[-1]
+\p[6]\s[-1]
+\p[7]\s[-1]
+\p[8]\s[-1]
 \0\s[きょとん]
 \_q
 \n
 \n
-\![*]\q[バックギャモン,バックギャモンで遊ぶ]\n
-\![*]\q[チェス,チェスで遊ぶ]\n
-\![*]\q[オセロ,オセロで遊ぶ]\n
-\![*]\q[コリドール,コリドールで遊ぶ]\n
+\![*]\q[バックギャモン,バックギャモンで遊ぶ]  \![*]\q[チェス,チェスで遊ぶ]\n
+\![*]\q[オセロ,オセロで遊ぶ]          \![*]\q[コリドール,コリドールで遊ぶ]\n
+\![*]\q[五目並べ,五目並べで遊ぶ]        \![*]\q[コネクト6,コネクト6で遊ぶ]\n
 \![*]\q[麻雀,麻雀で遊ぶ]\n
 \n
 \![*]\q[戻る,メニュー] \![*]\q[閉じる,閉じる]
@@ -110,6 +118,22 @@ This is the only game we can play in our club room now.\n
 \0\s[素]
 それじゃ用意するね。
 \![raise,OnQuoridorGameMenu]
+]],
+  },
+  {
+    id  = "五目並べで遊ぶ",
+    content = [[
+\0\s[素]
+それじゃ用意するね。
+\![raise,OnGomokuGameMenu]
+]],
+  },
+  {
+    id  = "コネクト6で遊ぶ",
+    content = [[
+\0\s[素]
+それじゃ用意するね。
+\![raise,OnConnect6GameMenu]
 ]],
   },
 }
