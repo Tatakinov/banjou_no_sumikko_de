@@ -139,6 +139,7 @@ for x = 0, 8 do
       id  = "6" .. getDummyCategory(x, y) .. "Left",
       content = function(shiori, ref)
         local __  = shiori.var
+        local x, y  = x, y
         if __("_Quoridor_State") == "begin" then
           __("_Quoridor_State", "begin2")
           if __("_BoardReverse") then
@@ -164,6 +165,7 @@ for x = 0, 7 do
       id  = "6" .. getDummyBarHCategory(x, y) .. "Left",
       content = function(shiori, ref)
         local __  = shiori.var
+        local x, y  = x, y
         if __("_Quoridor_State") == "begin" then
           __("_Quoridor_State", "select")
           if __("_BoardReverse") then
@@ -178,6 +180,7 @@ for x = 0, 7 do
       id  = "6" .. getDummyBarVCategory(x, y) .. "Left",
       content = function(shiori, ref)
         local __  = shiori.var
+        local x, y  = x, y
         if __("_Quoridor_State") == "begin" then
           __("_Quoridor_State", "select")
           if __("_BoardReverse") then

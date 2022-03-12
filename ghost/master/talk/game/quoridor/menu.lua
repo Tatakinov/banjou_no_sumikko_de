@@ -29,9 +29,23 @@ return {
         cpu_level     = 2,
       }
       -- 互換性
-      game_option.cpu_level = game_option.cpu_level or 9
+      game_option.cpu_level = game_option.cpu_level or 2
+      game_option.num_player  = game_option.num_player or 2
 
       __("QuoridorGameOption", game_option)
+
+      if ref[0] == "num_player" then
+        if game_option.num_player == 2 then
+          game_option.num_player  = 3
+          game_option.player_color  = 1
+        elseif game_option.num_player == 3 then
+          game_option.num_player  = 4
+          game_option.player_color  = 1
+        elseif game_option.num_player == 4 then
+          game_option.num_player  = 2
+          game_option.player_color  = 1
+        end
+      end
 
       if ref[0] == "teban" then
         if game_option.player_color == 1 then
@@ -50,7 +64,7 @@ return {
         end
       end
 
-      quoridor("init", 2)
+      quoridor("init", game_option.num_player)
       str:append(shiori:talk("OnQuoridorView", ref))
       str:append(SS():_q(true):p(0):s("座り_素"):c())
 
@@ -63,6 +77,8 @@ return {
       elseif game_option.player_color == 2 then
         color = "後手"
       end
+
+      str:append("\\0\\s[素]")
       str:append(SS():_l(20)):append("ユーザーの手番:")
           :append(SS():_l(120))
           :append(color)
@@ -95,6 +111,7 @@ return {
       str:append("\\n")
       str:append("\\n")
       str:append("\\![*]"):append(SS():q("対局開始", "OnQuoridorGameStart"))
+      str:append("  \\![*]"):append(SS():q("ルール説明と宣伝", "OnQuoridorGameExplanation"))
       str:append("\\n")
       str:append("\\![*]"):append(SS():q("戻る", "メニュー"))
       str:append(" ")
@@ -123,4 +140,34 @@ return {
       return SS():raise("OnQuoridorGameMenu", "cpu_level", ref[0])
     end,
   },
+  {
+    id  = "OnQuoridorGameExplanation",
+    content = [[
+\0
+\![*]勝敗\n
+自分の駒を相手より先に反対側へ移動できたら勝ちだよ。\n
+\n
+\![*]手番時の行動\n
+駒を上下左右のいずれかに1マス(※1※2)移動するか、\n
+板を置いて盤上に通行できない場所を作るか(※3)のどちらか。\n
+\n
+※1: 板を飛び越えることは出来ないよ。\n
+※2: 移動先に相手の駒がある場合は飛び越えることが出来るよ。\n
+※3: どのプレイヤーもゴールに到達出来るようにしなければいけないよ。\n
+\n
+板をうまく使って相手に遠回りさせつつ自分は短距離を進めるような道を作るのがコツ。\n
+\n
+\x
+ルールが覚えやすいのでコリドールを知らない人ともすぐに遊べて、
+サクサク遊ぶことも出来るしじっくり遊ぶことも出来る。\n
+\_w[1000]\n
+\s[ドヤッ]
+そんなコリドールがなんと3740円(miniの場合)！@\n
+100回遊べば1回40円！@安いね！@\n
+面白いと思ったら買って友人と遊んでみてね！@\n
+\n
+\![*]\q[戻る,OnQuoridorGameMenu]
+]],
+  },
+  -- 将棋道場の値段のことを考えると本当に安いと思う。
 }
