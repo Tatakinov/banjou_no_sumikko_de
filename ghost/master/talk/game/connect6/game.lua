@@ -147,6 +147,7 @@ return {
       local __  = shiori.var
       local option  = __("Connect6GameOption")
       __("_InGame", false)
+      __("_LatestPut", nil)
       local str = StringBuffer()
       str:append(shiori:talk("OnConnect6View"))
       str:append("\\0\\s[座り_素]ありがとうございました。")

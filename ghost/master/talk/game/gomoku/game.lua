@@ -147,6 +147,7 @@ return {
       local __  = shiori.var
       local option  = __("GomokuGameOption")
       __("_InGame", false)
+      __("_LatestPut", nil)
       local str = StringBuffer()
       str:append(shiori:talk("OnGomokuView"))
       str:append("\\0\\s[座り_素]ありがとうございました。")
