@@ -218,12 +218,12 @@ ghost/master/talk/game/chess/player.luae3e324c78afb356631d58e35dfdfb864size=57
 ghost/master/talk/game/chess/view/render.lua4d6be2cfc8b1ef081468be52ae62cefasize=19067date=2022-01-24T22:32:24
 ghost/master/talk/game/chess/view/view.lua6c69c6b9ccea982be048869729276112size=6179date=2021-11-07T22:27:26
 ghost/master/talk/game/connect6/_render.luaaeec625a775373c04230fa579fed7576size=1377date=2022-03-12T22:18:19
-ghost/master/talk/game/connect6/game.luae24db3fec1f02689849ee8fa058c77f0size=4872date=2022-03-12T22:18:19
+ghost/master/talk/game/connect6/game.luab6b618e6db6789b2c3299f49c6b5498csize=4900date=2022-03-12T22:29:15
 ghost/master/talk/game/connect6/menu.lua777d9974a14bebf8bb200c95cbc88384size=4410date=2022-03-12T22:18:19
 ghost/master/talk/game/connect6/view.luaec20d6ca444223966c34baef7a665a60size=1847date=2022-03-12T22:18:19
 ghost/master/talk/game/fan.luaeec708cb53852484a726fd8414ba2bc1size=604date=2021-09-05T22:05:43
 ghost/master/talk/game/gomoku/_render.luae5b45ff21c8b97032e618d0f31df4bbasize=1359date=2022-03-12T22:18:19
-ghost/master/talk/game/gomoku/game.lua42d2e05aecf6076d19c18191d9479259size=4782date=2022-03-12T22:18:19
+ghost/master/talk/game/gomoku/game.luafb0ebd12baf44c9dee19f19713ccbc67size=4810date=2022-03-12T22:29:15
 ghost/master/talk/game/gomoku/menu.lua5bafde9258fe87a2311eac8f80cd3715size=3953date=2022-03-12T22:18:19
 ghost/master/talk/game/gomoku/view.lua5cc73f0ba564755f670bedc3b2e53f3dsize=1809date=2022-03-12T22:18:19
 ghost/master/talk/game/initialize.lua05138f08959ccc60fe2c823e0aad3a81size=9210date=2021-11-13T22:16:08
