@@ -562,46 +562,18 @@ return {
       local dice    = __("_BG_Dice")
       local dice1   = dice[1]
       local dice2   = dice[2]
-      local process = Process({
-        command = __("_path") .. "talk\\game\\backgammon\\bgai.exe"
-      })
-      process:spawn("0/" .. table.concat(p[1], "/"), "0/" .. table.concat(p[2], "/"), "b", dice1, dice2)
-      local str = process:readline(true)
-      print("BGAI:", str)
-      process:despawn()
-      local from1, to1, from2, to2, from3, to3, from4, to4  = string.match(str, "(%d*)/(%d*),(%d*)/(%d*),(%d*)/(%d*),(%d*)/(%d*)")
-      if from1 then
-        --print(from1, to1, from2, to2, from3, to3, from4, to4)
-        local dice1 = tonumber(from1) - tonumber(to1)
-        local dice2 = tonumber(from2) - tonumber(to2)
-        local dice3 = tonumber(from3) - tonumber(to3)
-        local dice4 = tonumber(from4) - tonumber(to4)
-        if dice1 == 0 then
-          from1 = nil
-        end
-        if dice2 == 0 then
-          from2 = nil
-        end
-        if dice3 == 0 then
-          from3 = nil
-        end
-        if dice4 == 0 then
-          from4 = nil
-        end
-        return SS():raise("OnBackgammonAIResult", dice1, from1, dice2, from2, dice3, from3, dice4, from4)
-      else
-        local from1, to1, from2, to2  = string.match(str, "(%d*)/(%d*),(%d*)/(%d*)")
-        --print(from1, to1, from2, to2)
-        local dice1 = tonumber(from1) - tonumber(to1)
-        local dice2 = tonumber(from2) - tonumber(to2)
-        if dice1 == 0 then
-          from1 = nil
-        end
-        if dice2 == 0 then
-          from2 = nil
-        end
-        return SS():raise("OnBackgammonAIResult", dice1, from1, dice2, from2)
-      end
+      local bg      = shiori:saori("backgammon")
+      local result  = bg("search", 20000, dice1, dice2)
+      print("win-rate:", result())
+      print(result[0])
+      print(result[1])
+      print(result[2])
+      print(result[3])
+      local from1, dice1 = string.match(result[0] or "", "(%d*),(%d*)")
+      local from2, dice2 = string.match(result[1] or "", "(%d*),(%d*)")
+      local from3, dice3 = string.match(result[2] or "", "(%d*),(%d*)")
+      local from4, dice4 = string.match(result[3] or "", "(%d*),(%d*)")
+      return SS():raise("OnBackgammonAIResult", dice1, from1, dice2, from2, dice3, from3, dice4, from4)
     end,
-  }
+  },
 }

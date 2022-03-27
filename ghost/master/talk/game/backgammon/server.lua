@@ -24,6 +24,7 @@ local talk  = {
       __("_InGame", true)
       __("_Random", Rand(os.time()))
       __("_CurrentJudgement", Judgement.equality)
+      shiori:saori("backgammon")("init")
       shiori:talk("OnSetFanID")
       return [[
 \0\s[座り_素]よろしくお願いします。
@@ -218,8 +219,15 @@ local talk  = {
       local point1  = tonumber(ref[1])
       local __      = shiori.var
       local player  = __("_BGPlayer")
-      if dice1 and point1 then
+      if dice1 and dice1 > 0 and point1 and point1 > 0 then
         player:move({from = point1, to = point1 - dice1}, dice1)
+        local r = __("_BG_Result")
+        if not(r) then
+          __("_BG_Result", {})
+          r = __("_BG_Result")
+        end
+        table.insert(r, point1)
+        table.insert(r, dice1)
         return SS():raise("OnBackgammonRender", false, false)
                   :timerraise({
                     time  = 1000,
@@ -239,6 +247,10 @@ local talk  = {
       else
         __("_BG_Dice1", nil)
         __("_BG_Dice2", nil)
+        local r = __("_BG_Result") or {}
+        local bg  = shiori:saori("backgammon")
+        bg("move", r[1] or 0, r[2] or 0, r[3] or 0, r[4] or 0, r[5] or 0, r[6] or 0, r[7] or 0, r[8] or 0)
+        __("_BG_Result", nil)
         player:confirm()
         return SS():raise("OnBackgammonRender", false, false)
                   :timerraise({
@@ -258,6 +270,9 @@ local talk  = {
       if player:getColor() == 1 and state > 1 then
         __("_BG_PlayerState", state - 1)
         player:unmove()
+        local r = __("_BG_Result")
+        table.remove(r)
+        table.remove(r)
         return SS():raise("OnBackgammonPlayer")
       end
     end,
@@ -281,6 +296,9 @@ local talk  = {
         __("_BG_Dice2", dice1)
         return SS():raise("OnBackgammonPlayer")
       elseif state > #dice then
+        local r = __("_BG_Result") or {}
+        shiori:saori("backgammon")("move", r[1] or 0, r[2] or 0, r[3] or 0, r[4] or 0, r[5] or 0, r[6] or 0, r[7] or 0, r[8] or 0)
+        __("_BG_Result", nil)
         local player  = __("_BGPlayer"):confirm()
         __("_BG_Dice1", nil)
         __("_BG_Dice2", nil)
@@ -305,6 +323,9 @@ local talk  = {
         return SS():raise("OnBackgammonPlayer")
       end
       if state > #dice then
+        local r = __("_BG_Result") or {}
+        shiori:saori("backgammon")("move", r[1] or 0, r[2] or 0, r[3] or 0, r[4] or 0, r[5] or 0, r[6] or 0, r[7] or 0, r[8] or 0)
+        __("_BG_Result", nil)
         local player  = __("_BGPlayer"):confirm()
         __("_BG_Dice1", nil)
         __("_BG_Dice2", nil)
@@ -326,6 +347,13 @@ for i = 1, 25 do
       local player  = __("_BGPlayer")
       local from    = i
       player:move({from = from, to = from - dice[state]}, dice[state])
+      local r = __("_BG_Result")
+      if not(r) then
+        __("_BG_Result", {})
+        r = __("_BG_Result")
+      end
+      table.insert(r, from)
+      table.insert(r, dice[state])
       __("_BG_PlayerState", state + 1)
       --print("CLICK", i)
       return SS():raise("OnBackgammonPlayer")
