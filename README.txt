@@ -93,21 +93,22 @@
 以下のライブラリ/ソフトウェアを使用しています。
 それぞれのライセンス詳細はLICENSE.txtを参照してください。
 
-Lua           | https://www.lua.org/
-sol2          | https://github.com/ThePhD/sol2/
-luautf8       | https://github.com/starwing/luautf8/
-luaex         | https://github.com/LuaDist/luaex/
-Luachild      | https://github.com/pocomane/luachild/
-LPeg          | http://www.inf.puc-rio.br/~roberto/lpeg/\
-shogi686      | https://github.com/merom686/shogi686_sdt5/
-sunfish4      | https://github.com/sunfish-shogi/sunfish4/
-luacheck      | https://github.com/mpeterv/luacheck/
-argparse      | https://github.com/mpeterv/argparse
-luafilesystem | https://github.com/keplerproject/luafilesystem/
-lanes         | https://github.com/LuaLanes/lanes
-MahjongUtil   | https://github.com/nikolat/MahjongUtil
-luasocket     | https://github.com/diegonehab/luasocket
-Arasan        | https://www.arasanchess.org/
+Lua                       | https://www.lua.org/
+sol2                      | https://github.com/ThePhD/sol2/
+luautf8                   | https://github.com/starwing/luautf8/
+luaex                     | https://github.com/LuaDist/luaex/
+Luachild                  | https://github.com/pocomane/luachild/
+LPeg                      | http://www.inf.puc-rio.br/~roberto/lpeg/\
+shogi686                  | https://github.com/merom686/shogi686_sdt5/
+sunfish4                  | https://github.com/sunfish-shogi/sunfish4/
+luacheck                  | https://github.com/mpeterv/luacheck/
+argparse                  | https://github.com/mpeterv/argparse
+luafilesystem             | https://github.com/keplerproject/luafilesystem/
+lanes                     | https://github.com/LuaLanes/lanes
+MahjongUtil               | https://github.com/nikolat/MahjongUtil
+luasocket                 | https://github.com/diegonehab/luasocket
+Arasan                    | https://www.arasanchess.org/
+NAIST Japanese Dictionary | https://ja.osdn.net/projects/naist-jdic/
 
 
 ## 使用フォント

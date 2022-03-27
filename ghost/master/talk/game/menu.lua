@@ -35,6 +35,8 @@ return {
         return shiori:talk("盤面モードのメニュー(Gomoku)")
       elseif __("_Quiet") == "Connect6" then
         return shiori:talk("盤面モードのメニュー(Connect6)")
+      elseif __("_Quiet") == "WordChain" then
+        return shiori:talk("盤面モードのメニュー(WordChain)")
       end
     end,
   },
@@ -55,7 +57,9 @@ return {
 \![*]\q[バックギャモン,バックギャモンで遊ぶ]  \![*]\q[チェス,チェスで遊ぶ]\n
 \![*]\q[オセロ,オセロで遊ぶ]          \![*]\q[コリドール,コリドールで遊ぶ]\n
 \![*]\q[五目並べ,五目並べで遊ぶ]        \![*]\q[コネクト6,コネクト6で遊ぶ]\n
-\![*]\q[麻雀,麻雀で遊ぶ]\n
+\![*]\q[しりとり,しりとりで遊ぶ]        \![*]\q[麻雀,麻雀で遊ぶ]\n
+\n
+\n
 \n
 \![*]\q[戻る,メニュー] \![*]\q[閉じる,閉じる]
 \_q
@@ -134,6 +138,13 @@ This is the only game we can play in our club room now.\n
 \0\s[素]
 それじゃ用意するね。
 \![raise,OnConnect6GameMenu]
+]],
+  },
+  {
+    id  = "しりとりで遊ぶ",
+    content = [[
+\0\s[素]
+\![raise,OnWordChainGameMenu]
 ]],
   },
 }
