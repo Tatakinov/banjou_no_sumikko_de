@@ -12,6 +12,14 @@ M.__call  = function(self, n)
   return math.floor(r * n) + 1
 end
 
+function M:uniform(max)
+  return self._native:uniform(max)
+end
+
+function M:distribution(ave, dev)
+  return self._native:normal_distribution(ave, dev)
+end
+
 function M:_init(seed)
   self._native = Native(seed)
 end
