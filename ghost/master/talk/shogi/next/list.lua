@@ -20,6 +20,49 @@ Path.dirWalk(Path.join("talk", "shogi", "next"), function(filename)
 end
 )
 
+files = {
+  {
+    filename = Path.join("talk", "shogi", "next", "next001.kif"),
+    difficulty  = 4,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next002.kif"),
+    difficulty  = 5,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next003.kif"),
+    difficulty  = 4,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next004.kif"),
+    difficulty  = 3,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next005.kif"),
+    difficulty  = 3,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next006.kif"),
+    difficulty  = 4,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next007.kif"),
+    difficulty  = 4,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next008.kif"),
+    difficulty  = 3,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next009.kif"),
+    difficulty  = 4,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next010.kif"),
+    difficulty  = 3,
+  },
+}
+
 table.insert(t, {
   id  = "OnShogiNextMove",
   content = function(shiori, ref)
@@ -27,18 +70,25 @@ table.insert(t, {
     str:append([[
 \0
 \_q
+\b[2]
 \n
 \n
 \n
 \n
 ]])
     str:append([=[\q[ランダム出題,将棋_次の一手_ランダム]]=])
-    for i, _ in ipairs(files) do
-      if i % 5 == 1 then
-        str:append([[\n]])
+    for i, v in ipairs(files) do
+      str:append([[\n]])
+      str:append([[\__q[次の一手_]] .. i .. "]問題" .. string.format("%03d", i))
+      --str:append("\\_l[120,]")
+      str:append("                ")
+      for i = 1, v.difficulty do
+        str:append("★")
       end
-      --str:append([[\q[問題]] .. i .. ",次の一手_" .. i .. "]")
-      str:append([[\q[問題]] .. string.format("%03d", i) .. ",次の一手_" .. i .. "]  ")
+      for i = v.difficulty + 1, 5 do
+        str:append("☆")
+      end
+      str:append([[\__q]])
     end
     str:append([[
 \n
@@ -102,8 +152,8 @@ table.insert(t, {
   end,
 })
 for i, v in ipairs(files) do
-  table.insert(t, generateTalk(i, v, false))
-  table.insert(t, generateTalk(i, v, true))
+  table.insert(t, generateTalk(i, v.filename, false))
+  table.insert(t, generateTalk(i, v.filename, true))
 end
 table.insert(t, {
   id  = "将棋_次の一手_答え",
