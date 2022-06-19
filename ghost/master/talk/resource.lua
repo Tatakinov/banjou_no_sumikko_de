@@ -1,5 +1,3 @@
-local Misc  = require("shiori.misc")
-
 local num_tsume = 2
 
 local function getTsumeNumber()
@@ -42,31 +40,33 @@ return {
   {
     passthrough = true,
     id  = "sakura.recommendsites",
-    content = Misc.createURLList(
-    {
-      {"将棋連盟", "https://www.shogi.or.jp/"},
-      {"-", "-", "-"},
-      {"将棋倶楽部24", "https://www.shogidojo.net/"},
-      {"81Dojo", "https://81dojo.com/"},
-      {"将棋ウォーズ", "https://shogiwars.heroz.jp/"},
-      {"将棋クエスト", "http://wars.fm/ja"},
-      --{"SDIN 将棋", "https://sdin.jp/browser/board/shogi/"},
-      --{"lishogi", "https://lishogi.org/"},
-      {"-", "-", "-"},
-      {"ぴよ将棋", "https://www.studiok-i.net/"},
-      {"将皇", "http://www14.big.or.jp/~ken1/application/shogi.html"},
-      {"きのあ将棋", "https://syougi.qinoa.com/ja/"},
-      {"こまお", "http://usapyon.game.coocan.jp/komao/"},
-      {"-", "-", "-"},
-      {"クラウド将棋局面図ジェネレーター", "http://sfenreader.appspot.com/index.html"},
-      {"将棋ったーβ", "https://shogitter.com/"},
-      {"-", "-", "-"},
-      {"なんとなく将棋の勉強になる替え歌シリーズ/山田定跡の人", "https://www.nicovideo.jp/user/53755126/mylist/55038179"},
-      {"将棋講座/ButaneGorilla", "https://www.nicovideo.jp/user/46770846/mylist/50368976"},
-      {"盤上のシンデレラ/四駒関係（ＫＫＰＰ）", "https://www.nicovideo.jp/user/32815257/mylist/53808293"},
-      {"-", "-", "-"},
-      {"詰将棋の答え", "script:\\![raise,OnAnswerTsumeShogi]", "-"},
-    }),
+    content = function(shiori, ref)
+      return shiori:createURLList(
+        {
+          {"将棋連盟", "https://www.shogi.or.jp/"},
+          {"-", "-", "-"},
+          {"将棋倶楽部24", "https://www.shogidojo.net/"},
+          {"81Dojo", "https://81dojo.com/"},
+          {"将棋ウォーズ", "https://shogiwars.heroz.jp/"},
+          {"将棋クエスト", "http://wars.fm/ja"},
+          --{"SDIN 将棋", "https://sdin.jp/browser/board/shogi/"},
+          --{"lishogi", "https://lishogi.org/"},
+          {"-", "-", "-"},
+          {"ぴよ将棋", "https://www.studiok-i.net/"},
+          {"将皇", "http://www14.big.or.jp/~ken1/application/shogi.html"},
+          {"きのあ将棋", "https://syougi.qinoa.com/ja/"},
+          {"こまお", "http://usapyon.game.coocan.jp/komao/"},
+          {"-", "-", "-"},
+          {"クラウド将棋局面図ジェネレーター", "http://sfenreader.appspot.com/index.html"},
+          {"将棋ったーβ", "https://shogitter.com/"},
+          {"-", "-", "-"},
+          {"なんとなく将棋の勉強になる替え歌シリーズ/山田定跡の人", "https://www.nicovideo.jp/user/53755126/mylist/55038179"},
+          {"将棋講座/ButaneGorilla", "https://www.nicovideo.jp/user/46770846/mylist/50368976"},
+          {"盤上のシンデレラ/四駒関係（ＫＫＰＰ）", "https://www.nicovideo.jp/user/32815257/mylist/53808293"},
+          {"-", "-", "-"},
+          {"詰将棋の答え", "script:\\![raise,OnAnswerTsumeShogi]", "-"},
+        })
+    end,
   },
   {
     passthrough = true,
