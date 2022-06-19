@@ -85,27 +85,6 @@ function M.serialize(obj, indent)
   return tostring(nil)
 end
 
-local b1  = string.char(0x01)
-local b2  = string.char(0x02)
-function M.createURLList(tbl)
-  local list  = {}
-  for _, v in ipairs(tbl) do
-    if type(v) ~= "table" or #v == 0 then
-      break
-    end
-    v[1]  = v[1] or ""
-    v[2]  = v[2] or ""
-    v[3]  = v[3] or ""
-    v[4]  = v[4] or ""
-    table.insert(list, table.concat(v, b1))
-  end
-  local str = table.concat(list, b2)
-  if str and #str > 0 then
-    return str
-  end
-  return nil
-end
-
 function M.toArgs(...)
   local list  = {}
   local size  = select("#", ...)

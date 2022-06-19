@@ -117,7 +117,7 @@ function M:load(path)
   else
     -- TODO error
   end
-  self:talk("OnInitialize")
+  self:talk("OnDictionaryLoaded")
 end
 
 function M:unload()
@@ -408,6 +408,27 @@ end
 
 function M:setLanguage(language)
   self.i18n:set(language)
+end
+
+local b1  = string.char(0x01)
+local b2  = string.char(0x02)
+function M:createURLList(tbl)
+  local list  = {}
+  for _, v in ipairs(tbl) do
+    if type(v) ~= "table" or #v == 0 then
+      break
+    end
+    v[1]  = v[1] or ""
+    v[2]  = v[2] or ""
+    v[3]  = v[3] or ""
+    v[4]  = v[4] or ""
+    table.insert(list, table.concat(v, b1))
+  end
+  local str = table.concat(list, b2)
+  if str and #str > 0 then
+    return str
+  end
+  return nil
 end
 
 return M
