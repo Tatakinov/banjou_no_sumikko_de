@@ -200,7 +200,7 @@ ghost/master/sound/um.wavabc25a3afccada2b26d5d5270bfb423fsize=19258date=2021-
 ghost/master/sound/white.wav5ad939431804555dffa29bed416e07c8size=29354date=2021-11-27T22:26:57
 ghost/master/talk/README.txt1e3b699e9f57ee989576261e1e36499csize=5981date=2021-09-05T22:05:43
 ghost/master/talk/_skelton.lua5da4f64156acceffc157733c0e794385size=58date=2021-09-05T22:05:43
-ghost/master/talk/baseware.luac36e443a461ecfe085648b3ebd413396size=7849date=2021-11-27T22:26:57
+ghost/master/talk/baseware.lua99ce80cbb6c7a34fbc7067122e402b67size=7926date=2022-08-21T22:13:40
 ghost/master/talk/boot.lua8571957c86c0ce5b9d8f2cdf8e6cf59csize=282date=2021-11-27T22:26:57
 ghost/master/talk/communicate.lua79b00d855c4a76e760e2097484082d8fsize=132date=2021-09-05T22:05:43
 ghost/master/talk/event.luae62500da89d7ab4dd18982a886f615a1size=7367date=2021-09-05T22:05:43
@@ -228,7 +228,7 @@ ghost/master/talk/game/gomoku/game.luafb0ebd12baf44c9dee19f19713ccbc67size=481
 ghost/master/talk/game/gomoku/menu.lua5bafde9258fe87a2311eac8f80cd3715size=3953date=2022-03-12T22:18:19
 ghost/master/talk/game/gomoku/view.lua5cc73f0ba564755f670bedc3b2e53f3dsize=1809date=2022-03-12T22:18:19
 ghost/master/talk/game/initialize.lua05138f08959ccc60fe2c823e0aad3a81size=9210date=2021-11-13T22:16:08
-ghost/master/talk/game/menu.luaef4a043d4ffa2bdbec6e043c07903089size=3721date=2022-03-27T22:17:33
+ghost/master/talk/game/menu.lua36d5787957ded4db18c0f102aa8e1405size=3817date=2022-08-21T22:31:13
 ghost/master/talk/game/othello/_render.luaa4602e236ebed0926e0e29e55741e6d5size=1028date=2022-02-23T22:28:34
 ghost/master/talk/game/othello/game.lua2afc210aa69cd66cf13faa85f55316casize=5210date=2022-03-06T21:21:19
 ghost/master/talk/game/othello/menu.lua82a015fcedbd97e349937abba797abc8size=4042date=2022-03-06T21:21:19
@@ -239,7 +239,9 @@ ghost/master/talk/game/quoridor/menu.lua2c4d35669875e3dfc2ac55fa327ca273size=5
 ghost/master/talk/game/quoridor/view.luae40b5e823d1aec30f973fa84229a92f2size=5465date=2022-03-12T22:18:19
 ghost/master/talk/game/word_chain/dictionary.txt1a41020f6d879f3541304bc96a96e456size=2174746date=2022-03-27T22:17:33
 ghost/master/talk/game/word_chain/game.lua0239adb11022507aea9fe0a5bfa1b5d5size=19780date=2022-03-27T22:17:33
-ghost/master/talk/game/word_chain/menu.luad70c82a7839ee1d0e3d07888f76c01b5size=4476date=2022-03-27T22:17:33
+ghost/master/talk/game/word_chain/menu.luac921b941f248c90e26bbea8e7be8bc7esize=4479date=2022-08-21T22:13:40
+ghost/master/talk/game/wordle/game.luadf8bea97359540703dbf5a95b1ba5b52size=5416date=2022-08-21T22:13:40
+ghost/master/talk/game/wordle/menu.lua79a926a1b3bd7738d13b8e0ac7a3faa9size=1826date=2022-08-21T22:13:40
 ghost/master/talk/initialize.lua8346c3a5bec855cd55226d3341e4cc0csize=177date=2021-09-05T22:05:43
 ghost/master/talk/key.lua6285c0075b4932d4949d1a1434aa89basize=1485date=2021-09-12T21:57:39
 ghost/master/talk/locale.luab01973dbc7048066143fb528dffe0e04size=4630date=2021-11-27T22:26:57
@@ -263,7 +265,7 @@ ghost/master/talk/shogi/game/menu.lua6bc21c606726ac05ae6fb3d4101ea48asize=8059
 ghost/master/talk/shogi/game/player.luac74559450d86726e170f578f28cd0409size=5600date=2021-09-05T22:05:43
 ghost/master/talk/shogi/menu.luaf200b89957711ab72e618b0d0c23e89fsize=1800date=2022-02-23T22:28:34
 ghost/master/talk/shogi/net/site.lua709e3fbd7522cdf06d5e11a99a9601basize=14404date=2021-09-05T22:05:43
-ghost/master/talk/shogi/next/list.luab6180100f92d7965c9ef8076531a722esize=4878date=2022-06-19T22:14:51
+ghost/master/talk/shogi/next/list.lua695b5521cf23a98475970f0f8186ffe2size=5166date=2022-08-21T22:13:40
 ghost/master/talk/shogi/next/next001.kif3df429a15fe3e9c8e4c4a67c70064bd5size=880date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/next002.kif99ca79d0a1c85bfd8a0b9dc5ffffcbc7size=892date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/next003.kif5720a93ebbb268b265d7bf45fc6832besize=960date=2021-09-05T22:05:43
@@ -281,6 +283,9 @@ ghost/master/talk/shogi/next/next014.kif4e48bc0e8994e80d3cb27ffe9358596asize=1
 ghost/master/talk/shogi/next/next015.kifa1881dde03baac4bc0a23ba4df40b700size=1001date=2022-05-29T22:44:48
 ghost/master/talk/shogi/next/next016.kiffd9e863b127ec4a93f249df85716f8a7size=920date=2022-06-19T22:14:51
 ghost/master/talk/shogi/next/next017.kif529f4d8e4a08f72f74fab349c94c44b3size=919date=2022-06-19T22:14:51
+ghost/master/talk/shogi/next/next018.kif6d61d74ab2f54e0c85bc7097e292bc7bsize=919date=2022-08-21T22:13:40
+ghost/master/talk/shogi/next/next019.kifd697c43f4568274a605092b2e986fda6size=915date=2022-08-21T22:13:40
+ghost/master/talk/shogi/next/next020.kifddb07568fd93843077c87e3fb784951fsize=856date=2022-08-21T22:13:40
 ghost/master/talk/shogi/random/c1.lua6e781f2e26d81d7c23498309a4aae6a0size=141date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c2.lua248713da8a46f77a7a52ac22c2b31cbdsize=2344date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c3.luafd19b3cc894dd41c6505a113fd77f650size=1376date=2021-09-05T22:05:43
@@ -306,7 +311,7 @@ ghost/master/talk/shogi/term/explanation.lua94e0ab9087f4e2456ffe8cf3bd31011esi
 ghost/master/talk/shogi/term/menu.luaddef0a58176360087c4876764f849e51size=709date=2021-09-12T21:57:39
 ghost/master/talk/shogi/term/rule.lua41c587f48a7336345afa74783cbf1b9esize=4563date=2021-09-05T22:05:43
 ghost/master/talk/shogi/term/slang.luab703b8f4535ff147bef697ba99a75107size=2858date=2021-09-05T22:05:43
-ghost/master/talk/shogi/term/strategy.luae6ec1be6ad84b535cf254d8e662de82esize=19376date=2021-12-12T22:32:09
+ghost/master/talk/shogi/term/strategy.lua55bb3351800f794f09320554ea6e4d3asize=19637date=2022-08-21T22:13:40
 ghost/master/talk/shogi/term/tactics.luaacb65e3ff2091095fa73ad7e48ebee26size=6582date=2021-09-12T21:57:39
 ghost/master/talk/shogi/term/tsume.luaaf1c1da72def41083080b65631a16ed6size=416date=2021-09-05T22:05:43
 ghost/master/talk/shogi/view/render.luaf37aa479e0a49d9acc1ef547813cddb8size=19973date=2021-09-05T22:05:43
