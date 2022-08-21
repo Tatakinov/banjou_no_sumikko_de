@@ -147,4 +147,11 @@ This is the only game we can play in our club room now.\n
 \![raise,OnWordChainGameMenu]
 ]],
   },
+  {
+    id  = "Wordleで遊ぶ",
+    content = [[
+\0\s[素]
+\![raise,OnWordleGameMenu]
+]],
+  },
 }

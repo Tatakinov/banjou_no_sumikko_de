@@ -131,7 +131,9 @@ return {
         return nil
       end
 
-      if __("_InGame") then
+      if __("_InGame") and
+        __("_Quiet") ~= "WordChain" and
+        __("_Quiet") ~= "Wordle" then
         local player  = KifuPlayer.getInstance()
         if __("_GameTesuu") ~= player:getTesuu() then
           __("_GameTesuu", player:getTesuu())
