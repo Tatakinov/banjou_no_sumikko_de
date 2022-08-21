@@ -99,7 +99,7 @@ return {
       str:append(score.win):append("勝"):append(score.lose):append("敗")
       str:append("\\n")
       str:append("\\n")
-      str:append("\\![*]"):append(SS():q("対局開始", "OnWordChainGameStart"))
+      str:append("\\![*]"):append(SS():q("ゲーム開始", "OnWordChainGameStart"))
       str:append("  \\![*]"):append(SS():q("ルール説明", "OnWordChainGameExplanation"))
       str:append("\\n")
       str:append("\\![*]"):append(SS():q("戻る", "メニュー"))
