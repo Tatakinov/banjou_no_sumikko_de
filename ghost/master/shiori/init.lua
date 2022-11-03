@@ -47,7 +47,8 @@ function M:load(path)
 
   --トーク読み込み
   Path.dirWalk(path .. "talk", function(file_path)
-    if string.sub(file_path, 1, 1) == "_" or string.sub(file_path, -4, -1) ~= ".lua" then
+    local file_name  = Path.basename(file_path)
+    if string.sub(file_name, 1, 1) == "_" or string.sub(file_name, -4, -1) ~= ".lua" then
       return
     end
     local t, err  = (function()
@@ -267,8 +268,10 @@ function M:autoReplace(x)
 end
 
 function M:autoReplaceVars(str)
-  local str = string.gsub(str, "%${([^}]+)}", function(s)
-    --print("replace: " .. s)
+  local str  = str:gsub("(\\?)%${([^}]+)}", function(escape, s)
+    if escape == "\\" then
+      return string.format("${%s}", s)
+    end
     return tostring(self.var(s))
   end)
   return str

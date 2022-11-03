@@ -8,6 +8,11 @@ function M.join(...)
   return table.concat(t, SEP)
 end
 
+function M.basename(path)
+  local match = string.match(path, [[.+[/\](.-)$]])
+  return match or path
+end
+
 function M.normalize(path)
   -- TODO stub
   return path
