@@ -10,38 +10,44 @@ return {
       for k, v in pairs(__("_PlayerInfo")) do
         str:append(k):append([[さんの情報だよ\n]])
         str:append([[  プリフロップ\n]])
-        local bet, call, fold = 0, 0, 0
-        local action  = v.preflop_action
-        for _, v in ipairs(action) do
-          if v == "bet" or v == "raise" or v == "allin" then
-            bet = bet + 1
-          elseif v == "call" or v == "check" then
-            call  = call + 1
-          else
-            assert(v == "fold")
-            fold  = fold + 1
+        local bet, call, fold, sum = 0, 0, 0, 0
+        for _, v in ipairs(v.action) do
+          for _, v in ipairs(v.preflop) do
+            if v == "bet" or v == "raise" or v == "allin" then
+              bet = bet + 1
+            elseif v == "call" then
+              call  = call + 1
+            elseif v == "fold" then
+              fold  = fold + 1
+            end
+            if v ~= "check" then
+              sum = sum + 1
+            end
           end
         end
-        if #action > 0 then
-          str:append(string.format([[    %3.1f %3.1f %3.1f\n]], 100 * bet / #action, 100 * call / #action, 100 * fold / #action))
+        if sum > 0 then
+          str:append(string.format([[    %3.1f%% %3.1f%% %3.1f%%\n]], 100 * bet / sum, 100 * call / sum, 100 * fold / sum))
         else
           str:append([[    0     0     0\n]])
         end
         str:append([[  ポストフロップ\n]])
-        local bet, call, fold = 0, 0, 0
-        local action  = v.postflop_action
-        for _, v in ipairs(action) do
-          if v == "bet" or v == "raise" or v == "allin" then
-            bet = bet + 1
-          elseif v == "call" or v == "check" then
-            call  = call + 1
-          else
-            assert(v == "fold")
-            fold  = fold + 1
+        local bet, call, fold, sum = 0, 0, 0, 0
+        for _, v in ipairs(v.action) do
+          for _, v in ipairs(v.postflop) do
+            if v == "bet" or v == "raise" or v == "allin" then
+              bet = bet + 1
+            elseif v == "call" then
+              call  = call + 1
+            elseif v == "fold" then
+              fold  = fold + 1
+            end
+            if v ~= "check" then
+              sum = sum + 1
+            end
           end
         end
-        if #action > 0 then
-          str:append(string.format([[    %3.1f %3.1f %3.1f\n]], 100 * bet / #action, 100 * call / #action, 100 * fold / #action))
+        if sum > 0 then
+          str:append(string.format([[    %3.1f%% %3.1f%% %3.1f%%\n]], 100 * bet / sum, 100 * call / sum, 100 * fold / sum))
         else
           str:append([[    0     0     0\n]])
         end
