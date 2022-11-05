@@ -134,6 +134,9 @@ ghost/master/saori/MahjongUtil/MahjongUtilCustom.dll132dff873268e74339cdc399f1f
 ghost/master/saori/MahjongUtil/license.txte6495a244245de2720db05a580c7fb8dsize=3087date=2021-09-05T22:05:43
 ghost/master/saori/MahjongUtil/readme.txtf4d130f77eb3bc00fce46a5bbae18f96size=8524date=2021-09-19T22:00:37
 ghost/master/saori/MahjongUtil/readme2.txtf881c338c0fd9f9aea5900f5eaec09c3size=356date=2021-09-05T22:05:43
+ghost/master/saori/TexasHoldemUtil/LICENSEaeae5fc0093d912c2288602e1614276asize=1049date=2022-11-05T22:14:47
+ghost/master/saori/TexasHoldemUtil/README.txtdd39418eef4672d515cbd8f48fd49eb4size=2773date=2022-11-05T22:14:47
+ghost/master/saori/TexasHoldemUtil/TexasHoldemUtil.dll4e83d19437800c678fafd352c162659dsize=171008date=2022-11-05T22:14:47
 ghost/master/saori/charlotte/LICENSE.txt392510a308cb7317f0dbb0566dc58852size=1079date=2022-03-06T21:22:21
 ghost/master/saori/charlotte/charlotte.dll82c9d4f2e4b862c60c111fa475af7c10size=315392date=2022-03-12T22:18:19
 ghost/master/saori/cocoa/LICENSE.txt4700430abbecbcb9a5fc65871574456dsize=1075date=2022-02-23T22:30:36
@@ -318,8 +321,8 @@ ghost/master/talk/shogi/term/tsume.luaaf1c1da72def41083080b65631a16ed6size=416
 ghost/master/talk/shogi/view/render.luaf37aa479e0a49d9acc1ef547813cddb8size=19973date=2021-09-05T22:05:43
 ghost/master/talk/shogi/view/view.lua46f8ee6f056656911636f1014b30dfc1size=6132date=2021-09-05T22:05:43
 ghost/master/talk/texas_holdem/_ai.lua3dee93dfecfc69d10771b8a6f173f790size=8603date=2022-11-03T21:59:04
-ghost/master/talk/texas_holdem/event.lua0a62d0b32459bc1e0baf42c0e0826c32size=3800date=2022-11-03T21:59:04
-ghost/master/talk/texas_holdem/misc.lua9afa977048e69db106ff48b6d9453763size=1717date=2022-11-03T21:59:04
+ghost/master/talk/texas_holdem/event.luabdd00db1f47566a2e4a11cf8847ef72csize=4300date=2022-11-05T22:14:46
+ghost/master/talk/texas_holdem/misc.lua6a44d6560cc1e74ab3b3bcdad3755b62size=1873date=2022-11-05T22:14:46
 install.txt1db0c16ff207d61248a7260d95d23589size=88date=2021-09-05T22:05:43
 shell/master/README.txt39f93fe818523e1721fba618b79b8b0dsize=202date=2021-09-05T22:05:43
 shell/master/backgammon/black_dice1.pngbd1ff3cd9c634dbfe1ab7717c72a6772size=1560date=2021-09-05T22:05:43
