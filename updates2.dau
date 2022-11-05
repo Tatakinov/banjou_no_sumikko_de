@@ -10,7 +10,7 @@ ghost/master/corelib/conv/windows_wrap.luab7282e4fbc85086a84c000fa0e2dd65dsize
 ghost/master/corelib/fh/init.dll346083ed42a37af75299fe923e57fcebsize=8704date=2021-09-05T22:05:43
 ghost/master/corelib/lua-utf8.dll04f1228488e5b3d03f177b9d9d184691size=79872date=2021-09-05T22:05:43
 ghost/master/corelib/luachild.dll463469d18d204d3b2e77da1be60541a2size=24064date=2021-09-05T22:05:43
-ghost/master/corelib/path/init.lua62b7192add49d8912d91ae7d9c9c1124size=624date=2021-09-05T22:05:43
+ghost/master/corelib/path/init.lua264213955e5e47400c4651d82663a65fsize=730date=2022-11-03T21:59:04
 ghost/master/corelib/process/init.lua860cf29c9acc18588ffee905637c8ef2size=3085date=2021-09-05T22:05:43
 ghost/master/corelib/saori_basic/init.luab7266efb6309a85334f986aa8ade091fsize=1045date=2021-09-05T22:05:43
 ghost/master/corelib/saori_caller/init.luaa1c17b03914cfc8f86f270a5d0b96b4fsize=2203date=2021-09-05T22:05:43
@@ -128,7 +128,7 @@ ghost/master/lua.exe0ce1b089a6c20e0cfc406a260fb8b2fdsize=15360date=2021-09-05
 ghost/master/lua54.dllca79fc021456352413efee6568d5156bsize=218624date=2022-05-29T22:44:48
 ghost/master/luacheck.exe7a332e12b2a7c1087f2ff80e4aa5839bsize=697344date=2021-09-05T22:05:43
 ghost/master/replace.confdb5c7463d42cb5002d071181c6eafe58size=113date=2022-03-27T22:17:33
-ghost/master/saori.conf31e8dcc130c67d6f57354478de809b9dsize=236date=2022-03-27T22:17:33
+ghost/master/saori.conf7d6124860921740238243b39389d1823size=290date=2022-11-03T21:59:04
 ghost/master/saori/MahjongUtil/MahjongUtil.dll7a4450fa0973c75cc21b99af730e3484size=225280date=2021-09-05T22:05:40
 ghost/master/saori/MahjongUtil/MahjongUtilCustom.dll132dff873268e74339cdc399f1fe8cfbsize=396800date=2021-09-05T22:05:43
 ghost/master/saori/MahjongUtil/license.txte6495a244245de2720db05a580c7fb8dsize=3087date=2021-09-05T22:05:43
@@ -148,7 +148,7 @@ ghost/master/saori/process/process.dll74864e93c0be4554be239c41cdb88f11size=320
 ghost/master/saori/sharo/LICENSE.txt4b656fee575899b563c0e34607095fd0size=1075date=2022-03-12T22:18:19
 ghost/master/saori/sharo/sharo.dll1a95ac241dcb9f6e2fd0f63b4f2224d6size=343040date=2022-03-27T22:17:33
 ghost/master/shiori/i18n.lua503d09a7e28874f9bcc1c3a4b4b84e0dsize=430date=2021-11-27T22:26:57
-ghost/master/shiori/init.lua2a748877dc80b8631ab3028ec412f9eesize=10738date=2022-06-19T22:14:51
+ghost/master/shiori/init.lua6bb972a595a582962cb37b3447df0293size=10836date=2022-11-03T21:59:04
 ghost/master/shiori/misc.lua1e62a73bb8081b46da563dda8c06e486size=3079date=2022-06-19T22:14:51
 ghost/master/shiori/talk.lua6dc22bcd43cb9c6253152a0b5a622d36size=571date=2021-09-05T22:05:43
 ghost/master/shiori/variable.luad6d8352da059d0a00296b9928a783fc2size=1205date=2021-09-05T22:05:43
@@ -265,7 +265,7 @@ ghost/master/talk/shogi/game/menu.lua6bc21c606726ac05ae6fb3d4101ea48asize=8059
 ghost/master/talk/shogi/game/player.luac74559450d86726e170f578f28cd0409size=5600date=2021-09-05T22:05:43
 ghost/master/talk/shogi/menu.luaf200b89957711ab72e618b0d0c23e89fsize=1800date=2022-02-23T22:28:34
 ghost/master/talk/shogi/net/site.lua709e3fbd7522cdf06d5e11a99a9601basize=14404date=2021-09-05T22:05:43
-ghost/master/talk/shogi/next/list.lua695b5521cf23a98475970f0f8186ffe2size=5166date=2022-08-21T22:13:40
+ghost/master/talk/shogi/next/list.lua27c404e06c3338b38e6587758101a030size=5262date=2022-11-03T21:59:04
 ghost/master/talk/shogi/next/next001.kif3df429a15fe3e9c8e4c4a67c70064bd5size=880date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/next002.kif99ca79d0a1c85bfd8a0b9dc5ffffcbc7size=892date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/next003.kif5720a93ebbb268b265d7bf45fc6832besize=960date=2021-09-05T22:05:43
@@ -286,6 +286,7 @@ ghost/master/talk/shogi/next/next017.kif529f4d8e4a08f72f74fab349c94c44b3size=9
 ghost/master/talk/shogi/next/next018.kif6d61d74ab2f54e0c85bc7097e292bc7bsize=919date=2022-08-21T22:13:40
 ghost/master/talk/shogi/next/next019.kifd697c43f4568274a605092b2e986fda6size=915date=2022-08-21T22:13:40
 ghost/master/talk/shogi/next/next020.kifddb07568fd93843077c87e3fb784951fsize=856date=2022-08-21T22:13:40
+ghost/master/talk/shogi/next/next021.kiff07ef85db864aae9722c08888cb57f99size=951date=2022-11-03T21:59:04
 ghost/master/talk/shogi/random/c1.lua6e781f2e26d81d7c23498309a4aae6a0size=141date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c2.lua248713da8a46f77a7a52ac22c2b31cbdsize=2344date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c3.luafd19b3cc894dd41c6505a113fd77f650size=1376date=2021-09-05T22:05:43
@@ -316,6 +317,9 @@ ghost/master/talk/shogi/term/tactics.luaacb65e3ff2091095fa73ad7e48ebee26size=6
 ghost/master/talk/shogi/term/tsume.luaaf1c1da72def41083080b65631a16ed6size=416date=2021-09-05T22:05:43
 ghost/master/talk/shogi/view/render.luaf37aa479e0a49d9acc1ef547813cddb8size=19973date=2021-09-05T22:05:43
 ghost/master/talk/shogi/view/view.lua46f8ee6f056656911636f1014b30dfc1size=6132date=2021-09-05T22:05:43
+ghost/master/talk/texas_holdem/_ai.lua3dee93dfecfc69d10771b8a6f173f790size=8603date=2022-11-03T21:59:04
+ghost/master/talk/texas_holdem/event.lua0a62d0b32459bc1e0baf42c0e0826c32size=3800date=2022-11-03T21:59:04
+ghost/master/talk/texas_holdem/misc.lua9afa977048e69db106ff48b6d9453763size=1717date=2022-11-03T21:59:04
 install.txt1db0c16ff207d61248a7260d95d23589size=88date=2021-09-05T22:05:43
 shell/master/README.txt39f93fe818523e1721fba618b79b8b0dsize=202date=2021-09-05T22:05:43
 shell/master/backgammon/black_dice1.pngbd1ff3cd9c634dbfe1ab7717c72a6772size=1560date=2021-09-05T22:05:43
