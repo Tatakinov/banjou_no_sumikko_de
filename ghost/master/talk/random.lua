@@ -26,7 +26,7 @@ return {
     end,
   },
   {
-    id  = "ランダムトーク",
+    id  = "ランダムトーク_",
     content = function(shiori, ref)
       if math.random(1, 10) == 1 then
         return shiori:talk("イベントトーク")

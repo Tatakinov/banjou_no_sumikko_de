@@ -10,7 +10,7 @@ return {
     end,
   },
   {
-    id  = "将棋トーク_C7",
+    id  = "将棋トーク",
     content = function(shiori, ref)
       local str = StringBuffer()
       local player  = KifuPlayer.getInstance()

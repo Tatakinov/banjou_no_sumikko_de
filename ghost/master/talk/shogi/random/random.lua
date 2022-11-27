@@ -1,7 +1,7 @@
 
 return {
   {
-    id  = "将棋トーク",
+    id  = "将棋トーク_",
     content = function(shiori, ref)
       local __  = shiori.var
       local strength  = __["Strength"] or "観る将"

@@ -10,7 +10,7 @@ return {
     end,
   },
   {
-    id  = "将棋トーク_C3",
+    id  = "将棋トーク",
     content = [[
 \0
 歩と歩がぶつかったらほとんどの場合は取る一手だよ。\n
@@ -19,7 +19,7 @@ return {
 ]]
   },
   {
-    id  = "将棋トーク_C3",
+    id  = "将棋トーク",
     content = function(shiori, ref)
       local str = StringBuffer()
       local player  = KifuPlayer.getInstance()
