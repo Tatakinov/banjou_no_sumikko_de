@@ -105,11 +105,21 @@ files = {
     filename = Path.join("talk", "shogi", "next", "next021.kif"),
     difficulty  = 3,
   },
+  {
+    filename = Path.join("talk", "shogi", "next", "next022.kif"),
+    difficulty  = 4,
+  },
 }
 
 table.insert(t, {
   id  = "OnShogiNextMove",
   content = function(shiori, ref)
+    local page  = tonumber(ref[0]) or 1
+    if page < 1 then
+      page  = 1
+    elseif page > math.ceil(#files / 16) then
+      page  = math.ceil(#files / 16)
+    end
     local str = StringBuffer()
     str:append([[
 \0
@@ -121,19 +131,25 @@ table.insert(t, {
 \n
 ]])
     str:append([=[\q[ランダム出題,将棋_次の一手_ランダム]]=])
-    for i, v in ipairs(files) do
+    --for i, v in ipairs(files) do
+    for i = 1 + (page - 1) * 16, page * 16 do
+      local v = files[i]
       str:append([[\n]])
-      str:append([[\__q[次の一手_]] .. i .. "]問題" .. string.format("%03d", i))
-      --str:append("\\_l[120,]")
-      str:append("                ")
-      for i = 1, v.difficulty do
-        str:append("★")
+      if v then
+        str:append([[\__q[次の一手_]] .. i .. "]問題" .. string.format("%03d", i))
+        --str:append("\\_l[120,]")
+        str:append("                ")
+        for i = 1, v.difficulty do
+          str:append("★")
+        end
+        for i = v.difficulty + 1, 5 do
+          str:append("☆")
+        end
+        str:append([[\__q]])
       end
-      for i = v.difficulty + 1, 5 do
-        str:append("☆")
-      end
-      str:append([[\__q]])
     end
+    str:append([[\n\n]])
+    str:append(string.format([=[\q[前のページ,OnShogiNextMove,%d] \q[次のページ,OnShogiNextMove,%d]]=], page - 1, page + 1))
     str:append([[
 \n
 \n
