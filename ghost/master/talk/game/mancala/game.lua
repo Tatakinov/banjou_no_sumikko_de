@@ -79,6 +79,9 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       __("_InGame", false)
+      local score_list  = __("成績(Mancala)")
+      local score = score_list["Kalah"]
+      score.lose  = score.lose + 1
       return [[\0\s[座り_素]対局ありがとうございました。]]
     end,
   },
@@ -89,10 +92,14 @@ return {
       local mancala = __("_Mancala")
       local c = __("_MancalaColor")
       __("_InGame", false)
+      local score_list  = __("成績(Mancala)")
+      local score = score_list["Kalah"]
       if mancala:getStore(c) > mancala:getStore(mancala:reverse(c)) then
         -- ユーザ勝ち
+        score.win = score.win + 1
         return [[\0\s[座り_素]${User}の勝ちだよ。]]
       elseif mancala:getStore(c) < mancala:getStore(mancala:reverse(c)) then
+        score.lose  = score.lose + 1
         -- ユーザ負け
         return [[\0\s[座り_素]対局ありがとうございました。]]
       else
