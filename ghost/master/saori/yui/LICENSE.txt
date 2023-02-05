@@ -1,4 +1,4 @@
-# cocoa MIT License
+# yui MIT License
 
 Copyright (c) 2023 Tatakinov
 
