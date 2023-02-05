@@ -152,7 +152,7 @@ ghost/master/saori/process/README.txte30a19b0e90da7f1909ae23ef5ea4f11size=2726
 ghost/master/saori/process/process.dll74864e93c0be4554be239c41cdb88f11size=320512date=2021-10-18T22:56:54
 ghost/master/saori/sharo/LICENSE.txt4b656fee575899b563c0e34607095fd0size=1075date=2022-03-12T22:18:19
 ghost/master/saori/sharo/sharo.dll1a95ac241dcb9f6e2fd0f63b4f2224d6size=343040date=2022-03-27T22:17:33
-ghost/master/saori/yui/LICENSE.txtce3d06591eeca46935ae189eaf8e8abfsize=1075date=2023-02-05T21:59:45
+ghost/master/saori/yui/LICENSE.txt8858e905eef13b3e9f5bc7c1a471b6f4size=1073date=2023-02-05T23:06:22
 ghost/master/saori/yui/yui.dll42c0415831cf9daf137c1a7602d2cb4fsize=133120date=2023-02-05T21:59:45
 ghost/master/shiori/i18n.lua503d09a7e28874f9bcc1c3a4b4b84e0dsize=430date=2021-11-27T22:26:57
 ghost/master/shiori/init.lua6bb972a595a582962cb37b3447df0293size=10836date=2022-11-03T21:59:04
@@ -235,8 +235,8 @@ ghost/master/talk/game/gomoku/game.luafb0ebd12baf44c9dee19f19713ccbc67size=481
 ghost/master/talk/game/gomoku/menu.lua5bafde9258fe87a2311eac8f80cd3715size=3953date=2022-03-12T22:18:19
 ghost/master/talk/game/gomoku/view.lua5cc73f0ba564755f670bedc3b2e53f3dsize=1809date=2022-03-12T22:18:19
 ghost/master/talk/game/initialize.lua05138f08959ccc60fe2c823e0aad3a81size=9210date=2021-11-13T22:16:08
-ghost/master/talk/game/mancala/game.luae173dcf172e2190e5fcf1bf6bc0425aasize=3382date=2023-02-05T21:59:45
-ghost/master/talk/game/mancala/menu.lua334826c073eaed9c1b57ba7501c4b7b5size=6578date=2023-02-05T21:59:45
+ghost/master/talk/game/mancala/game.luabf29f2bb9108b6d11d501cd94c2d9616size=3664date=2023-02-05T23:06:21
+ghost/master/talk/game/mancala/menu.lua189e65b9664396652911eee3da2cdc27size=6563date=2023-02-05T23:06:21
 ghost/master/talk/game/mancala/mouse.luaf2844834928376585ced3b2c5ebe64b2size=457date=2023-02-05T21:59:45
 ghost/master/talk/game/mancala/view.lua79552eae694932b55c2d9f45dac63d90size=1811date=2023-02-05T21:59:45
 ghost/master/talk/game/menu.lua2dfa89b096a40943477ffdcfc12175f2size=4131date=2023-02-05T21:59:45
