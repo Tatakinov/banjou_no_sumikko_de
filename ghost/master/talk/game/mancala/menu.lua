@@ -87,7 +87,7 @@ return {
           :append("】")
           :append("\\n")
 
-      str:append(SS():_l(20)):append("ユーザーの手番:")
+      str:append(SS():_l(20)):append("CPUの強さ:")
           :append(SS():_l(120))
           :append(game_option.cpu_level)
           :append(SS():_l(200)):append("【")
@@ -151,7 +151,7 @@ return {
 \x
 \_q\![*]カラハ\_q\n
     * 勝利条件\n
-      自分のストアに相手より多くの石を蒔けた方の勝ちだよ。\n
+      自分のストアの数字が相手より大きければ勝ちだよ。\n
     * 決着\n
       どちらかの陣地の穴が空になった時点で決着がついて、\n
       その時穴に残っている石は\n
