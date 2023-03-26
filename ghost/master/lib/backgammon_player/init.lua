@@ -49,6 +49,8 @@ function M:initialize()
       0,
     },
   }
+  self._position[1][0]  = 0
+  self._position[2][0]  = 0
 end
 
 function M:initColor(color)
@@ -79,6 +81,7 @@ function M:move(move, dice)
   local dice  = dice or move.from - move.to
   if move.to <= 0 then
     p[c][move.from]  = p[c][move.from] - 1
+    p[c][0] = p[c][0] + 1
     table.insert(self._data.moves, {
       color   = c,
       dice    = dice,
@@ -171,7 +174,7 @@ function M:generateMoves(k, l, m, n)
   end
   for i, v in ipairs(p[c]) do
     if v > 0 then
-      if p[c][i - k] and
+      if p[c][i - k] and i - k > 0 and
         p[self:reverse(c)][24 - i + k + 1] <= 1 then
         if l then
           self:move({from = i, to = i - k}, k)
@@ -216,6 +219,16 @@ function M:generateMoves(k, l, m, n)
     end
   end
   return moves
+end
+
+function M:dump()
+  local s = "" .. tostring(self._current_color)
+  for _, v in ipairs(self._position) do
+    for i = 0, 25 do
+      s = s .. "/" .. tostring(v[i])
+    end
+  end
+  return s
 end
 
 return M
