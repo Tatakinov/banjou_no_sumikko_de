@@ -164,12 +164,17 @@ function M:request(req)
       tbl   = value
       value = value.Value
     end
-    if value then
-      --value = string.gsub(value, "\x0d\x0a", "")
-      value = string.gsub(value, "\x0d", "")
-      value = string.gsub(value, "\x0a", "")
+    if id == "OnTranslate" then
+      value = value or req:header("Reference0")
+      -- 末尾が\\e => passthroughでない、なら自動置換を実行する
+      local passthrough = false
+      local id  = req:header("Reference2")
+      if id then
+        local talk  = self._data:get(id) or {}
+        passthrough = talk.passthrough
+      end
       -- SHIORI Resource他置換しないトークには置換や末尾\eの追加を行わない
-      if not(passthrough) then
+      if value and not(passthrough) then
         value = self:autoReplaceVars(value)
         value = self:autoLink(value)
         value = self:autoReplace(value)
@@ -177,6 +182,11 @@ function M:request(req)
         --  えんいーが既にあるかを調べるのは面倒いのでとりあえず付けておく。
         value = value .. "\\e"
       end
+    end
+    if value then
+      --value = string.gsub(value, "\x0d\x0a", "")
+      value = string.gsub(value, "\x0d", "")
+      value = string.gsub(value, "\x0a", "")
       res:code(200)
       res:message("OK")
       tbl.Value = value
