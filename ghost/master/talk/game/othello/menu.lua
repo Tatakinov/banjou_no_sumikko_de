@@ -75,7 +75,7 @@ return {
           :append(SS():_l(120))
           :append(game_option.cpu_level)
           :append(SS():_l(200)):append("【")
-          :append(SS():q("変更", "OnOthelloChangeOption", "cpu_level", game_option.cpu_level))
+          :append(SS():q("変更", "OnOthelloConfig", "cpu_level", game_option.cpu_level))
           :append("】")
           :append("\\n")
 
@@ -106,19 +106,18 @@ return {
     end,
   },
   {
-    id  = "OnOthelloChangeOption",
+    id  = "OnOthelloConfig",
     content = function(shiori, ref)
       local __        = shiori.var
       local str       = StringBuffer()
       local name      = ref[0]
       local value     = ref[1]
       assert(name and value)
-      str:append(SS():C():inputbox("OnOthelloChangedOption", 0, value))
-      return str:tostring()
+      return string.format([=[\![open,sliderinput,OnOthelloConfig_%s,-1,%s,1,16]]=], name, value)
     end,
   },
   {
-    id  = "OnOthelloChangedOption",
+    id  = "OnOthelloConfig_cpu_level",
     content = function(shiori, ref)
       return SS():raise("OnOthelloGameMenu", "cpu_level", ref[0])
     end,

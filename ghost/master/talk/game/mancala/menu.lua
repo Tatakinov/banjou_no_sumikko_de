@@ -125,7 +125,9 @@ return {
   {
     id  = "OnMancalaGameConfig",
     content = function(shiori, ref)
-      return string.format([=[\![open,inputbox,OnMancalaGameConfig_%s]]=], ref[0])
+      local __  = shiori.var
+      local game_option = __("MancalaGameOption")
+      return string.format([=[\![open,sliderinput,OnMancalaGameConfig_%s,-1,%d,1,16]]=], ref[0], game_option.cpu_level)
     end,
   },
   {
