@@ -21,7 +21,7 @@ return {
 ]]
   },
   {
-    id  = "将棋トーク_C5",
+    id  = "将棋トーク",
     content = function(shiori, ref)
       local str = StringBuffer()
       local player  = KifuPlayer.getInstance()
@@ -54,7 +54,7 @@ return {
     end,
   },
   {
-    id  = "将棋トーク_C5",
+    id  = "将棋トーク",
     content = [[
 \0
 対局後は1人でもいいので感想戦をすると上達が早くなるよ。
@@ -63,7 +63,7 @@ return {
 ]]
   },
   {
-    id  = "将棋トーク_C5",
+    id  = "将棋トーク",
     content = function(shiori, ref)
       local str = StringBuffer()
       local player  = KifuPlayer.getInstance()
@@ -91,6 +91,23 @@ return {
 その場合はどうにかして歩を2枚手に入れて▲１五歩△同歩▲１四歩と
 桂頭を狙う手があるかな。
 そんな感じで端から攻めていくのが棒銀の攻め筋の1つだよ。
+]])
+      return str
+    end,
+  },
+  {
+    id  = "将棋トーク",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      local player  = KifuPlayer.getInstance()
+      player:setPosition("l4+Psnl/3gk4/p1p2p3/3ppg1K1/7Np/4P3P/PP1P1+pP2/1S1+br4/L7L b RB2G2SN3Pnp 1")
+      player:appendMove("2d2c")
+      str:append(shiori:talk("OnShogiViewMinimal"))
+      str:append([[
+\0
+この局面、△２二歩と出来れば詰むんだけど打ち歩詰めになるから打てないんだ。\n
+実戦だとめったに見かけないけど、
+こんな感じで打ち歩詰めになる局面に誘導出来ると気持ちが良いよね！@\n
 ]])
       return str
     end,
