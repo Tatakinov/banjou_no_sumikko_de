@@ -30,7 +30,7 @@ function M.parse(obj)
   if type(obj) == "string" then
     local ret = {}
     for line in string.gmatch(obj, "[^" .. CRLF .."]+" .. CRLF) do
-      local k, v = string.gmatch(line, "(.+): (.+)" .. CRLF)()
+      local k, v = string.gmatch(line, "(.-): (.+)" .. CRLF)()
       if k ~= nil then
         ret[k]  = v
       end
