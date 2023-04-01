@@ -13,7 +13,7 @@ ghost/master/corelib/luachild.dll463469d18d204d3b2e77da1be60541a2size=24064da
 ghost/master/corelib/path/init.lua264213955e5e47400c4651d82663a65fsize=730date=2022-11-03T21:59:04
 ghost/master/corelib/process/init.lua860cf29c9acc18588ffee905637c8ef2size=3085date=2021-09-05T22:05:43
 ghost/master/corelib/saori_basic/init.luab7266efb6309a85334f986aa8ade091fsize=1045date=2021-09-05T22:05:43
-ghost/master/corelib/saori_caller/init.luaa1c17b03914cfc8f86f270a5d0b96b4fsize=2203date=2021-09-05T22:05:43
+ghost/master/corelib/saori_caller/init.luab38d33e9bf0aef89b1294bddb0db69absize=1622date=2023-04-01T22:04:49
 ghost/master/corelib/saori_universal/init.lua35e35d946177cfdf5d65aa295f5788f8size=1956date=2021-09-05T22:05:43
 ghost/master/corelib/saori_universal/native.dll67f53c611ca874d512cf85786fa521c7size=171008date=2021-09-05T22:05:43
 ghost/master/corelib/socket/core.dlle32e5f96eee6b0a4cfe76eac42636e9esize=42496date=2021-09-05T22:05:43
@@ -41,6 +41,7 @@ ghost/master/image/mahjong/white.pngcddb9c3daacd450455c9e0f9f0f55d5csize=1714
 ghost/master/image/shogi/furigoma1.pngffe419735621d5c443abb8dc928bd6e1size=22531date=2021-09-05T22:05:43
 ghost/master/image/shogi/furigoma2.png798736be4f6233b5ebb95a7237ae5fcasize=21873date=2021-09-05T22:05:43
 ghost/master/index.luab62df8e9f06f0818d0aa5b13d4640fefsize=1945date=2021-09-05T22:05:43
+ghost/master/kagari.conf.lua4292df3207978beca8a185b2441b6374size=1193date=2023-04-01T22:04:49
 ghost/master/kagari.dllc33de6022ad93119dd55c54398e57c39size=120320date=2022-11-27T22:06:20
 ghost/master/lib/README.txt01cc80585103ee9be4e325e6994f0a81size=1831date=2021-09-05T22:05:43
 ghost/master/lib/backgammon_player/init.luab1d8f5ddf573ebe6e0ae6dd09f480e74size=5034date=2023-03-26T21:57:24
@@ -154,8 +155,9 @@ ghost/master/saori/sharo/LICENSE.txt4b656fee575899b563c0e34607095fd0size=1075
 ghost/master/saori/sharo/sharo.dll1a95ac241dcb9f6e2fd0f63b4f2224d6size=343040date=2022-03-27T22:17:33
 ghost/master/saori/yui/LICENSE.txt8858e905eef13b3e9f5bc7c1a471b6f4size=1073date=2023-02-05T23:06:22
 ghost/master/saori/yui/yui.dll42c0415831cf9daf137c1a7602d2cb4fsize=133120date=2023-02-05T21:59:45
+ghost/master/shiori/config.luab16ab4f641e368713b8d57702a6e8b08size=737date=2023-04-01T22:04:49
 ghost/master/shiori/i18n.lua503d09a7e28874f9bcc1c3a4b4b84e0dsize=430date=2021-11-27T22:26:57
-ghost/master/shiori/init.lua3c58909170f4b6b815db680d80e2c9c6size=11204date=2023-03-26T21:57:24
+ghost/master/shiori/init.lua573117ce13513e2d6a2555adb16e6515size=11150date=2023-04-01T22:04:49
 ghost/master/shiori/misc.lua1e62a73bb8081b46da563dda8c06e486size=3079date=2022-06-19T22:14:51
 ghost/master/shiori/talk.lua6dc22bcd43cb9c6253152a0b5a622d36size=571date=2021-09-05T22:05:43
 ghost/master/shiori/variable.luad6d8352da059d0a00296b9928a783fc2size=1205date=2021-09-05T22:05:43
