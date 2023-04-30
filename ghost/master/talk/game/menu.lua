@@ -12,7 +12,7 @@ return {
       __("_Quiet", false)
       __("_PostGame", false)
       __("_BoardReverse", false)
-      return SS():p(2):s(-1):p(3):s(-1):p(4):s(-1):p(5):s(-1):p(6):s(-1):p(7):s(-1):p(8):s(-1):p(9):s(-1):p(0):s("素")
+      return SS():p(2):s(-1):p(3):s(-1):p(4):s(-1):p(5):s(-1):p(6):s(-1):p(7):s(-1):p(8):s(-1):p(9):s(-1):p(10):s(-1):p(0):s("素")
     end,
   },
   {
@@ -39,6 +39,8 @@ return {
         return shiori:talk("盤面モードのメニュー(WordChain)")
       elseif __("_Quiet") == "Mancala" then
         return shiori:talk("盤面モードのメニュー(Mancala)")
+      elseif __("_Quiet") == "Igo" then
+        return shiori:talk("盤面モードのメニュー(Igo)")
       end
     end,
   },
@@ -64,7 +66,8 @@ return {
 \_l[120,]\![*]\q[コネクト6,コネクト6で遊ぶ]\n
 \![*]\q[しりとり,しりとりで遊ぶ]
 \_l[120,]\![*]\q[マンカラ,マンカラで遊ぶ]\n
-\![*]\q[麻雀,麻雀で遊ぶ]\n
+\![*]\q[囲碁,囲碁で遊ぶ]
+\_l[120,]\![*]\q[麻雀,麻雀で遊ぶ]\n
 \n
 \n
 \![*]\q[戻る,メニュー] \![*]\q[閉じる,閉じる]
@@ -167,5 +170,22 @@ This is the only game we can play in our club room now.\n
 それじゃ用意するね。
 \![raise,OnMancalaGameMenu]
 ]],
+  },
+  {
+    id  = "囲碁で遊ぶ",
+    content = [[
+\0\s[素]
+それじゃ用意するね。
+\![raise,OnIgoGameMenu]
+]],
+  },
+  {
+    id  = "OnInstallEngine",
+    content = function(shiori, ref)
+      -- TODO ライセンスのconfirmを入れた方が良いかも？
+      return [[
+\![execute,install,url,https://github.com/Tatakinov/banjou_no_sumikko_de_supplement/releases/download/1.3.0/supplement.zip,nar]
+]]
+    end,
   },
 }
