@@ -58,7 +58,7 @@ ghost/master/lib/chess_player/position.luac3fa93c44829cef3f5632531122568bfsize
 ghost/master/lib/chess_player/relative.luab4edf58b70d0305fa44ed559c5c565cbsize=5337date=2021-11-13T21:38:05
 ghost/master/lib/clipboard/init.dll36ec757d453a366b5979e187b22c3371size=84992date=2021-09-05T22:05:43
 ghost/master/lib/clone/init.luae01abd55d4fb80575cd64cadf3496e61size=309date=2021-09-05T22:05:43
-ghost/master/lib/gtp/init.lua4bcf98928fab62e46f92f96039dacdbdsize=953date=2023-04-30T21:40:54
+ghost/master/lib/gtp/init.luac99e9403ab41cfffce4a69513518290bsize=979date=2023-04-30T22:07:15
 ghost/master/lib/igo_player/init.lua5b678d9e03bf1923c06b0543440844f4size=89date=2023-04-30T21:40:54
 ghost/master/lib/igo_player/player.luabcd04f9beb2f1c95329c7370f6bdff61size=4417date=2023-04-30T21:40:54
 ghost/master/lib/kifu_player/color.luaf92131e52026bb927d016100c5369f0csize=913date=2021-09-05T22:05:43
@@ -240,8 +240,8 @@ ghost/master/talk/game/gomoku/_render.luae5b45ff21c8b97032e618d0f31df4bbasize=
 ghost/master/talk/game/gomoku/game.luafb0ebd12baf44c9dee19f19713ccbc67size=4810date=2022-03-12T22:29:15
 ghost/master/talk/game/gomoku/menu.lua5bafde9258fe87a2311eac8f80cd3715size=3953date=2022-03-12T22:18:19
 ghost/master/talk/game/gomoku/view.lua5cc73f0ba564755f670bedc3b2e53f3dsize=1809date=2022-03-12T22:18:19
-ghost/master/talk/game/igo/engine.lua44ba5ccf299ca78f544f727c91ad8d85size=2378date=2023-04-30T21:40:54
-ghost/master/talk/game/igo/game.lua80183fa78c2fec51c073f28f7235ae46size=6282date=2023-04-30T21:40:54
+ghost/master/talk/game/igo/engine.lua0e36fe1944b1d2f17ea67ef2b65b41d1size=2466date=2023-04-30T22:07:15
+ghost/master/talk/game/igo/game.lua151457002b6cb5ec25dc327155855bb3size=6389date=2023-04-30T22:07:15
 ghost/master/talk/game/igo/menu.lua3ebddda954c550e4db52f939f4f4d9ccsize=4898date=2023-04-30T21:40:54
 ghost/master/talk/game/igo/view.luae587d2ad8bc83fdc2038774c4b7d5896size=2034date=2023-04-30T21:40:54
 ghost/master/talk/game/initialize.lua05138f08959ccc60fe2c823e0aad3a81size=9210date=2021-11-13T22:16:08
