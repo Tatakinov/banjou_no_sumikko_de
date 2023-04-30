@@ -37,6 +37,7 @@ return {
       local str = StringBuffer()
       local teban = player:getTeban()
       local player_color  = __("_PlayerColor")
+      process("send", id, gtp:tostring(GTP.showboard))
       if player:isGameOver() then
         str:append(SS():raise("OnIgoView"))
         str:append(SS():raise("OnIgoGameCalcScore"))
@@ -67,12 +68,13 @@ return {
       local id  = __("_ProcessID")
       local gtp = __("_GTP")
       local player  = __("_Igo")
+      local teban = player:getTeban()
       local x = tonumber(ref[0])
       local y = tonumber(ref[1])
       player:put(x, y)
       __("_LastPut", {x = x, y = y})
       local color = {"black", "white"}
-      process("send", id, gtp:tostring(GTP.play, color[player:getTeban()] .. " " .. GTP.n2pos(x, y)))
+      process("send", id, gtp:tostring(GTP.play, color[teban] .. " " .. GTP.n2pos(x, y)))
       return nil
     end,
   },
@@ -121,10 +123,11 @@ return {
       local id  = __("_ProcessID")
       local gtp = __("_GTP")
       local player  = __("_Igo")
+      local teban = player:getTeban()
       __("_LastPut", nil)
       local color = {"black", "white"}
       player:pass()
-      process("send", id, gtp:tostring(GTP.play, color[player:getTeban()] .. " pass"))
+      process("send", id, gtp:tostring(GTP.play, color[teban] .. " pass"))
       print("PASS")
     end,
   },

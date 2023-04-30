@@ -12,6 +12,7 @@ M.play  = "play"
 M.genmove = "genmove"
 M.final_score = "final_score"
 M.quit  = "quit"
+M.showboard = "showboard"
 
 function M.n2pos(x, y)
   local t = {"A", "B", "C", "D", "E", "F", "G", "H", "J"}

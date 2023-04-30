@@ -61,6 +61,9 @@ return {
       elseif data.kind == GTP.final_score then
         print("FINAL_SCORE:", data.data)
         __("_Reserve", SS():raise("OnIgoGameOver", data.data):tostring())
+      elseif data.kind == GTP.showboard then
+        -- nop
+        __("_Reserve", nil)
       end
     end,
   },
