@@ -157,9 +157,9 @@ return {
           :append("】")
           :append("\\n")
       if __("Supplement_Engine_Version") == nil then
-        str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(36MB/94MB)", "OnInstallShogiEngine"):n())
-      elseif __("Supplement_Engine_Version") < "1.2.0" then
-        str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallShogiEngine"):n())
+        str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(36MB/94MB)", "OnInstallEngine"):n())
+      elseif __("Supplement_Engine_Version") < "1.3.0" then
+        str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallEngine"):n())
       elseif selected then
         local score_list  = __("成績")
         local score = score_list[selected]
@@ -181,15 +181,6 @@ return {
       str:append(SS():_q(false))
 
       return str:tostring()
-    end,
-  },
-  {
-    id  = "OnInstallShogiEngine",
-    content = function(shiori, ref)
-      -- TODO ライセンスのconfirmを入れた方が良いかも？
-      return [[
-\![execute,install,url,https://raw.githubusercontent.com/Tatakinov/banjou_no_sumikko_de_supplement/master/supplement.nar,nar]
-]]
     end,
   },
   {
