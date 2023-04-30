@@ -1,4 +1,5 @@
 local ChessPlayer = require("chess_player")
+local Clipboard = require("clipboard")
 local SS  = require("sakura_script")
 local StringBuffer  = require("string_buffer")
 local IP    = ChessPlayer.InitialPreset
@@ -20,14 +21,12 @@ return {
       else
         str:append("\\![*]")
         str:append(SS():q("盤面モードを終了する", "盤面モード終了"):n())
-        --[[ 未実装
+        ---[[ 未実装
         if __("_PostGame") then
           str:append("\\![*]")
-          str:append(SS():q("この一局の評価", "OnTalkAnalysisResult"):n())
+          str:append(SS():q("棋譜をクリップボードにコピー", "OnCopyPGNToClipboard"):n())
           str:append("\\![*]")
-          str:append(SS():q("棋譜をクリップボードにコピー", "OnCopyKifuToClipboard"):n())
-          str:append("\\![*]")
-          str:append(SS():q("棋譜を保存", "OnSaveKifu"):n():n())
+          str:append(SS():q("棋譜を保存", "OnSavePGN"):n():n())
         end
         --]]
       end
@@ -154,9 +153,9 @@ return {
         end
       end
       if __("Supplement_Engine_Version") == nil then
-        str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(36MB/94MB)", "OnInstallChessEngine"):n())
-      elseif __("Supplement_Engine_Version") < "1.2.0" then
-        str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallChessEngine"):n())
+        str:append("\\![*]"):append(SS():q("思考エンジンをインストールする(36MB/94MB)", "OnInstallEngine"):n())
+      elseif __("Supplement_Engine_Version") < "1.3.0" then
+        str:append("\\![*]"):append(SS():q("思考エンジンをアップデートする(36MB/94MB)", "OnInstallEngine"):n())
       elseif selected then
         str:append(SS():_l(20)):append("成績"):append(SS():_l(120))
         str:append(score.win):append("勝"):append(score.lose):append("敗")
@@ -173,15 +172,6 @@ return {
       str:append(SS():_q(false))
 
       return str:tostring()
-    end,
-  },
-  {
-    id  = "OnInstallChessEngine",
-    content = function(shiori, ref)
-      -- TODO ライセンスのconfirmを入れた方が良いかも？
-      return [[
-\![execute,install,url,https://raw.githubusercontent.com/Tatakinov/banjou_no_sumikko_de_supplement/master/supplement.nar,nar]
-]]
     end,
   },
   {
@@ -361,5 +351,47 @@ USIプロトコルに対応したエンジンなら登録できるよ。\n
 \![*]\q[戻る,OnChessGameMenu]
 \_q
 ]],
+  },
+  {
+    id  = "OnCopyPGNToClipboard",
+    content = function(shiori, tbl)
+      local __      = shiori.var
+      local hwnd    = __("_hwnd")
+      local player  = ChessPlayer.getInstance()
+      if Clipboard.set(hwnd.ghost[1], player:toPGN()) then
+        return [[\0クリップボードに棋譜をコピーしたよ。]]
+      else
+        return [[\0クリップボードへのコピーに失敗したよ。]]
+      end
+    end,
+  },
+  {
+    id  = "OnSavePGN",
+    content = function(shiori, ref)
+      local str = StringBuffer()
+      if ref[0] == "save" then
+        -- TODO save
+        local filename  = ref[2]
+        local fh  = io.open(filename, "wb")
+        if fh == nil then
+          return [[\0保存に失敗したよ。]]
+        end
+        local player  = ChessPlayer.getInstance()
+        fh:write(player:toPGN())
+        fh:close()
+        return [[\0保存したよ。]]
+      elseif ref[0] == "cancel" then
+        return nil
+      else
+        str:append(SS():dialog("save", {
+          title   = "棋譜ファイルの保存",
+          filter  = "棋譜ファイル|*.pgn|全てのファイル|*.*",
+          id      = "OnSavePGN",
+          dir     = "__system_desktop__",
+          ext     = "pgn",
+        }))
+      end
+      return str
+    end,
   },
 }

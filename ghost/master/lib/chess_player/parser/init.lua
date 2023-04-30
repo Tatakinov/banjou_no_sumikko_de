@@ -1,10 +1,12 @@
 -- @module Parser
 
---- KIF,KI2,CSA,JKF形式とのやりとりを行う
+--- PGN,UCI形式とのやりとりを行う
 
+local PGN = require("chess_player.parser.pgn")
 local UCI = require("chess_player.parser.uci")
 
 local class_table = {
+  PGN = PGN,
   UCI = UCI,
 }
 

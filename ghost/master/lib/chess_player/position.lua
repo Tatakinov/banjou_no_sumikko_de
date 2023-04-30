@@ -357,7 +357,7 @@ function M:isCheckmate(color)
   -- FIXME アンパッサンで詰み回避
   local move_moves  = self:moveGenerateMove(color)
   local hit_moves   = self:moveGenerateHit(color)
-  local king_moves  = self:moveGenerateKing(color)
+  local king_moves  = self:moveGenerateKing(color, {})
   assert(move_moves and hit_moves and king_moves)
   return (#move_moves + #hit_moves + #king_moves) == 0
 end
@@ -401,7 +401,7 @@ end -- func
 --- colorの指し手(移動)を生成する
 -- @tparam color color
 -- @treturn table
-function M:moveGenerateKing(color, castling_available)
+function M:moveGenerateKing(color, castling_info)
   local moves = {}
   for x = 1, 8 do
     for y = 1, 8 do
@@ -421,9 +421,10 @@ function M:moveGenerateKing(color, castling_available)
             valid = not(self:isCheck(color))
             self:unmove(x, y, to.x, to.y, kind, color, capture, nil)
             -- castling
-            if castling_available and x == 5 and not(self:isCheck(color)) then
+            if not(castling_info.K) and
+                x == 5 and not(self:isCheck(color)) then
               local invalid = true
-              if x - to.x == 2 then
+              if x - to.x == 2 and not(castling_info.RQ) then
                 if not(self:getPiece(4, y).kind)
                     and not(self:getPiece(3, y).kind)
                     and not(self:getPiece(2, y).kind)
@@ -436,10 +437,10 @@ function M:moveGenerateKing(color, castling_available)
                   invalid = self:isCheck(color)
                   self:unmove(x, y, x - 1, to.y, kind, color, capture, nil)
                   if not(invalid) then
-                    castling  = true
+                    castling  = "Q"
                   end
                 end
-              elseif x - to.x == -2 then
+              elseif x - to.x == -2 and not(castling_info.RK) then
                 if not(self:getPiece(6, y).kind)
                     and not(self:getPiece(7, y).kind)
                     and self:getPiece(8, y).kind == Misc.R
@@ -451,7 +452,7 @@ function M:moveGenerateKing(color, castling_available)
                   invalid = self:isCheck(color)
                   self:unmove(x, y, x + 1, to.y, kind, color, capture, nil)
                   if not(invalid) then
-                    castling  = true
+                    castling  = "K"
                   end
                 end
               else

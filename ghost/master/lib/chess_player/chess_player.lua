@@ -40,8 +40,16 @@ function M:_init()
   self.init_color = Color.WHITE
   self.position = Position()
   self.castling = {
-    [Color.WHITE] = 1000,
-    [Color.BLACK] = 1000,
+    [Color.WHITE] = {
+      RK  = nil,
+      K   = nil,
+      RQ  = nil,
+    },
+    [Color.BLACK] = {
+      RK  = nil,
+      K   = nil,
+      RQ  = nil,
+    },
   }
   self.enpassant  = {}
 end
@@ -292,8 +300,10 @@ function M:normalize(move_format)
       if move.castling == nil and move.from then
         if move.piece == Misc.K then
           if move.from.x - move.to.x == 2 then
+            --print("King side castling")
             move.castling = "K"
           elseif move.from.x - move.to.x == -2 then
+            --print("Queen side castling")
             move.castling = "Q"
           end
         end
@@ -427,6 +437,7 @@ end
 function M:appendMove(str)
   local move  = nil
   if type(str) == "string" then
+    -- TODO stub
     move  = Parser.parseMove(str)
   elseif type(str) == "table" then
     move  = str
@@ -437,6 +448,16 @@ function M:appendMove(str)
   if type(move) == "table" then
     move_format.move  = move
   elseif type(move) == "string" then
+    if move == "nullmove" then
+      if player:isCheck() then
+        move  = "lose"
+      else
+        move  = "draw"
+      end
+    elseif move == "resign" then
+      move  = "lose"
+    end
+    print("move_format.special", move)
     move_format.special = move
   end
   --move_format = self:normalize(move_format, self.jkf.moves[tesuu])
@@ -613,8 +634,18 @@ function M:forward()
       )
       -- castling
       if move.piece == Misc.K then
-        if self:getTesuu() < self.castling[move.color] then
-          self.castling[move.color] = self:getTesuu()
+        if not(self.castling[move.color].K) then
+          self.castling[move.color].K = self:getTesuu()
+        end
+      end
+      if move.piece == Misc.R then
+        local c = move.color
+        if not(self.castling[move.color].RK) and
+            move.from.x == 8 and move.from.y == 7 * c + 1 then
+          self.castling[move.color].RK  = self:getTesuu()
+        elseif not(self.castling[move.color].RQ) and
+            move.from.x == 1 and move.from.y == 7 * c + 1 then
+          self.castling[move.color].RQ  = self:getTesuu()
         end
       end
       -- en passant?
@@ -709,9 +740,21 @@ function M:backward()
         move.capture, move.promote,
         move.castling, move.enpassant
       )
-      if move.piece == Misc.K or move.piece == Misc.R then
-        if self:getTesuu() < self.castling[move.color] then
-          self.castling[move.color] = 1000
+      -- castling
+      if move.piece == Misc.K then
+        if self.castling[move.color].K and
+            self:getTesuu() < self.castling[move.color].K then
+          self.castling[move.color].K = nil
+        end
+      end
+      if move.piece == Misc.R then
+        local c = move.color
+        if self.castling[move.color].RK and
+            self:getTesuu() < self.castling[move.color].RK then
+          self.castling[move.color].RK  = nil
+        elseif self.castling[move.color].RQ and
+            self:getTesuu() < self.castling[move.color].RQ then
+          self.castling[move.color].RQ  = nil
         end
       end
     else
@@ -820,7 +863,7 @@ function M:generateMoves()
   local moves = {}
   local move_moves  = self.position:moveGenerateMove(self:getTeban(), self.enpassant)
   local hit_moves   = self.position:moveGenerateHit(self:getTeban())
-  local king_moves  = self.position:moveGenerateKing(self:getTeban(), self.castling[self:getTeban()] > self:getTesuu())
+  local king_moves  = self.position:moveGenerateKing(self:getTeban(), self.castling[self:getTeban()])
   --local king_moves  = self.position:moveGenerateKing(self:getTeban(), true)
   local clone = Clone(self)
   for _, v in ipairs({move_moves, hit_moves, king_moves}) do
@@ -1036,5 +1079,11 @@ function M:toSfen(reverse)
     tesuu = tesuu:tostring(),
   }
 end
+
+function M:toPGN(charset)
+  local str = Parser.PGN.toPGN(self.jkf)
+  return str
+end
+
 
 return M

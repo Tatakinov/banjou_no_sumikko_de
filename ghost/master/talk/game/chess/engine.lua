@@ -722,7 +722,7 @@ return {
       local move_format = player:getMoveFormat()
       local special = move_format.special
       if special then
-        if special == "nullmove" then
+        if special == "lose" then
           if check then
             table.insert(__("_ScoreList"), {
               tesuu = player:getTesuu(),

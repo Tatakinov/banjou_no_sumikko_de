@@ -104,6 +104,9 @@ end
 --- TODO comment
 function M.parseMove(str)
   local move  = {}
+  if str == "resign" then
+    return str
+  end
   if str == "0000" then
     return "nullmove"
   end
