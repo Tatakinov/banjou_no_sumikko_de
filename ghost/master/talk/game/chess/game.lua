@@ -38,12 +38,23 @@ return {
       elseif game_option.player_color == "random" then
         if math.random(1, 2) == 2 then
           __("_PlayerColor", Color.WHITE)
+          player:setHeader("White", "User")
+          player:setHeader("Black", "Yuki Komiya")
         else
           __("_PlayerColor", Color.BLACK)
+          player:setHeader("White", "Yuki Komiya")
+          player:setHeader("Black", "User")
         end
         str:append(SS():raise("OnChessGameStart"))
       else
-        __("_PlayerColor", game_option.player_color)
+        local s = {
+          [Color.WHITE] = "White",
+          [Color.BLACK] = "Black",
+        }
+        local c = game_option.player_color
+        __("_PlayerColor", c)
+        player:setHeader(s[c], "User")
+        player:setHeader(s[Color.reverse(c)], "Yuki Komiya")
         str:append(SS():raise("OnChessGameStart"))
       end
       return str:tostring()

@@ -33,8 +33,8 @@ function M.toPGN(jkf)
   header:append('[Date "2000.01.01"]\n')
   header:append('[Round "1"]\n')
   -- TODO 対戦者の取得
-  header:append('[White "User"]\n')
-  header:append('[Black "Yuki Komiya"]\n')
+  header:append(string.format('[White "%s"]\n', jkf.header["White"]))
+  header:append(string.format('[Black "%s"]\n', jkf.header["Black"]))
   -- 初期局面
   if jkf.moves and #jkf.moves > 0 then
     for i = 1, #jkf.moves do

@@ -32,7 +32,7 @@ end
 function M:_init()
   self.tesuu  = 0
   self.jkf    = {
-    header  = {},
+    header  = self.jkf and self.jkf.header or {},
     moves   = {[0] = {}},
   }
   self.branch_info  = {}
@@ -954,6 +954,10 @@ end
 function M:getHeader(key)
   --print("getHeader: " .. key)
   return self.jkf.header[key]
+end
+
+function M:clearHeader()
+  self.jkf.header = {}
 end
 
 function M:toUCI()
