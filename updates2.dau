@@ -1,5 +1,5 @@
-LICENSE.txt256fd501a16be00ec60a0c907d24a983size=63178date=2023-04-30T21:40:54
-README.txt6c9c6db55fdbfc6110a61ee80dff29d4size=9067date=2023-04-30T21:40:54
+LICENSE.txt08da9be6d8771d57e4d1423f9a3de0bfsize=79952date=2023-05-28T22:08:23
+README.txt9fdc6b650dddbb389c81829e552ea5a9size=9527date=2023-05-28T22:08:23
 ghost/master/README.txt078541acd60c63e61e24a2cab42e5a63size=1477date=2021-10-18T22:56:53
 ghost/master/corelib/README.txt01cc80585103ee9be4e325e6994f0a81size=1831date=2021-09-05T22:05:43
 ghost/master/corelib/class/init.luaf6195eb564cd7db4a10e102814a3d5fdsize=420date=2021-09-05T22:05:43
@@ -146,9 +146,14 @@ ghost/master/saori/TexasHoldemUtil/README.txtdd39418eef4672d515cbd8f48fd49eb4s
 ghost/master/saori/TexasHoldemUtil/TexasHoldemUtil.dllf42c31b9f62c2ca830dc4e88efeec51esize=168960date=2022-11-27T22:06:20
 ghost/master/saori/charlotte/LICENSE.txt392510a308cb7317f0dbb0566dc58852size=1079date=2022-03-06T21:22:21
 ghost/master/saori/charlotte/charlotte.dll82c9d4f2e4b862c60c111fa475af7c10size=315392date=2022-03-12T22:18:19
+ghost/master/saori/cocoa/COPYING.APACHE8de23b8e93c63005353056b2475e9aa5size=11362date=2023-05-28T22:08:24
+ghost/master/saori/cocoa/COPYING.BSD2dd0510ee95e59ca28834b875bc96596size=1517date=2023-05-28T22:08:24
+ghost/master/saori/cocoa/COPYING.MINPACK71d91b0f75ce79a75d3108a72bef8116size=2193date=2023-05-28T22:08:24
+ghost/master/saori/cocoa/COPYING.MPL2815ca599c9df247a0c7f619bab123dadsize=16726date=2023-05-28T22:08:24
 ghost/master/saori/cocoa/LICENSE.txt4700430abbecbcb9a5fc65871574456dsize=1075date=2022-02-23T22:30:36
 ghost/master/saori/cocoa/README.txt8f7a479344ff4632d63805523829d59fsize=1510date=2022-03-06T21:21:19
-ghost/master/saori/cocoa/cocoa.dlldf3ac17b6f933167ffa72b0f53f601b5size=293376date=2022-03-06T21:21:19
+ghost/master/saori/cocoa/cocoa.dll3bad7ba4cbccd28c200c6db844827d49size=410112date=2023-05-28T22:08:24
+ghost/master/saori/cocoa/model.txt560775a0235c8d0885063279ccb6cc50size=40179date=2023-05-28T22:08:24
 ghost/master/saori/kay/kay.dll73b364622ad995712cb777c46e05f387size=354816date=2022-03-27T22:19:14
 ghost/master/saori/mio/LICENSE.txt54a14eb85f7d4d2f61e05ad0d12c9b78size=1073date=2022-03-12T22:18:19
 ghost/master/saori/mio/mio.dll4c1d58cc86f6518134533e4bd3abf8d7size=335360date=2022-03-27T22:17:33
