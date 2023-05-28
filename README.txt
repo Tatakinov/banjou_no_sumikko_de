@@ -92,6 +92,9 @@
 
 以下のライブラリ/ソフトウェアを使用しています。
 それぞれのライセンス詳細はLICENSE.txtを参照してください。
+ただし、例外的にEigenのライセンスは
+ghost/master/saori/cocoa/以下のCOPYINGを参照してください。
+(サードパーティのライブラリがどれか確認が取れていないため)
 
 Lua                         | https://www.lua.org/
 sol2                        | https://github.com/ThePhD/sol2/
@@ -118,6 +121,8 @@ nlohmann_json(in KataGo)    | ↑同上
 tclap-1.2.2(in KataGo)      | ↑同上
 sha2.cpp(in KataGo)         | ↑のcpp/core/sha2.cppを参照
 openssl(in KataGo)          | https://github.com/openssl/openssl
+minpack(in cocoa)           | 不明
+Eigen(in cocoa)             | https://eigen.tuxfamily.org/index.php?title=Main_Page
 
 
 ## 使用フォント
@@ -196,6 +201,9 @@ openssl(in KataGo)          | https://github.com/openssl/openssl
 
 - デバッグ(luacheck)のコンパイル
   luastatic               / https://github.com/ers35/luastatic
+
+- オセロ
+  おせろAIの教科書|にゃにゃん(山名琢翔) / https://note.com/nyanyan_cubetech/m/m54104c8d2f12
 
 ## サプリメントについて
 
