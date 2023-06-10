@@ -8,6 +8,7 @@ return {
     id  = "OnBackgammonRender",
     content = function(shiori, ref)
       local __  = shiori.var
+      local player  = __("_BGPlayer")
       local render_collision_dice = ref[0] == "true"
       local render_collision_movable  = ref[1] == "true"
       local str = StringBuffer()
@@ -34,6 +35,10 @@ return {
         for _, v in ipairs(movable) do
           str:append(Render.renderMovable(v))
         end
+      end
+      local color = player:getDoubleColor()
+      if color then
+        str:append(Render.renderDouble(color, player:getDoubleRate()))
       end
       str:append(Render.update())
       return str

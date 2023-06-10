@@ -14,6 +14,31 @@ M.__call  = function(self, key, ...)
   return ret
 end
 
+local function recursive(dst, src)
+  if type(src) == "table" then
+    for k, v in pairs(src) do
+      dst[k]  = recursive(dst[k], v)
+    end
+  else
+    if dst == nil then
+      dst = src
+    end
+  end
+  return dst
+end
+
+function M:init(key, default)
+  local tmp = default
+  local v = self(key)
+  if v then
+    assert(type(v) == type(default))
+    tmp = recursive(tmp, v)
+  else
+    self(key, default)
+  end
+  return self(key)
+end
+
 function M:load(path)
   --print("load")
   file_path  = path .. FILE_NAME

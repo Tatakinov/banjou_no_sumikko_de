@@ -563,7 +563,10 @@ return {
       local dice1   = dice[1]
       local dice2   = dice[2]
       local bg      = shiori:saori("backgammon")
-      local result  = bg("search", 20000, dice1, dice2)
+      print(player:dump())
+      bg("position", player:dump())
+      print("search")
+      local result  = bg("search", dice1, dice2)
       print("win-rate:", result())
       print(result[0])
       print(result[1])
@@ -574,6 +577,60 @@ return {
       local from3, dice3 = string.match(result[2] or "", "(%d*),(%d*)")
       local from4, dice4 = string.match(result[3] or "", "(%d*),(%d*)")
       return SS():raise("OnBackgammonAIResult", dice1, from1, dice2, from2, dice3, from3, dice4, from4)
+    end,
+  },
+  {
+    id  = "OnBackgammonAITakeOrPass",
+    content = function(shiori, ref)
+      local __  = shiori.var
+      local player  = __("_BGPlayer")
+      local bg  = shiori:saori("backgammon")
+      local option  = __("BackgammonGameOption")
+      local w_score = __("_BG_WhiteScore")
+      bg("position", player:dump())
+      print("TakeOrPass")
+      local rate  = tonumber(bg("evaluate")())
+      -- 相手番のrateなので反転する
+      rate  = 1 - rate
+      print("rate:", rate)
+      if w_score + player:getDoubleRate() >= option.point or
+          rate > 0.25 then
+        player:double()
+        __("_BG_Dice1", nil)
+        __("_BG_Dice2", nil)
+        return [[\0テイクするよ。]] ..
+          SS():raise("OnBackgammonRender", "false", "false")
+                :timerraise({
+                  time  = 1000,
+                  loop  = false,
+                  ID    = "OnBackgammonDiceRoll",
+                }):tostring()
+      end
+      return [=[\0パスするよ。\![raise,OnBackgammonPeriodEnd,1]]=]
+    end,
+  },
+  {
+    id  = "OnBackgammonAIDouble?",
+    content = function(shiori, ref)
+      local __  = shiori.var
+      local player  = __("_BGPlayer")
+      local bg  = shiori:saori("backgammon")
+      local w_score = __("_BG_WhiteScore")
+      local b_score = __("_BG_BlackScore")
+      local option  = __("BackgammonGameOption")
+      bg("position", player:dump())
+      print("Double?")
+      local rate  = tonumber(bg("evaluate")())
+      print("rate:", rate)
+      if player:canDouble() then
+        if (w_score + player:getDoubleRate() >= option.point and
+            b_score + player:getDoubleRate() < option.point) or
+            rate > 0.75 then
+          return [[\0ダブルするよ。]] ..
+            shiori:talk("OnBackgammonRender", "false", "false") .. [=[\![raise,OnBackgammonPlayerTakeOrPass]]=]
+        end
+      end
+      return [=[\![raise,OnBackgammonDiceRoll]]=]
     end,
   },
 }

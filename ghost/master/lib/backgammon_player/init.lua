@@ -32,7 +32,7 @@ function M:_init()
   }
 end
 
-function M:initialize()
+function M:initialize(crawford)
   self._position  = {
     {
       0, 0, 0, 0, 0, 5,
@@ -51,6 +51,9 @@ function M:initialize()
   }
   self._position[1][0]  = 0
   self._position[2][0]  = 0
+  self._current_rate  = 1
+  self._double_color  = nil
+  self._crawford  = not(not(crawford))
 end
 
 function M:initColor(color)
@@ -222,13 +225,100 @@ function M:generateMoves(k, l, m, n)
 end
 
 function M:dump()
-  local s = "" .. tostring(self._current_color)
-  for _, v in ipairs(self._position) do
-    for i = 0, 25 do
-      s = s .. "/" .. tostring(v[i])
+  local s = ""
+  if self._current_color == 1 then
+    for _, v in ipairs(self._position) do
+      for i = 0, 25 do
+        s = s .. tostring(v[i]) .. "/"
+      end
+    end
+  else
+    for _, v in ipairs({self._position[2], self._position[1]}) do
+      for i = 0, 25 do
+        s = s .. tostring(v[i]) .. "/"
+      end
     end
   end
   return s
+end
+
+function M:canDouble()
+  if self:isGameOver() then
+    return false
+  end
+  if self._crawford then
+    return false
+  end
+  if self._double_color and self._current_color ~= self._double_color then
+    return false
+  end
+  if self._current_rate == 64 then
+    return false
+  end
+  return true
+end
+
+function M:double()
+  if self:canDouble() then
+    print("double!")
+    self._double_color  = self:reverse(self._current_color)
+    self._current_rate  = self._current_rate * 2
+    return true
+  else
+    print("dont double")
+  end
+  return false
+end
+
+function M:getDoubleColor()
+  return self._double_color
+end
+
+function M:getDoubleRate()
+  return self._current_rate
+end
+
+function M:isGameOver()
+  local p = self._position
+  return p[1][0] == 15 or p[2][0] == 15
+end
+
+function M:gameOver()
+  local p = self._position
+  if p[1][0] == 15 then
+    if p[2][0] > 0 then
+      return 1
+    end
+    local backgammon  = false
+    for i = 19, 25 do
+      if p[2][i] > 0 then
+        backgammon  = true
+        break
+      end
+    end
+    if backgammon then
+      return 3
+    else
+      return 2
+    end
+  elseif p[2][0] == 15 then
+    if p[1][0] > 0 then
+      return 1
+    end
+    local backgammon  = false
+    for i = 19, 25 do
+      if p[1][i] > 0 then
+        backgammon  = true
+        break
+      end
+    end
+    if backgammon then
+      return 3
+    else
+      return 2
+    end
+  end
+  return 1
 end
 
 return M

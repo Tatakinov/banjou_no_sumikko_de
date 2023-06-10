@@ -18,6 +18,8 @@ function M.clear()
     updater:set("DICE" .. i, nil, 0)
     updater:set("DICE" .. i .. "_DUMMY", nil, 0)
   end
+  updater:set("DOUBLE_WHITE", nil, 0)
+  updater:set("DOUBLE_BLACK", nil, 0)
 end
 
 function M.renderPiece(i, color, point)
@@ -64,8 +66,13 @@ end
 
 function M.update()
   return [[
-\p[3]\s[14001]
+\p[3]\s[14000]
 ]] .. updater:toSS()
+end
+
+function M.renderDouble(color, rate)
+  local s = {"WHITE", "BLACK"}
+  updater:set("DOUBLE_" .. s[color], tostring(rate), 1)
 end
 
 return M
