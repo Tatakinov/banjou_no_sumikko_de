@@ -113,7 +113,7 @@ local M = {
       local __  = shiori.var
       local r = __("_BoardReverse")
       local x, y  = string.match(ref[0], "(%d+),(%d+)")
-      Render.OnQuoridorViewRenderCollisionVBar(x, y)
+      Render.OnQuoridorViewRenderCollisionVBar(x, y, r)
     end,
   },
   {

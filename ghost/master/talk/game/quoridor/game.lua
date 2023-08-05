@@ -150,6 +150,7 @@ return {
       local quoridor  = shiori:saori("quoridor")
       local ret = quoridor("search", option.cpu_level)
       local x, y    = string.match(ret[0], "(%d+),(%d+)")
+      print("rate:", ret[2])
       if ret() == "put" then
         return SS():raise("OnQuoridorGameCpuTurnEnd", ret(), x, y, ret[1])
       else
