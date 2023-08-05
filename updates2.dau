@@ -145,7 +145,7 @@ ghost/master/saori/TexasHoldemUtil/LICENSEaeae5fc0093d912c2288602e1614276asize
 ghost/master/saori/TexasHoldemUtil/README.txtdd39418eef4672d515cbd8f48fd49eb4size=2773date=2022-11-05T22:14:47
 ghost/master/saori/TexasHoldemUtil/TexasHoldemUtil.dllf42c31b9f62c2ca830dc4e88efeec51esize=168960date=2022-11-27T22:06:20
 ghost/master/saori/charlotte/LICENSE.txt392510a308cb7317f0dbb0566dc58852size=1079date=2022-03-06T21:22:21
-ghost/master/saori/charlotte/charlotte.dll82c9d4f2e4b862c60c111fa475af7c10size=315392date=2022-03-12T22:18:19
+ghost/master/saori/charlotte/charlotte.dllcdfa85c60dcf132dd1ef78e5441e1b89size=341504date=2023-08-05T21:44:33
 ghost/master/saori/cocoa/COPYING.APACHE8de23b8e93c63005353056b2475e9aa5size=11362date=2023-05-28T22:08:24
 ghost/master/saori/cocoa/COPYING.BSD2dd0510ee95e59ca28834b875bc96596size=1517date=2023-05-28T22:08:24
 ghost/master/saori/cocoa/COPYING.MINPACK71d91b0f75ce79a75d3108a72bef8116size=2193date=2023-05-28T22:08:24
@@ -265,9 +265,9 @@ ghost/master/talk/game/othello/game.lua2afc210aa69cd66cf13faa85f55316casize=52
 ghost/master/talk/game/othello/menu.lua623665d03c8573c19bc0891c2f6792f4size=4031date=2023-03-26T21:57:24
 ghost/master/talk/game/othello/view.lua97bc9f62caa156bdd66ff43587e31690size=1551date=2022-02-23T22:28:34
 ghost/master/talk/game/quoridor/_render.luaf1d92d322a7c1adb4788401518151ba8size=3095date=2022-03-06T21:21:19
-ghost/master/talk/game/quoridor/game.lua171def0dace80e125b5dc942b1ca80b9size=5595date=2022-03-06T21:21:19
+ghost/master/talk/game/quoridor/game.luab104ace79486a503a758acf73f562fd9size=5624date=2023-08-05T21:44:33
 ghost/master/talk/game/quoridor/menu.lua2c4d35669875e3dfc2ac55fa327ca273size=5901date=2022-03-27T22:17:33
-ghost/master/talk/game/quoridor/view.luae40b5e823d1aec30f973fa84229a92f2size=5465date=2022-03-12T22:18:19
+ghost/master/talk/game/quoridor/view.lua8ec2f07d2978d53acb3bf34d5e40f6cbsize=5468date=2023-08-05T21:44:33
 ghost/master/talk/game/word_chain/dictionary.txt1a41020f6d879f3541304bc96a96e456size=2174746date=2022-03-27T22:17:33
 ghost/master/talk/game/word_chain/game.lua0239adb11022507aea9fe0a5bfa1b5d5size=19780date=2022-03-27T22:17:33
 ghost/master/talk/game/word_chain/menu.luac921b941f248c90e26bbea8e7be8bc7esize=4479date=2022-08-21T22:13:40
@@ -296,7 +296,7 @@ ghost/master/talk/shogi/game/menu.lua4bedfce7e1fa0d007e5e2257f2f9d677size=7743
 ghost/master/talk/shogi/game/player.luac74559450d86726e170f578f28cd0409size=5600date=2021-09-05T22:05:43
 ghost/master/talk/shogi/menu.luaf200b89957711ab72e618b0d0c23e89fsize=1800date=2022-02-23T22:28:34
 ghost/master/talk/shogi/net/site.lua709e3fbd7522cdf06d5e11a99a9601basize=14404date=2021-09-05T22:05:43
-ghost/master/talk/shogi/next/list.lua20d559ccb8643dded2afae7c4b71bd50size=6189date=2023-05-08T21:44:39
+ghost/master/talk/shogi/next/list.luade2b844461abee30e404501363852992size=6285date=2023-08-05T21:44:33
 ghost/master/talk/shogi/next/next001.kif3df429a15fe3e9c8e4c4a67c70064bd5size=880date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/next002.kif99ca79d0a1c85bfd8a0b9dc5ffffcbc7size=892date=2021-09-05T22:05:43
 ghost/master/talk/shogi/next/next003.kif5720a93ebbb268b265d7bf45fc6832besize=960date=2021-09-05T22:05:43
@@ -323,6 +323,7 @@ ghost/master/talk/shogi/next/next023.kifec01846c10ec908f14dbec39d2cdd25esize=9
 ghost/master/talk/shogi/next/next024.kif6943dc97aac1e9da05535578ed6531besize=960date=2023-03-26T21:57:24
 ghost/master/talk/shogi/next/next025.kifcee81ac14e838350d4845b6d8593d799size=898date=2023-03-26T21:57:24
 ghost/master/talk/shogi/next/next026.kifb117ae5a1d59293b901a7b005ede465bsize=803date=2023-05-08T21:44:39
+ghost/master/talk/shogi/next/next027.kife912afd925df18c760e586f34e9a5146size=947date=2023-08-05T21:44:33
 ghost/master/talk/shogi/random/c1.lua6e781f2e26d81d7c23498309a4aae6a0size=141date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c2.luaef52bc5cf9e4d5a3efaeced612d25ba3size=2338date=2022-11-27T22:06:20
 ghost/master/talk/shogi/random/c3.lua3b11d2dc0153002291663338a0630af8size=1370date=2022-11-27T22:06:20
