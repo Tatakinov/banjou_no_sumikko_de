@@ -158,8 +158,10 @@ ghost/master/saori/kay/COPYING.APACHE8de23b8e93c63005353056b2475e9aa5size=1136
 ghost/master/saori/kay/COPYING.BSD2dd0510ee95e59ca28834b875bc96596size=1517date=2023-06-10T21:07:27
 ghost/master/saori/kay/COPYING.MINPACK71d91b0f75ce79a75d3108a72bef8116size=2193date=2023-06-10T21:07:27
 ghost/master/saori/kay/COPYING.MPL2815ca599c9df247a0c7f619bab123dadsize=16726date=2023-06-10T21:07:27
-ghost/master/saori/kay/kay.dll56a3e5474c44636ed57a8e3fc0afbf33size=215040date=2023-06-10T20:59:30
+ghost/master/saori/kay/kay.dllc42a90fd6c800484ac8ccbfb7100bbfcsize=243200date=2024-04-13T22:40:29
 ghost/master/saori/kay/model.txt30bf46dbe1494a309a4d1bd6915c1fc9size=2457175date=2023-06-10T21:06:59
+ghost/master/saori/kay/model1.txt3cdb10d12f0ccbc9b2885eb949bc6d6csize=782041date=2024-04-13T22:40:29
+ghost/master/saori/kay/model2.txt19274b2828ab82609967d9a1bd1a7f61size=774580date=2024-04-13T22:40:29
 ghost/master/saori/mio/LICENSE.txt54a14eb85f7d4d2f61e05ad0d12c9b78size=1073date=2022-03-12T22:18:19
 ghost/master/saori/mio/mio.dll4c1d58cc86f6518134533e4bd3abf8d7size=335360date=2022-03-27T22:17:33
 ghost/master/saori/process/LICENSE.txt7dff43154c8d4d72fb87a00083c35132size=1066date=2021-09-05T22:05:43
@@ -229,7 +231,7 @@ ghost/master/talk/communicate.lua79b00d855c4a76e760e2097484082d8fsize=132date
 ghost/master/talk/event.luae62500da89d7ab4dd18982a886f615a1size=7367date=2021-09-05T22:05:43
 ghost/master/talk/game/_judgement.lua5754b155d366dbd86d960f78bf8fc343size=833date=2021-09-05T22:05:43
 ghost/master/talk/game/backgammon/_render_shell.lua5ead0653553e84e6d1fbaca23031a793size=1666date=2023-06-10T20:59:28
-ghost/master/talk/game/backgammon/ai.lua625aab93053f78b682ffe33a47be9312size=18436date=2023-06-10T20:59:28
+ghost/master/talk/game/backgammon/ai.luadc29f97447be49f6ba0276b6dd6f284dsize=18984date=2024-04-13T22:40:28
 ghost/master/talk/game/backgammon/client.lua7b4548c65ae9191c49f5e54fa310703csize=218date=2022-03-27T22:17:33
 ghost/master/talk/game/backgammon/menu.lua0c5e2bd335faa4f323fef216ffd4d173size=5357date=2023-06-10T20:59:28
 ghost/master/talk/game/backgammon/render.luae187459f2b71a18067d52d3c2f0bb44asize=1492date=2023-06-10T20:59:28
@@ -346,7 +348,7 @@ ghost/master/talk/shogi/study/anagumakuzushi.kifa280d3085a72d8882da0513ceb66a77
 ghost/master/talk/shogi/study/list.lua82f03f7499e281ca3df142263cf5a464size=1238date=2021-11-07T22:27:26
 ghost/master/talk/shogi/study/minokuzushi.kif8d4ac2e08a915a25073067c5025515e0size=6814date=2021-09-05T22:05:43
 ghost/master/talk/shogi/study/opening.kif98a45aa579567fb60f856f6cd5414342size=7077date=2021-10-18T22:56:53
-ghost/master/talk/shogi/study/yokofu.kif54ab8443afa5ea52c81e647d632f8f14size=220103date=2022-02-13T22:54:51
+ghost/master/talk/shogi/study/yokofu.kifbb64a2f56288097e1c6193817356c79dsize=223979date=2024-04-13T22:40:28
 ghost/master/talk/shogi/term/castle.luad944aa7b4eb13402edda591703874353size=9329date=2021-09-12T21:57:39
 ghost/master/talk/shogi/term/computer.luae087dad31ab0ade4c591384d00d0acdasize=7096date=2021-09-05T22:05:43
 ghost/master/talk/shogi/term/explanation.lua544e202395f7acb327f8923a2db0258dsize=2671date=2023-01-08T22:06:55
