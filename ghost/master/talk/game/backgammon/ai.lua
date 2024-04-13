@@ -567,7 +567,11 @@ return {
       bg("position", player:dump())
       print("search")
       local result  = bg("search", dice1, dice2)
-      print("win-rate:", result())
+      local t = {}
+      for n in string.gmatch(result(), "[^,]+") do
+        table.insert(t, tonumber(n))
+      end
+      print("win-rate:", t[1], t[2], t[3], t[4], t[5])
       print(result[0])
       print(result[1])
       print(result[2])
@@ -589,9 +593,14 @@ return {
       local w_score = __("_BG_WhiteScore")
       bg("position", player:dump())
       print("TakeOrPass")
-      local rate  = tonumber(bg("evaluate")())
+      local result  = bg("evaluate")()
+      local t = {}
+      for n in string.gmatch(result, "[^,]+") do
+        table.insert(t, tonumber(n))
+      end
+      print("win-rate:", t[1], t[2], t[3], t[4], t[5])
       -- 相手番のrateなので反転する
-      rate  = 1 - rate
+      local rate  = 1 - t[1]
       print("rate:", rate)
       if w_score + player:getDoubleRate() >= option.point or
           rate > 0.25 then
@@ -620,7 +629,15 @@ return {
       local option  = __("BackgammonGameOption")
       bg("position", player:dump())
       print("Double?")
-      local rate  = tonumber(bg("evaluate")())
+      print(player:dump())
+      local result  = bg("evaluate")()
+      print("result", result)
+      local t = {}
+      for n in string.gmatch(result, "[^,]+") do
+        table.insert(t, tonumber(n))
+      end
+      print("win-rate:", t[1], t[2], t[3], t[4], t[5])
+      local rate = t[1]
       print("rate:", rate)
       if player:canDouble() then
         if (w_score + player:getDoubleRate() >= option.point and
