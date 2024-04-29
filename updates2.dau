@@ -1,4 +1,4 @@
-LICENSE.txt08da9be6d8771d57e4d1423f9a3de0bfsize=79952date=2023-05-28T22:08:23
+LICENSE.txt7a4888ac95f02fefbf9f270452303ca6size=79956date=2024-04-29T21:31:46
 README.txta9d9057c020c693226b7d2a2dc4b0979size=9527date=2023-06-10T21:02:41
 ghost/master/README.txt078541acd60c63e61e24a2cab42e5a63size=1477date=2021-10-18T22:56:53
 ghost/master/corelib/README.txt01cc80585103ee9be4e325e6994f0a81size=1831date=2021-09-05T22:05:43
@@ -158,12 +158,13 @@ ghost/master/saori/kay/COPYING.APACHE8de23b8e93c63005353056b2475e9aa5size=1136
 ghost/master/saori/kay/COPYING.BSD2dd0510ee95e59ca28834b875bc96596size=1517date=2023-06-10T21:07:27
 ghost/master/saori/kay/COPYING.MINPACK71d91b0f75ce79a75d3108a72bef8116size=2193date=2023-06-10T21:07:27
 ghost/master/saori/kay/COPYING.MPL2815ca599c9df247a0c7f619bab123dadsize=16726date=2023-06-10T21:07:27
+ghost/master/saori/kay/LICENSE.txtfd608403252c3bb8109c8b4d915e6763size=1073date=2024-04-29T21:31:47
 ghost/master/saori/kay/kay.dllc42a90fd6c800484ac8ccbfb7100bbfcsize=243200date=2024-04-13T22:40:29
 ghost/master/saori/kay/model.txt30bf46dbe1494a309a4d1bd6915c1fc9size=2457175date=2023-06-10T21:06:59
 ghost/master/saori/kay/model1.txt3cdb10d12f0ccbc9b2885eb949bc6d6csize=782041date=2024-04-13T22:40:29
 ghost/master/saori/kay/model2.txt19274b2828ab82609967d9a1bd1a7f61size=774580date=2024-04-13T22:40:29
 ghost/master/saori/mio/LICENSE.txt54a14eb85f7d4d2f61e05ad0d12c9b78size=1073date=2022-03-12T22:18:19
-ghost/master/saori/mio/mio.dll4c1d58cc86f6518134533e4bd3abf8d7size=335360date=2022-03-27T22:17:33
+ghost/master/saori/mio/mio.dll559ad147d208aa847ae891a832a2ba43size=322560date=2024-04-29T21:31:47
 ghost/master/saori/process/LICENSE.txt7dff43154c8d4d72fb87a00083c35132size=1066date=2021-09-05T22:05:43
 ghost/master/saori/process/README.txte30a19b0e90da7f1909ae23ef5ea4f11size=2726date=2021-09-05T22:05:43
 ghost/master/saori/process/process.dll74864e93c0be4554be239c41cdb88f11size=320512date=2021-10-18T22:56:54
@@ -244,8 +245,8 @@ ghost/master/talk/game/chess/player.luae3e324c78afb356631d58e35dfdfb864size=57
 ghost/master/talk/game/chess/view/render.lua4d6be2cfc8b1ef081468be52ae62cefasize=19067date=2022-01-24T22:32:24
 ghost/master/talk/game/chess/view/view.lua6c69c6b9ccea982be048869729276112size=6179date=2021-11-07T22:27:26
 ghost/master/talk/game/connect6/_render.luaaeec625a775373c04230fa579fed7576size=1377date=2022-03-12T22:18:19
-ghost/master/talk/game/connect6/game.luab6b618e6db6789b2c3299f49c6b5498csize=4900date=2022-03-12T22:29:15
-ghost/master/talk/game/connect6/menu.lua777d9974a14bebf8bb200c95cbc88384size=4410date=2022-03-12T22:18:19
+ghost/master/talk/game/connect6/game.luaab7b03a9ceb36f7c6e3abac105f0ee69size=4892date=2024-04-29T21:31:46
+ghost/master/talk/game/connect6/menu.lua19c4da6c3405610b8b10b0b210870aebsize=4406date=2024-04-29T21:31:46
 ghost/master/talk/game/connect6/view.luaec20d6ca444223966c34baef7a665a60size=1847date=2022-03-12T22:18:19
 ghost/master/talk/game/fan.luaeec708cb53852484a726fd8414ba2bc1size=604date=2021-09-05T22:05:43
 ghost/master/talk/game/gomoku/_render.luae5b45ff21c8b97032e618d0f31df4bbasize=1359date=2022-03-12T22:18:19
@@ -333,9 +334,9 @@ ghost/master/talk/shogi/next/next031.kifc8e3cd1aa69d34dd4c89ceb1ebd73241size=9
 ghost/master/talk/shogi/random/c1.lua6e781f2e26d81d7c23498309a4aae6a0size=141date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c2.luaef52bc5cf9e4d5a3efaeced612d25ba3size=2338date=2022-11-27T22:06:20
 ghost/master/talk/shogi/random/c3.lua3b11d2dc0153002291663338a0630af8size=1370date=2022-11-27T22:06:20
-ghost/master/talk/shogi/random/c4.lua7b3dccfa3d236e80198c91ceda98aa0csize=449date=2022-11-27T22:06:20
-ghost/master/talk/shogi/random/c5.luac8748ede8e8e6c2f1fe01d7ae664b465size=4154date=2023-03-26T21:57:24
-ghost/master/talk/shogi/random/c6.luac6d2ab9f0c9846f02d0ce504dfddfea8size=2790date=2022-11-27T22:06:20
+ghost/master/talk/shogi/random/c4.luae95fb3633acf4389bc99a9a50880b9e7size=712date=2024-04-29T21:31:46
+ghost/master/talk/shogi/random/c5.luab81bc68b220ba16ffc5db81d0d11c8aesize=4594date=2024-04-29T21:31:46
+ghost/master/talk/shogi/random/c6.lua5028a0d0e6680deabee529bb7abdc53esize=3114date=2024-04-29T21:31:46
 ghost/master/talk/shogi/random/c7.lua62eb05026ead6b5c2bd63cdd729e59b1size=979date=2022-11-27T22:06:20
 ghost/master/talk/shogi/random/c8.lua74001d8c08db697e4523d826400701dbsize=259date=2021-09-05T22:05:43
 ghost/master/talk/shogi/random/c9.lua50a4c8beb42c5710d56f9dac4dff3e66size=259date=2021-09-05T22:05:43
