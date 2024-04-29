@@ -116,7 +116,7 @@ return {
       local __      = shiori.var
       local option  = __("Connect6GameOption")
       local connect6 = shiori:saori("connect6")
-      local hit  = connect6("search", 10000 * option.cpu_level)
+      local hit  = connect6("search", option.cpu_level)
       print("hit: ", hit[0], "score", hit[1])
       local x, y  = string.match(hit[0], "(%d+),(%d+)")
       return SS():raise("OnConnect6GameCpuTurnEnd", x, y)

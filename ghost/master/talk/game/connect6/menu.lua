@@ -112,8 +112,7 @@ return {
       local name      = ref[0]
       local value     = ref[1]
       assert(name and value)
-      str:append(SS():C():inputbox("OnConnect6ChangedOption", 0, value))
-      return str:tostring()
+      return string.format([=[\C\![open,sliderinput,OnConnect6ChangedOption,0,%d,1,8]]=], value)
     end,
   },
   {
