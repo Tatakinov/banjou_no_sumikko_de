@@ -1143,7 +1143,7 @@ THE SOFTWARE.
    END OF TERMS AND CONDITIONS
 
 
-# Eigen(in cocoa) Mozilla Public License 2.0
+# Eigen(in cocoa/kay) Mozilla Public License 2.0
 
 Mozilla Public License Version 2.0
 ==================================
