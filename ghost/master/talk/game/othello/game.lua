@@ -131,7 +131,7 @@ return {
       local __      = shiori.var
       local option  = __("OthelloGameOption")
       local othello = shiori:saori("othello")
-      local move  = othello("move", option.cpu_level)
+      local move  = othello("search", option.cpu_level)
       print("move", move[0], "score", move[1])
       local x, y  = string.match(move[0], "(%d+),(%d+)")
       return SS():raise("OnOthelloGameCpuTurnEnd", x, y)
