@@ -145,6 +145,26 @@ files = {
     filename = Path.join("talk", "shogi", "next", "next031.kif"),
     difficulty  = 2,
   },
+  {
+    filename = Path.join("talk", "shogi", "next", "next032.kif"),
+    difficulty  = 4,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next033.kif"),
+    difficulty  = 2,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next034.kif"),
+    difficulty  = 3,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next035.kif"),
+    difficulty  = 4,
+  },
+  {
+    filename = Path.join("talk", "shogi", "next", "next036.kif"),
+    difficulty  = 4,
+  },
 }
 
 table.insert(t, {
