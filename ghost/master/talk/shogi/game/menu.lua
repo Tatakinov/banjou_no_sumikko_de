@@ -171,7 +171,7 @@ return {
         str:append(score.win):append("勝"):append(score.lose):append("敗")
         str:append("\\n")
       end
-      str:append("\\![*]"):append(SS():q("対局開始", "OnStartShogiEngine"))
+      str:append("\\![*]"):append(SS():q("対局開始", "OnStartShogiEngine", "OnShogiGameInit"))
       str:append(" ")
       str:append("\\![*]"):append(SS():q("説明", "OnExplainShogiGame"):n())
       str:append("\\![*]"):append(SS():q("戻る", "メニュー"))

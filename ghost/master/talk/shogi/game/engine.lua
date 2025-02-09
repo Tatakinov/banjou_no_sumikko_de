@@ -523,7 +523,7 @@ return {
         process("send", __("_EnginePID"), USI.tostring({command = USI.Command.USI}))
         local s         = createTimer(shiori, 10000, function(data)
           if data.command == USI.Command.USIOK then
-            return true, SS():raise("OnShogiEngineReady")
+            return true, SS():raise("OnShogiEngineReady", ref[0])
           end
         end)
         str:append(s)
@@ -570,7 +570,7 @@ return {
       process("send", __("_EnginePID"), USI.tostring({command = USI.Command.ISREADY}))
       local s         = createTimer(shiori, 10000, function(data)
         if data.command == USI.Command.READYOK then
-          return true, SS():raise("OnShogiEngineNewGame")
+          return true, SS():raise("OnShogiEngineNewGame", ref[0])
         end
       end)
       str:append(s)
@@ -584,7 +584,7 @@ return {
       local str       = StringBuffer()
       local process   = shiori:saori("process")
       process("send", __("_EnginePID"), USI.tostring({command = USI.Command.USINEWGAME}))
-      str:append(SS():raise("OnShogiGameInit"))
+      str:append(SS():raise(ref[0]))
       return str:tostring()
     end,
   },

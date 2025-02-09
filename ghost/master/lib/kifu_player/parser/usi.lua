@@ -185,8 +185,75 @@ function M.toUSIinit(initial)
   local t   = {}
   if initial == nil or initial.preset == InitialPreset.HIRATE then
     t[1]  = "startpos"
-  elseif initial.preset == "OTHER" then
-    -- TODO stub
+  elseif initial.preset == "OTHER" and initial.data then
+    local position  = StringBuffer()
+    local hands = StringBuffer()
+    local turn  = StringBuffer()
+    local array = {}
+    for y = 1, 9 do
+      local cnt = 0
+      for x = 9, 1, -1 do
+        local x, y  = x, y
+        local piece = initial.data.board[x][y]
+        if piece.kind and piece.color then
+          if cnt > 0 then
+            position:append(cnt)
+            cnt = 0
+          end
+          local p = Misc.csa2sfen(piece.kind)
+          local color = piece.color
+          if color == Color.BLACK then
+            p = string.upper(p)
+          end
+          position:append(p)
+        else
+          cnt = cnt + 1
+        end
+      end
+      if cnt > 0 then
+        position:append(cnt)
+        cnt = 0
+      end
+      if y < 9 then
+        position:append("/")
+      end
+    end
+
+    t[1] = position:tostring()
+
+    if initial.data.color == Color.BLACK then
+      turn:append("b")
+    elseif initial.data.color == Color.WHITE then
+      turn:append("w")
+    else
+      -- TODO error
+    end
+
+    t[2] = turn:tostring()
+
+    for _, color in ipairs(Color.LIST) do
+      for k, v in pairs(initial.data.hands[color]) do
+        if k ~= CSA.OU then
+          local num = v
+          if num > 0 then
+            local p = Misc.csa2sfen(k)
+            if color == Color.BLACK then
+              p = string.upper(p)
+            end
+            if num > 1 then
+              hands:append(num)
+            end
+            hands:append(p)
+          end
+        end
+      end
+    end
+
+    if hands:strlen() == 0 then
+      hands:append("-")
+    end
+    t[3] = hands:tostring()
+    t[4] = "1"
   else
     t[1]  = InitialPreset.toSfen(initial.preset)
   end

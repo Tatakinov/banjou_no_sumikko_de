@@ -100,7 +100,7 @@ function M:normalize_all()
   local data
   if initial then
     if initial.preset == InitialPreset.OTHER then
-      data  = initial.data
+      data  = Clone(initial.data)
     else
       data  = USI.parseInit(InitialPreset.toSfen(initial.preset))
     end

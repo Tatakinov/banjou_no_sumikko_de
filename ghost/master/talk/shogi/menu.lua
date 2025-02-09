@@ -9,6 +9,7 @@ return {
 \0
 \![*]\q[用語集,将棋用語]\n
 \![*]\q[次の一手問題集,OnShogiNextMove]\n
+\![*]\q[何指す問題集,OnShogiThinking]\n
 \![*]\q[由希の研究メモ,将棋の戦法と手筋]\n
 \![*]\q[ネット将棋をしてみたい,ネット将棋をしてみたい]\n
 \![*]\q[四方山話,将棋四方山話一覧]\n
@@ -38,6 +39,9 @@ return {
           str:append(SS():q("棋譜を保存", "OnSaveKifu"):n():n())
         elseif __("_次の一手問題ID") then
           str:append("\\![*]"):append(SS():q("次の一手の答えを見る", "将棋_次の一手_答え"):n():n())
+        elseif __("_何指す問題ID") then
+          str:append("\\![*]"):append(SS():q("何指すの答えを見る", "将棋_何指す_答え"):n())
+          str:append("\\![*]"):append(SS():q("ここから指し継ぐ", "将棋_何指す_指し継ぐ"):n():n())
         elseif __("_実戦詰将棋問題ID") then
           str:append("\\![*]"):append(SS():q("実戦詰将棋の答えを見る", "将棋_実戦詰将棋_答え"):n():n())
         end

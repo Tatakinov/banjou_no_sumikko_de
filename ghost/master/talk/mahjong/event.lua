@@ -21,6 +21,15 @@ local ACTION      = {
   kan     = "kan",
   ron     = "ron",
   tsumo   = "tsumo",
+  ankan   = "ankan",
+  kakan   = "kakan",
+}
+
+local BAFU  = {
+  ["東"]  = "1z",
+  ["南"]  = "2z",
+  ["西"]  = "3z",
+  ["北"]  = "4z",
 }
 
 local JIFU  = {
@@ -129,11 +138,13 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       __("_Mahjong_Kawa", {})
-      __("_Mahjong_Furo", {})
+      __("_Mahjong_Furo", {
+        [NAME] = {},
+      })
       __("_Mahjong_Riichi_Others", {})
       __("_Mahjong_Safe", {})
       __("_Mahjong_DoraIndicator", {})
-      __("_Mahjong_Bafu", ref[2])
+      __("_Mahjong_Bafu", BAFU[ref[2]])
       local jifu  = __("_Mahjong_Jifu")
       __("_Mahjong_Jifu", JIFU[jifu])
       __("_Mahjong_Riichi", false)
@@ -223,27 +234,33 @@ return {
     id  = "OnMahjong_open",
     content = function(shiori, ref)
       local __  = shiori.var
-      if ref[2] == NAME then
-      else
-        local furo  = __("_Mahjong_Furo")
-        if furo[ref[2]] == nil then
-          furo[ref[2]]  = {}
-        end
-        print("Furo", ref[3])
-        print("Sutehai", __("_Mahjong_Sutehai"))
-        local tiles = Utils.strToArray(ref[3])
-        for i, v in ipairs(tiles) do
-          if v == __("_Mahjong_Sutehai") then
-            table.remove(tiles, i)
-            break
-          end
-        end
-        for i, v in ipairs(tiles) do
-          print("Furo" .. i, v)
-          table.insert(furo[ref[2]], v)
+      local tehai = __("_Mahjong_Tehai")
+      local furo  = __("_Mahjong_Furo")
+      if furo[ref[2]] == nil then
+        furo[ref[2]]  = {}
+      end
+      print("Furo", ref[3])
+      print("Sutehai", __("_Mahjong_Sutehai"))
+      local sute = __("_Mahjong_Sutehai")
+      -- 暗槓かどうか
+      if not(string.find(ref[3], sute)) then
+        sute = nil
+      end
+      local tiles = Utils.strToArray(ref[3])
+      table.insert(furo[ref[2]], {block = tiles, sute = sute})
+      if ref[2] ~= NAME then
+        return nil
+      end
+      local t = Utils.decode(tehai)
+      for k, v in pairs(Utils.decode(tiles)) do
+        t[k] = t[k] - v
+      end
+      if sute then
+        for k, v in pairs(Utils.decode({sute})) do
+          t[k] = t[k] + v
         end
       end
-      return nil
+      __("_Mahjong_Tehai", Utils.encode(t))
     end,
   },
   {
@@ -288,19 +305,32 @@ return {
     content = function(shiori, ref)
       local __  = shiori.var
       local tehai = __("_Mahjong_Tehai")
-      table.sort(tehai, function(a, b)
+      local furo = __("_Mahjong_Furo")
+      local tmp = {}
+      for _, v in ipairs(tehai) do
+        table.insert(tmp, v)
+      end
+      table.sort(tmp, function(a, b)
         return string.reverse(a) < string.reverse(b)
       end)
-      print("Tehai:", table.concat(tehai, ""))
+      print("Tehai:", table.concat(tmp, ""))
+      local others = {}
+      for k, v in pairs(furo) do
+        if k ~= NAME then
+          others[k] = v
+        end
+      end
+      furo = furo[NAME]
       local start   = os.clock()
-      local sutehai, riichi, tsumo = AI.getBestSutehai(
+      local sutehai, riichi, tsumo, ankan, kakan = AI.getBestSutehai(
           shiori:saori("mahjong"),
-          table.concat(tehai, ""),
+          tehai,
           __("_Mahjong_Kawa"),
           __("_Mahjong_Bafu"),
           __("_Mahjong_Jifu"),
           __("_Mahjong_DoraIndicator"),
-          __("_Mahjong_Furo"),
+          furo,
+          others,
           __("_Mahjong_Safe"),
           __("_Mahjong_Riichi_Others")
       )
@@ -316,14 +346,28 @@ return {
       if tsumo then
         return wrapResponse(ref, ACTION.tsumo)
       end
-      if __("_Mahjong_Riichi") then
-        sutehai = __("_Mahjong_Tsumo")
-        riichi  = false
+      if riichi then
+        if __("_Mahjong_Riichi") then
+          sutehai = __("_Mahjong_Tsumo")
+          riichi  = false
+        elseif __("_Mahjong_Remain") <= 8 then
+          __("_Mahjong_Riichi", true)
+          riichi  = false
+        elseif #furo > 0 then
+          __("_Mahjong_Riichi", true)
+          riichi  = false
+        else
+          __("_Mahjong_Riichi", true)
+        end
       end
-      if __("_Mahjong_Remain") <= 4 then
-        __("_Mahjong_Riichi", true)
-        riichi  = false
+
+      if ankan then
+        return wrapResponse(ref, ACTION.ankan)
       end
+      if kakan then
+        return wrapResponse(ref, ACTION.kakan)
+      end
+
       print("sutehai", sutehai)
       if riichi then
         print("riichi!")
@@ -338,19 +382,64 @@ return {
   {
     id  = "OnMahjong_naku?",
     content = function(shiori, ref)
-      -- TODO stub
-      local has_ron = false
+      local __  = shiori.var
       for i = 2, #ref do
         if ref[i] == "ron" then
-          has_ron = true
-          break
+          return wrapResponse(ref, ACTION.ron)
         end
       end
-      if has_ron then
-        return wrapResponse(ref, ACTION.ron)
-      else
-        return wrapResponse(ref, ACTION.no)
+      local tehai = __("_Mahjong_Tehai")
+      local furo = __("_Mahjong_Furo")
+      local sute = __("_Mahjong_Sutehai")
+      local visible = {sute}
+      local ba = __("_Mahjong_Bafu")
+      local ji = __("_Mahjong_Jifu")
+      local dora = __("_Mahjong_DoraIndicator")
+      for _, v in ipairs(tehai) do
+        table.insert(visible, v)
       end
+      for _, v in ipairs(__("_Mahjong_Kawa")) do
+        table.insert(visible, v)
+      end
+      for _, v in ipairs(dora) do
+        table.insert(visible, v)
+      end
+      for k, v in pairs(furo) do
+        if k ~= NAME then
+          for _, v in ipairs(v) do
+            local once = true
+            print("block", v.block)
+            for _, h in ipairs(v.block) do
+              if h == v.sute and once then
+                once = false
+              else
+                table.insert(visible, h)
+              end
+            end
+          end
+        end
+      end
+      local saori = shiori:saori("mahjong")
+      for i = 2, #ref do
+        if ref[i] == "chi" then
+          local chi, h1, h2 = AI.doChi(
+            saori, tehai, furo[NAME], sute, visible, ba, ji, dora
+          )
+          if chi then
+            return wrapResponse(ref, ACTION.chi, h1, h2)
+          end
+        end
+        if ref[i] == "kan" and AI.doKan(
+            saori, tehai, furo[NAME], sute, visible, ba, ji, dora
+            ) then
+          return wrapResponse(ref, ACTION.kan)
+        end
+        if ref[i] == "pon" and AI.doPon(
+            saori, tehai, furo[NAME], sute, visible, ba, ji, dora) then
+          return wrapResponse(ref, ACTION.pon)
+        end
+      end
+      return wrapResponse(ref, ACTION.no)
     end,
   },
   {
