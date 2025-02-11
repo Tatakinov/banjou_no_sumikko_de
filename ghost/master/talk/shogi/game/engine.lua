@@ -723,7 +723,11 @@ return {
             score = -9999,
           })
           local score = __("成績")[__("SelectedEngine")]
-          score.win = score.win + 1
+          if not(__("_NoCount")) then
+            score.win = score.win + 1
+          else
+            __("_NoCount", false)
+          end
           shiori:talk("OnShogiEngineGameOver", "lose")
           shiori:talk("OnQuitShogiEngine")
           str:append(SS():p(0):s("形勢_敗勢")):append("負けました…")
