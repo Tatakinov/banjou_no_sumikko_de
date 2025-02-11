@@ -10,6 +10,10 @@ files = {
     filename = Path.join("talk", "shogi", "thinking", "0001.kif"),
     difficulty  = 4,
   },
+  {
+    filename = Path.join("talk", "shogi", "thinking", "0002.kif"),
+    difficulty  = 4,
+  },
 }
 
 table.insert(t, {
@@ -58,7 +62,7 @@ table.insert(t, {
 \_q
 \_l[0,0]
 何を指すかを考える問題集だよ。\n
-メニューから答えを表示出来るよ。\n
+メニューから進行一例を表示出来るよ。\n
 ]])
     return str:tostring()
   end,
@@ -67,7 +71,7 @@ table.insert(t, {
 local function generateTalk(num, path, is_answer, is_continue)
   local id  = "何指す_" .. num
   if is_answer then
-    id  = id .. "_答え"
+    id  = id .. "_進行一例"
   elseif is_continue then
     id = id .. "_指し継ぐ"
   end
@@ -99,6 +103,7 @@ local function generateTalk(num, path, is_answer, is_continue)
         __("_CurrentScore", 0)
         __("_CurrentJudgement", 6)
         __("_SeizaCount", os.time())
+        __("_NoCount", true)
         return [=[\![raise,OnStartShogiEngine,OnShogiGameTurnBegin]]=]
       else
         __("_何指す問題ID", id)
@@ -130,12 +135,12 @@ for i, v in ipairs(files) do
   table.insert(t, generateTalk(i, v.filename, false, true))
 end
 table.insert(t, {
-  id  = "将棋_何指す_答え",
+  id  = "将棋_何指す_進行一例",
   content = function(shiori, ref)
     local __  = shiori.var
     local id  = __("_何指す問題ID")
     if id then
-      return shiori:talk(id .. "_答え")
+      return shiori:talk(id .. "_進行一例")
     end
   end,
 })
