@@ -368,7 +368,8 @@ ghost/master/talk/shogi/term/tactics.luaacb65e3ff2091095fa73ad7e48ebee26size=6
 ghost/master/talk/shogi/term/tsume.luaaf1c1da72def41083080b65631a16ed6size=416date=2021-09-05T22:05:43
 ghost/master/talk/shogi/thinking/0001.kif4e153f01793fae9ee153bc01313004c5size=893date=2025-02-11T21:37:11
 ghost/master/talk/shogi/thinking/0002.kif222ddb200e81f3413cf8013c1b208d41size=976date=2025-02-11T21:37:11
-ghost/master/talk/shogi/thinking/list.lua209e8227bba367a74ed8b963de7ec406size=4099date=2025-02-11T21:37:11
+ghost/master/talk/shogi/thinking/0003.kifef42c87a58a63a29f82727c27ac23078size=923date=2025-02-12T21:48:22
+ghost/master/talk/shogi/thinking/list.luada031c3c8ac4d3a4057e61cbd07cc986size=4196date=2025-02-12T21:48:22
 ghost/master/talk/shogi/view/render.luaf37aa479e0a49d9acc1ef547813cddb8size=19973date=2021-09-05T22:05:43
 ghost/master/talk/shogi/view/view.lua46f8ee6f056656911636f1014b30dfc1size=6132date=2021-09-05T22:05:43
 ghost/master/talk/texas_holdem/_ai.lua9d0af0112535ccf6551e9b80b936a476size=15477date=2022-11-27T22:06:20
