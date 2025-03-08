@@ -58,8 +58,8 @@ return {
       end
 
       if ref[0] == "cpu_level" then
-        local level = tonumber(ref[1]) or 2
-        if level >= 1 and level <= 2 then
+        local level = tonumber(ref[1]) or 4
+        if level >= 1 and level <= 6 then
           game_option.cpu_level = level
         end
       end
