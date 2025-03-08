@@ -145,7 +145,7 @@ ghost/master/saori/TexasHoldemUtil/LICENSEaeae5fc0093d912c2288602e1614276asize
 ghost/master/saori/TexasHoldemUtil/README.txtdd39418eef4672d515cbd8f48fd49eb4size=2773date=2022-11-05T22:14:47
 ghost/master/saori/TexasHoldemUtil/TexasHoldemUtil.dllf42c31b9f62c2ca830dc4e88efeec51esize=168960date=2022-11-27T22:06:20
 ghost/master/saori/charlotte/LICENSE.txt392510a308cb7317f0dbb0566dc58852size=1079date=2022-03-06T21:22:21
-ghost/master/saori/charlotte/charlotte.dllcdfa85c60dcf132dd1ef78e5441e1b89size=341504date=2023-08-05T21:44:33
+ghost/master/saori/charlotte/charlotte.dll8192c77f0993065d7ee19fe63d7f87basize=198144date=2025-03-08T21:35:29
 ghost/master/saori/cocoa/COPYING.APACHE8de23b8e93c63005353056b2475e9aa5size=11362date=2023-05-28T22:08:24
 ghost/master/saori/cocoa/COPYING.BSD2dd0510ee95e59ca28834b875bc96596size=1517date=2023-05-28T22:08:24
 ghost/master/saori/cocoa/COPYING.MINPACK71d91b0f75ce79a75d3108a72bef8116size=2193date=2023-05-28T22:08:24
@@ -270,8 +270,8 @@ ghost/master/talk/game/othello/game.lua40b788c83d79de7f9587fb699875c8besize=52
 ghost/master/talk/game/othello/menu.lua623665d03c8573c19bc0891c2f6792f4size=4031date=2023-03-26T21:57:24
 ghost/master/talk/game/othello/view.lua97bc9f62caa156bdd66ff43587e31690size=1551date=2022-02-23T22:28:34
 ghost/master/talk/game/quoridor/_render.luaf1d92d322a7c1adb4788401518151ba8size=3095date=2022-03-06T21:21:19
-ghost/master/talk/game/quoridor/game.luab104ace79486a503a758acf73f562fd9size=5624date=2023-08-05T21:44:33
-ghost/master/talk/game/quoridor/menu.lua2c4d35669875e3dfc2ac55fa327ca273size=5901date=2022-03-27T22:17:33
+ghost/master/talk/game/quoridor/game.lua4ca9aa655b21f1d61f3b0f8a838e8495size=5626date=2025-03-08T21:35:28
+ghost/master/talk/game/quoridor/menu.luac769d461df2d3142b8966959d181b0e1size=5901date=2025-03-08T21:35:28
 ghost/master/talk/game/quoridor/view.lua8ec2f07d2978d53acb3bf34d5e40f6cbsize=5468date=2023-08-05T21:44:33
 ghost/master/talk/game/word_chain/dictionary.txt1a41020f6d879f3541304bc96a96e456size=2174746date=2022-03-27T22:17:33
 ghost/master/talk/game/word_chain/game.lua0239adb11022507aea9fe0a5bfa1b5d5size=19780date=2022-03-27T22:17:33
