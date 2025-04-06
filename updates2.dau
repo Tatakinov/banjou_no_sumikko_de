@@ -44,7 +44,7 @@ ghost/master/index.luab62df8e9f06f0818d0aa5b13d4640fefsize=1945date=2021-09-0
 ghost/master/kagari.conf.luafad3139b9dde4dd1f6ef0268cc414cebsize=1177date=2025-02-09T22:18:18
 ghost/master/kagari.dllc33de6022ad93119dd55c54398e57c39size=120320date=2022-11-27T22:06:20
 ghost/master/lib/README.txt01cc80585103ee9be4e325e6994f0a81size=1831date=2021-09-05T22:05:43
-ghost/master/lib/backgammon_player/init.lua1dd4d71df6b32d33ae6de6804c6c403csize=6702date=2023-06-10T20:59:29
+ghost/master/lib/backgammon_player/init.luaac650d75888aa237ee6ef442124c3c75size=11155date=2025-04-06T22:26:37
 ghost/master/lib/chess_player/chess_player.lua7989283b48c46f110630a9694790bd21size=28016date=2023-05-08T21:44:40
 ghost/master/lib/chess_player/color.lua4b59d95f70fa5cd6fa8df65ef1cdd482size=913date=2021-11-07T22:27:26
 ghost/master/lib/chess_player/init.lua04657d9b1f14d275524c63f598a94e0asize=478date=2021-11-07T22:27:26
@@ -159,8 +159,8 @@ ghost/master/saori/kay/COPYING.BSD2dd0510ee95e59ca28834b875bc96596size=1517da
 ghost/master/saori/kay/COPYING.MINPACK71d91b0f75ce79a75d3108a72bef8116size=2193date=2023-06-10T21:07:27
 ghost/master/saori/kay/COPYING.MPL2815ca599c9df247a0c7f619bab123dadsize=16726date=2023-06-10T21:07:27
 ghost/master/saori/kay/LICENSE.txtfd608403252c3bb8109c8b4d915e6763size=1073date=2024-04-29T21:31:47
-ghost/master/saori/kay/kay.dll99f35bc96cc406277498492b1731d69fsize=302592date=2025-03-02T21:26:49
-ghost/master/saori/kay/model.txtd6c3ccd286ef1674d09f03ed4a8c0bb2size=206350date=2025-03-02T21:26:49
+ghost/master/saori/kay/kay.dll5c6b43ddd359be7cf7469f9b213746cdsize=331776date=2025-04-06T22:26:38
+ghost/master/saori/kay/model.txted3b8608ffba5eb8de05c4d36c2c13d9size=262756date=2025-04-06T22:26:38
 ghost/master/saori/kay/model1.txt3cdb10d12f0ccbc9b2885eb949bc6d6csize=782041date=2024-04-13T22:40:29
 ghost/master/saori/kay/model2.txt19274b2828ab82609967d9a1bd1a7f61size=774580date=2024-04-13T22:40:29
 ghost/master/saori/mio/LICENSE.txt54a14eb85f7d4d2f61e05ad0d12c9b78size=1073date=2022-03-12T22:18:19
@@ -234,11 +234,11 @@ ghost/master/talk/communicate.lua79b00d855c4a76e760e2097484082d8fsize=132date
 ghost/master/talk/event.luae62500da89d7ab4dd18982a886f615a1size=7367date=2021-09-05T22:05:43
 ghost/master/talk/game/_judgement.lua5754b155d366dbd86d960f78bf8fc343size=833date=2021-09-05T22:05:43
 ghost/master/talk/game/backgammon/_render_shell.lua5ead0653553e84e6d1fbaca23031a793size=1666date=2023-06-10T20:59:28
-ghost/master/talk/game/backgammon/ai.luadc29f97447be49f6ba0276b6dd6f284dsize=18984date=2024-04-13T22:40:28
+ghost/master/talk/game/backgammon/ai.lua1d81c8df93e1a3420772f4b0d246b8fesize=8388date=2025-04-06T22:26:37
 ghost/master/talk/game/backgammon/client.lua7b4548c65ae9191c49f5e54fa310703csize=218date=2022-03-27T22:17:33
-ghost/master/talk/game/backgammon/menu.lua0c5e2bd335faa4f323fef216ffd4d173size=5357date=2023-06-10T20:59:28
-ghost/master/talk/game/backgammon/render.luae187459f2b71a18067d52d3c2f0bb44asize=1492date=2023-06-10T20:59:28
-ghost/master/talk/game/backgammon/server.lua83a77442d229c33ac985457e134d08casize=16200date=2023-06-10T20:59:28
+ghost/master/talk/game/backgammon/menu.lua0845af6fe626e9436962da562dd11102size=7570date=2025-04-06T22:26:37
+ghost/master/talk/game/backgammon/render.luaa2ae3614afb4ef16da0faf0c92a47badsize=1406date=2025-04-06T22:26:37
+ghost/master/talk/game/backgammon/server.luaace86def448d00202fc5c19592150d0bsize=16920date=2025-04-06T22:26:37
 ghost/master/talk/game/backgammon/todof223c5dd9b13e3a6f2c91f04da2e2e2esize=1241date=2021-09-05T22:05:43
 ghost/master/talk/game/chess/engine.lua1b6d3584e41a8a15f4af26afac0b2f0dsize=27726date=2023-04-30T21:40:54
 ghost/master/talk/game/chess/game.lua195abc666accdc8a04c91903866d8554size=11606date=2023-05-08T21:44:39
