@@ -1,14 +1,53 @@
 local BGPlayer      = require("backgammon_player")
+local Clipboard = require("clipboard")
+local SS  = require("sakura_script")
 local StringBuffer  = require("string_buffer")
 
 return {
+  {
+    id  = "盤面モードのメニュー(BG)",
+    content = function(shiori, ref)
+      local __  = shiori.var
+      local str = StringBuffer([[\0]])
+      if __("_InGame") then
+        str:append("\\![*]")
+        str:append(SS():q("投了する", "OnBackgammonPeriodResign"):n())
+      else
+        str:append("\\![*]")
+        str:append(SS():q("盤面モードを終了する", "盤面モード終了"):n())
+        ---[[ 未実装
+        if __("_PostGame") then
+          str:append("\\![*]")
+          str:append(SS():q("棋譜をクリップボードにコピー", "OnCopyMATToClipboard"):n())
+          str:append("\\![*]")
+          str:append(SS():q("棋譜を保存", "OnSaveMAT"):n():n())
+        end
+        --]]
+      end
+      str:append("\\![*]"):append(SS():q("閉じる", "閉じる"):n())
+      return str
+    end,
+  },
+  {
+    id  = "OnCopyMATToClipboard",
+    content = function(shiori, tbl)
+      local __      = shiori.var
+      local hwnd    = __("_hwnd")
+      local player = __("_BGPlayer")
+      if Clipboard.set(hwnd.ghost[1], player:kifu()) then
+        return [[\0クリップボードに棋譜をコピーしたよ。]]
+      else
+        return [[\0クリップボードへのコピーに失敗したよ。]]
+      end
+    end,
+  },
   {
     id  = "対局メニュー(BG)",
     content = function(shiori, ref)
       local __  = shiori.var
       local str = StringBuffer()
       __("_BGPlayer", BGPlayer())
-      __("_BGPlayer"):initialize()
+      __("_BGPlayer"):initializeMatch()
       local game_option = __:init("BackgammonGameOption", {
         point = 5,
       })
@@ -144,5 +183,35 @@ return {
 \![*]\q[戻る,対局メニュー(BG)] \![*]\q[閉じる,閉じる]
 \_q
 ]]
+  },
+  {
+    id  = "OnSaveMAT",
+    content = function(shiori, ref)
+      local __ = shiori.var
+      local str = StringBuffer()
+      if ref[0] == "save" then
+        -- TODO save
+        local filename  = ref[2]
+        local fh  = io.open(filename, "wb")
+        if fh == nil then
+          return [[\0保存に失敗したよ。]]
+        end
+        local player = __("_BGPlayer")
+        fh:write(player:kifu())
+        fh:close()
+        return [[\0保存したよ。]]
+      elseif ref[0] == "cancel" then
+        return nil
+      else
+        str:append(SS():dialog("save", {
+          title   = "棋譜ファイルの保存",
+          filter  = "棋譜ファイル|*.mat|全てのファイル|*.*",
+          id      = "OnSaveMAT",
+          dir     = "__system_desktop__",
+          ext     = "mat",
+        }))
+      end
+      return str
+    end,
   },
 }

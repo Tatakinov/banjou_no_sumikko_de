@@ -14,7 +14,10 @@ local talk  = {
     id  = "OnBackgammonGameStart",
     content = function(shiori, ref)
       local __  = shiori.var
-      __("_BGPlayer", BGPlayer())
+      local game_option = __("BackgammonGameOption")
+      local player = BGPlayer()
+      player:initializeMatch(game_option.point)
+      __("_BGPlayer", player)
       __("_BG_White", "player")
       __("_BG_WhiteScore", 0)
       __("_BG_Black", "小宮由希")
@@ -38,8 +41,8 @@ local talk  = {
       local winner  = tonumber(ref[0])
       local score_list  = __("成績(Backgammon)")
       local score = score_list["ふつう"]
-      __("_Quiet", false)
       __("_InGame", false)
+      __("_PostGame", true)
       -- 終局後の右クリック対策
       __("_BG_PlayerState", 1)
       if winner == 1 then
@@ -59,7 +62,7 @@ local talk  = {
     id  = "OnBackgammonPeriodStart",
     content = function(shiori, ref)
       local __  = shiori.var
-      __("_BGPlayer"):initialize(__("_Crawford"))
+      __("_BGPlayer"):initializeGame(__("_Crawford"))
       return shiori:talk("OnBackgammonRender") .. [[
 \![timerraise,1000,1,OnBackgammonFirstDiceRoll]
 ]]
@@ -76,7 +79,11 @@ local talk  = {
       local option  = __("BackgammonGameOption")
       local score   = __("_BG_Score")
       local win = player:gameOver() * player:getDoubleRate()
+      if player:isPassed() then
+        win = win / 2
+      end
       local str = StringBuffer()
+      player:confirmGameOver()
       if winner == 1 then
         w_score = w_score + win
         __("_BG_WhiteScore", w_score)
@@ -232,8 +239,46 @@ local talk  = {
         })
       end
       if player:getColor() == 1 then
+        __("_BG_FixDice", false)
+        local d1, d2 = dice1, dice2
+        if d1 ~= d2 then
+          if d1 < d2 then
+            d1, d2 = d2, d1
+          end
+          local moves1 = player:generateMoves(d1)
+          local moves2 = player:generateMoves(d2)
+          if #moves1 == 0 or #moves2 == 0 then
+            if #moves1 > 0 then
+              __("_BG_FixDice", true)
+              __("_BG_Dice1", {
+                color = color_str[player:getColor()],
+                value = d1,
+              })
+              __("_BG_Dice2", {
+                color = color_str[player:getColor()],
+                value = d2,
+              })
+              __("_BG_Dice", {
+                d1, d2,
+              })
+            else
+              __("_BG_FixDice", true)
+              __("_BG_Dice1", {
+                color = color_str[player:getColor()],
+                value = d2,
+              })
+              __("_BG_Dice2", {
+                color = color_str[player:getColor()],
+                value = d1,
+              })
+              __("_BG_Dice", {
+                d2, d1,
+              })
+            end
+          end
+        end
         __("_BG_PlayerState", 1)
-        str:append(shiori:talk("OnBackgammonRender", "true", "true"))
+        str:append(shiori:talk("OnBackgammonRender", "true"))
         str:append(SS():raise("OnBackgammonPlayer"))
       elseif player:getColor() == 2 then
         str:append(shiori:talk("OnBackgammonRender", "false", "false"))
@@ -258,38 +303,16 @@ local talk  = {
       local player  = __("_BGPlayer")
       local state = __("_BG_PlayerState")
       local dice  = __("_BG_Dice")
-      if #dice >= state then
-        if state == 1 and dice[1] < dice[2] then
-          local moves1 = player:generateMoves(dice[1], dice[2])
-          --print(dice[1], dice[2], #moves1)
-          local moves2 = player:generateMoves(dice[2], dice[1])
-          --print(dice[2], dice[1], #moves2)
-          if #moves1 + #moves2 == 0 then
-            local moves = player:generateMoves(dice[2])
-            if #moves > 0 then
-              __("_BG_Movable", {})
-            else
-              moves = player:generateMoves(dice[1])
-              __("_BG_Movable", moves)
-            end
-          else
-            local moves = player:generateMoves(dice[state])
-            --print("generate", #moves)
-            __("_BG_Movable", moves)
-          end
-        else
-          local moves = player:generateMoves(dice[state])
-          --print("generate", #moves)
-          __("_BG_Movable", moves)
+      local moves = {}
+      if state <= #dice then
+        moves = player:generateMoves(dice[state], dice[state + 1])
+        if #moves == 0 then
+          moves = player:generateMoves(dice[state])
         end
       end
-      if state == 1 then
-        return shiori:talk("OnBackgammonRender", "true", "true")
-      elseif #dice >= state then
-        return shiori:talk("OnBackgammonRender", "true", "true")
-      else
-        return shiori:talk("OnBackgammonRender", "true", "false")
-      end
+      --print("generate", #moves)
+      __("_BG_Movable", moves)
+      return shiori:talk("OnBackgammonRender", "true")
     end,
   },
   {
@@ -308,13 +331,16 @@ local talk  = {
     content = function(shiori, ref)
       local __        = shiori.var
       local player    = __("_BGPlayer")
-      player:double()
+      player:take()
       return [=[\![raise,OnBackgammonDiceRoll]]=]
     end,
   },
   {
     id  = "OnBackgammonPlayerPass",
     content = function(shiori, ref)
+      local __        = shiori.var
+      local player    = __("_BGPlayer")
+      player:pass()
       return [=[\![raise,OnBackgammonPeriodEnd,2]]=]
     end,
   },
@@ -408,6 +434,7 @@ local talk  = {
       local state = __("_BG_PlayerState")
       local player  = __("_BGPlayer")
       if state == "double?" and player:canDouble() then
+        player:double()
         __("_BG_PlayerState", 1)
         return [=[\![raise,OnBackgammonAITakeOrPass]]=]
       end
@@ -421,6 +448,7 @@ local talk  = {
       local player  = __("_BGPlayer")
       if state == "double?" and player:canDouble() then
         __("_BG_PlayerState", 1)
+        player:double()
         return [=[\![raise,OnBackgammonAITakeOrPass]]=]
       end
     end,
@@ -432,24 +460,17 @@ local talk  = {
       local player  = __("_BGPlayer")
       local state = __("_BG_PlayerState")
       local dice  = __("_BG_Dice")
+      local movable = __("_BG_Movable")
       print("CLICK", "DICE", 1)
       if type(state) == "string" and state == "double?" then
         __("_BG_Dice1", nil)
         __("_BG_Dice2", nil)
         return shiori:talk("OnBackgammonRender", "false", "false") .. [=[\![timerraise,1000,1,OnBackgammonDiceRoll]]=]
       end
-      if state == 1 then
-        -- Swap
-        local tmp = dice[1]
-        dice[1] = dice[2]
-        dice[2] = tmp
-        -- Swap
-        local dice1 = __("_BG_Dice1")
-        local dice2 = __("_BG_Dice2")
-        __("_BG_Dice1", dice2)
-        __("_BG_Dice2", dice1)
-        return SS():raise("OnBackgammonPlayer")
-      elseif state > #dice then
+      if state > #dice or #movable == 0 then
+        for i = state, #dice do
+          player:move({dance = true}, dice[state])
+        end
         local r = __("_BG_Result") or {}
         shiori:saori("backgammon")("move", r[1] or 0, r[2] or 0, r[3] or 0, r[4] or 0, r[5] or 0, r[6] or 0, r[7] or 0, r[8] or 0)
         __("_BG_Result", nil)
@@ -461,6 +482,18 @@ local talk  = {
         else
           return shiori:talk("OnBackgammonRender", "false", "false") .. [=[\![timerraise,1000,1,OnBackgammonDiceRoll]]=]
         end
+      end
+      if state == 1 and not(__("_BG_FixDice")) then
+        -- Swap
+        local tmp = dice[1]
+        dice[1] = dice[2]
+        dice[2] = tmp
+        -- Swap
+        local dice1 = __("_BG_Dice1")
+        local dice2 = __("_BG_Dice2")
+        __("_BG_Dice1", dice2)
+        __("_BG_Dice2", dice1)
+        return SS():raise("OnBackgammonPlayer")
       end
     end,
   },
@@ -477,13 +510,10 @@ local talk  = {
         __("_BG_Dice2", nil)
         return shiori:talk("OnBackgammonRender", "false", "false") .. [=[\![timerraise,1000,1,OnBackgammonDiceRoll]]=]
       end
-      if #movable == 0 and state <= #dice then
-        print("CLICK", "DANCE")
-        player:move({dance = dice[state]}, dice[state])
-        __("_BG_PlayerState", state + 1)
-        return SS():raise("OnBackgammonPlayer")
-      end
-      if state > #dice then
+      if state > #dice or #movable == 0 then
+        for i = state, #dice do
+          player:move({dance = true}, dice[state])
+        end
         local r = __("_BG_Result") or {}
         shiori:saori("backgammon")("move", r[1] or 0, r[2] or 0, r[3] or 0, r[4] or 0, r[5] or 0, r[6] or 0, r[7] or 0, r[8] or 0)
         __("_BG_Result", nil)

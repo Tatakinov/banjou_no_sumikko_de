@@ -10,7 +10,6 @@ return {
       local __  = shiori.var
       local player  = __("_BGPlayer")
       local render_collision_dice = ref[0] == "true"
-      local render_collision_movable  = ref[1] == "true"
       local str = StringBuffer()
       str:append(Render.clear())
       local both_points = __("_BGPlayer"):getPosition()
@@ -30,7 +29,7 @@ return {
         str:append(Render.renderSwap())
       end
       local movable = __("_BG_Movable")
-      if movable and render_collision_movable then
+      if movable then
         --print("POINT DUMMY")
         for _, v in ipairs(movable) do
           str:append(Render.renderMovable(v))
