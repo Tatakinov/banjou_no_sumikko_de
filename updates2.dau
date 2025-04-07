@@ -44,7 +44,7 @@ ghost/master/index.luab62df8e9f06f0818d0aa5b13d4640fefsize=1945date=2021-09-0
 ghost/master/kagari.conf.luafad3139b9dde4dd1f6ef0268cc414cebsize=1177date=2025-02-09T22:18:18
 ghost/master/kagari.dllc33de6022ad93119dd55c54398e57c39size=120320date=2022-11-27T22:06:20
 ghost/master/lib/README.txt01cc80585103ee9be4e325e6994f0a81size=1831date=2021-09-05T22:05:43
-ghost/master/lib/backgammon_player/init.luaac650d75888aa237ee6ef442124c3c75size=11155date=2025-04-06T22:26:37
+ghost/master/lib/backgammon_player/init.lua1275fdf49ed0da883134f0b65d90c467size=11155date=2025-04-07T21:47:18
 ghost/master/lib/chess_player/chess_player.lua7989283b48c46f110630a9694790bd21size=28016date=2023-05-08T21:44:40
 ghost/master/lib/chess_player/color.lua4b59d95f70fa5cd6fa8df65ef1cdd482size=913date=2021-11-07T22:27:26
 ghost/master/lib/chess_player/init.lua04657d9b1f14d275524c63f598a94e0asize=478date=2021-11-07T22:27:26
