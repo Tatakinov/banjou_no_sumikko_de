@@ -355,10 +355,10 @@ function M:confirmGameOver()
     self._b_point = self._b_point + moves.win
   end
   if self._crawford ~= nil then
-    if self._point - 1 == self._w_point or self._point - 1 == self._b_point then
-      self._crawford  = true
-    elseif self._crawford then
+    if self._crawford then
       self._crawford = nil
+    elseif self._point - 1 == self._w_point or self._point - 1 == self._b_point then
+      self._crawford  = true
     end
   end
   self:confirm()
